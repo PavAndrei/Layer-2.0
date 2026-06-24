@@ -11,6 +11,7 @@ import { parseSearchParams } from '../utils/parse-search-params';
 import { PaginationWrapper } from '../components/pagination-wrapper';
 import { PAGINATION } from '../constants/pagination';
 import { BASE_API_URL } from '../constants/api';
+import { useDebouncedValue } from '../hooks/use-debounced-value';
 
 export const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,6 +27,9 @@ export const ProductsPage = () => {
 
     return { ...initialFilters, ...parsedFilters };
   });
+
+  const debouncedSearchString = useDebouncedValue(filters.searchString, 400);
+  const debouncedPriceRange = useDebouncedValue(filters.priceRange, 300);
 
   const removeFilter = (filterName: string, value?: string) => {
     if (filterName === 'categories' && value) {
@@ -59,7 +63,14 @@ export const ProductsPage = () => {
       try {
         setError(null);
         setIsLoading(true);
-        const params = buildSearchParams(filters);
+        const params = buildSearchParams({
+          page: filters.page,
+          searchString: debouncedSearchString,
+          categories: filters.categories,
+          priceRange: debouncedPriceRange,
+          sortBy: filters.sortBy,
+          inStockOnly: filters.inStockOnly,
+        });
 
         const response = await fetch(
           `${BASE_API_URL}/products?${params.toString()}`,
@@ -91,7 +102,14 @@ export const ProductsPage = () => {
     };
 
     fetchProducts();
-  }, [filters]);
+  }, [
+    debouncedSearchString,
+    debouncedPriceRange,
+    filters.page,
+    filters.categories,
+    filters.sortBy,
+    filters.inStockOnly,
+  ]);
 
   useEffect(() => {
     setSearchParams(buildSearchParams(filters));
@@ -108,8 +126,8 @@ export const ProductsPage = () => {
         setFilters={setFilters}
         handleRemoveFilter={removeFilter}
       />
-      {error && <div>{error}</div>}
       {isLoading && <p>Loading...</p>}
+      {error && <div>{error}</div>}
       {!isLoading && !error && (
         <>
           <span>

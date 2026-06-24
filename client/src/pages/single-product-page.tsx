@@ -44,6 +44,8 @@ export const SingleProductPage = () => {
     fetchProduct();
   }, [id]);
 
+  if (isLoading) return <div>Loading...</div>;
+
   if (error || !product)
     return (
       <div>
@@ -57,8 +59,6 @@ export const SingleProductPage = () => {
         </button>
       </div>
     );
-
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="container mx-auto">

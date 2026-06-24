@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { isObjectIdOrHexString } from 'mongoose';
 import { Product } from '../models/products.model';
 import { ApiError } from '../exceptions/api-error';
 
@@ -99,7 +100,13 @@ export const getProducts = async (req: Request, res: Response) => {
 };
 
 export const getProductById = async (req: Request, res: Response) => {
-  const product = await Product.findById(req.params.id);
+  const { id } = req.params;
+
+  if (!isObjectIdOrHexString(id)) {
+    throw ApiError.BadRequest('Invalid product id');
+  }
+
+  const product = await Product.findById(id);
 
   if (!product) {
     throw ApiError.NotFound('Product not found');
