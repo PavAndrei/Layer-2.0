@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { ProductCardProps } from '../types/product';
-import { BASE_API_URL } from '../constants/api';
+import { getProductById } from '../api/products-api';
 
 export const SingleProductPage = () => {
   const { id } = useParams();
@@ -23,17 +23,14 @@ export const SingleProductPage = () => {
       try {
         setError(null);
         setIsLoading(true);
-        const response = await fetch(`${BASE_API_URL}/products/${id}`, {
-          signal: controller.signal,
-        });
-        const data = await response.json();
+        const response = await getProductById(id, controller.signal);
 
-        if (!response.ok) {
-          throw new Error(data.message || 'Failed to load product');
+        if (!response.success) {
+          throw new Error(response.message);
         }
 
-        setProduct(data.product);
-        setRelatedProducts(data.relatedProducts);
+        setProduct(response.data.product);
+        setRelatedProducts(response.data.relatedProducts);
       } catch (error: unknown) {
         if (error instanceof DOMException && error.name === 'AbortError') {
           return;

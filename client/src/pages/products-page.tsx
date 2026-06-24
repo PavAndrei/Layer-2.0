@@ -10,8 +10,8 @@ import { buildSearchParams } from '../utils/build-search-params';
 import { parseSearchParams } from '../utils/parse-search-params';
 import { PaginationWrapper } from '../components/pagination-wrapper';
 import { PAGINATION } from '../constants/pagination';
-import { BASE_API_URL } from '../constants/api';
 import { useDebouncedValue } from '../hooks/use-debounced-value';
+import { getProducts } from '../api/products-api';
 
 export const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,6 +30,11 @@ export const ProductsPage = () => {
 
   const debouncedSearchString = useDebouncedValue(filters.searchString, 400);
   const debouncedPriceRange = useDebouncedValue(filters.priceRange, 300);
+
+  const isDebouncing =
+    filters.searchString !== debouncedSearchString ||
+    filters.priceRange.minPrice !== debouncedPriceRange.minPrice ||
+    filters.priceRange.maxPrice !== debouncedPriceRange.maxPrice;
 
   const removeFilter = (filterName: string, value?: string) => {
     if (filterName === 'categories' && value) {
@@ -59,6 +64,8 @@ export const ProductsPage = () => {
   };
 
   useEffect(() => {
+    if (isDebouncing) return;
+
     const controller = new AbortController();
 
     const fetchProducts = async () => {
@@ -74,24 +81,21 @@ export const ProductsPage = () => {
           inStockOnly: filters.inStockOnly,
         });
 
-        const response = await fetch(
-          `${BASE_API_URL}/products?${params.toString()}`,
-          { signal: controller.signal },
-        );
+        const response = await getProducts(params, controller.signal);
 
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.message || 'Failed to load products');
+        if (!response.success) {
+          throw new Error(response.message);
         }
 
-        setProducts(data.products);
-        setTotal(data.total);
+        const { products, pagination } = response.data;
 
-        if (data.page !== filters.page) {
+        setProducts(products);
+        setTotal(pagination.total);
+
+        if (pagination.page !== filters.page) {
           setFilters((prev) => ({
             ...prev,
-            page: data.page,
+            page: pagination.page,
           }));
         }
       } catch (error: unknown) {
@@ -114,6 +118,7 @@ export const ProductsPage = () => {
 
     return () => controller.abort();
   }, [
+    isDebouncing,
     debouncedSearchString,
     debouncedPriceRange,
     filters.page,
