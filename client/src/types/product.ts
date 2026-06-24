@@ -4,8 +4,8 @@ export interface ProductCardProps {
   title: string;
   description: string;
   defaultPrice: number;
-  discountPrice?: number;
-  discountPercent?: number;
+  discountPrice: number;
+  discountPercent: number;
   rating: number;
   categories: string[];
   color: string;

@@ -12,17 +12,30 @@ export const SingleProductPage = () => {
     [],
   );
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
+      if (!id) return;
+
       try {
+        setError(null);
+        setIsLoading(true);
         const response = await fetch(`${BASE_API_URL}/products/${id}`);
         const data = await response.json();
 
+        if (!response.ok) {
+          throw new Error(data.message || 'Failed to load product');
+        }
+
         setProduct(data.product);
         setRelatedProducts(data.relatedProducts);
-      } catch (error) {
+      } catch (error: unknown) {
         console.error(error);
+
+        setError(
+          error instanceof Error ? error.message : 'Failed to load product',
+        );
       } finally {
         setIsLoading(false);
       }
@@ -31,11 +44,7 @@ export const SingleProductPage = () => {
     fetchProduct();
   }, [id]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!product) {
+  if (error || !product)
     return (
       <div>
         <p>Product not found</p>
@@ -48,7 +57,8 @@ export const SingleProductPage = () => {
         </button>
       </div>
     );
-  }
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="container mx-auto">

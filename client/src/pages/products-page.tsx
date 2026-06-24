@@ -18,6 +18,9 @@ export const ProductsPage = () => {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [total, setTotal] = useState<number>(0);
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [filters, setFilters] = useState<Filters>(() => {
     const parsedFilters = parseSearchParams(searchParams);
 
@@ -54,6 +57,8 @@ export const ProductsPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setError(null);
+        setIsLoading(true);
         const params = buildSearchParams(filters);
 
         const response = await fetch(
@@ -61,6 +66,10 @@ export const ProductsPage = () => {
         );
 
         const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Failed to load products');
+        }
 
         setProducts(data.products);
         setTotal(data.total);
@@ -71,8 +80,13 @@ export const ProductsPage = () => {
             page: data.page,
           }));
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error(error);
+        setError(
+          error instanceof Error ? error.message : 'Failed to load products',
+        );
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -94,18 +108,24 @@ export const ProductsPage = () => {
         setFilters={setFilters}
         handleRemoveFilter={removeFilter}
       />
-      <span>
-        {total >= 1
-          ? `${total} products found`
-          : 'No products found. Try adjusting your filters.'}
-      </span>
-      <ProductGrid products={products} />
-      <PaginationWrapper
-        total={total}
-        limit={PAGINATION.PRODUCTS_LIMIT}
-        currentPage={filters.page}
-        onPageChange={handlePageChange}
-      />
+      {error && <div>{error}</div>}
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && !error && (
+        <>
+          <span>
+            {total >= 1
+              ? `${total} products found`
+              : 'No products found. Try adjusting your filters.'}
+          </span>
+          <ProductGrid products={products} />
+          <PaginationWrapper
+            total={total}
+            limit={PAGINATION.PRODUCTS_LIMIT}
+            currentPage={filters.page}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </div>
   );
 };
