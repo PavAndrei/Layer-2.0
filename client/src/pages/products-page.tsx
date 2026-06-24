@@ -59,6 +59,8 @@ export const ProductsPage = () => {
   };
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchProducts = async () => {
       try {
         setError(null);
@@ -74,6 +76,7 @@ export const ProductsPage = () => {
 
         const response = await fetch(
           `${BASE_API_URL}/products?${params.toString()}`,
+          { signal: controller.signal },
         );
 
         const data = await response.json();
@@ -92,16 +95,24 @@ export const ProductsPage = () => {
           }));
         }
       } catch (error: unknown) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return;
+        }
+
         console.error(error);
         setError(
           error instanceof Error ? error.message : 'Failed to load products',
         );
       } finally {
-        setIsLoading(false);
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchProducts();
+
+    return () => controller.abort();
   }, [
     debouncedSearchString,
     debouncedPriceRange,

@@ -15,13 +15,17 @@ export const SingleProductPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchProduct = async () => {
       if (!id) return;
 
       try {
         setError(null);
         setIsLoading(true);
-        const response = await fetch(`${BASE_API_URL}/products/${id}`);
+        const response = await fetch(`${BASE_API_URL}/products/${id}`, {
+          signal: controller.signal,
+        });
         const data = await response.json();
 
         if (!response.ok) {
@@ -31,17 +35,25 @@ export const SingleProductPage = () => {
         setProduct(data.product);
         setRelatedProducts(data.relatedProducts);
       } catch (error: unknown) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return;
+        }
+
         console.error(error);
 
         setError(
           error instanceof Error ? error.message : 'Failed to load product',
         );
       } finally {
-        setIsLoading(false);
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchProduct();
+
+    return () => controller.abort();
   }, [id]);
 
   if (isLoading) return <div>Loading...</div>;
