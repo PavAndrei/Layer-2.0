@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import { ApiError } from '../exceptions/api-error';
+import type { ApiErrorResponse } from '../types/api';
 
 export const errorHandler = (
   err: Error,
   req: Request,
-  res: Response,
+  res: Response<ApiErrorResponse>,
   next: NextFunction,
 ) => {
   if (err instanceof ApiError) {

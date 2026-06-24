@@ -23,7 +23,9 @@ app.listen(PORT, async () => {
 
 app.get('/', (_, res) => {
   res.json({
+    success: true,
     message: 'API is working',
+    data: null,
   });
 });
 

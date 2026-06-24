@@ -20,13 +20,9 @@ export const parseSearchParams = (
   const priceRange = { minPrice, maxPrice };
 
   const sortingValuesFromUrl = searchParams.get('sortBy');
-
-  let sortBy;
-  if (sortingValuesFromUrl) {
-    sortBy = SORTING_OPTIONS.find((s) => s.value === sortingValuesFromUrl);
-  } else {
-    sortBy = { label: 'default', value: 'default' };
-  }
+  const sortBy = SORTING_OPTIONS.find(
+    (sortingOption) => sortingOption.value === sortingValuesFromUrl,
+  ) ?? { label: 'default', value: 'default' };
 
   const inStockOnly = searchParams.get('inStockOnly') === 'true';
 

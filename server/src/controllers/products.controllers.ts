@@ -1,50 +1,63 @@
 import { Request, Response } from 'express';
-import { isObjectIdOrHexString } from 'mongoose';
-import { Product } from '../models/products.model';
+import { isObjectIdOrHexString, QueryFilter } from 'mongoose';
+import { Product, ProductData } from '../models/products.model';
 import { ApiError } from '../exceptions/api-error';
+import {
+  escapeRegExp,
+  parseProductsQuery,
+} from '../utils/parse-products-query';
+import { productToDto } from '../utils/product-to-dto';
+import type { ProductResponse, ProductsResponse } from '../types/api';
 
-export const getProducts = async (req: Request, res: Response) => {
-  const page = Math.max(1, Number(req.query.page) || 1);
-  const limit = Math.min(Math.max(Number(req.query.limit) || 12, 1), 50);
-  const searchString = req.query.searchString as string;
-  const categories = req.query.categories as string;
-  const minPrice = Number(req.query.minPrice);
-  const maxPrice = Number(req.query.maxPrice);
-  const sortBy = req.query.sortBy as string;
-  const inStockOnly = req.query.inStockOnly === 'true';
+export const getProducts = async (
+  req: Request,
+  res: Response<ProductsResponse>,
+) => {
+  const {
+    page,
+    limit,
+    searchString,
+    categories,
+    minPrice,
+    maxPrice,
+    sortBy,
+    inStockOnly,
+  } = parseProductsQuery(req.query);
 
-  const filter: Record<string, any> = {};
+  const filter: QueryFilter<ProductData> = {};
 
   if (searchString) {
+    const escapedSearchString = escapeRegExp(searchString);
+
     filter.$or = [
       {
         title: {
-          $regex: searchString,
+          $regex: escapedSearchString,
           $options: 'i',
         },
       },
       {
         description: {
-          $regex: searchString,
+          $regex: escapedSearchString,
           $options: 'i',
         },
       },
     ];
   }
 
-  if (categories) {
+  if (categories.length > 0) {
     filter.categories = {
-      $in: categories.split(','),
+      $in: categories,
     };
   }
 
   const priceFilter: Record<string, number> = {};
 
-  if (!Number.isNaN(minPrice)) {
+  if (minPrice !== undefined) {
     priceFilter.$gte = minPrice;
   }
 
-  if (!Number.isNaN(maxPrice)) {
+  if (maxPrice !== undefined) {
     priceFilter.$lte = maxPrice;
   }
 
@@ -91,15 +104,22 @@ export const getProducts = async (req: Request, res: Response) => {
   res.status(200).json({
     message: 'Products fetched successfully',
     success: true,
-    products,
-    total,
-    page: safePage,
-    limit,
-    totalPages,
+    data: {
+      products: products.map(productToDto),
+      pagination: {
+        total,
+        page: safePage,
+        limit,
+        totalPages,
+      },
+    },
   });
 };
 
-export const getProductById = async (req: Request, res: Response) => {
+export const getProductById = async (
+  req: Request,
+  res: Response<ProductResponse>,
+) => {
   const { id } = req.params;
 
   if (!isObjectIdOrHexString(id)) {
@@ -122,7 +142,9 @@ export const getProductById = async (req: Request, res: Response) => {
   res.status(200).json({
     message: 'Product fetched successfully',
     success: true,
-    product,
-    relatedProducts,
+    data: {
+      product: productToDto(product),
+      relatedProducts: relatedProducts.map(productToDto),
+    },
   });
 };
