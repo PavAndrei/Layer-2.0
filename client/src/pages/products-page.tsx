@@ -1,0 +1,111 @@
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router';
+
+import { ProductCardProps } from '../types/product';
+import { Filters } from '../types/filters';
+import { initialFilters } from '../constants/filters';
+import { ProductsFilter } from '../components/products-filter';
+import { ProductGrid } from '../components/product-grid';
+import { buildSearchParams } from '../utils/build-search-params';
+import { parseSearchParams } from '../utils/parse-search-params';
+import { PaginationWrapper } from '../components/pagination-wrapper';
+import { PAGINATION } from '../constants/pagination';
+import { BASE_API_URL } from '../constants/api';
+
+export const ProductsPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [products, setProducts] = useState<ProductCardProps[]>([]);
+  const [total, setTotal] = useState<number>(0);
+
+  const [filters, setFilters] = useState<Filters>(() => {
+    const parsedFilters = parseSearchParams(searchParams);
+
+    return { ...initialFilters, ...parsedFilters };
+  });
+
+  const removeFilter = (filterName: string, value?: string) => {
+    if (filterName === 'categories' && value) {
+      setFilters((prev) => ({
+        ...prev,
+        page: 1,
+        categories: prev.categories.filter(
+          (category) => category.value !== value,
+        ),
+      }));
+
+      return;
+    }
+
+    setFilters((prev) => ({
+      ...prev,
+      page: 1,
+      [filterName]: initialFilters[filterName as keyof Filters],
+    }));
+  };
+
+  const handlePageChange = (page: number) => {
+    setFilters((prev) => ({
+      ...prev,
+      page,
+    }));
+  };
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const params = buildSearchParams(filters);
+
+        const response = await fetch(
+          `${BASE_API_URL}/products?${params.toString()}`,
+        );
+
+        const data = await response.json();
+
+        setProducts(data.products);
+        setTotal(data.total);
+
+        if (data.page !== filters.page) {
+          setFilters((prev) => ({
+            ...prev,
+            page: data.page,
+          }));
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProducts();
+  }, [filters]);
+
+  useEffect(() => {
+    setSearchParams(buildSearchParams(filters));
+  }, [filters, setSearchParams]);
+
+  return (
+    <div className="container mx-auto px-2.5">
+      <h2>Current page: {filters.page}</h2>
+      <h1 className="text-3xl font-bold capitalize">
+        Welcome to the Product Filter Playground
+      </h1>
+      <ProductsFilter
+        filters={filters}
+        setFilters={setFilters}
+        handleRemoveFilter={removeFilter}
+      />
+      <span>
+        {total >= 1
+          ? `${total} products found`
+          : 'No products found. Try adjusting your filters.'}
+      </span>
+      <ProductGrid products={products} />
+      <PaginationWrapper
+        total={total}
+        limit={PAGINATION.PRODUCTS_LIMIT}
+        currentPage={filters.page}
+        onPageChange={handlePageChange}
+      />
+    </div>
+  );
+};
