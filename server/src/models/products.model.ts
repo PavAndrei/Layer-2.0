@@ -1,4 +1,56 @@
 import { HydratedDocument, InferSchemaType, Schema, model } from 'mongoose';
+import {
+  PRODUCT_SIZES,
+  type ProductVariant,
+} from '../types/product-variant';
+
+type ProductVariantValue = Omit<ProductVariant, '_id'>;
+
+const productVariantSchema = new Schema<ProductVariantValue>({
+  sku: {
+    type: String,
+    required: true,
+    trim: true,
+    uppercase: true,
+  },
+
+  size: {
+    type: String,
+    enum: PRODUCT_SIZES,
+    required: true,
+  },
+
+  color: {
+    type: String,
+    required: true,
+    trim: true,
+    lowercase: true,
+  },
+
+  quantity: {
+    type: Number,
+    required: true,
+    default: 0,
+    min: 0,
+    validate: {
+      validator: Number.isInteger,
+      message: 'Variant quantity must be an integer',
+    },
+  },
+
+  image: {
+    type: String,
+    trim: true,
+  },
+});
+
+const hasUniqueVariantSkus = (variants: ProductVariantValue[]) =>
+  new Set(variants.map((variant) => variant.sku)).size === variants.length;
+
+const hasUniqueVariantOptions = (variants: ProductVariantValue[]) =>
+  new Set(
+    variants.map((variant) => `${variant.size}:${variant.color}`),
+  ).size === variants.length;
 
 const productSchema = new Schema(
   {
@@ -45,9 +97,23 @@ const productSchema = new Schema(
       },
     ],
 
-    color: {
-      type: String,
+    variants: {
+      type: [productVariantSchema],
       required: true,
+      validate: [
+        {
+          validator: (variants: ProductVariantValue[]) => variants.length > 0,
+          message: 'Product must have at least one variant',
+        },
+        {
+          validator: hasUniqueVariantSkus,
+          message: 'Variant SKUs must be unique within a product',
+        },
+        {
+          validator: hasUniqueVariantOptions,
+          message: 'Variant size and color combinations must be unique',
+        },
+      ],
     },
 
     hasDiscount: {
@@ -60,10 +126,6 @@ const productSchema = new Schema(
       default: false,
     },
 
-    quantity: {
-      type: Number,
-      default: 0,
-    },
   },
   {
     timestamps: true,

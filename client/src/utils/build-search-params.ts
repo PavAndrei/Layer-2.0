@@ -19,6 +19,14 @@ export const buildSearchParams = (
     params.set('categories', filters.categories.map((c) => c.value).join(','));
   }
 
+  if (filters.sizes?.length) {
+    params.set('sizes', filters.sizes.join(','));
+  }
+
+  if (filters.colors?.length) {
+    params.set('colors', filters.colors.join(','));
+  }
+
   if (filters.priceRange?.minPrice !== MINIMAL_PRICE_RANGE) {
     params.set('minPrice', String(filters.priceRange?.minPrice));
   }

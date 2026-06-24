@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
+    "migrate:product-variants": "tsx src/scripts/remove-legacy-product-fields.ts",
     "start": "node dist/server.js"
   },
   "keywords": [],

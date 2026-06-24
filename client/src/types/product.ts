@@ -1,3 +1,5 @@
+import type { ProductVariant } from './product-variant';
+
 export interface ProductCardProps {
   _id: string;
   img: string;
@@ -8,8 +10,8 @@ export interface ProductCardProps {
   discountPercent: number;
   rating: number;
   categories: string[];
-  color: string;
   hasDiscount: boolean;
   isNewProduct: boolean;
-  quantity: number;
+  variants: ProductVariant[];
+  totalQuantity: number;
 }

@@ -1,3 +1,5 @@
+import type { ProductVariant } from './product-variant';
+
 export type ApiSuccess<T> = {
   success: true;
   message: string;
@@ -19,10 +21,10 @@ export type ProductDto = {
   discountPercent: number;
   rating: number;
   categories: string[];
-  color: string;
   hasDiscount: boolean;
   isNewProduct: boolean;
-  quantity: number;
+  variants: ProductVariant[];
+  totalQuantity: number;
 };
 
 export type PaginationData = {

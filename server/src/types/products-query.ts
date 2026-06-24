@@ -1,3 +1,5 @@
+import type { ProductSize } from './product-variant';
+
 export const PRODUCT_SORT_VALUES = [
   'price-asc',
   'price-desc',
@@ -12,6 +14,8 @@ export type ProductsQuery = {
   limit: number;
   searchString?: string;
   categories: string[];
+  sizes: ProductSize[];
+  colors: string[];
   minPrice?: number;
   maxPrice?: number;
   sortBy?: ProductSort;

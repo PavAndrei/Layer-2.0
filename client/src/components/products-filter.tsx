@@ -10,6 +10,10 @@ import {
 } from '../constants/filters';
 import { Filters, SortingOption } from '../types/filters';
 import { getActiveFilters } from '../utils/get-active-filters';
+import {
+  PRODUCT_COLOR_OPTIONS,
+  PRODUCT_SIZE_OPTIONS,
+} from '../constants/product-variants';
 
 export const ProductsFilter = ({
   filters,
@@ -64,6 +68,50 @@ export const ProductsFilter = ({
             setFilters({
               ...filters,
               categories: newValue as CategoryOption[],
+              page: 1,
+            })
+          }
+        />
+      </div>
+
+      <div className="flex justify-between items-center gap-1">
+        <label htmlFor="sizes" className="whitespace-nowrap">
+          Choose a size:
+        </label>
+        <Select
+          inputId="sizes"
+          className="w-full"
+          options={PRODUCT_SIZE_OPTIONS}
+          isMulti
+          value={PRODUCT_SIZE_OPTIONS.filter((option) =>
+            filters.sizes.includes(option.value),
+          )}
+          onChange={(newValue) =>
+            setFilters({
+              ...filters,
+              sizes: newValue.map((option) => option.value),
+              page: 1,
+            })
+          }
+        />
+      </div>
+
+      <div className="flex justify-between items-center gap-1">
+        <label htmlFor="colors" className="whitespace-nowrap">
+          Choose a color:
+        </label>
+        <Select
+          inputId="colors"
+          className="w-full"
+          options={PRODUCT_COLOR_OPTIONS}
+          isMulti
+          value={PRODUCT_COLOR_OPTIONS.filter((option) =>
+            filters.colors.includes(option.value),
+          )}
+          onChange={(newValue) =>
+            setFilters({
+              ...filters,
+              colors: newValue.map((option) => option.value),
               page: 1,
             })
           }

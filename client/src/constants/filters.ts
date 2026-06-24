@@ -27,6 +27,8 @@ export const SORTING_OPTIONS: SortingOption[] = [
 export const initialFilters: Filters = {
   searchString: '',
   categories: [] as CategoryOption[],
+  sizes: [],
+  colors: [],
   priceRange: {
     minPrice: MINIMAL_PRICE_RANGE,
     maxPrice: MAXIMAL_PRICE_RANGE,

@@ -18,6 +18,8 @@ export const getProducts = async (
     limit,
     searchString,
     categories,
+    sizes,
+    colors,
     minPrice,
     maxPrice,
     sortBy,
@@ -65,9 +67,25 @@ export const getProducts = async (
     filter.discountPrice = priceFilter;
   }
 
-  if (inStockOnly) {
-    filter.quantity = {
-      $gt: 0,
+  const variantFilter: {
+    size?: { $in: typeof sizes };
+    color?: { $in: string[] };
+    quantity?: { $gt: number };
+  } = {};
+
+  if (sizes.length > 0) {
+    variantFilter.size = { $in: sizes };
+  }
+
+  if (colors.length > 0) {
+    variantFilter.color = { $in: colors };
+  }
+
+  if (sizes.length > 0 || colors.length > 0 || inStockOnly) {
+    variantFilter.quantity = { $gt: 0 };
+
+    filter.variants = {
+      $elemMatch: variantFilter,
     };
   }
 

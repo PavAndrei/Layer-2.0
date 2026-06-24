@@ -29,12 +29,19 @@ export const ProductsPage = () => {
   });
 
   const debouncedSearchString = useDebouncedValue(filters.searchString, 400);
-  const debouncedPriceRange = useDebouncedValue(filters.priceRange, 300);
+  const debouncedMinPrice = useDebouncedValue(
+    filters.priceRange.minPrice,
+    300,
+  );
+  const debouncedMaxPrice = useDebouncedValue(
+    filters.priceRange.maxPrice,
+    300,
+  );
 
   const isDebouncing =
     filters.searchString !== debouncedSearchString ||
-    filters.priceRange.minPrice !== debouncedPriceRange.minPrice ||
-    filters.priceRange.maxPrice !== debouncedPriceRange.maxPrice;
+    filters.priceRange.minPrice !== debouncedMinPrice ||
+    filters.priceRange.maxPrice !== debouncedMaxPrice;
 
   const removeFilter = (filterName: string, value?: string) => {
     if (filterName === 'categories' && value) {
@@ -44,6 +51,26 @@ export const ProductsPage = () => {
         categories: prev.categories.filter(
           (category) => category.value !== value,
         ),
+      }));
+
+      return;
+    }
+
+    if (filterName === 'sizes' && value) {
+      setFilters((prev) => ({
+        ...prev,
+        page: 1,
+        sizes: prev.sizes.filter((size) => size !== value),
+      }));
+
+      return;
+    }
+
+    if (filterName === 'colors' && value) {
+      setFilters((prev) => ({
+        ...prev,
+        page: 1,
+        colors: prev.colors.filter((color) => color !== value),
       }));
 
       return;
@@ -76,7 +103,12 @@ export const ProductsPage = () => {
           page: filters.page,
           searchString: debouncedSearchString,
           categories: filters.categories,
-          priceRange: debouncedPriceRange,
+          sizes: filters.sizes,
+          colors: filters.colors,
+          priceRange: {
+            minPrice: debouncedMinPrice,
+            maxPrice: debouncedMaxPrice,
+          },
           sortBy: filters.sortBy,
           inStockOnly: filters.inStockOnly,
         });
@@ -120,9 +152,12 @@ export const ProductsPage = () => {
   }, [
     isDebouncing,
     debouncedSearchString,
-    debouncedPriceRange,
+    debouncedMinPrice,
+    debouncedMaxPrice,
     filters.page,
     filters.categories,
+    filters.sizes,
+    filters.colors,
     filters.sortBy,
     filters.inStockOnly,
   ]);

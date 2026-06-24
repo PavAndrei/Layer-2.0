@@ -11,8 +11,18 @@ export const productToDto = (product: ProductDocument): ProductDto => ({
   discountPercent: product.discountPercent,
   rating: product.rating,
   categories: product.categories,
-  color: product.color,
   hasDiscount: product.hasDiscount,
   isNewProduct: product.isNewProduct,
-  quantity: product.quantity,
+  variants: product.variants.map((variant) => ({
+    _id: variant._id.toString(),
+    sku: variant.sku,
+    size: variant.size,
+    color: variant.color,
+    quantity: variant.quantity,
+    image: variant.image,
+  })),
+  totalQuantity: product.variants.reduce(
+    (total, variant) => total + variant.quantity,
+    0,
+  ),
 });

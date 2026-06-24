@@ -8,10 +8,16 @@
     "discountPercent": 23,
     "rating": 4.8,
     "categories": ["hoodies", "streetwear", "unisex"],
-    "color": "white",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 100
+    "variants": [
+      { "sku": "LYR-HOOD-BLK-S", "size": "S", "color": "black", "quantity": 15 },
+      { "sku": "LYR-HOOD-BLK-M", "size": "M", "color": "black", "quantity": 20 },
+      { "sku": "LYR-HOOD-BLK-L", "size": "L", "color": "black", "quantity": 15 },
+      { "sku": "LYR-HOOD-WHT-S", "size": "S", "color": "white", "quantity": 10 },
+      { "sku": "LYR-HOOD-WHT-M", "size": "M", "color": "white", "quantity": 25 },
+      { "sku": "LYR-HOOD-WHT-L", "size": "L", "color": "white", "quantity": 15 }
+    ]
   },
   {
     "img": "/products/layer-tshirt-essential.png",
@@ -22,10 +28,16 @@
     "discountPercent": 20,
     "rating": 4.6,
     "categories": ["t-shirts", "basics", "streetwear"],
-    "color": "black",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 50
+    "variants": [
+      { "sku": "LYR-TEE-BLK-S", "size": "S", "color": "black", "quantity": 8 },
+      { "sku": "LYR-TEE-BLK-M", "size": "M", "color": "black", "quantity": 12 },
+      { "sku": "LYR-TEE-BLK-L", "size": "L", "color": "black", "quantity": 10 },
+      { "sku": "LYR-TEE-WHT-S", "size": "S", "color": "white", "quantity": 5 },
+      { "sku": "LYR-TEE-WHT-M", "size": "M", "color": "white", "quantity": 8 },
+      { "sku": "LYR-TEE-WHT-L", "size": "L", "color": "white", "quantity": 7 }
+    ]
   },
   {
     "img": "/products/layer-jacket-utility.png",
@@ -36,10 +48,16 @@
     "discountPercent": 20,
     "rating": 4.9,
     "categories": ["jackets", "outerwear", "streetwear"],
-    "color": "white",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 30
+    "variants": [
+      { "sku": "LYR-UTIL-WHT-M", "size": "M", "color": "white", "quantity": 6 },
+      { "sku": "LYR-UTIL-WHT-L", "size": "L", "color": "white", "quantity": 7 },
+      { "sku": "LYR-UTIL-WHT-XL", "size": "XL", "color": "white", "quantity": 4 },
+      { "sku": "LYR-UTIL-OLV-M", "size": "M", "color": "olive", "quantity": 4 },
+      { "sku": "LYR-UTIL-OLV-L", "size": "L", "color": "olive", "quantity": 5 },
+      { "sku": "LYR-UTIL-OLV-XL", "size": "XL", "color": "olive", "quantity": 4 }
+    ]
   },
   {
     "img": "/products/layer-pants-cargo.png",
@@ -50,10 +68,16 @@
     "discountPercent": 20,
     "rating": 4.7,
     "categories": ["pants", "cargo", "streetwear"],
-    "color": "white",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 40
+    "variants": [
+      { "sku": "LYR-CARGO-BLK-S", "size": "S", "color": "black", "quantity": 6 },
+      { "sku": "LYR-CARGO-BLK-M", "size": "M", "color": "black", "quantity": 8 },
+      { "sku": "LYR-CARGO-BLK-L", "size": "L", "color": "black", "quantity": 6 },
+      { "sku": "LYR-CARGO-KHK-S", "size": "S", "color": "khaki", "quantity": 5 },
+      { "sku": "LYR-CARGO-KHK-M", "size": "M", "color": "khaki", "quantity": 9 },
+      { "sku": "LYR-CARGO-KHK-L", "size": "L", "color": "khaki", "quantity": 6 }
+    ]
   },
   {
     "img": "/products/layer-sweatshirt-grey.png",
@@ -64,10 +88,13 @@
     "discountPercent": 20,
     "rating": 4.5,
     "categories": ["sweatshirts", "basics", "streetwear"],
-    "color": "grey",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 12
+    "variants": [
+      { "sku": "LYR-SWEAT-GRY-S", "size": "S", "color": "grey", "quantity": 3 },
+      { "sku": "LYR-SWEAT-GRY-M", "size": "M", "color": "grey", "quantity": 5 },
+      { "sku": "LYR-SWEAT-GRY-L", "size": "L", "color": "grey", "quantity": 4 }
+    ]
   },
   {
     "img": "/products/layer-cap-black.png",
@@ -78,10 +105,12 @@
     "discountPercent": 26,
     "rating": 4.4,
     "categories": ["accessories", "headwear", "streetwear"],
-    "color": "black",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 25
+    "variants": [
+      { "sku": "LYR-LOGOCAP-BLK-OS", "size": "ONE_SIZE", "color": "black", "quantity": 15 },
+      { "sku": "LYR-LOGOCAP-OLV-OS", "size": "ONE_SIZE", "color": "olive", "quantity": 10 }
+    ]
   },
   {
     "img": "/products/layer-bomber-jacket.png",
@@ -92,10 +121,16 @@
     "discountPercent": 22,
     "rating": 4.8,
     "categories": ["jackets", "outerwear", "streetwear"],
-    "color": "white",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 20
+    "variants": [
+      { "sku": "LYR-BOMBER-WHT-M", "size": "M", "color": "white", "quantity": 4 },
+      { "sku": "LYR-BOMBER-WHT-L", "size": "L", "color": "white", "quantity": 4 },
+      { "sku": "LYR-BOMBER-WHT-XL", "size": "XL", "color": "white", "quantity": 2 },
+      { "sku": "LYR-BOMBER-BLK-M", "size": "M", "color": "black", "quantity": 4 },
+      { "sku": "LYR-BOMBER-BLK-L", "size": "L", "color": "black", "quantity": 4 },
+      { "sku": "LYR-BOMBER-BLK-XL", "size": "XL", "color": "black", "quantity": 2 }
+    ]
   },
   {
     "img": "/products/layer-long-sleeve.png",
@@ -106,10 +141,16 @@
     "discountPercent": 20,
     "rating": 4.6,
     "categories": ["t-shirts", "longsleeve", "streetwear"],
-    "color": "grey",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 0
+    "variants": [
+      { "sku": "LYR-LONG-GRY-S", "size": "S", "color": "grey", "quantity": 0 },
+      { "sku": "LYR-LONG-GRY-M", "size": "M", "color": "grey", "quantity": 0 },
+      { "sku": "LYR-LONG-GRY-L", "size": "L", "color": "grey", "quantity": 0 },
+      { "sku": "LYR-LONG-BLK-S", "size": "S", "color": "black", "quantity": 0 },
+      { "sku": "LYR-LONG-BLK-M", "size": "M", "color": "black", "quantity": 0 },
+      { "sku": "LYR-LONG-BLK-L", "size": "L", "color": "black", "quantity": 0 }
+    ]
   },
   {
     "img": "/products/layer-beanie.png",
@@ -120,10 +161,12 @@
     "discountPercent": 24,
     "rating": 4.3,
     "categories": ["accessories", "beanies", "streetwear"],
-    "color": "grey",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 15
+    "variants": [
+      { "sku": "LYR-BEANIE-GRY-OS", "size": "ONE_SIZE", "color": "grey", "quantity": 8 },
+      { "sku": "LYR-BEANIE-BLK-OS", "size": "ONE_SIZE", "color": "black", "quantity": 7 }
+    ]
   },
   {
     "img": "/products/layer-track-pants.png",
@@ -134,10 +177,16 @@
     "discountPercent": 20,
     "rating": 4.7,
     "categories": ["pants", "track", "streetwear"],
-    "color": "white",
     "hasDiscount": true,
     "isNewProduct": false,
-    "quantity": 10
+    "variants": [
+      { "sku": "LYR-TRACK-WHT-S", "size": "S", "color": "white", "quantity": 2 },
+      { "sku": "LYR-TRACK-WHT-M", "size": "M", "color": "white", "quantity": 2 },
+      { "sku": "LYR-TRACK-WHT-L", "size": "L", "color": "white", "quantity": 1 },
+      { "sku": "LYR-TRACK-BLK-S", "size": "S", "color": "black", "quantity": 2 },
+      { "sku": "LYR-TRACK-BLK-M", "size": "M", "color": "black", "quantity": 2 },
+      { "sku": "LYR-TRACK-BLK-L", "size": "L", "color": "black", "quantity": 1 }
+    ]
   },
   {
     "img": "/products/layer-heavyweight-box-tee.png",
@@ -148,10 +197,16 @@
     "discountPercent": 0,
     "rating": 4.7,
     "categories": ["t-shirts", "basics", "streetwear"],
-    "color": "charcoal",
     "hasDiscount": false,
     "isNewProduct": true,
-    "quantity": 34
+    "variants": [
+      { "sku": "LYR-BOXTEE-CHR-S", "size": "S", "color": "charcoal", "quantity": 4 },
+      { "sku": "LYR-BOXTEE-CHR-M", "size": "M", "color": "charcoal", "quantity": 6 },
+      { "sku": "LYR-BOXTEE-CHR-L", "size": "L", "color": "charcoal", "quantity": 5 },
+      { "sku": "LYR-BOXTEE-CRM-S", "size": "S", "color": "cream", "quantity": 5 },
+      { "sku": "LYR-BOXTEE-CRM-M", "size": "M", "color": "cream", "quantity": 8 },
+      { "sku": "LYR-BOXTEE-CRM-L", "size": "L", "color": "cream", "quantity": 6 }
+    ]
   },
   {
     "img": "/products/layer-washed-zip-hoodie.png",
@@ -162,10 +217,16 @@
     "discountPercent": 0,
     "rating": 4.9,
     "categories": ["hoodies", "streetwear", "unisex"],
-    "color": "washed black",
     "hasDiscount": false,
     "isNewProduct": true,
-    "quantity": 18
+    "variants": [
+      { "sku": "LYR-ZIP-WBLK-S", "size": "S", "color": "washed-black", "quantity": 2 },
+      { "sku": "LYR-ZIP-WBLK-M", "size": "M", "color": "washed-black", "quantity": 4 },
+      { "sku": "LYR-ZIP-WBLK-L", "size": "L", "color": "washed-black", "quantity": 3 },
+      { "sku": "LYR-ZIP-GRY-S", "size": "S", "color": "grey", "quantity": 2 },
+      { "sku": "LYR-ZIP-GRY-M", "size": "M", "color": "grey", "quantity": 4 },
+      { "sku": "LYR-ZIP-GRY-L", "size": "L", "color": "grey", "quantity": 3 }
+    ]
   },
   {
     "img": "/products/layer-coach-jacket.png",
@@ -176,10 +237,16 @@
     "discountPercent": 0,
     "rating": 4.6,
     "categories": ["jackets", "outerwear", "streetwear"],
-    "color": "navy",
     "hasDiscount": false,
     "isNewProduct": false,
-    "quantity": 22
+    "variants": [
+      { "sku": "LYR-COACH-NVY-M", "size": "M", "color": "navy", "quantity": 4 },
+      { "sku": "LYR-COACH-NVY-L", "size": "L", "color": "navy", "quantity": 5 },
+      { "sku": "LYR-COACH-NVY-XL", "size": "XL", "color": "navy", "quantity": 2 },
+      { "sku": "LYR-COACH-BLK-M", "size": "M", "color": "black", "quantity": 4 },
+      { "sku": "LYR-COACH-BLK-L", "size": "L", "color": "black", "quantity": 5 },
+      { "sku": "LYR-COACH-BLK-XL", "size": "XL", "color": "black", "quantity": 2 }
+    ]
   },
   {
     "img": "/products/layer-carpenter-pants.png",
@@ -190,10 +257,16 @@
     "discountPercent": 0,
     "rating": 4.8,
     "categories": ["pants", "cargo", "streetwear"],
-    "color": "sand",
     "hasDiscount": false,
     "isNewProduct": true,
-    "quantity": 27
+    "variants": [
+      { "sku": "LYR-CARP-SND-S", "size": "S", "color": "sand", "quantity": 3 },
+      { "sku": "LYR-CARP-SND-M", "size": "M", "color": "sand", "quantity": 5 },
+      { "sku": "LYR-CARP-SND-L", "size": "L", "color": "sand", "quantity": 4 },
+      { "sku": "LYR-CARP-BLK-S", "size": "S", "color": "black", "quantity": 4 },
+      { "sku": "LYR-CARP-BLK-M", "size": "M", "color": "black", "quantity": 6 },
+      { "sku": "LYR-CARP-BLK-L", "size": "L", "color": "black", "quantity": 5 }
+    ]
   },
   {
     "img": "/products/layer-nylon-windbreaker.png",
@@ -204,10 +277,16 @@
     "discountPercent": 0,
     "rating": 4.5,
     "categories": ["jackets", "outerwear", "streetwear"],
-    "color": "olive",
     "hasDiscount": false,
     "isNewProduct": false,
-    "quantity": 16
+    "variants": [
+      { "sku": "LYR-WIND-OLV-M", "size": "M", "color": "olive", "quantity": 3 },
+      { "sku": "LYR-WIND-OLV-L", "size": "L", "color": "olive", "quantity": 3 },
+      { "sku": "LYR-WIND-OLV-XL", "size": "XL", "color": "olive", "quantity": 2 },
+      { "sku": "LYR-WIND-BLK-M", "size": "M", "color": "black", "quantity": 3 },
+      { "sku": "LYR-WIND-BLK-L", "size": "L", "color": "black", "quantity": 3 },
+      { "sku": "LYR-WIND-BLK-XL", "size": "XL", "color": "black", "quantity": 2 }
+    ]
   },
   {
     "img": "/products/layer-crossbody-utility-bag.png",
@@ -218,10 +297,12 @@
     "discountPercent": 0,
     "rating": 4.4,
     "categories": ["accessories", "streetwear", "unisex"],
-    "color": "black",
     "hasDiscount": false,
     "isNewProduct": true,
-    "quantity": 41
+    "variants": [
+      { "sku": "LYR-BAG-BLK-OS", "size": "ONE_SIZE", "color": "black", "quantity": 23 },
+      { "sku": "LYR-BAG-OLV-OS", "size": "ONE_SIZE", "color": "olive", "quantity": 18 }
+    ]
   },
   {
     "img": "/products/layer-five-panel-cap.png",
@@ -232,10 +313,12 @@
     "discountPercent": 0,
     "rating": 4.3,
     "categories": ["accessories", "headwear", "streetwear"],
-    "color": "burgundy",
     "hasDiscount": false,
     "isNewProduct": false,
-    "quantity": 29
+    "variants": [
+      { "sku": "LYR-5CAP-BRG-OS", "size": "ONE_SIZE", "color": "burgundy", "quantity": 16 },
+      { "sku": "LYR-5CAP-BLK-OS", "size": "ONE_SIZE", "color": "black", "quantity": 13 }
+    ]
   },
   {
     "img": "/products/layer-ribbed-longsleeve.png",
@@ -246,10 +329,18 @@
     "discountPercent": 0,
     "rating": 4.6,
     "categories": ["t-shirts", "longsleeve", "basics"],
-    "color": "cream",
     "hasDiscount": false,
     "isNewProduct": true,
-    "quantity": 36
+    "variants": [
+      { "sku": "LYR-RIB-CRM-XS", "size": "XS", "color": "cream", "quantity": 3 },
+      { "sku": "LYR-RIB-CRM-S", "size": "S", "color": "cream", "quantity": 5 },
+      { "sku": "LYR-RIB-CRM-M", "size": "M", "color": "cream", "quantity": 6 },
+      { "sku": "LYR-RIB-CRM-L", "size": "L", "color": "cream", "quantity": 4 },
+      { "sku": "LYR-RIB-BLK-XS", "size": "XS", "color": "black", "quantity": 3 },
+      { "sku": "LYR-RIB-BLK-S", "size": "S", "color": "black", "quantity": 5 },
+      { "sku": "LYR-RIB-BLK-M", "size": "M", "color": "black", "quantity": 6 },
+      { "sku": "LYR-RIB-BLK-L", "size": "L", "color": "black", "quantity": 4 }
+    ]
   },
   {
     "img": "/products/layer-wide-leg-sweatpants.png",
@@ -260,10 +351,16 @@
     "discountPercent": 0,
     "rating": 4.8,
     "categories": ["pants", "track", "streetwear"],
-    "color": "heather grey",
     "hasDiscount": false,
     "isNewProduct": true,
-    "quantity": 24
+    "variants": [
+      { "sku": "LYR-WIDE-HGR-S", "size": "S", "color": "heather-grey", "quantity": 3 },
+      { "sku": "LYR-WIDE-HGR-M", "size": "M", "color": "heather-grey", "quantity": 5 },
+      { "sku": "LYR-WIDE-HGR-L", "size": "L", "color": "heather-grey", "quantity": 4 },
+      { "sku": "LYR-WIDE-BLK-S", "size": "S", "color": "black", "quantity": 3 },
+      { "sku": "LYR-WIDE-BLK-M", "size": "M", "color": "black", "quantity": 5 },
+      { "sku": "LYR-WIDE-BLK-L", "size": "L", "color": "black", "quantity": 4 }
+    ]
   },
   {
     "img": "/products/layer-canvas-overshirt.png",
@@ -274,9 +371,15 @@
     "discountPercent": 0,
     "rating": 4.7,
     "categories": ["jackets", "outerwear", "streetwear"],
-    "color": "dark brown",
     "hasDiscount": false,
     "isNewProduct": false,
-    "quantity": 13
+    "variants": [
+      { "sku": "LYR-OVER-DBR-M", "size": "M", "color": "dark-brown", "quantity": 3 },
+      { "sku": "LYR-OVER-DBR-L", "size": "L", "color": "dark-brown", "quantity": 3 },
+      { "sku": "LYR-OVER-DBR-XL", "size": "XL", "color": "dark-brown", "quantity": 1 },
+      { "sku": "LYR-OVER-BLK-M", "size": "M", "color": "black", "quantity": 2 },
+      { "sku": "LYR-OVER-BLK-L", "size": "L", "color": "black", "quantity": 3 },
+      { "sku": "LYR-OVER-BLK-XL", "size": "XL", "color": "black", "quantity": 1 }
+    ]
   }
 ]

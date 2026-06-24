@@ -23,6 +23,28 @@ export const getActiveFilters = (filters: Filters, initialFilters: Filters) => {
     });
   }
 
+  if (filters.sizes.length > 0) {
+    filters.sizes.forEach((size) => {
+      activeFilters.push({
+        key: `size-${size}`,
+        name: 'sizes',
+        value: size,
+        label: `Size: ${size === 'ONE_SIZE' ? 'One size' : size}`,
+      });
+    });
+  }
+
+  if (filters.colors.length > 0) {
+    filters.colors.forEach((color) => {
+      activeFilters.push({
+        key: `color-${color}`,
+        name: 'colors',
+        value: color,
+        label: `Color: ${color.replace(/-/g, ' ')}`,
+      });
+    });
+  }
+
   if (
     filters.priceRange.minPrice !== initialFilters.priceRange.minPrice ||
     filters.priceRange.maxPrice !== initialFilters.priceRange.maxPrice

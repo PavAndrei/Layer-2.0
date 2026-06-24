@@ -5,6 +5,10 @@ import {
   type ProductSort,
   type ProductsQuery,
 } from '../types/products-query';
+import {
+  PRODUCT_SIZES,
+  type ProductSize,
+} from '../types/product-variant';
 
 const readString = (value: unknown, name: string): string | undefined => {
   if (value === undefined) return undefined;
@@ -82,6 +86,49 @@ const readCategories = (value: unknown): string[] => {
   return [...new Set(categories)];
 };
 
+const readSizes = (value: unknown): ProductSize[] => {
+  const rawValue = readString(value, 'sizes');
+
+  if (!rawValue) return [];
+
+  const sizes = rawValue
+    .split(',')
+    .map((size) => size.trim())
+    .filter(Boolean);
+
+  if (
+    sizes.length > PRODUCT_SIZES.length ||
+    sizes.some(
+      (size) =>
+        !PRODUCT_SIZES.some((availableSize) => availableSize === size),
+    )
+  ) {
+    throw ApiError.BadRequest('Invalid sizes');
+  }
+
+  return [...new Set(sizes)] as ProductSize[];
+};
+
+const readColors = (value: unknown): string[] => {
+  const rawValue = readString(value, 'colors');
+
+  if (!rawValue) return [];
+
+  const colors = rawValue
+    .split(',')
+    .map((color) => color.trim())
+    .filter(Boolean);
+
+  if (
+    colors.length > 20 ||
+    colors.some((color) => !/^[a-z0-9-]+$/.test(color))
+  ) {
+    throw ApiError.BadRequest('Invalid colors');
+  }
+
+  return [...new Set(colors)];
+};
+
 const readSort = (value: unknown): ProductSort | undefined => {
   const rawValue = readString(value, 'sortBy');
 
@@ -99,6 +146,8 @@ export const parseProductsQuery = (query: Request['query']): ProductsQuery => {
   const limit = readPositiveInteger(query.limit, 'limit', 12, 50);
   const searchString = readString(query.searchString, 'searchString');
   const categories = readCategories(query.categories);
+  const sizes = readSizes(query.sizes);
+  const colors = readColors(query.colors);
   const minPrice = readPrice(query.minPrice, 'minPrice');
   const maxPrice = readPrice(query.maxPrice, 'maxPrice');
   const sortBy = readSort(query.sortBy);
@@ -121,6 +170,8 @@ export const parseProductsQuery = (query: Request['query']): ProductsQuery => {
     limit,
     searchString: searchString || undefined,
     categories,
+    sizes,
+    colors,
     minPrice,
     maxPrice,
     sortBy,
