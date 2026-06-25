@@ -2,10 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { ProductCardProps } from '../types/product';
 import { getProductById } from '../api/products-api';
-import {
-  PRODUCT_SIZES,
-  type ProductSize,
-} from '../types/product-variant';
+import { PRODUCT_SIZES, type ProductSize } from '../types/product-variant';
 
 export const SingleProductPage = () => {
   const { id } = useParams();
@@ -116,7 +113,7 @@ export const SingleProductPage = () => {
         <p>Product not found</p>
         <button
           type="button"
-          onClick={() => navigate('/products')}
+          onClick={() => navigate('/catalog')}
           className="rounded border px-2 py-1 max-w-50 cursor-pointer hover:bg-gray-300 transition-colors"
         >
           {'<--'} Back
