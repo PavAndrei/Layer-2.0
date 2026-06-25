@@ -17,6 +17,7 @@ export const getProducts = async (
     page,
     limit,
     searchString,
+    audience,
     categories,
     sizes,
     colors,
@@ -24,6 +25,8 @@ export const getProducts = async (
     maxPrice,
     sortBy,
     inStockOnly,
+    hasDiscount,
+    isNewProduct,
   } = parseProductsQuery(req.query);
 
   const filter: QueryFilter<ProductData> = {};
@@ -51,6 +54,20 @@ export const getProducts = async (
     filter.categories = {
       $in: categories,
     };
+  }
+
+  if (audience.length > 0) {
+    filter.audience = {
+      $in: audience,
+    };
+  }
+
+  if (hasDiscount) {
+    filter.hasDiscount = true;
+  }
+
+  if (isNewProduct) {
+    filter.isNewProduct = true;
   }
 
   const priceFilter: Record<string, number> = {};

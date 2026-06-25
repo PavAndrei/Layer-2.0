@@ -1,9 +1,12 @@
 import { MAXIMAL_PRICE_RANGE, MINIMAL_PRICE_RANGE } from '../constants/filters';
 import { PAGINATION } from '../constants/pagination';
 import { Filters } from '../types/filters';
+import type { ProductCollectionBaseFilters } from '../types/product-collection';
+
+type ProductSearchParams = Partial<Filters> & ProductCollectionBaseFilters;
 
 export const buildSearchParams = (
-  filters: Partial<Filters>,
+  filters: ProductSearchParams,
 ): URLSearchParams => {
   const params = new URLSearchParams();
 
@@ -17,6 +20,10 @@ export const buildSearchParams = (
 
   if (filters.categories?.length) {
     params.set('categories', filters.categories.map((c) => c.value).join(','));
+  }
+
+  if (filters.audience?.length) {
+    params.set('audience', filters.audience.join(','));
   }
 
   if (filters.sizes?.length) {
@@ -41,6 +48,14 @@ export const buildSearchParams = (
 
   if (filters.inStockOnly) {
     params.set('inStockOnly', 'true');
+  }
+
+  if (filters.hasDiscount) {
+    params.set('hasDiscount', 'true');
+  }
+
+  if (filters.isNewProduct) {
+    params.set('isNewProduct', 'true');
   }
 
   params.set('limit', String(PAGINATION.PRODUCTS_LIMIT));

@@ -1,6 +1,10 @@
 import type { Request } from 'express';
 import { ApiError } from '../exceptions/api-error';
 import {
+  PRODUCT_AUDIENCES,
+  type ProductAudience,
+} from '../types/product-audience';
+import {
   PRODUCT_SORT_VALUES,
   type ProductSort,
   type ProductsQuery,
@@ -86,6 +90,31 @@ const readCategories = (value: unknown): string[] => {
   return [...new Set(categories)];
 };
 
+const readAudience = (value: unknown): ProductAudience[] => {
+  const rawValue = readString(value, 'audience');
+
+  if (!rawValue) return [];
+
+  const audience = rawValue
+    .split(',')
+    .map((audienceItem) => audienceItem.trim())
+    .filter(Boolean);
+
+  if (
+    audience.length > PRODUCT_AUDIENCES.length ||
+    audience.some(
+      (audienceItem) =>
+        !PRODUCT_AUDIENCES.some(
+          (availableAudience) => availableAudience === audienceItem,
+        ),
+    )
+  ) {
+    throw ApiError.BadRequest('Invalid audience');
+  }
+
+  return [...new Set(audience)] as ProductAudience[];
+};
+
 const readSizes = (value: unknown): ProductSize[] => {
   const rawValue = readString(value, 'sizes');
 
@@ -145,6 +174,7 @@ export const parseProductsQuery = (query: Request['query']): ProductsQuery => {
   const page = readPositiveInteger(query.page, 'page', 1);
   const limit = readPositiveInteger(query.limit, 'limit', 12, 50);
   const searchString = readString(query.searchString, 'searchString');
+  const audience = readAudience(query.audience);
   const categories = readCategories(query.categories);
   const sizes = readSizes(query.sizes);
   const colors = readColors(query.colors);
@@ -152,6 +182,8 @@ export const parseProductsQuery = (query: Request['query']): ProductsQuery => {
   const maxPrice = readPrice(query.maxPrice, 'maxPrice');
   const sortBy = readSort(query.sortBy);
   const inStockOnly = readBoolean(query.inStockOnly, 'inStockOnly');
+  const hasDiscount = readBoolean(query.hasDiscount, 'hasDiscount');
+  const isNewProduct = readBoolean(query.isNewProduct, 'isNewProduct');
 
   if (searchString && searchString.length > 100) {
     throw ApiError.BadRequest('Search string is too long');
@@ -169,6 +201,7 @@ export const parseProductsQuery = (query: Request['query']): ProductsQuery => {
     page,
     limit,
     searchString: searchString || undefined,
+    audience,
     categories,
     sizes,
     colors,
@@ -176,6 +209,8 @@ export const parseProductsQuery = (query: Request['query']): ProductsQuery => {
     maxPrice,
     sortBy,
     inStockOnly,
+    hasDiscount,
+    isNewProduct,
   };
 };
 

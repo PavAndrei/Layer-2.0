@@ -3,6 +3,10 @@ import {
   PRODUCT_SIZES,
   type ProductVariant,
 } from '../types/product-variant';
+import {
+  PRODUCT_AUDIENCES,
+  type ProductAudience,
+} from '../types/product-audience';
 
 type ProductVariantValue = Omit<ProductVariant, '_id'>;
 
@@ -52,6 +56,9 @@ const hasUniqueVariantOptions = (variants: ProductVariantValue[]) =>
     variants.map((variant) => `${variant.size}:${variant.color}`),
   ).size === variants.length;
 
+const hasUniqueAudiences = (audience: ProductAudience[]) =>
+  new Set(audience).size === audience.length;
+
 const productSchema = new Schema(
   {
     title: {
@@ -96,6 +103,27 @@ const productSchema = new Schema(
         type: String,
       },
     ],
+
+    audience: {
+      type: [
+        {
+          type: String,
+          enum: PRODUCT_AUDIENCES,
+        },
+      ],
+      required: true,
+      default: ['unisex'],
+      validate: [
+        {
+          validator: (audience: ProductAudience[]) => audience.length > 0,
+          message: 'Product must have at least one audience',
+        },
+        {
+          validator: hasUniqueAudiences,
+          message: 'Product audiences must be unique',
+        },
+      ],
+    },
 
     variants: {
       type: [productVariantSchema],

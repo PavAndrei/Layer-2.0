@@ -11,6 +11,7 @@ export const productToDto = (product: ProductDocument): ProductDto => ({
   discountPercent: product.discountPercent,
   rating: product.rating,
   categories: product.categories,
+  audience: product.audience?.length ? product.audience : ['unisex'],
   hasDiscount: product.hasDiscount,
   isNewProduct: product.isNewProduct,
   variants: product.variants.map((variant) => ({

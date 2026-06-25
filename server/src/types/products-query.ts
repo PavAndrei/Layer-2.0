@@ -1,3 +1,4 @@
+import type { ProductAudience } from './product-audience';
 import type { ProductSize } from './product-variant';
 
 export const PRODUCT_SORT_VALUES = [
@@ -13,6 +14,7 @@ export type ProductsQuery = {
   page: number;
   limit: number;
   searchString?: string;
+  audience: ProductAudience[];
   categories: string[];
   sizes: ProductSize[];
   colors: string[];
@@ -20,4 +22,6 @@ export type ProductsQuery = {
   maxPrice?: number;
   sortBy?: ProductSort;
   inStockOnly: boolean;
+  hasDiscount: boolean;
+  isNewProduct: boolean;
 };

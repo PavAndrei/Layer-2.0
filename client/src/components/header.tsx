@@ -5,7 +5,7 @@ export const Header = () => {
     <header>
       <div className="max-w-322.5 px-1.25 mx-auto py-5">
         <div className="flex justify-between items-center">
-          <div>Logo</div>
+          <Link to="/">Logo</Link>
           <nav>
             <ul className="flex items-center gap-5 font-semibold text-lg">
               <li>
@@ -13,6 +13,9 @@ export const Header = () => {
               </li>
               <li>
                 <Link to="/women">Women</Link>
+              </li>
+              <li>
+                <Link to="/unisex">Unisex</Link>
               </li>
               <li>
                 <Link to="/sales">Sales</Link>

@@ -1,4 +1,5 @@
 import type { ProductVariant } from './product-variant';
+import type { ProductAudience } from './product-audience';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -21,6 +22,7 @@ export type ProductDto = {
   discountPercent: number;
   rating: number;
   categories: string[];
+  audience: ProductAudience[];
   hasDiscount: boolean;
   isNewProduct: boolean;
   variants: ProductVariant[];
