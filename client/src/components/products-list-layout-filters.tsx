@@ -17,35 +17,47 @@ import type { Filters, SortingOption } from '../types/filters';
 import { getActiveFilters } from '../utils/get-active-filters';
 import { ProductDualPriceRange } from './product-dual-price-range';
 
+type ProductsListVisibleFilters = Partial<{
+  search: boolean;
+  categories: boolean;
+  sizes: boolean;
+  colors: boolean;
+  price: boolean;
+  sort: boolean;
+  inStockOnly: boolean;
+  activeFilters: boolean;
+  clearButton: boolean;
+}>;
+
 type ProductsListLayoutFiltersProps = {
   filters: Filters;
   setFilters: Dispatch<SetStateAction<Filters>>;
   handleRemoveFilter: (filterKey: string, value?: string) => void;
-  showSearch?: boolean;
-  showCategories?: boolean;
-  showSizes?: boolean;
-  showColors?: boolean;
-  showPrice?: boolean;
-  showSort?: boolean;
-  showInStockOnly?: boolean;
-  showActiveFilters?: boolean;
-  showClearButton?: boolean;
+  visibleFilters?: ProductsListVisibleFilters;
 };
+
+const DEFAULT_VISIBLE_FILTERS = {
+  search: true,
+  categories: true,
+  sizes: true,
+  colors: true,
+  price: true,
+  sort: true,
+  inStockOnly: true,
+  activeFilters: true,
+  clearButton: true,
+} satisfies Required<ProductsListVisibleFilters>;
 
 export const ProductsListLayoutFilters = ({
   filters,
   setFilters,
   handleRemoveFilter,
-  showSearch = true,
-  showCategories = true,
-  showSizes = true,
-  showColors = true,
-  showPrice = true,
-  showSort = true,
-  showInStockOnly = true,
-  showActiveFilters = true,
-  showClearButton = true,
+  visibleFilters,
 }: ProductsListLayoutFiltersProps) => {
+  const visible = {
+    ...DEFAULT_VISIBLE_FILTERS,
+    ...visibleFilters,
+  };
   const activeFilters = getActiveFilters(filters, initialFilters);
 
   const handlePriceRangeChange = (values: { min: number; max: number }) => {
@@ -61,7 +73,7 @@ export const ProductsListLayoutFilters = ({
 
   return (
     <form className="flex flex-col gap-4 rounded border border-gray-200 p-4">
-      {showSearch && (
+      {visible.search && (
         <div className="flex flex-col gap-1">
           <label htmlFor="filterString">Search for the products:</label>
           <input
@@ -81,7 +93,7 @@ export const ProductsListLayoutFilters = ({
         </div>
       )}
 
-      {showCategories && (
+      {visible.categories && (
         <div className="flex flex-col gap-1">
           <label htmlFor="category">Choose a category:</label>
           <Select
@@ -100,7 +112,7 @@ export const ProductsListLayoutFilters = ({
         </div>
       )}
 
-      {showSizes && (
+      {visible.sizes && (
         <div className="flex flex-col gap-1">
           <label htmlFor="sizes">Choose a size:</label>
           <Select
@@ -121,7 +133,7 @@ export const ProductsListLayoutFilters = ({
         </div>
       )}
 
-      {showColors && (
+      {visible.colors && (
         <div className="flex flex-col gap-1">
           <label htmlFor="colors">Choose a color:</label>
           <Select
@@ -142,7 +154,7 @@ export const ProductsListLayoutFilters = ({
         </div>
       )}
 
-      {showPrice && (
+      {visible.price && (
         <ProductDualPriceRange
           min={MINIMAL_PRICE_RANGE}
           max={MAXIMAL_PRICE_RANGE}
@@ -154,7 +166,7 @@ export const ProductsListLayoutFilters = ({
         />
       )}
 
-      {showSort && (
+      {visible.sort && (
         <div className="flex flex-col gap-1">
           <label htmlFor="sort">Sort by:</label>
           <Select
@@ -172,7 +184,7 @@ export const ProductsListLayoutFilters = ({
         </div>
       )}
 
-      {showInStockOnly && (
+      {visible.inStockOnly && (
         <div className="flex items-center gap-1">
           <input
             id="inStock"
@@ -190,7 +202,7 @@ export const ProductsListLayoutFilters = ({
         </div>
       )}
 
-      {showActiveFilters && activeFilters.length > 0 && (
+      {visible.activeFilters && activeFilters.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {activeFilters.map((filter) => (
             <div
@@ -212,7 +224,7 @@ export const ProductsListLayoutFilters = ({
         </div>
       )}
 
-      {showClearButton && (
+      {visible.clearButton && (
         <button
           className="max-w-30 cursor-pointer rounded border px-2 py-1 transition-colors hover:bg-gray-200"
           type="button"

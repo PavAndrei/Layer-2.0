@@ -18,9 +18,9 @@ import type { ProductCardProps } from '../types/product';
 import { buildSearchParams } from '../utils/build-search-params';
 import { parseSearchParams } from '../utils/parse-search-params';
 
-export const MenPage = () => {
+export const SalesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const collectionConfig = PRODUCT_COLLECTIONS.men;
+  const collectionConfig = PRODUCT_COLLECTIONS.sales;
   const [isFiltersOpen, setIsFiltersOpen] = useState(true);
 
   const [products, setProducts] = useState<ProductCardProps[]>([]);

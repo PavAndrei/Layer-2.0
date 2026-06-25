@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 
-import { ProductCardProps } from '../types/product';
-import { Filters } from '../types/filters';
-import { initialFilters } from '../constants/filters';
-import { ProductsFilter } from '../components/products-filter';
+import { getProducts } from '../api/products-api';
+import { PaginationWrapper } from '../components/pagination-wrapper';
 import { ProductGrid } from '../components/product-grid';
+import { ProductsListFiltersToggle } from '../components/products-list-filters-toggle';
+import { ProductsListLayout } from '../components/products-list-layout';
+import { ProductsListLayoutContent } from '../components/products-list-layout-content';
+import { ProductsListLayoutFilters } from '../components/products-list-layout-filters';
+import { ProductsListLayoutHeader } from '../components/products-list-layout-header';
+import { initialFilters } from '../constants/filters';
+import { PAGINATION } from '../constants/pagination';
+import { PRODUCT_COLLECTIONS } from '../constants/product-collections';
+import { useDebouncedValue } from '../hooks/use-debounced-value';
+import type { Filters } from '../types/filters';
+import type { ProductCardProps } from '../types/product';
 import { buildSearchParams } from '../utils/build-search-params';
 import { parseSearchParams } from '../utils/parse-search-params';
-import { PaginationWrapper } from '../components/pagination-wrapper';
-import { PAGINATION } from '../constants/pagination';
-import { useDebouncedValue } from '../hooks/use-debounced-value';
-import { getProducts } from '../api/products-api';
-import { PRODUCT_COLLECTIONS } from '../constants/product-collections';
-import type { ProductCollectionId } from '../types/product-collection';
 
-export const ProductsPage = ({
-  collection = 'catalog',
-}: {
-  collection?: ProductCollectionId;
-}) => {
+export const NewPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const collectionConfig = PRODUCT_COLLECTIONS[collection];
+  const collectionConfig = PRODUCT_COLLECTIONS.new;
+  const [isFiltersOpen, setIsFiltersOpen] = useState(true);
 
   const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [total, setTotal] = useState<number>(0);
@@ -176,34 +176,43 @@ export const ProductsPage = ({
   }, [filters, setSearchParams]);
 
   return (
-    <div className="container mx-auto px-2.5">
-      <h2>Current page: {filters.page}</h2>
-      <h1 className="text-3xl font-bold capitalize">
-        {collectionConfig.title}
-      </h1>
-      <ProductsFilter
-        filters={filters}
-        setFilters={setFilters}
-        handleRemoveFilter={removeFilter}
-      />
-      {isLoading && <p>Loading...</p>}
-      {error && <div>{error}</div>}
-      {!isLoading && !error && (
-        <>
-          <span>
-            {total >= 1
-              ? `${total} products found`
-              : 'No products found. Try adjusting your filters.'}
-          </span>
-          <ProductGrid products={products} />
-          <PaginationWrapper
-            total={total}
-            limit={PAGINATION.PRODUCTS_LIMIT}
-            currentPage={filters.page}
-            onPageChange={handlePageChange}
+    <ProductsListLayout
+      header={
+        <ProductsListLayoutHeader
+          title={collectionConfig.title}
+          description={collectionConfig.description}
+          actions={
+            <ProductsListFiltersToggle
+              isOpen={isFiltersOpen}
+              onToggle={() => setIsFiltersOpen((prev) => !prev)}
+            />
+          }
+        />
+      }
+      filters={
+        isFiltersOpen ? (
+          <ProductsListLayoutFilters
+            filters={filters}
+            setFilters={setFilters}
+            handleRemoveFilter={removeFilter}
           />
-        </>
-      )}
-    </div>
+        ) : null
+      }
+    >
+      <ProductsListLayoutContent
+        error={error}
+        isLoading={isLoading}
+        isEmpty={total === 0}
+        total={total}
+      >
+        <ProductGrid products={products} />
+        <PaginationWrapper
+          total={total}
+          limit={PAGINATION.PRODUCTS_LIMIT}
+          currentPage={filters.page}
+          onPageChange={handlePageChange}
+        />
+      </ProductsListLayoutContent>
+    </ProductsListLayout>
   );
 };
