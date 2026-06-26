@@ -1,4 +1,4 @@
-import { Filters } from './filter-types';
+import type { Filters } from '../model';
 
 export const getActiveFilters = (filters: Filters, initialFilters: Filters) => {
   const activeFilters = [];

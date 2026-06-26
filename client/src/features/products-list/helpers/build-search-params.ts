@@ -1,7 +1,7 @@
-import { MAXIMAL_PRICE_RANGE, MINIMAL_PRICE_RANGE } from './filter-constants';
-import { PAGINATION } from '../../shared/constants';
-import { Filters } from './filter-types';
-import type { ProductCollectionBaseFilters } from '../../shared/types';
+import { PAGINATION } from '../../../shared/constants';
+import type { ProductCollectionBaseFilters } from '../../../shared/types';
+import { MAXIMAL_PRICE_RANGE, MINIMAL_PRICE_RANGE } from '../model';
+import type { Filters } from '../model';
 
 type ProductSearchParams = Partial<Filters> & ProductCollectionBaseFilters;
 

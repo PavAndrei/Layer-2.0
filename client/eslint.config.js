@@ -4,6 +4,38 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
+const publicApiImportRestrictions = [
+  {
+    group: [
+      './api/*',
+      './helpers/*',
+      './model/*',
+      './ui/*',
+      '../api/*',
+      '../helpers/*',
+      '../model/*',
+      '../ui/*',
+    ],
+    message:
+      'Use the folder public api instead, for example "./ui" or "../model".',
+  },
+  {
+    regex: '^(\\.\\.?/)+features/[^/]+/(?![^/]+-page$).+',
+    message:
+      'Import feature internals through the feature public api or import page files only.',
+  },
+]
+
+const appImportRestriction = {
+  regex: '^(\\.\\.?/)+app(/.*)?$',
+  message: 'Features and shared code must not import from the app layer.',
+}
+
+const featuresImportRestriction = {
+  regex: '^(\\.\\.?/)+features(/.*)?$',
+  message: 'Shared code must not import from the features layer.',
+}
+
 export default tseslint.config(
   { ignores: ['dist'] },
   {
@@ -19,9 +51,41 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: publicApiImportRestrictions,
+        },
+      ],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
+      ],
+    },
+  },
+  {
+    files: ['src/features/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [...publicApiImportRestrictions, appImportRestriction],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/shared/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...publicApiImportRestrictions,
+            appImportRestriction,
+            featuresImportRestriction,
+          ],
+        },
       ],
     },
   },

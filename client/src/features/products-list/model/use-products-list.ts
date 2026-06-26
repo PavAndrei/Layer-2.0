@@ -2,8 +2,9 @@ import { useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import type { ProductCollectionBaseFilters } from '../../../shared/types';
-import { buildSearchParams } from '../build-search-params';
-import { getProducts } from '../products-api';
+import { getProducts } from '../api';
+import { buildSearchParams } from '../helpers';
+import { productsListQueryKeys } from './products-list-query-keys';
 import type { ProductsFilters } from './use-products-filters';
 
 type UseProductsListParams = {
@@ -25,9 +26,10 @@ export const useProductsList = ({
   }, [baseFilters, debouncedFilters]);
 
   const productsQuery = useQuery({
-    queryKey: ['products-list', params.toString()],
+    queryKey: productsListQueryKeys.list(params.toString()),
     queryFn: ({ signal }) => getProducts(params, signal),
     enabled: !isDebouncing,
+    placeholderData: (previousData) => previousData,
   });
 
   const response = productsQuery.data;
@@ -59,6 +61,8 @@ export const useProductsList = ({
     products,
     total,
     isLoading: productsQuery.isLoading,
+    isFetching: productsQuery.isFetching,
+    refetch: productsQuery.refetch,
     error: responseError ?? queryError,
   };
 };

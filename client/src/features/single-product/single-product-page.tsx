@@ -1,112 +1,34 @@
-import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { getProductById } from '../products-list';
 import {
-  PRODUCT_SIZES,
-  type ProductCardProps,
-  type ProductSize,
-} from '../../shared/types';
+  useSingleProduct,
+  useSingleProductVariant,
+  useSingleProductVariantParams,
+} from './model';
 
 export const SingleProductPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [product, setProduct] = useState<ProductCardProps | null>(null);
-  const [relatedProducts, setRelatedProducts] = useState<ProductCardProps[]>(
-    [],
-  );
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedColor, setSelectedColor] = useState<string | null>(null);
-  const [selectedSize, setSelectedSize] = useState<ProductSize | null>(null);
-
-  const colors = useMemo(() => {
-    if (!product) return [];
-
-    return [...new Set(product.variants.map((variant) => variant.color))];
-  }, [product]);
-
-  const sizes = useMemo(() => {
-    if (!product || !selectedColor) return [];
-
-    return PRODUCT_SIZES.filter((size) =>
-      product.variants.some(
-        (variant) => variant.color === selectedColor && variant.size === size,
-      ),
-    );
-  }, [product, selectedColor]);
-
-  const selectedVariant = useMemo(() => {
-    if (!product || !selectedColor || !selectedSize) return null;
-
-    return (
-      product.variants.find(
-        (variant) =>
-          variant.color === selectedColor && variant.size === selectedSize,
-      ) ?? null
-    );
-  }, [product, selectedColor, selectedSize]);
-
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
-
-    if (!product) {
-      setSelectedSize(null);
-      return;
-    }
-
-    const availableSizes = PRODUCT_SIZES.filter((size) =>
-      product.variants.some(
-        (variant) =>
-          variant.color === color &&
-          variant.size === size &&
-          variant.quantity > 0,
-      ),
-    );
-
-    setSelectedSize(availableSizes.length === 1 ? availableSizes[0] : null);
-  };
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    const fetchProduct = async () => {
-      if (!id) return;
-
-      try {
-        setError(null);
-        setIsLoading(true);
-        setSelectedColor(null);
-        setSelectedSize(null);
-        const response = await getProductById(id, controller.signal);
-
-        if (!response.success) {
-          throw new Error(response.message);
-        }
-
-        setProduct(response.data.product);
-        setRelatedProducts(response.data.relatedProducts);
-      } catch (error: unknown) {
-        if (error instanceof DOMException && error.name === 'AbortError') {
-          return;
-        }
-
-        console.error(error);
-
-        setError(
-          error instanceof Error ? error.message : 'Failed to load product',
-        );
-      } finally {
-        if (!controller.signal.aborted) {
-          setIsLoading(false);
-        }
-      }
-    };
-
-    fetchProduct();
-
-    return () => controller.abort();
-  }, [id]);
+  const { product, relatedProducts, isLoading, error } = useSingleProduct(id);
+  const {
+    selectedColor,
+    selectedSize,
+    setSelectedSize,
+    setVariantParams,
+  } = useSingleProductVariantParams();
+  const {
+    colors,
+    sizes,
+    selectedVariant,
+    handleColorChange,
+    isColorAvailable,
+    isSizeAvailable,
+  } = useSingleProductVariant({
+    product,
+    selectedColor,
+    selectedSize,
+    setVariantParams,
+  });
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -154,10 +76,7 @@ export const SingleProductPage = () => {
               <legend className="font-semibold">Color</legend>
               <div className="flex flex-wrap gap-2">
                 {colors.map((color) => {
-                  const isAvailable = product.variants.some(
-                    (variant) =>
-                      variant.color === color && variant.quantity > 0,
-                  );
+                  const isAvailable = isColorAvailable(color);
 
                   return (
                     <button
@@ -182,14 +101,7 @@ export const SingleProductPage = () => {
                 <legend className="font-semibold">Size</legend>
                 <div className="flex flex-wrap gap-2">
                   {sizes.map((size) => {
-                    const variant = product.variants.find(
-                      (productVariant) =>
-                        productVariant.color === selectedColor &&
-                        productVariant.size === size,
-                    );
-                    const isAvailable = Boolean(
-                      variant && variant.quantity > 0,
-                    );
+                    const isAvailable = isSizeAvailable(size);
 
                     return (
                       <button

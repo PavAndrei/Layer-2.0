@@ -1,4 +1,4 @@
-import { CategoryOption } from '../../shared/types';
+import { CategoryOption } from '../../../shared/types';
 import { Filters, SortingOption } from './filter-types';
 
 export const MINIMAL_PRICE_RANGE = 0;

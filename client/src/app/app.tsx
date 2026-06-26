@@ -24,8 +24,6 @@ function App() {
         <Route path="/sales" element={<SalesPage />} />
         <Route path="/new" element={<NewPage />} />
         <Route path="/catalog" element={<CatalogPage />} />
-        <Route path="/products" element={<CatalogPage />} />
-        <Route path="/product/:id" element={<SingleProductPage />} />
         <Route path="/products/:id" element={<SingleProductPage />} />
       </Routes>
       <Footer />

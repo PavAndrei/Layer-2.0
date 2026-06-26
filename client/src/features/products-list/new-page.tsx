@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 import { PaginationWrapper } from '../../shared/ui';
-import { ProductGrid } from './ui/product-grid';
-import { ProductsListFiltersToggle } from './ui/products-list-filters-toggle';
-import { ProductsListLayout } from './ui/products-list-layout';
-import { ProductsListLayoutContent } from './ui/products-list-layout-content';
-import { ProductsListLayoutFilters } from './ui/products-list-layout-filters';
-import { ProductsListLayoutHeader } from './ui/products-list-layout-header';
+import {
+  ProductGrid,
+  ProductsListFiltersToggle,
+  ProductsListLayout,
+  ProductsListLayoutContent,
+  ProductsListLayoutFilters,
+  ProductsListLayoutHeader,
+} from './ui';
 import { PAGINATION, PRODUCT_COLLECTIONS } from '../../shared/constants';
 import { useProductsFilters, useProductsList } from './model';
 
@@ -17,10 +19,11 @@ export const NewPage = () => {
   const filters = useProductsFilters();
   const { handlePageChange, page, removeFilter, setFilters } = filters;
 
-  const { products, total, isLoading, error } = useProductsList({
-    baseFilters: collectionConfig.baseFilters,
-    filters,
-  });
+  const { products, total, isLoading, isFetching, error, refetch } =
+    useProductsList({
+      baseFilters: collectionConfig.baseFilters,
+      filters,
+    });
 
   return (
     <ProductsListLayout
@@ -48,6 +51,16 @@ export const NewPage = () => {
     >
       <ProductsListLayoutContent
         error={error}
+        errorAction={
+          <button
+            type="button"
+            className="max-w-30 cursor-pointer rounded border px-2 py-1 transition-colors hover:bg-gray-200"
+            onClick={() => refetch()}
+          >
+            Try again
+          </button>
+        }
+        isFetching={isFetching}
         isLoading={isLoading}
         isEmpty={total === 0}
         total={total}

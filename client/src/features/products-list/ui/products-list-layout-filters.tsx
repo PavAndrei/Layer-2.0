@@ -6,7 +6,7 @@ import {
   MAXIMAL_PRICE_RANGE,
   MINIMAL_PRICE_RANGE,
   SORTING_OPTIONS,
-} from '../filter-constants';
+} from '../model';
 import {
   PRODUCT_COLOR_OPTIONS,
   PRODUCT_SIZE_OPTIONS,
@@ -19,8 +19,8 @@ import {
   TextFilter,
 } from '../../../shared/ui';
 import type { CategoryOption } from '../../../shared/types';
-import type { Filters, SortingOption } from '../filter-types';
-import { getActiveFilters } from '../get-active-filters';
+import type { Filters, SortingOption } from '../model';
+import { getActiveFilters } from '../helpers';
 
 type ProductsListVisibleFilters = Partial<{
   search: boolean;

@@ -4,4 +4,3 @@ export { NewPage } from './new-page';
 export { SalesPage } from './sales-page';
 export { UnisexPage } from './unisex-page';
 export { WomenPage } from './women-page';
-export { getProductById } from './products-api';

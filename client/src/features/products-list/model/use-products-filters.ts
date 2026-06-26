@@ -18,8 +18,8 @@ import {
   MAXIMAL_PRICE_RANGE,
   MINIMAL_PRICE_RANGE,
   SORTING_OPTIONS,
-} from '../filter-constants';
-import type { Filters, SortingOption } from '../filter-types';
+} from './filter-constants';
+import type { Filters, SortingOption } from './filter-types';
 import { PRODUCT_SIZES } from '../../../shared/types';
 
 export type ProductsFilters = Filters & {
