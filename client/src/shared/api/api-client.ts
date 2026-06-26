@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { BASE_API_URL } from './api-constants';
 import type { ApiResponse } from './api-types';
 
@@ -34,9 +36,10 @@ const buildQueryString = (params?: ApiClientParams) => {
   return queryString ? `?${queryString}` : '';
 };
 
-const buildUrl = (path: string, params?: ApiClientParams) => {
-  return `${BASE_API_URL}${path}${buildQueryString(params)}`;
-};
+export const apiInstance = axios.create({
+  baseURL: BASE_API_URL,
+  validateStatus: () => true,
+});
 
 export const apiClient = {
   get: async <Data>({
@@ -45,10 +48,13 @@ export const apiClient = {
     signal,
     errorMessage = 'Request failed',
   }: ApiClientGetOptions): Promise<ApiResponse<Data>> => {
-    const response = await fetch(buildUrl(path, params), { signal });
-    const result = (await response.json()) as ApiResponse<Data>;
+    const response = await apiInstance.get<ApiResponse<Data>>(
+      `${path}${buildQueryString(params)}`,
+      { signal },
+    );
+    const result = response.data;
 
-    if (!response.ok && result.success) {
+    if (response.status >= 400 && result.success) {
       return {
         success: false,
         message: errorMessage,

@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
-import type {
-  ProductCardProps,
-  ProductCollectionBaseFilters,
-} from '../../../shared/types';
+import type { ProductCollectionBaseFilters } from '../../../shared/types';
 import { buildSearchParams } from '../build-search-params';
 import { getProducts } from '../products-api';
 import type { ProductsFilters } from './use-products-filters';
@@ -19,67 +17,48 @@ export const useProductsList = ({
 }: UseProductsListParams) => {
   const { debouncedFilters, isDebouncing, page, setFilters } = filters;
 
-  const [products, setProducts] = useState<ProductCardProps[]>([]);
-  const [total, setTotal] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const params = useMemo(() => {
+    return buildSearchParams({
+      ...baseFilters,
+      ...debouncedFilters,
+    });
+  }, [baseFilters, debouncedFilters]);
+
+  const productsQuery = useQuery({
+    queryKey: ['products-list', params.toString()],
+    queryFn: ({ signal }) => getProducts(params, signal),
+    enabled: !isDebouncing,
+  });
+
+  const response = productsQuery.data;
 
   useEffect(() => {
-    if (isDebouncing) return;
+    if (!response?.success) return;
 
-    const controller = new AbortController();
+    const { pagination } = response.data;
 
-    const fetchProducts = async () => {
-      try {
-        setError(null);
-        setIsLoading(true);
-        const params = buildSearchParams({
-          ...baseFilters,
-          ...debouncedFilters,
-        });
+    if (pagination.page !== page) {
+      setFilters((prev) => ({
+        ...prev,
+        page: pagination.page,
+      }));
+    }
+  }, [page, response, setFilters]);
 
-        const response = await getProducts(params, controller.signal);
-
-        if (!response.success) {
-          throw new Error(response.message);
-        }
-
-        const { products, pagination } = response.data;
-
-        setProducts(products);
-        setTotal(pagination.total);
-
-        if (pagination.page !== page) {
-          setFilters((prev) => ({
-            ...prev,
-            page: pagination.page,
-          }));
-        }
-      } catch (error: unknown) {
-        if (error instanceof DOMException && error.name === 'AbortError') {
-          return;
-        }
-
-        console.error(error);
-        setError(
-          error instanceof Error ? error.message : 'Failed to load products',
-        );
-      } finally {
-        if (!controller.signal.aborted) {
-          setIsLoading(false);
-        }
-      }
-    };
-
-    fetchProducts();
-
-    return () => controller.abort();
-  }, [baseFilters, debouncedFilters, isDebouncing, page, setFilters]);
+  const products = response?.success ? response.data.products : [];
+  const total = response?.success ? response.data.pagination.total : 0;
+  const responseError = response && !response.success ? response.message : null;
+  const queryError =
+    productsQuery.error instanceof Error
+      ? productsQuery.error.message
+      : productsQuery.error
+        ? 'Failed to load products'
+        : null;
 
   return {
     products,
     total,
-    isLoading,
-    error,
+    isLoading: productsQuery.isLoading,
+    error: responseError ?? queryError,
   };
 };

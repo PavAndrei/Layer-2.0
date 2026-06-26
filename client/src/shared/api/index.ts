@@ -1,4 +1,4 @@
-export { apiClient } from './api-client';
+export { apiClient, apiInstance } from './api-client';
 export { BASE_API_URL } from './api-constants';
 export type {
   ApiErrorResponse,
