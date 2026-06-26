@@ -1,9 +1,9 @@
-import { BASE_API_URL } from '../../shared/api/api-constants';
+import { BASE_API_URL } from '../../shared/api';
 import type {
   ApiResponse,
   PaginationData,
-} from '../../shared/api/api-types';
-import type { ProductCardProps } from '../../shared/types/product-types';
+} from '../../shared/api';
+import type { ProductCardProps } from '../../shared/types';
 
 type ProductsResponseData = {
   products: ProductCardProps[];

@@ -1,4 +1,4 @@
-import { ProductCardProps } from '../../../shared/types/product-types';
+import { ProductCardProps } from '../../../shared/types';
 import { ProductCard } from './product-card';
 
 export const ProductGrid = ({ products }: { products: ProductCardProps[] }) => {

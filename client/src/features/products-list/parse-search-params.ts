@@ -1,12 +1,14 @@
-import { CATEGORIES_COLLECTION } from '../../shared/constants/category-constants';
-import { PRODUCT_COLOR_OPTIONS } from '../../shared/constants/product-variant-constants';
+import {
+  CATEGORIES_COLLECTION,
+  PRODUCT_COLOR_OPTIONS,
+} from '../../shared/constants';
 import {
   MAXIMAL_PRICE_RANGE,
   MINIMAL_PRICE_RANGE,
   SORTING_OPTIONS,
 } from './filter-constants';
 import { Filters } from './filter-types';
-import { PRODUCT_SIZES } from '../../shared/types/product-variant-types';
+import { PRODUCT_SIZES } from '../../shared/types';
 
 export const parseSearchParams = (
   searchParams: URLSearchParams,

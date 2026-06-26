@@ -1,7 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
-import Select from 'react-select';
 
-import { CATEGORIES_COLLECTION } from '../../../shared/constants/category-constants';
+import { CATEGORIES_COLLECTION } from '../../../shared/constants';
 import {
   initialFilters,
   MAXIMAL_PRICE_RANGE,
@@ -11,11 +10,17 @@ import {
 import {
   PRODUCT_COLOR_OPTIONS,
   PRODUCT_SIZE_OPTIONS,
-} from '../../../shared/constants/product-variant-constants';
-import type { CategoryOption } from '../../../shared/types/category-types';
+} from '../../../shared/constants';
+import {
+  CheckboxFilter,
+  DualRangeFilter,
+  MultiSelectFilter,
+  SelectFilter,
+  TextFilter,
+} from '../../../shared/ui';
+import type { CategoryOption } from '../../../shared/types';
 import type { Filters, SortingOption } from '../filter-types';
 import { getActiveFilters } from '../get-active-filters';
-import { ProductDualPriceRange } from './product-dual-price-range';
 
 type ProductsListVisibleFilters = Partial<{
   search: boolean;
@@ -74,132 +79,116 @@ export const ProductsListLayoutFilters = ({
   return (
     <form className="flex flex-col gap-4 rounded border border-gray-200 p-4">
       {visible.search && (
-        <div className="flex flex-col gap-1">
-          <label htmlFor="filterString">Search for the products:</label>
-          <input
-            className="w-full rounded border border-gray-400 px-2 py-1"
-            id="filterString"
-            type="text"
-            placeholder="Type to filter products..."
-            value={filters.searchString}
-            onChange={(e) =>
-              setFilters({
-                ...filters,
-                searchString: e.target.value,
-                page: 1,
-              })
-            }
-          />
-        </div>
+        <TextFilter
+          id="filterString"
+          label="Search for the products:"
+          placeholder="Type to filter products..."
+          value={filters.searchString}
+          onChange={(searchString) =>
+            setFilters({
+              ...filters,
+              searchString,
+              page: 1,
+            })
+          }
+        />
       )}
 
       {visible.categories && (
-        <div className="flex flex-col gap-1">
-          <label htmlFor="category">Choose a category:</label>
-          <Select
-            inputId="category"
-            options={CATEGORIES_COLLECTION}
-            isMulti
-            value={filters.categories}
-            onChange={(newValue) =>
-              setFilters({
-                ...filters,
-                categories: newValue as CategoryOption[],
-                page: 1,
-              })
-            }
-          />
-        </div>
+        <MultiSelectFilter
+          id="category"
+          label="Choose a category:"
+          options={CATEGORIES_COLLECTION}
+          value={filters.categories}
+          onChange={(categories) =>
+            setFilters({
+              ...filters,
+              categories: categories as CategoryOption[],
+              page: 1,
+            })
+          }
+        />
       )}
 
       {visible.sizes && (
-        <div className="flex flex-col gap-1">
-          <label htmlFor="sizes">Choose a size:</label>
-          <Select
-            inputId="sizes"
-            options={PRODUCT_SIZE_OPTIONS}
-            isMulti
-            value={PRODUCT_SIZE_OPTIONS.filter((option) =>
-              filters.sizes.includes(option.value),
-            )}
-            onChange={(newValue) =>
-              setFilters({
-                ...filters,
-                sizes: newValue.map((option) => option.value),
-                page: 1,
-              })
-            }
-          />
-        </div>
+        <MultiSelectFilter
+          id="sizes"
+          label="Choose a size:"
+          options={PRODUCT_SIZE_OPTIONS}
+          value={PRODUCT_SIZE_OPTIONS.filter((option) =>
+            filters.sizes.includes(option.value),
+          )}
+          onChange={(sizes) =>
+            setFilters({
+              ...filters,
+              sizes: sizes.map((option) => option.value),
+              page: 1,
+            })
+          }
+        />
       )}
 
       {visible.colors && (
-        <div className="flex flex-col gap-1">
-          <label htmlFor="colors">Choose a color:</label>
-          <Select
-            inputId="colors"
-            options={PRODUCT_COLOR_OPTIONS}
-            isMulti
-            value={PRODUCT_COLOR_OPTIONS.filter((option) =>
-              filters.colors.includes(option.value),
-            )}
-            onChange={(newValue) =>
-              setFilters({
-                ...filters,
-                colors: newValue.map((option) => option.value),
-                page: 1,
-              })
-            }
-          />
-        </div>
+        <MultiSelectFilter
+          id="colors"
+          label="Choose a color:"
+          options={PRODUCT_COLOR_OPTIONS}
+          value={PRODUCT_COLOR_OPTIONS.filter((option) =>
+            filters.colors.includes(option.value),
+          )}
+          onChange={(colors) =>
+            setFilters({
+              ...filters,
+              colors: colors.map((option) => option.value),
+              page: 1,
+            })
+          }
+        />
       )}
 
       {visible.price && (
-        <ProductDualPriceRange
+        <DualRangeFilter
           min={MINIMAL_PRICE_RANGE}
           max={MAXIMAL_PRICE_RANGE}
+          label="Choose a price range:"
           value={{
-            minPrice: filters.priceRange.minPrice,
-            maxPrice: filters.priceRange.maxPrice,
+            min: filters.priceRange.minPrice,
+            max: filters.priceRange.maxPrice,
           }}
+          formatValue={(value) => `$${value}`}
           onChange={handlePriceRangeChange}
         />
       )}
 
       {visible.sort && (
-        <div className="flex flex-col gap-1">
-          <label htmlFor="sort">Sort by:</label>
-          <Select
-            inputId="sort"
-            options={SORTING_OPTIONS as SortingOption[]}
-            value={filters.sortBy}
-            onChange={(newValue) =>
-              setFilters({
-                ...filters,
-                sortBy: newValue as SortingOption,
-                page: 1,
-              })
-            }
-          />
-        </div>
+        <SelectFilter
+          id="sort"
+          label="Sort by:"
+          options={SORTING_OPTIONS as SortingOption[]}
+          value={filters.sortBy}
+          onChange={(sortBy) =>
+            setFilters({
+              ...filters,
+              sortBy: sortBy ?? initialFilters.sortBy,
+              page: 1,
+            })
+          }
+        />
       )}
 
       {visible.inStockOnly && (
-        <div className="flex items-center gap-1">
-          <input
-            id="inStock"
-            type="checkbox"
-            checked={filters.inStockOnly}
-            onChange={(e) =>
-              setFilters({
-                ...filters,
-                inStockOnly: e.target.checked,
-                page: 1,
-              })
-            }
-          />
-          <label htmlFor="inStock">Show only products in stock</label>
-        </div>
+        <CheckboxFilter
+          id="inStock"
+          label="Show only products in stock"
+          checked={filters.inStockOnly}
+          onChange={(inStockOnly) =>
+            setFilters({
+              ...filters,
+              inStockOnly,
+              page: 1,
+            })
+          }
+        />
       )}
 
       {visible.activeFilters && activeFilters.length > 0 && (

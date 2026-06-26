@@ -1,14 +1,16 @@
 import { Route, Routes } from 'react-router';
-import { SingleProductPage } from '../features/single-product/single-product-page';
-import { HomePage } from '../features/home/home-page';
-import { Header } from '../features/header/header';
-import { Footer } from '../features/footer/footer';
-import { MenPage } from '../features/products-list/men-page';
-import { WomenPage } from '../features/products-list/women-page';
-import { SalesPage } from '../features/products-list/sales-page';
-import { CatalogPage } from '../features/products-list/catalog-page';
-import { UnisexPage } from '../features/products-list/unisex-page';
-import { NewPage } from '../features/products-list/new-page';
+import { Footer } from '../features/footer';
+import { Header } from '../features/header';
+import { HomePage } from '../features/home';
+import {
+  CatalogPage,
+  MenPage,
+  NewPage,
+  SalesPage,
+  UnisexPage,
+  WomenPage,
+} from '../features/products-list';
+import { SingleProductPage } from '../features/single-product';
 
 function App() {
   return (

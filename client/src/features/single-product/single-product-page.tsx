@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { ProductCardProps } from '../../shared/types/product-types';
-import { getProductById } from '../products-list/products-api';
+import { getProductById } from '../products-list';
 import {
   PRODUCT_SIZES,
+  type ProductCardProps,
   type ProductSize,
-} from '../../shared/types/product-variant-types';
+} from '../../shared/types';
 
 export const SingleProductPage = () => {
   const { id } = useParams();

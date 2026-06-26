@@ -1,48 +1,55 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-type ProductDualPriceRangeProps = {
+type DualRangeValue = {
   min: number;
   max: number;
-  value: {
-    minPrice: number;
-    maxPrice: number;
-  };
-  onChange: (values: { min: number; max: number }) => void;
 };
 
-export const ProductDualPriceRange = ({
+type DualRangeFilterProps = {
+  min: number;
+  max: number;
+  value: DualRangeValue;
+  label?: string;
+  minGap?: number;
+  formatValue?: (value: number) => string;
+  onChange: (value: DualRangeValue) => void;
+};
+
+export const DualRangeFilter = ({
   min,
   max,
-  onChange,
   value,
-}: ProductDualPriceRangeProps) => {
-  const minPrice = value.minPrice;
-  const maxPrice = value.maxPrice;
-
+  label,
+  minGap = 1,
+  formatValue = String,
+  onChange,
+}: DualRangeFilterProps) => {
   const rangeRef = useRef<HTMLDivElement | null>(null);
 
   const getPercent = useCallback(
-    (value: number) => {
-      return Math.round(((value - min) / (max - min)) * 100);
+    (rangeValue: number) => {
+      return Math.round(((rangeValue - min) / (max - min)) * 100);
     },
     [min, max],
   );
 
   useEffect(() => {
-    const minPercent = getPercent(minPrice);
-    const maxPercent = getPercent(maxPrice);
+    const minPercent = getPercent(value.min);
+    const maxPercent = getPercent(value.max);
 
     if (rangeRef.current) {
       rangeRef.current.style.left = `${minPercent}%`;
       rangeRef.current.style.width = `${maxPercent - minPercent}%`;
     }
-  }, [minPrice, maxPrice, getPercent]);
+  }, [value.min, value.max, getPercent]);
 
   return (
     <div className="w-full max-w-md">
+      {label && <p className="mb-2 font-medium">{label}</p>}
+
       <div className="mb-4 flex justify-between font-semibold">
-        <span>${minPrice}</span>
-        <span>${maxPrice}</span>
+        <span>{formatValue(value.min)}</span>
+        <span>{formatValue(value.max)}</span>
       </div>
 
       <div className="relative h-8">
@@ -57,18 +64,22 @@ export const ProductDualPriceRange = ({
           type="range"
           min={min}
           max={max}
-          value={minPrice}
+          value={value.min}
           onChange={(event) => {
-            const value = Math.min(Number(event.target.value), maxPrice - 1);
+            const nextMin = Math.min(
+              Number(event.target.value),
+              value.max - minGap,
+            );
 
             onChange({
-              min: value,
-              max: maxPrice,
+              min: nextMin,
+              max: value.max,
             });
           }}
           className="
           pointer-events-none
           absolute
+          z-30
           h-0
           w-full
           appearance-none
@@ -89,7 +100,6 @@ export const ProductDualPriceRange = ({
           [&::-moz-range-thumb]:rounded-full
           [&::-moz-range-thumb]:border-none
           [&::-moz-range-thumb]:bg-black
-          z-30
         "
         />
 
@@ -97,18 +107,22 @@ export const ProductDualPriceRange = ({
           type="range"
           min={min}
           max={max}
-          value={maxPrice}
+          value={value.max}
           onChange={(event) => {
-            const value = Math.max(Number(event.target.value), minPrice + 1);
+            const nextMax = Math.max(
+              Number(event.target.value),
+              value.min + minGap,
+            );
 
             onChange({
-              min: minPrice,
-              max: value,
+              min: value.min,
+              max: nextMax,
             });
           }}
           className="
           pointer-events-none
           absolute
+          z-40
           h-0
           w-full
           appearance-none
@@ -129,7 +143,6 @@ export const ProductDualPriceRange = ({
           [&::-moz-range-thumb]:rounded-full
           [&::-moz-range-thumb]:border-none
           [&::-moz-range-thumb]:bg-black
-          z-40
         "
         />
       </div>

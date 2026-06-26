@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { ProductCardProps } from '../../../shared/types/product-types';
+import { ProductCardProps } from '../../../shared/types';
 
 export const ProductCard = ({ product }: { product: ProductCardProps }) => {
   const availableColors = [
