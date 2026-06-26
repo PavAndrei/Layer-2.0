@@ -22,6 +22,14 @@ export const SORTING_OPTIONS: SortingOption[] = [
     label: 'name: Z-A',
     value: 'name-desc',
   },
+  {
+    label: 'rating: low to high',
+    value: 'rating-asc',
+  },
+  {
+    label: 'rating: high to low',
+    value: 'rating-desc',
+  },
 ];
 
 export const initialFilters: Filters = {

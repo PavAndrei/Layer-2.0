@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import type { Dispatch, SetStateAction } from 'react';
+import { useCallback, useMemo } from 'react';
+import type { SetStateAction } from 'react';
 import { useSearchParams } from 'react-router';
 
 type UrlStateParam<Value> = {
@@ -14,6 +14,15 @@ type UrlStateSchema<State> = {
 type UseUrlStateOptions = {
   replace?: boolean;
 };
+
+type SetUrlStateOptions = {
+  replace?: boolean;
+};
+
+export type UrlStateSetter<State> = (
+  value: SetStateAction<State>,
+  options?: SetUrlStateOptions,
+) => void;
 
 const isNilOrEmpty = (value: string | null | undefined) => {
   return value === null || value === undefined || value === '';
@@ -150,18 +159,32 @@ export const buildUrlStateSearchParams = <State>(
 export const useUrlState = <State>(
   schema: UrlStateSchema<State>,
   options: UseUrlStateOptions = {},
-): [State, Dispatch<SetStateAction<State>>] => {
+): [State, UrlStateSetter<State>] => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [state, setState] = useState<State>(() => {
-    return parseUrlState(searchParams, schema);
-  });
+  const state = useMemo(
+    () => parseUrlState(searchParams, schema),
+    [searchParams, schema],
+  );
 
-  useEffect(() => {
-    setSearchParams(buildUrlStateSearchParams(state, schema), {
-      replace: options.replace,
-    });
-  }, [state, schema, options.replace, setSearchParams]);
+  const setState = useCallback<UrlStateSetter<State>>(
+    (value, updateOptions) => {
+      const nextState =
+        typeof value === 'function'
+          ? (value as (previousState: State) => State)(state)
+          : value;
+      const nextSearchParams = buildUrlStateSearchParams(nextState, schema);
+
+      if (nextSearchParams.toString() === searchParams.toString()) {
+        return;
+      }
+
+      setSearchParams(nextSearchParams, {
+        replace: updateOptions?.replace ?? options.replace,
+      });
+    },
+    [options.replace, schema, searchParams, setSearchParams, state],
+  );
 
   return [state, setState];
 };

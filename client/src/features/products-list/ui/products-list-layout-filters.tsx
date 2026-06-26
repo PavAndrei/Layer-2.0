@@ -1,5 +1,3 @@
-import type { Dispatch, SetStateAction } from 'react';
-
 import { CATEGORIES_COLLECTION } from '../../../shared/constants';
 import {
   initialFilters,
@@ -19,6 +17,7 @@ import {
   TextFilter,
 } from '../../../shared/ui';
 import type { CategoryOption } from '../../../shared/types';
+import type { UrlStateSetter } from '../../../shared/model';
 import type { Filters, SortingOption } from '../model';
 import { getActiveFilters } from '../helpers';
 
@@ -36,7 +35,8 @@ type ProductsListVisibleFilters = Partial<{
 
 type ProductsListLayoutFiltersProps = {
   filters: Filters;
-  setFilters: Dispatch<SetStateAction<Filters>>;
+  setFilters: UrlStateSetter<Filters>;
+  resetFilters: () => void;
   handleRemoveFilter: (filterKey: string, value?: string) => void;
   visibleFilters?: ProductsListVisibleFilters;
 };
@@ -56,6 +56,7 @@ const DEFAULT_VISIBLE_FILTERS = {
 export const ProductsListLayoutFilters = ({
   filters,
   setFilters,
+  resetFilters,
   handleRemoveFilter,
   visibleFilters,
 }: ProductsListLayoutFiltersProps) => {
@@ -217,7 +218,7 @@ export const ProductsListLayoutFilters = ({
         <button
           className="max-w-30 cursor-pointer rounded border px-2 py-1 transition-colors hover:bg-gray-200"
           type="button"
-          onClick={() => setFilters(initialFilters)}
+          onClick={resetFilters}
         >
           Clear Filters
         </button>

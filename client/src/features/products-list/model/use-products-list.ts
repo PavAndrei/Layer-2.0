@@ -35,6 +35,7 @@ export const useProductsList = ({
   const response = productsQuery.data;
 
   useEffect(() => {
+    if (isDebouncing || productsQuery.isPlaceholderData) return;
     if (!response?.success) return;
 
     const { pagination } = response.data;
@@ -45,7 +46,13 @@ export const useProductsList = ({
         page: pagination.page,
       }));
     }
-  }, [page, response, setFilters]);
+  }, [
+    isDebouncing,
+    page,
+    productsQuery.isPlaceholderData,
+    response,
+    setFilters,
+  ]);
 
   const products = response?.success ? response.data.products : [];
   const total = response?.success ? response.data.pagination.total : 0;

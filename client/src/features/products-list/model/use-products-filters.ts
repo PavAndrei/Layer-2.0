@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from 'react';
-import type { Dispatch, SetStateAction } from 'react';
 
 import { useDebouncedValue } from '../../../shared/hooks';
 import {
@@ -9,6 +8,7 @@ import {
   stringParam,
   useUrlState,
 } from '../../../shared/model';
+import type { UrlStateSetter } from '../../../shared/model';
 import {
   CATEGORIES_COLLECTION,
   PRODUCT_COLOR_OPTIONS,
@@ -25,7 +25,8 @@ import { PRODUCT_SIZES } from '../../../shared/types';
 export type ProductsFilters = Filters & {
   debouncedFilters: Filters;
   isDebouncing: boolean;
-  setFilters: Dispatch<SetStateAction<Filters>>;
+  setFilters: UrlStateSetter<Filters>;
+  resetFilters: () => void;
   removeFilter: (filterName: string, value?: string) => void;
   handlePageChange: (page: number) => void;
 };
@@ -208,12 +209,22 @@ export const useProductsFilters = (): ProductsFilters => {
     [setFilters],
   );
 
-  const handlePageChange = useCallback((page: number) => {
-    setFilters((prev) => ({
-      ...prev,
-      page,
-    }));
+  const resetFilters = useCallback(() => {
+    setFilters(initialFilters, { replace: true });
   }, [setFilters]);
+
+  const handlePageChange = useCallback(
+    (page: number) => {
+      setFilters(
+        (prev) => ({
+          ...prev,
+          page,
+        }),
+        { replace: false },
+      );
+    },
+    [setFilters],
+  );
 
   return useMemo(
     () => ({
@@ -221,6 +232,7 @@ export const useProductsFilters = (): ProductsFilters => {
       debouncedFilters,
       isDebouncing,
       setFilters,
+      resetFilters,
       removeFilter,
       handlePageChange,
     }),
@@ -229,6 +241,7 @@ export const useProductsFilters = (): ProductsFilters => {
       debouncedFilters,
       isDebouncing,
       setFilters,
+      resetFilters,
       removeFilter,
       handlePageChange,
     ],

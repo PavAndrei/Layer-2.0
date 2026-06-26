@@ -124,6 +124,14 @@ export const getProducts = async (
     case 'name-desc':
       sort.title = -1;
       break;
+
+    case 'rating-asc':
+      sort.rating = 1;
+      break;
+
+    case 'rating-desc':
+      sort.rating = -1;
+      break;
   }
 
   const total = await Product.countDocuments(filter);

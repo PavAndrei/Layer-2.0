@@ -17,7 +17,8 @@ export const UnisexPage = () => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(true);
 
   const filters = useProductsFilters();
-  const { handlePageChange, page, removeFilter, setFilters } = filters;
+  const { handlePageChange, page, removeFilter, resetFilters, setFilters } =
+    filters;
 
   const { products, total, isLoading, isFetching, error, refetch } =
     useProductsList({
@@ -44,6 +45,7 @@ export const UnisexPage = () => {
           <ProductsListLayoutFilters
             filters={filters}
             setFilters={setFilters}
+            resetFilters={resetFilters}
             handleRemoveFilter={removeFilter}
           />
         ) : null
