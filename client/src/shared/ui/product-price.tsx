@@ -19,11 +19,11 @@ export const ProductPrice = ({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="line-through text-gray-500">
+      <span className="line-through block-small text-typography-muted">
         {formatProductPrice(defaultPrice)}
       </span>
-      <span>{formatProductPrice(discountPrice)}</span>
-      <span className="text-sm text-red-600">-{discountPercent}%</span>
+      <span className="block-medium">{formatProductPrice(discountPrice)}</span>
+      <span className="block-micro">-{discountPercent}%</span>
     </div>
   );
 };

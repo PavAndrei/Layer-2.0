@@ -1,7 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
+@config "../../tailwind.config.js";
 @import 'tailwindcss';
 
 body {
+  @apply bg-background-primary text-base leading-6 font-normal text-typography-primary;
+
   font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer utilities {
+  .promo {
+    @apply text-5xl lg:text-6xl font-bold tracking-tight leading-none;
+  }
+
+  .heading {
+    @apply text-3xl lg:text-4xl font-bold tracking-tight leading-10 lg:leading-tight;
+  }
+
+  .section-title {
+    @apply text-2xl lg:text-3xl font-bold tracking-tight;
+  }
+
+  .block-title {
+    @apply text-xl leading-7 font-semibold;
+  }
+
+  .description {
+    @apply text-lg leading-7 font-normal;
+  }
+
+  .block-medium {
+    @apply text-sm leading-5 font-medium;
+  }
+
+  .block-small {
+    @apply text-[13px] leading-[18px] font-normal;
+  }
+
+  .block-micro {
+    @apply text-xs leading-4 font-semibold tracking-wide;
+  }
+
+  .badge {
+    @apply text-xs leading-4 font-semibold tracking-wide uppercase;
+  }
 }

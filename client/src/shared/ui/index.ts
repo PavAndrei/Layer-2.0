@@ -7,5 +7,6 @@ export { ProductCard } from './product-card';
 export { formatProductPrice } from './product-price-format';
 export { ProductPrice } from './product-price';
 export { SelectFilter } from './select-filter';
+export { StarRating } from './star-rating';
 export { TextFilter } from './text-filter';
 export type { SelectFilterOption } from './multi-select-filter';
