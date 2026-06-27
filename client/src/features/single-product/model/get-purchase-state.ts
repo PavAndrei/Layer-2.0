@@ -8,7 +8,16 @@ export type PurchaseState = {
 
 export const getPurchaseState = (
   selectedVariant: ProductVariant | null,
+  totalQuantity: number,
 ): PurchaseState => {
+  if (totalQuantity === 0) {
+    return {
+      buttonLabel: 'Out of Stock',
+      isDisabled: true,
+      message: 'This product is currently out of stock.',
+    };
+  }
+
   if (!selectedVariant) {
     return {
       buttonLabel: 'Select Variant',
@@ -31,4 +40,3 @@ export const getPurchaseState = (
     message: `${selectedVariant.quantity} available.`,
   };
 };
-

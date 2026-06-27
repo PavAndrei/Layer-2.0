@@ -3,12 +3,14 @@ import { getPurchaseState } from '../model';
 
 type ProductPurchasePanelProps = {
   selectedVariant: ProductVariant | null;
+  totalQuantity: number;
 };
 
 export const ProductPurchasePanel = ({
   selectedVariant,
+  totalQuantity,
 }: ProductPurchasePanelProps) => {
-  const purchaseState = getPurchaseState(selectedVariant);
+  const purchaseState = getPurchaseState(selectedVariant, totalQuantity);
 
   return (
     <div className="flex flex-col gap-3">

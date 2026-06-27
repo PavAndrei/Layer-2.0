@@ -4,6 +4,7 @@ export { MultiSelectFilter } from './multi-select-filter';
 export { Pagination } from './pagination';
 export { PaginationWrapper } from './pagination-wrapper';
 export { ProductCard } from './product-card';
+export { ProductCardColorSelector } from './product-card-color-selector';
 export { formatProductPrice } from './product-price-format';
 export { ProductPrice } from './product-price';
 export { SelectFilter } from './select-filter';

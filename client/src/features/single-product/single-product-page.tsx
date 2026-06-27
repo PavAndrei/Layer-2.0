@@ -79,7 +79,10 @@ export const SingleProductPage = () => {
                 isColorAvailable={isColorAvailable}
                 isSizeAvailable={isSizeAvailable}
               />
-              <ProductPurchasePanel selectedVariant={selectedVariant} />
+              <ProductPurchasePanel
+                selectedVariant={selectedVariant}
+                totalQuantity={product.totalQuantity}
+              />
             </>
           }
         />
