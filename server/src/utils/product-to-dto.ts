@@ -14,6 +14,7 @@ export const productToDto = (product: ProductDocument): ProductDto => ({
   audience: product.audience?.length ? product.audience : ['unisex'],
   hasDiscount: product.hasDiscount,
   isNewProduct: product.isNewProduct,
+  images: product.images ?? [],
   variants: product.variants.map((variant) => ({
     _id: variant._id.toString(),
     sku: variant.sku,

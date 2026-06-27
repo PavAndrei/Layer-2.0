@@ -7,8 +7,14 @@
     "discountPrice": 110,
     "discountPercent": 15,
     "rating": 3.4,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -68,6 +74,25 @@
         "quantity": 2,
         "image": "/products/core-oversized-hoodie-001-white.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/core-oversized-hoodie-001.png",
+        "alt": "Core Oversized Hoodie main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-white.png",
+        "alt": "Core Oversized Hoodie in white front view",
+        "role": "front",
+        "color": "white"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-black.png",
+        "alt": "Core Oversized Hoodie in black front view",
+        "role": "front",
+        "color": "black"
+      }
     ]
   },
   {
@@ -78,8 +103,14 @@
     "discountPrice": 134,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -142,6 +173,25 @@
         "quantity": 3,
         "image": "/products/washed-zip-hoodie-002-charcoal.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/washed-zip-hoodie-002.png",
+        "alt": "Washed Zip Hoodie main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/washed-zip-hoodie-002-black.png",
+        "alt": "Washed Zip Hoodie in black front view",
+        "role": "front",
+        "color": "black"
+      },
+      {
+        "src": "/products/washed-zip-hoodie-002-charcoal.png",
+        "alt": "Washed Zip Hoodie in charcoal front view",
+        "role": "front",
+        "color": "charcoal"
+      }
     ]
   },
   {
@@ -152,8 +202,15 @@
     "discountPrice": 59,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": ["t-shirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -211,6 +268,13 @@
         "color": "cream",
         "quantity": 18
       }
+    ],
+    "images": [
+      {
+        "src": "/products/utility-heavyweight-box-tee-003.png",
+        "alt": "Utility Heavyweight Box Tee main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -221,8 +285,13 @@
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": ["t-shirts", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "t-shirts",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -280,6 +349,13 @@
         "color": "khaki",
         "quantity": 3
       }
+    ],
+    "images": [
+      {
+        "src": "/products/city-graphic-t-shirt-004.png",
+        "alt": "City Graphic T-Shirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -290,8 +366,14 @@
     "discountPrice": 55,
     "discountPercent": 35,
     "rating": 4.5,
-    "categories": ["t-shirts", "longsleeve", "basics"],
-    "audience": ["women"],
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "basics"
+    ],
+    "audience": [
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -349,6 +431,13 @@
         "color": "sand",
         "quantity": 4
       }
+    ],
+    "images": [
+      {
+        "src": "/products/relaxed-ribbed-longsleeve-005.png",
+        "alt": "Relaxed Ribbed Longsleeve main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -359,8 +448,15 @@
     "discountPrice": 69,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": ["t-shirts", "longsleeve", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -418,6 +514,13 @@
         "color": "black",
         "quantity": 9
       }
+    ],
+    "images": [
+      {
+        "src": "/products/boxy-thermal-long-sleeve-006.png",
+        "alt": "Boxy Thermal Long Sleeve main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -428,8 +531,15 @@
     "discountPrice": 104,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": ["sweatshirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -495,6 +605,25 @@
         "color": "olive",
         "quantity": 12
       }
+    ],
+    "images": [
+      {
+        "src": "/products/heavyweight-minimal-sweatshirt-007.png",
+        "alt": "Heavyweight Minimal Sweatshirt main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/heavyweight-minimal-sweatshirt-007-washed-black.png",
+        "alt": "Heavyweight Minimal Sweatshirt in washed black front view",
+        "role": "front",
+        "color": "washed-black"
+      },
+      {
+        "src": "/products/heavyweight-minimal-sweatshirt-007-heather-grey.png",
+        "alt": "Heavyweight Minimal Sweatshirt in heather grey front view",
+        "role": "front",
+        "color": "heather-grey"
+      }
     ]
   },
   {
@@ -505,8 +634,14 @@
     "discountPrice": 115,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": ["sweatshirts", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -558,6 +693,13 @@
         "color": "sand",
         "quantity": 14
       }
+    ],
+    "images": [
+      {
+        "src": "/products/tonal-quarter-zip-sweatshirt-008.png",
+        "alt": "Tonal Quarter Zip Sweatshirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -568,8 +710,14 @@
     "discountPrice": 143,
     "discountPercent": 30,
     "rating": 3.9,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -627,6 +775,13 @@
         "color": "heather-grey",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/archive-utility-jacket-009.png",
+        "alt": "Archive Utility Jacket main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -637,8 +792,14 @@
     "discountPrice": 123,
     "discountPercent": 35,
     "rating": 4.6,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -690,6 +851,13 @@
         "color": "navy",
         "quantity": 2
       }
+    ],
+    "images": [
+      {
+        "src": "/products/seasonal-coach-jacket-010.png",
+        "alt": "Seasonal Coach Jacket main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -700,8 +868,14 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -768,6 +942,31 @@
         "quantity": 6,
         "image": "/products/studio-nylon-windbreaker-011-cream.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/studio-nylon-windbreaker-011.png",
+        "alt": "Studio Nylon Windbreaker main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/studio-nylon-windbreaker-011-black.png",
+        "alt": "Studio Nylon Windbreaker in black front view",
+        "role": "front",
+        "color": "black"
+      },
+      {
+        "src": "/products/studio-nylon-windbreaker-011-white.png",
+        "alt": "Studio Nylon Windbreaker in white front view",
+        "role": "front",
+        "color": "white"
+      },
+      {
+        "src": "/products/studio-nylon-windbreaker-011-cream.png",
+        "alt": "Studio Nylon Windbreaker in cream front view",
+        "role": "front",
+        "color": "cream"
+      }
     ]
   },
   {
@@ -778,8 +977,14 @@
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -842,6 +1047,25 @@
         "quantity": 7,
         "image": "/products/cargo-bomber-jacket-012-navy.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/cargo-bomber-jacket-012.png",
+        "alt": "Cargo Bomber Jacket main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/cargo-bomber-jacket-012-grey.png",
+        "alt": "Cargo Bomber Jacket in grey front view",
+        "role": "front",
+        "color": "grey"
+      },
+      {
+        "src": "/products/cargo-bomber-jacket-012-navy.png",
+        "alt": "Cargo Bomber Jacket in navy front view",
+        "role": "front",
+        "color": "navy"
+      }
     ]
   },
   {
@@ -852,8 +1076,14 @@
     "discountPrice": 119,
     "discountPercent": 25,
     "rating": 5,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -912,6 +1142,19 @@
         "quantity": 8,
         "image": "/products/minimal-canvas-overshirt-013-washed-black.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/minimal-canvas-overshirt-013.png",
+        "alt": "Minimal Canvas Overshirt main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/minimal-canvas-overshirt-013-washed-black.png",
+        "alt": "Minimal Canvas Overshirt in washed black front view",
+        "role": "front",
+        "color": "washed-black"
+      }
     ]
   },
   {
@@ -922,8 +1165,15 @@
     "discountPrice": 154,
     "discountPercent": 0,
     "rating": 4,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -990,6 +1240,25 @@
         "quantity": 16,
         "image": "/products/essential-cargo-pants-014-khaki.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/essential-cargo-pants-014.png",
+        "alt": "Essential Cargo Pants main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/essential-cargo-pants-014-olive.png",
+        "alt": "Essential Cargo Pants in olive front view",
+        "role": "front",
+        "color": "olive"
+      },
+      {
+        "src": "/products/essential-cargo-pants-014-khaki.png",
+        "alt": "Essential Cargo Pants in khaki front view",
+        "role": "front",
+        "color": "khaki"
+      }
     ]
   },
   {
@@ -1000,8 +1269,14 @@
     "discountPrice": 155,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1068,6 +1343,25 @@
         "quantity": 17,
         "image": "/products/layered-carpenter-pants-015-sand.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/layered-carpenter-pants-015.png",
+        "alt": "Layered Carpenter Pants main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/layered-carpenter-pants-015-navy.png",
+        "alt": "Layered Carpenter Pants in navy front view",
+        "role": "front",
+        "color": "navy"
+      },
+      {
+        "src": "/products/layered-carpenter-pants-015-sand.png",
+        "alt": "Layered Carpenter Pants in sand front view",
+        "role": "front",
+        "color": "sand"
+      }
     ]
   },
   {
@@ -1078,8 +1372,15 @@
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -1137,6 +1438,13 @@
         "color": "black",
         "quantity": 4
       }
+    ],
+    "images": [
+      {
+        "src": "/products/ribbed-track-pants-016.png",
+        "alt": "Ribbed Track Pants main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1147,8 +1455,14 @@
     "discountPrice": 96,
     "discountPercent": 20,
     "rating": 4.4,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["women"],
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1206,6 +1520,13 @@
         "color": "heather-grey",
         "quantity": 3
       }
+    ],
+    "images": [
+      {
+        "src": "/products/nylon-wide-leg-sweatpants-017.png",
+        "alt": "Nylon Wide Leg Sweatpants main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1216,8 +1537,14 @@
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1235,6 +1562,25 @@
         "quantity": 0,
         "image": "/products/canvas-logo-cap-018-sand.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/canvas-logo-cap-018.png",
+        "alt": "Canvas Logo Cap main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/canvas-logo-cap-018-dark-brown.png",
+        "alt": "Canvas Logo Cap in dark brown front view",
+        "role": "front",
+        "color": "dark-brown"
+      },
+      {
+        "src": "/products/canvas-logo-cap-018-sand.png",
+        "alt": "Canvas Logo Cap in sand front view",
+        "role": "front",
+        "color": "sand"
+      }
     ]
   },
   {
@@ -1245,8 +1591,14 @@
     "discountPrice": 42,
     "discountPercent": 30,
     "rating": 4.1,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1262,6 +1614,13 @@
         "color": "olive",
         "quantity": 1
       }
+    ],
+    "images": [
+      {
+        "src": "/products/soft-five-panel-cap-019.png",
+        "alt": "Soft Five Panel Cap main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1272,8 +1631,14 @@
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": ["accessories", "beanies", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "beanies",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1290,6 +1655,19 @@
         "color": "navy",
         "quantity": 2
       }
+    ],
+    "images": [
+      {
+        "src": "/products/structured-essential-beanie-020.png",
+        "alt": "Structured Essential Beanie main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/structured-essential-beanie-020-white.png",
+        "alt": "Structured Essential Beanie in white front view",
+        "role": "front",
+        "color": "white"
+      }
     ]
   },
   {
@@ -1300,8 +1678,14 @@
     "discountPrice": 21,
     "discountPercent": 15,
     "rating": 3.8,
-    "categories": ["accessories", "beanies", "basics"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "beanies",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -1317,6 +1701,13 @@
         "color": "white",
         "quantity": 7
       }
+    ],
+    "images": [
+      {
+        "src": "/products/core-ribbed-beanie-021.png",
+        "alt": "Core Ribbed Beanie main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1327,8 +1718,13 @@
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": ["accessories", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1344,6 +1740,13 @@
         "color": "grey",
         "quantity": 8
       }
+    ],
+    "images": [
+      {
+        "src": "/products/washed-crossbody-utility-bag-022.png",
+        "alt": "Washed Crossbody Utility Bag main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1354,8 +1757,13 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": ["accessories", "basics"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -1373,6 +1781,25 @@
         "quantity": 0,
         "image": "/products/utility-canvas-tote-bag-023-cream.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/utility-canvas-tote-bag-023.png",
+        "alt": "Utility Canvas Tote Bag main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/utility-canvas-tote-bag-023-charcoal.png",
+        "alt": "Utility Canvas Tote Bag in charcoal front view",
+        "role": "front",
+        "color": "charcoal"
+      },
+      {
+        "src": "/products/utility-canvas-tote-bag-023-cream.png",
+        "alt": "Utility Canvas Tote Bag in cream front view",
+        "role": "front",
+        "color": "cream"
+      }
     ]
   },
   {
@@ -1383,8 +1810,14 @@
     "discountPrice": 140,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": ["outerwear", "streetwear", "unisex"],
-    "audience": ["unisex"],
+    "categories": [
+      "outerwear",
+      "streetwear",
+      "unisex"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1442,6 +1875,13 @@
         "color": "cream",
         "quantity": 9
       }
+    ],
+    "images": [
+      {
+        "src": "/products/city-unisex-fleece-vest-024.png",
+        "alt": "City Unisex Fleece Vest main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1452,8 +1892,14 @@
     "discountPrice": 71,
     "discountPercent": 35,
     "rating": 4.9,
-    "categories": ["sweatshirts", "basics"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "basics"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1505,6 +1951,13 @@
         "color": "sand",
         "quantity": 11
       }
+    ],
+    "images": [
+      {
+        "src": "/products/relaxed-everyday-crewneck-025.png",
+        "alt": "Relaxed Everyday Crewneck main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1515,8 +1968,14 @@
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -1582,6 +2041,25 @@
         "color": "washed-black",
         "quantity": 11
       }
+    ],
+    "images": [
+      {
+        "src": "/products/boxy-oversized-hoodie-026.png",
+        "alt": "Boxy Oversized Hoodie main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/boxy-oversized-hoodie-026-burgundy.png",
+        "alt": "Boxy Oversized Hoodie in burgundy front view",
+        "role": "front",
+        "color": "burgundy"
+      },
+      {
+        "src": "/products/boxy-oversized-hoodie-026-black.png",
+        "alt": "Boxy Oversized Hoodie in black front view",
+        "role": "front",
+        "color": "black"
+      }
     ]
   },
   {
@@ -1592,8 +2070,14 @@
     "discountPrice": 134,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1651,6 +2135,13 @@
         "color": "black",
         "quantity": 18
       }
+    ],
+    "images": [
+      {
+        "src": "/products/heavyweight-zip-hoodie-027.png",
+        "alt": "Heavyweight Zip Hoodie main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1661,8 +2152,15 @@
     "discountPrice": 52,
     "discountPercent": 25,
     "rating": 3.6,
-    "categories": ["t-shirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1720,6 +2218,13 @@
         "color": "sand",
         "quantity": 1
       }
+    ],
+    "images": [
+      {
+        "src": "/products/tonal-heavyweight-box-tee-028.png",
+        "alt": "Tonal Heavyweight Box Tee main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1730,8 +2235,13 @@
     "discountPrice": 42,
     "discountPercent": 30,
     "rating": 4.3,
-    "categories": ["t-shirts", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "t-shirts",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1798,6 +2308,25 @@
         "quantity": 6,
         "image": "/products/archive-graphic-t-shirt-029-olive.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/archive-graphic-t-shirt-029.png",
+        "alt": "Archive Graphic T-Shirt main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/archive-graphic-t-shirt-029-cream.png",
+        "alt": "Archive Graphic T-Shirt in cream front view",
+        "role": "front",
+        "color": "cream"
+      },
+      {
+        "src": "/products/archive-graphic-t-shirt-029-olive.png",
+        "alt": "Archive Graphic T-Shirt in olive front view",
+        "role": "front",
+        "color": "olive"
+      }
     ]
   },
   {
@@ -1808,8 +2337,14 @@
     "discountPrice": 85,
     "discountPercent": 0,
     "rating": 5,
-    "categories": ["t-shirts", "longsleeve", "basics"],
-    "audience": ["women"],
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "basics"
+    ],
+    "audience": [
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1870,6 +2405,19 @@
         "quantity": 7,
         "image": "/products/seasonal-ribbed-longsleeve-030-navy.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/seasonal-ribbed-longsleeve-030.png",
+        "alt": "Seasonal Ribbed Longsleeve main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/seasonal-ribbed-longsleeve-030-navy.png",
+        "alt": "Seasonal Ribbed Longsleeve in navy front view",
+        "role": "front",
+        "color": "navy"
+      }
     ]
   },
   {
@@ -1880,8 +2428,15 @@
     "discountPrice": 79,
     "discountPercent": 0,
     "rating": 4,
-    "categories": ["t-shirts", "longsleeve", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -1939,6 +2494,13 @@
         "color": "white",
         "quantity": 12
       }
+    ],
+    "images": [
+      {
+        "src": "/products/studio-thermal-long-sleeve-031.png",
+        "alt": "Studio Thermal Long Sleeve main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -1949,8 +2511,15 @@
     "discountPrice": 94,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": ["sweatshirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2006,6 +2575,19 @@
         "color": "grey",
         "quantity": 14
       }
+    ],
+    "images": [
+      {
+        "src": "/products/cargo-minimal-sweatshirt-032.png",
+        "alt": "Cargo Minimal Sweatshirt main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/cargo-minimal-sweatshirt-032-black.png",
+        "alt": "Cargo Minimal Sweatshirt in black front view",
+        "role": "front",
+        "color": "black"
+      }
     ]
   },
   {
@@ -2016,8 +2598,14 @@
     "discountPrice": 86,
     "discountPercent": 25,
     "rating": 3.7,
-    "categories": ["sweatshirts", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -2075,6 +2663,13 @@
         "color": "olive",
         "quantity": 18
       }
+    ],
+    "images": [
+      {
+        "src": "/products/minimal-quarter-zip-sweatshirt-033.png",
+        "alt": "Minimal Quarter Zip Sweatshirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2085,8 +2680,14 @@
     "discountPrice": 214,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -2144,6 +2745,13 @@
         "color": "sand",
         "quantity": 1
       }
+    ],
+    "images": [
+      {
+        "src": "/products/essential-utility-jacket-034.png",
+        "alt": "Essential Utility Jacket main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2154,8 +2762,14 @@
     "discountPrice": 179,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2213,6 +2827,13 @@
         "color": "heather-grey",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/layered-coach-jacket-035.png",
+        "alt": "Layered Coach Jacket main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2223,8 +2844,14 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -2282,6 +2909,13 @@
         "color": "white",
         "quantity": 9
       }
+    ],
+    "images": [
+      {
+        "src": "/products/ribbed-nylon-windbreaker-036.png",
+        "alt": "Ribbed Nylon Windbreaker main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2292,8 +2926,14 @@
     "discountPrice": 147,
     "discountPercent": 20,
     "rating": 4.8,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -2359,6 +2999,25 @@
         "color": "cream",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/nylon-bomber-jacket-037.png",
+        "alt": "Nylon Bomber Jacket main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/nylon-bomber-jacket-037-washed-black.png",
+        "alt": "Nylon Bomber Jacket in washed black front view",
+        "role": "front",
+        "color": "washed-black"
+      },
+      {
+        "src": "/products/nylon-bomber-jacket-037-heather-grey.png",
+        "alt": "Nylon Bomber Jacket in heather grey front view",
+        "role": "front",
+        "color": "heather-grey"
+      }
     ]
   },
   {
@@ -2369,8 +3028,14 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2428,6 +3093,13 @@
         "color": "navy",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/canvas-canvas-overshirt-038.png",
+        "alt": "Canvas Canvas Overshirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2438,8 +3110,14 @@
     "discountPrice": 154,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2497,6 +3175,13 @@
         "color": "olive",
         "quantity": 1
       }
+    ],
+    "images": [
+      {
+        "src": "/products/soft-cargo-pants-039.png",
+        "alt": "Soft Cargo Pants main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2507,8 +3192,15 @@
     "discountPrice": 165,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2566,6 +3258,13 @@
         "color": "navy",
         "quantity": 2
       }
+    ],
+    "images": [
+      {
+        "src": "/products/structured-carpenter-pants-040.png",
+        "alt": "Structured Carpenter Pants main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2576,8 +3275,15 @@
     "discountPrice": 93,
     "discountPercent": 15,
     "rating": 4.2,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -2644,6 +3350,25 @@
         "quantity": 7,
         "image": "/products/core-track-pants-041-white.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/core-track-pants-041.png",
+        "alt": "Core Track Pants main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/core-track-pants-041-black.png",
+        "alt": "Core Track Pants in black front view",
+        "role": "front",
+        "color": "black"
+      },
+      {
+        "src": "/products/core-track-pants-041-white.png",
+        "alt": "Core Track Pants in white front view",
+        "role": "front",
+        "color": "white"
+      }
     ]
   },
   {
@@ -2654,8 +3379,14 @@
     "discountPrice": 120,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["women"],
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2717,6 +3448,19 @@
         "quantity": 8,
         "image": "/products/washed-wide-leg-sweatpants-042-grey.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/washed-wide-leg-sweatpants-042.png",
+        "alt": "Washed Wide Leg Sweatpants main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/washed-wide-leg-sweatpants-042-grey.png",
+        "alt": "Washed Wide Leg Sweatpants in grey front view",
+        "role": "front",
+        "color": "grey"
+      }
     ]
   },
   {
@@ -2727,8 +3471,14 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2744,6 +3494,13 @@
         "color": "cream",
         "quantity": 1
       }
+    ],
+    "images": [
+      {
+        "src": "/products/utility-logo-cap-043.png",
+        "alt": "Utility Logo Cap main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2754,8 +3511,14 @@
     "discountPrice": 50,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2773,6 +3536,25 @@
         "quantity": 0,
         "image": "/products/city-five-panel-cap-044-khaki.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/city-five-panel-cap-044.png",
+        "alt": "City Five Panel Cap main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/city-five-panel-cap-044-olive.png",
+        "alt": "City Five Panel Cap in olive front view",
+        "role": "front",
+        "color": "olive"
+      },
+      {
+        "src": "/products/city-five-panel-cap-044-khaki.png",
+        "alt": "City Five Panel Cap in khaki front view",
+        "role": "front",
+        "color": "khaki"
+      }
     ]
   },
   {
@@ -2783,8 +3565,14 @@
     "discountPrice": 25,
     "discountPercent": 35,
     "rating": 3.6,
-    "categories": ["accessories", "beanies", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "beanies",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -2802,6 +3590,25 @@
         "quantity": 0,
         "image": "/products/relaxed-essential-beanie-045-sand.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/relaxed-essential-beanie-045.png",
+        "alt": "Relaxed Essential Beanie main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/relaxed-essential-beanie-045-navy.png",
+        "alt": "Relaxed Essential Beanie in navy front view",
+        "role": "front",
+        "color": "navy"
+      },
+      {
+        "src": "/products/relaxed-essential-beanie-045-sand.png",
+        "alt": "Relaxed Essential Beanie in sand front view",
+        "role": "front",
+        "color": "sand"
+      }
     ]
   },
   {
@@ -2812,8 +3619,14 @@
     "discountPrice": 30,
     "discountPercent": 15,
     "rating": 4.3,
-    "categories": ["accessories", "beanies", "basics"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "beanies",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -2829,6 +3642,13 @@
         "color": "black",
         "quantity": 10
       }
+    ],
+    "images": [
+      {
+        "src": "/products/boxy-ribbed-beanie-046.png",
+        "alt": "Boxy Ribbed Beanie main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2839,8 +3659,13 @@
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 5,
-    "categories": ["accessories", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2856,6 +3681,13 @@
         "color": "heather-grey",
         "quantity": 9
       }
+    ],
+    "images": [
+      {
+        "src": "/products/heavyweight-crossbody-utility-bag-047.png",
+        "alt": "Heavyweight Crossbody Utility Bag main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2866,8 +3698,13 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 4,
-    "categories": ["accessories", "basics"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2885,6 +3722,25 @@
         "quantity": 14,
         "image": "/products/tonal-canvas-tote-bag-048-sand.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/tonal-canvas-tote-bag-048.png",
+        "alt": "Tonal Canvas Tote Bag main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/tonal-canvas-tote-bag-048-dark-brown.png",
+        "alt": "Tonal Canvas Tote Bag in dark brown front view",
+        "role": "front",
+        "color": "dark-brown"
+      },
+      {
+        "src": "/products/tonal-canvas-tote-bag-048-sand.png",
+        "alt": "Tonal Canvas Tote Bag in sand front view",
+        "role": "front",
+        "color": "sand"
+      }
     ]
   },
   {
@@ -2895,8 +3751,14 @@
     "discountPrice": 105,
     "discountPercent": 30,
     "rating": 4.7,
-    "categories": ["outerwear", "streetwear", "unisex"],
-    "audience": ["unisex"],
+    "categories": [
+      "outerwear",
+      "streetwear",
+      "unisex"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -2954,6 +3816,13 @@
         "color": "white",
         "quantity": 12
       }
+    ],
+    "images": [
+      {
+        "src": "/products/archive-unisex-fleece-vest-049.png",
+        "alt": "Archive Unisex Fleece Vest main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -2964,8 +3833,14 @@
     "discountPrice": 99,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": ["sweatshirts", "basics"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "basics"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3028,6 +3903,25 @@
         "quantity": 15,
         "image": "/products/seasonal-everyday-crewneck-050-cream.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/seasonal-everyday-crewneck-050.png",
+        "alt": "Seasonal Everyday Crewneck main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/seasonal-everyday-crewneck-050-white.png",
+        "alt": "Seasonal Everyday Crewneck in white front view",
+        "role": "front",
+        "color": "white"
+      },
+      {
+        "src": "/products/seasonal-everyday-crewneck-050-cream.png",
+        "alt": "Seasonal Everyday Crewneck in cream front view",
+        "role": "front",
+        "color": "cream"
+      }
     ]
   },
   {
@@ -3038,8 +3932,14 @@
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -3098,6 +3998,19 @@
         "quantity": 16,
         "image": "/products/studio-oversized-hoodie-051-navy.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/studio-oversized-hoodie-051.png",
+        "alt": "Studio Oversized Hoodie main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/studio-oversized-hoodie-051-navy.png",
+        "alt": "Studio Oversized Hoodie in navy front view",
+        "role": "front",
+        "color": "navy"
+      }
     ]
   },
   {
@@ -3108,8 +4021,14 @@
     "discountPrice": 144,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3168,6 +4087,19 @@
         "quantity": 0,
         "image": "/products/cargo-zip-hoodie-052-washed-black.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/cargo-zip-hoodie-052.png",
+        "alt": "Cargo Zip Hoodie main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/cargo-zip-hoodie-052-washed-black.png",
+        "alt": "Cargo Zip Hoodie in washed black front view",
+        "role": "front",
+        "color": "washed-black"
+      }
     ]
   },
   {
@@ -3178,8 +4110,15 @@
     "discountPrice": 44,
     "discountPercent": 25,
     "rating": 4.1,
-    "categories": ["t-shirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -3246,6 +4185,25 @@
         "quantity": 6,
         "image": "/products/minimal-heavyweight-box-tee-053-cream.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/minimal-heavyweight-box-tee-053.png",
+        "alt": "Minimal Heavyweight Box Tee main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/minimal-heavyweight-box-tee-053-charcoal.png",
+        "alt": "Minimal Heavyweight Box Tee in charcoal front view",
+        "role": "front",
+        "color": "charcoal"
+      },
+      {
+        "src": "/products/minimal-heavyweight-box-tee-053-cream.png",
+        "alt": "Minimal Heavyweight Box Tee in cream front view",
+        "role": "front",
+        "color": "cream"
+      }
     ]
   },
   {
@@ -3256,8 +4214,13 @@
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": ["t-shirts", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "t-shirts",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3315,6 +4278,13 @@
         "color": "khaki",
         "quantity": 9
       }
+    ],
+    "images": [
+      {
+        "src": "/products/essential-graphic-t-shirt-054.png",
+        "alt": "Essential Graphic T-Shirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -3325,8 +4295,14 @@
     "discountPrice": 62,
     "discountPercent": 35,
     "rating": 3.8,
-    "categories": ["t-shirts", "longsleeve", "basics"],
-    "audience": ["women"],
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "basics"
+    ],
+    "audience": [
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -3384,6 +4360,13 @@
         "color": "sand",
         "quantity": 10
       }
+    ],
+    "images": [
+      {
+        "src": "/products/layered-ribbed-longsleeve-055.png",
+        "alt": "Layered Ribbed Longsleeve main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -3394,8 +4377,15 @@
     "discountPrice": 69,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": ["t-shirts", "longsleeve", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -3462,6 +4452,25 @@
         "quantity": 15,
         "image": "/products/ribbed-thermal-long-sleeve-056-black.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/ribbed-thermal-long-sleeve-056.png",
+        "alt": "Ribbed Thermal Long Sleeve main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/ribbed-thermal-long-sleeve-056-burgundy.png",
+        "alt": "Ribbed Thermal Long Sleeve in burgundy front view",
+        "role": "front",
+        "color": "burgundy"
+      },
+      {
+        "src": "/products/ribbed-thermal-long-sleeve-056-black.png",
+        "alt": "Ribbed Thermal Long Sleeve in black front view",
+        "role": "front",
+        "color": "black"
+      }
     ]
   },
   {
@@ -3472,8 +4481,15 @@
     "discountPrice": 75,
     "discountPercent": 20,
     "rating": 3.5,
-    "categories": ["sweatshirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -3532,6 +4548,19 @@
         "quantity": 10,
         "image": "/products/nylon-minimal-sweatshirt-057-dark-brown.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/nylon-minimal-sweatshirt-057.png",
+        "alt": "Nylon Minimal Sweatshirt main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/nylon-minimal-sweatshirt-057-dark-brown.png",
+        "alt": "Nylon Minimal Sweatshirt in dark brown front view",
+        "role": "front",
+        "color": "dark-brown"
+      }
     ]
   },
   {
@@ -3542,8 +4571,14 @@
     "discountPrice": 125,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": ["sweatshirts", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3601,6 +4636,13 @@
         "color": "grey",
         "quantity": 1
       }
+    ],
+    "images": [
+      {
+        "src": "/products/canvas-quarter-zip-sweatshirt-058.png",
+        "alt": "Canvas Quarter Zip Sweatshirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -3611,8 +4653,14 @@
     "discountPrice": 204,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3672,6 +4720,25 @@
         "quantity": 7,
         "image": "/products/soft-utility-jacket-059-olive.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/soft-utility-jacket-059.png",
+        "alt": "Soft Utility Jacket main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/soft-utility-jacket-059-cream.png",
+        "alt": "Soft Utility Jacket in cream front view",
+        "role": "front",
+        "color": "cream"
+      },
+      {
+        "src": "/products/soft-utility-jacket-059-olive.png",
+        "alt": "Soft Utility Jacket in olive front view",
+        "role": "front",
+        "color": "olive"
+      }
     ]
   },
   {
@@ -3682,8 +4749,14 @@
     "discountPrice": 179,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3746,6 +4819,25 @@
         "quantity": 7,
         "image": "/products/structured-coach-jacket-060-sand.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/structured-coach-jacket-060.png",
+        "alt": "Structured Coach Jacket main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/structured-coach-jacket-060-navy.png",
+        "alt": "Structured Coach Jacket in navy front view",
+        "role": "front",
+        "color": "navy"
+      },
+      {
+        "src": "/products/structured-coach-jacket-060-sand.png",
+        "alt": "Structured Coach Jacket in sand front view",
+        "role": "front",
+        "color": "sand"
+      }
     ]
   },
   {
@@ -3756,8 +4848,14 @@
     "discountPrice": 135,
     "discountPercent": 15,
     "rating": 4.6,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -3816,6 +4914,19 @@
         "quantity": 8,
         "image": "/products/core-nylon-windbreaker-061-heather-grey.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/core-nylon-windbreaker-061.png",
+        "alt": "Core Nylon Windbreaker main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/core-nylon-windbreaker-061-heather-grey.png",
+        "alt": "Core Nylon Windbreaker in heather grey front view",
+        "role": "front",
+        "color": "heather-grey"
+      }
     ]
   },
   {
@@ -3826,8 +4937,14 @@
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3890,6 +5007,25 @@
         "quantity": 15,
         "image": "/products/washed-bomber-jacket-062-white.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/washed-bomber-jacket-062.png",
+        "alt": "Washed Bomber Jacket main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/washed-bomber-jacket-062-black.png",
+        "alt": "Washed Bomber Jacket in black front view",
+        "role": "front",
+        "color": "black"
+      },
+      {
+        "src": "/products/washed-bomber-jacket-062-white.png",
+        "alt": "Washed Bomber Jacket in white front view",
+        "role": "front",
+        "color": "white"
+      }
     ]
   },
   {
@@ -3900,8 +5036,14 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3953,6 +5095,13 @@
         "color": "cream",
         "quantity": 1
       }
+    ],
+    "images": [
+      {
+        "src": "/products/utility-canvas-overshirt-063.png",
+        "alt": "Utility Canvas Overshirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -3963,8 +5112,14 @@
     "discountPrice": 115,
     "discountPercent": 30,
     "rating": 5,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4022,6 +5177,13 @@
         "color": "khaki",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/city-cargo-pants-064.png",
+        "alt": "City Cargo Pants main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4032,8 +5194,14 @@
     "discountPrice": 101,
     "discountPercent": 35,
     "rating": 4,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4091,6 +5259,13 @@
         "color": "sand",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/relaxed-carpenter-pants-065.png",
+        "alt": "Relaxed Carpenter Pants main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4101,8 +5276,15 @@
     "discountPrice": 109,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4160,6 +5342,13 @@
         "color": "black",
         "quantity": 10
       }
+    ],
+    "images": [
+      {
+        "src": "/products/boxy-track-pants-066.png",
+        "alt": "Boxy Track Pants main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4170,8 +5359,14 @@
     "discountPrice": 130,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["women"],
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4238,6 +5433,25 @@
         "quantity": 9,
         "image": "/products/heavyweight-wide-leg-sweatpants-067-heather-grey.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/heavyweight-wide-leg-sweatpants-067.png",
+        "alt": "Heavyweight Wide Leg Sweatpants main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/heavyweight-wide-leg-sweatpants-067-washed-black.png",
+        "alt": "Heavyweight Wide Leg Sweatpants in washed black front view",
+        "role": "front",
+        "color": "washed-black"
+      },
+      {
+        "src": "/products/heavyweight-wide-leg-sweatpants-067-heather-grey.png",
+        "alt": "Heavyweight Wide Leg Sweatpants in heather grey front view",
+        "role": "front",
+        "color": "heather-grey"
+      }
     ]
   },
   {
@@ -4248,8 +5462,14 @@
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4265,6 +5485,13 @@
         "color": "sand",
         "quantity": 2
       }
+    ],
+    "images": [
+      {
+        "src": "/products/tonal-logo-cap-068.png",
+        "alt": "Tonal Logo Cap main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4275,8 +5502,14 @@
     "discountPrice": 35,
     "discountPercent": 30,
     "rating": 3.4,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4292,6 +5525,13 @@
         "color": "olive",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/archive-five-panel-cap-069.png",
+        "alt": "Archive Five Panel Cap main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4302,8 +5542,14 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": ["accessories", "beanies", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "beanies",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4319,6 +5565,13 @@
         "color": "navy",
         "quantity": 8
       }
+    ],
+    "images": [
+      {
+        "src": "/products/seasonal-essential-beanie-070.png",
+        "alt": "Seasonal Essential Beanie main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4329,8 +5582,14 @@
     "discountPrice": 25,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": ["accessories", "beanies", "basics"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "beanies",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4348,6 +5607,25 @@
         "quantity": 13,
         "image": "/products/studio-ribbed-beanie-071-white.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/studio-ribbed-beanie-071.png",
+        "alt": "Studio Ribbed Beanie main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/studio-ribbed-beanie-071-black.png",
+        "alt": "Studio Ribbed Beanie in black front view",
+        "role": "front",
+        "color": "black"
+      },
+      {
+        "src": "/products/studio-ribbed-beanie-071-white.png",
+        "alt": "Studio Ribbed Beanie in white front view",
+        "role": "front",
+        "color": "white"
+      }
     ]
   },
   {
@@ -4358,8 +5636,13 @@
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": ["accessories", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4376,6 +5659,19 @@
         "quantity": 14,
         "image": "/products/cargo-crossbody-utility-bag-072-grey.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/cargo-crossbody-utility-bag-072.png",
+        "alt": "Cargo Crossbody Utility Bag main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/cargo-crossbody-utility-bag-072-grey.png",
+        "alt": "Cargo Crossbody Utility Bag in grey front view",
+        "role": "front",
+        "color": "grey"
+      }
     ]
   },
   {
@@ -4386,8 +5682,13 @@
     "discountPrice": 44,
     "discountPercent": 25,
     "rating": 4.5,
-    "categories": ["accessories", "basics"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4403,6 +5704,13 @@
         "color": "cream",
         "quantity": 1
       }
+    ],
+    "images": [
+      {
+        "src": "/products/minimal-canvas-tote-bag-073.png",
+        "alt": "Minimal Canvas Tote Bag main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4413,8 +5721,14 @@
     "discountPrice": 140,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": ["outerwear", "streetwear", "unisex"],
-    "audience": ["unisex"],
+    "categories": [
+      "outerwear",
+      "streetwear",
+      "unisex"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4480,6 +5794,25 @@
         "color": "heather-grey",
         "quantity": 11
       }
+    ],
+    "images": [
+      {
+        "src": "/products/essential-unisex-fleece-vest-074.png",
+        "alt": "Essential Unisex Fleece Vest main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/essential-unisex-fleece-vest-074-olive.png",
+        "alt": "Essential Unisex Fleece Vest in olive front view",
+        "role": "front",
+        "color": "olive"
+      },
+      {
+        "src": "/products/essential-unisex-fleece-vest-074-khaki.png",
+        "alt": "Essential Unisex Fleece Vest in khaki front view",
+        "role": "front",
+        "color": "khaki"
+      }
     ]
   },
   {
@@ -4490,8 +5823,14 @@
     "discountPrice": 99,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": ["sweatshirts", "basics"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "basics"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4557,6 +5896,25 @@
         "color": "white",
         "quantity": 18
       }
+    ],
+    "images": [
+      {
+        "src": "/products/layered-everyday-crewneck-075.png",
+        "alt": "Layered Everyday Crewneck main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/layered-everyday-crewneck-075-navy.png",
+        "alt": "Layered Everyday Crewneck in navy front view",
+        "role": "front",
+        "color": "navy"
+      },
+      {
+        "src": "/products/layered-everyday-crewneck-075-sand.png",
+        "alt": "Layered Everyday Crewneck in sand front view",
+        "role": "front",
+        "color": "sand"
+      }
     ]
   },
   {
@@ -4567,8 +5925,14 @@
     "discountPrice": 129,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4626,6 +5990,13 @@
         "color": "cream",
         "quantity": 3
       }
+    ],
+    "images": [
+      {
+        "src": "/products/ribbed-oversized-hoodie-076.png",
+        "alt": "Ribbed Oversized Hoodie main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4636,8 +6007,14 @@
     "discountPrice": 107,
     "discountPercent": 20,
     "rating": 3.9,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4695,6 +6072,13 @@
         "color": "navy",
         "quantity": 4
       }
+    ],
+    "images": [
+      {
+        "src": "/products/nylon-zip-hoodie-077.png",
+        "alt": "Nylon Zip Hoodie main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4705,8 +6089,15 @@
     "discountPrice": 59,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": ["t-shirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4773,6 +6164,25 @@
         "quantity": 7,
         "image": "/products/canvas-heavyweight-box-tee-078-sand.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/canvas-heavyweight-box-tee-078.png",
+        "alt": "Canvas Heavyweight Box Tee main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/canvas-heavyweight-box-tee-078-dark-brown.png",
+        "alt": "Canvas Heavyweight Box Tee in dark brown front view",
+        "role": "front",
+        "color": "dark-brown"
+      },
+      {
+        "src": "/products/canvas-heavyweight-box-tee-078-sand.png",
+        "alt": "Canvas Heavyweight Box Tee in sand front view",
+        "role": "front",
+        "color": "sand"
+      }
     ]
   },
   {
@@ -4783,8 +6193,14 @@
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": ["t-shirts", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4842,6 +6258,13 @@
         "color": "olive",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/soft-graphic-t-shirt-079.png",
+        "alt": "Soft Graphic T-Shirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4852,8 +6275,14 @@
     "discountPrice": 85,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": ["t-shirts", "longsleeve", "basics"],
-    "audience": ["women"],
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "basics"
+    ],
+    "audience": [
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4917,6 +6346,19 @@
         "color": "navy",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/structured-ribbed-longsleeve-080.png",
+        "alt": "Structured Ribbed Longsleeve main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/structured-ribbed-longsleeve-080-white.png",
+        "alt": "Structured Ribbed Longsleeve in white front view",
+        "role": "front",
+        "color": "white"
+      }
     ]
   },
   {
@@ -4927,8 +6369,15 @@
     "discountPrice": 59,
     "discountPercent": 15,
     "rating": 5,
-    "categories": ["t-shirts", "longsleeve", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -4986,6 +6435,13 @@
         "color": "white",
         "quantity": 18
       }
+    ],
+    "images": [
+      {
+        "src": "/products/core-thermal-long-sleeve-081.png",
+        "alt": "Core Thermal Long Sleeve main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -4996,8 +6452,15 @@
     "discountPrice": 83,
     "discountPercent": 20,
     "rating": 4,
-    "categories": ["sweatshirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -5055,6 +6518,13 @@
         "color": "burgundy",
         "quantity": 9
       }
+    ],
+    "images": [
+      {
+        "src": "/products/washed-minimal-sweatshirt-082.png",
+        "alt": "Washed Minimal Sweatshirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5065,8 +6535,14 @@
     "discountPrice": 115,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": ["sweatshirts", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5132,6 +6608,25 @@
         "color": "dark-brown",
         "quantity": 16
       }
+    ],
+    "images": [
+      {
+        "src": "/products/utility-quarter-zip-sweatshirt-083.png",
+        "alt": "Utility Quarter Zip Sweatshirt main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/utility-quarter-zip-sweatshirt-083-charcoal.png",
+        "alt": "Utility Quarter Zip Sweatshirt in charcoal front view",
+        "role": "front",
+        "color": "charcoal"
+      },
+      {
+        "src": "/products/utility-quarter-zip-sweatshirt-083-cream.png",
+        "alt": "Utility Quarter Zip Sweatshirt in cream front view",
+        "role": "front",
+        "color": "cream"
+      }
     ]
   },
   {
@@ -5142,8 +6637,14 @@
     "discountPrice": 204,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5202,6 +6703,19 @@
         "quantity": 7,
         "image": "/products/city-utility-jacket-084-grey.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/city-utility-jacket-084.png",
+        "alt": "City Utility Jacket main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/city-utility-jacket-084-grey.png",
+        "alt": "City Utility Jacket in grey front view",
+        "role": "front",
+        "color": "grey"
+      }
     ]
   },
   {
@@ -5212,8 +6726,14 @@
     "discountPrice": 123,
     "discountPercent": 35,
     "rating": 4.4,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -5271,6 +6791,13 @@
         "color": "olive",
         "quantity": 12
       }
+    ],
+    "images": [
+      {
+        "src": "/products/relaxed-coach-jacket-085.png",
+        "alt": "Relaxed Coach Jacket main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5281,8 +6808,14 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -5348,6 +6881,25 @@
         "color": "sand",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/boxy-nylon-windbreaker-086.png",
+        "alt": "Boxy Nylon Windbreaker main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/boxy-nylon-windbreaker-086-burgundy.png",
+        "alt": "Boxy Nylon Windbreaker in burgundy front view",
+        "role": "front",
+        "color": "burgundy"
+      },
+      {
+        "src": "/products/boxy-nylon-windbreaker-086-black.png",
+        "alt": "Boxy Nylon Windbreaker in black front view",
+        "role": "front",
+        "color": "black"
+      }
     ]
   },
   {
@@ -5358,8 +6910,14 @@
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5411,6 +6969,13 @@
         "color": "heather-grey",
         "quantity": 15
       }
+    ],
+    "images": [
+      {
+        "src": "/products/heavyweight-bomber-jacket-087.png",
+        "alt": "Heavyweight Bomber Jacket main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5421,8 +6986,14 @@
     "discountPrice": 159,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5480,6 +7051,13 @@
         "color": "white",
         "quantity": 3
       }
+    ],
+    "images": [
+      {
+        "src": "/products/tonal-canvas-overshirt-088.png",
+        "alt": "Tonal Canvas Overshirt main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5490,8 +7068,14 @@
     "discountPrice": 108,
     "discountPercent": 30,
     "rating": 3.8,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -5558,6 +7142,25 @@
         "quantity": 7,
         "image": "/products/archive-cargo-pants-089-olive.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/archive-cargo-pants-089.png",
+        "alt": "Archive Cargo Pants main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/archive-cargo-pants-089-cream.png",
+        "alt": "Archive Cargo Pants in cream front view",
+        "role": "front",
+        "color": "cream"
+      },
+      {
+        "src": "/products/archive-cargo-pants-089-olive.png",
+        "alt": "Archive Cargo Pants in olive front view",
+        "role": "front",
+        "color": "olive"
+      }
     ]
   },
   {
@@ -5568,8 +7171,14 @@
     "discountPrice": 155,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men"],
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5631,6 +7240,19 @@
         "quantity": 8,
         "image": "/products/seasonal-carpenter-pants-090-navy.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/seasonal-carpenter-pants-090.png",
+        "alt": "Seasonal Carpenter Pants main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/seasonal-carpenter-pants-090-navy.png",
+        "alt": "Seasonal Carpenter Pants in navy front view",
+        "role": "front",
+        "color": "navy"
+      }
     ]
   },
   {
@@ -5641,8 +7263,15 @@
     "discountPrice": 101,
     "discountPercent": 15,
     "rating": 3.5,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -5700,6 +7329,13 @@
         "color": "white",
         "quantity": 13
       }
+    ],
+    "images": [
+      {
+        "src": "/products/studio-track-pants-091.png",
+        "alt": "Studio Track Pants main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5710,8 +7346,15 @@
     "discountPrice": 120,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5774,6 +7417,19 @@
         "color": "grey",
         "quantity": 14
       }
+    ],
+    "images": [
+      {
+        "src": "/products/cargo-wide-leg-sweatpants-092.png",
+        "alt": "Cargo Wide Leg Sweatpants main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/cargo-wide-leg-sweatpants-092-black.png",
+        "alt": "Cargo Wide Leg Sweatpants in black front view",
+        "role": "front",
+        "color": "black"
+      }
     ]
   },
   {
@@ -5784,8 +7440,14 @@
     "discountPrice": 29,
     "discountPercent": 25,
     "rating": 4.9,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -5801,6 +7463,13 @@
         "color": "cream",
         "quantity": 0
       }
+    ],
+    "images": [
+      {
+        "src": "/products/minimal-logo-cap-093.png",
+        "alt": "Minimal Logo Cap main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5811,8 +7480,14 @@
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5828,6 +7503,13 @@
         "color": "khaki",
         "quantity": 10
       }
+    ],
+    "images": [
+      {
+        "src": "/products/essential-five-panel-cap-094.png",
+        "alt": "Essential Five Panel Cap main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5838,8 +7520,14 @@
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": ["accessories", "beanies", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "beanies",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5855,6 +7543,13 @@
         "color": "sand",
         "quantity": 11
       }
+    ],
+    "images": [
+      {
+        "src": "/products/layered-essential-beanie-095.png",
+        "alt": "Layered Essential Beanie main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5865,8 +7560,14 @@
     "discountPrice": 25,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": ["accessories", "beanies", "basics"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "beanies",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -5882,6 +7583,13 @@
         "color": "black",
         "quantity": 16
       }
+    ],
+    "images": [
+      {
+        "src": "/products/ribbed-ribbed-beanie-096.png",
+        "alt": "Ribbed Ribbed Beanie main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5892,8 +7600,13 @@
     "discountPrice": 56,
     "discountPercent": 20,
     "rating": 4.3,
-    "categories": ["accessories", "streetwear"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -5911,6 +7624,25 @@
         "quantity": 15,
         "image": "/products/nylon-crossbody-utility-bag-097-heather-grey.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/nylon-crossbody-utility-bag-097.png",
+        "alt": "Nylon Crossbody Utility Bag main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/nylon-crossbody-utility-bag-097-washed-black.png",
+        "alt": "Nylon Crossbody Utility Bag in washed black front view",
+        "role": "front",
+        "color": "washed-black"
+      },
+      {
+        "src": "/products/nylon-crossbody-utility-bag-097-heather-grey.png",
+        "alt": "Nylon Crossbody Utility Bag in heather grey front view",
+        "role": "front",
+        "color": "heather-grey"
+      }
     ]
   },
   {
@@ -5921,8 +7653,13 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 5,
-    "categories": ["accessories", "basics"],
-    "audience": ["unisex"],
+    "categories": [
+      "accessories",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5938,6 +7675,13 @@
         "color": "sand",
         "quantity": 2
       }
+    ],
+    "images": [
+      {
+        "src": "/products/canvas-canvas-tote-bag-098.png",
+        "alt": "Canvas Canvas Tote Bag main view",
+        "role": "main"
+      }
     ]
   },
   {
@@ -5948,8 +7692,14 @@
     "discountPrice": 140,
     "discountPercent": 0,
     "rating": 4,
-    "categories": ["outerwear", "streetwear", "unisex"],
-    "audience": ["unisex"],
+    "categories": [
+      "outerwear",
+      "streetwear",
+      "unisex"
+    ],
+    "audience": [
+      "unisex"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6008,6 +7758,19 @@
         "quantity": 16,
         "image": "/products/soft-unisex-fleece-vest-099-sand.png"
       }
+    ],
+    "images": [
+      {
+        "src": "/products/soft-unisex-fleece-vest-099.png",
+        "alt": "Soft Unisex Fleece Vest main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/soft-unisex-fleece-vest-099-sand.png",
+        "alt": "Soft Unisex Fleece Vest in sand front view",
+        "role": "front",
+        "color": "sand"
+      }
     ]
   },
   {
@@ -6018,8 +7781,14 @@
     "discountPrice": 71,
     "discountPercent": 35,
     "rating": 4.7,
-    "categories": ["sweatshirts", "basics"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "basics"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -6077,6 +7846,19 @@
         "color": "heather-grey",
         "quantity": 0,
         "image": "/products/structured-everyday-crewneck-100-heather-grey.png"
+      }
+    ],
+    "images": [
+      {
+        "src": "/products/structured-everyday-crewneck-100.png",
+        "alt": "Structured Everyday Crewneck main view",
+        "role": "main"
+      },
+      {
+        "src": "/products/structured-everyday-crewneck-100-heather-grey.png",
+        "alt": "Structured Everyday Crewneck in heather grey front view",
+        "role": "front",
+        "color": "heather-grey"
       }
     ]
   }

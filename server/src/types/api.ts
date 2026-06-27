@@ -1,5 +1,6 @@
 import type { ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
+import type { ProductImage } from './product-image';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -25,6 +26,7 @@ export type ProductDto = {
   audience: ProductAudience[];
   hasDiscount: boolean;
   isNewProduct: boolean;
+  images: ProductImage[];
   variants: ProductVariant[];
   totalQuantity: number;
 };

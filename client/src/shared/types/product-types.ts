@@ -1,5 +1,6 @@
 import type { ProductVariant } from './product-variant-types';
 import type { ProductAudience } from './product-audience-types';
+import type { ProductImage } from './product-image-types';
 
 export interface ProductCardProps {
   _id: string;
@@ -14,6 +15,7 @@ export interface ProductCardProps {
   audience: ProductAudience[];
   hasDiscount: boolean;
   isNewProduct: boolean;
+  images: ProductImage[];
   variants: ProductVariant[];
   totalQuantity: number;
 }

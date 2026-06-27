@@ -7,8 +7,13 @@ import {
   PRODUCT_AUDIENCES,
   type ProductAudience,
 } from '../types/product-audience';
+import {
+  PRODUCT_IMAGE_ROLES,
+  type ProductImage,
+} from '../types/product-image';
 
 type ProductVariantValue = Omit<ProductVariant, '_id'>;
+type ProductImageValue = ProductImage;
 
 const productVariantSchema = new Schema<ProductVariantValue>({
   sku: {
@@ -47,6 +52,37 @@ const productVariantSchema = new Schema<ProductVariantValue>({
     trim: true,
   },
 });
+
+const productImageSchema = new Schema<ProductImageValue>(
+  {
+    src: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    alt: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    role: {
+      type: String,
+      enum: PRODUCT_IMAGE_ROLES,
+      required: true,
+    },
+
+    color: {
+      type: String,
+      trim: true,
+      lowercase: true,
+    },
+  },
+  {
+    _id: false,
+  },
+);
 
 const hasUniqueVariantSkus = (variants: ProductVariantValue[]) =>
   new Set(variants.map((variant) => variant.sku)).size === variants.length;
@@ -142,6 +178,12 @@ const productSchema = new Schema(
           message: 'Variant size and color combinations must be unique',
         },
       ],
+    },
+
+    images: {
+      type: [productImageSchema],
+      required: true,
+      default: [],
     },
 
     hasDiscount: {
