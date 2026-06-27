@@ -1,4 +1,3 @@
-export { ProductCard } from './product-card';
 export { ProductGrid } from './product-grid';
 export { ProductsListFiltersToggle } from './products-list-filters-toggle';
 export { ProductsListLayout } from './products-list-layout';

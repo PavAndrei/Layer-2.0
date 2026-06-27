@@ -212,7 +212,13 @@ export const useProductsFilters = (): ProductsFilters => {
   );
 
   const resetFilters = useCallback(() => {
-    setFilters(initialFilters, { replace: true });
+    setFilters(
+      (prev) => ({
+        ...initialFilters,
+        page: prev.page,
+      }),
+      { replace: true },
+    );
   }, [setFilters]);
 
   const handlePageChange = useCallback(

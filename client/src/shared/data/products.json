@@ -1,405 +1,6683 @@
 [
   {
-    "img": "/products/layer-hoodie-black.png",
-    "title": "LAYER Oversized Hoodie",
-    "description": "Oversized hoodie made from premium cotton. Clean silhouette with a minimal LAYER logo, designed for everyday wear.",
+    "img": "/products/core-oversized-hoodie-001.png",
+    "title": "Core Oversized Hoodie",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
     "defaultPrice": 129,
-    "discountPrice": 99,
-    "discountPercent": 23,
-    "rating": 4.8,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "discountPrice": 110,
+    "discountPercent": 15,
+    "rating": 3.4,
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": true,
-    "isNewProduct": false,
+    "isNewProduct": true,
     "variants": [
-      { "sku": "LYR-HOOD-BLK-S", "size": "S", "color": "black", "quantity": 15 },
-      { "sku": "LYR-HOOD-BLK-M", "size": "M", "color": "black", "quantity": 20 },
-      { "sku": "LYR-HOOD-BLK-L", "size": "L", "color": "black", "quantity": 15 },
-      { "sku": "LYR-HOOD-WHT-S", "size": "S", "color": "white", "quantity": 10 },
-      { "sku": "LYR-HOOD-WHT-M", "size": "M", "color": "white", "quantity": 25 },
-      { "sku": "LYR-HOOD-WHT-L", "size": "L", "color": "white", "quantity": 15 }
+      {
+        "sku": "LYR-COREOVERSIZEDHOODI-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-COREOVERSIZEDHOODI-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-COREOVERSIZEDHOODI-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-COREOVERSIZEDHOODI-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-COREOVERSIZEDHOODI-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-COREOVERSIZEDHOODI-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-COREOVERSIZEDHOODI-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-COREOVERSIZEDHOODI-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 0
+      }
     ]
   },
   {
-    "img": "/products/layer-tshirt-essential.png",
-    "title": "Essential T-Shirt",
-    "description": "Minimalist everyday t-shirt crafted from soft heavyweight cotton with a relaxed fit.",
-    "defaultPrice": 49,
-    "discountPrice": 39,
-    "discountPercent": 20,
-    "rating": 4.6,
-    "categories": ["t-shirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
-    "hasDiscount": true,
+    "img": "/products/washed-zip-hoodie-002.png",
+    "title": "Washed Zip Hoodie",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 134,
+    "discountPrice": 134,
+    "discountPercent": 0,
+    "rating": 4.1,
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
-      { "sku": "LYR-TEE-BLK-S", "size": "S", "color": "black", "quantity": 8 },
-      { "sku": "LYR-TEE-BLK-M", "size": "M", "color": "black", "quantity": 12 },
-      { "sku": "LYR-TEE-BLK-L", "size": "L", "color": "black", "quantity": 10 },
-      { "sku": "LYR-TEE-WHT-S", "size": "S", "color": "white", "quantity": 5 },
-      { "sku": "LYR-TEE-WHT-M", "size": "M", "color": "white", "quantity": 8 },
-      { "sku": "LYR-TEE-WHT-L", "size": "L", "color": "white", "quantity": 7 }
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 0,
+        "image": "/products/washed-zip-hoodie-002-black.png"
+      },
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 0,
+        "image": "/products/washed-zip-hoodie-002-black.png"
+      },
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 0,
+        "image": "/products/washed-zip-hoodie-002-black.png"
+      },
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 16,
+        "image": "/products/washed-zip-hoodie-002-black.png"
+      },
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-GREY-M",
+        "size": "M",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-GREY-L",
+        "size": "L",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-GREY-XL",
+        "size": "XL",
+        "color": "grey",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-WASHEDZIPHOODIE002-CHARC-S",
+        "size": "S",
+        "color": "charcoal",
+        "quantity": 3,
+        "image": "/products/washed-zip-hoodie-002-charcoal.png"
+      }
     ]
   },
   {
-    "img": "/products/layer-jacket-utility.png",
-    "title": "Utility Jacket",
-    "description": "Functional streetwear jacket with multiple pockets and a structured fit. Built for urban movement.",
-    "defaultPrice": 199,
-    "discountPrice": 159,
-    "discountPercent": 20,
-    "rating": 4.9,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
-    "hasDiscount": true,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-UTIL-WHT-M", "size": "M", "color": "white", "quantity": 6 },
-      { "sku": "LYR-UTIL-WHT-L", "size": "L", "color": "white", "quantity": 7 },
-      { "sku": "LYR-UTIL-WHT-XL", "size": "XL", "color": "white", "quantity": 4 },
-      { "sku": "LYR-UTIL-OLV-M", "size": "M", "color": "olive", "quantity": 4 },
-      { "sku": "LYR-UTIL-OLV-L", "size": "L", "color": "olive", "quantity": 5 },
-      { "sku": "LYR-UTIL-OLV-XL", "size": "XL", "color": "olive", "quantity": 4 }
-    ]
-  },
-  {
-    "img": "/products/layer-pants-cargo.png",
-    "title": "Cargo Pants",
-    "description": "Relaxed fit cargo pants with adjustable cuffs and utility pockets. Durable and comfortable.",
-    "defaultPrice": 149,
-    "discountPrice": 119,
-    "discountPercent": 20,
-    "rating": 4.7,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men"],
-    "hasDiscount": true,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-CARGO-BLK-S", "size": "S", "color": "black", "quantity": 6 },
-      { "sku": "LYR-CARGO-BLK-M", "size": "M", "color": "black", "quantity": 8 },
-      { "sku": "LYR-CARGO-BLK-L", "size": "L", "color": "black", "quantity": 6 },
-      { "sku": "LYR-CARGO-KHK-S", "size": "S", "color": "khaki", "quantity": 5 },
-      { "sku": "LYR-CARGO-KHK-M", "size": "M", "color": "khaki", "quantity": 9 },
-      { "sku": "LYR-CARGO-KHK-L", "size": "L", "color": "khaki", "quantity": 6 }
-    ]
-  },
-  {
-    "img": "/products/layer-sweatshirt-grey.png",
-    "title": "Minimal Sweatshirt",
-    "description": "Clean crewneck sweatshirt with a soft brushed interior. Designed for layering.",
-    "defaultPrice": 99,
-    "discountPrice": 79,
-    "discountPercent": 20,
-    "rating": 4.5,
-    "categories": ["sweatshirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
-    "hasDiscount": true,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-SWEAT-GRY-S", "size": "S", "color": "grey", "quantity": 3 },
-      { "sku": "LYR-SWEAT-GRY-M", "size": "M", "color": "grey", "quantity": 5 },
-      { "sku": "LYR-SWEAT-GRY-L", "size": "L", "color": "grey", "quantity": 4 }
-    ]
-  },
-  {
-    "img": "/products/layer-cap-black.png",
-    "title": "Logo Cap",
-    "description": "Structured cap with embroidered LAYER logo. Adjustable strap for a perfect fit.",
-    "defaultPrice": 39,
-    "discountPrice": 29,
-    "discountPercent": 26,
-    "rating": 4.4,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
-    "hasDiscount": true,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-LOGOCAP-BLK-OS", "size": "ONE_SIZE", "color": "black", "quantity": 15 },
-      { "sku": "LYR-LOGOCAP-OLV-OS", "size": "ONE_SIZE", "color": "olive", "quantity": 10 }
-    ]
-  },
-  {
-    "img": "/products/layer-bomber-jacket.png",
-    "title": "Bomber Jacket",
-    "description": "Modern bomber jacket with a clean silhouette and lightweight insulation for everyday use.",
-    "defaultPrice": 179,
-    "discountPrice": 139,
-    "discountPercent": 22,
-    "rating": 4.8,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
-    "hasDiscount": true,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-BOMBER-WHT-M", "size": "M", "color": "white", "quantity": 4 },
-      { "sku": "LYR-BOMBER-WHT-L", "size": "L", "color": "white", "quantity": 4 },
-      { "sku": "LYR-BOMBER-WHT-XL", "size": "XL", "color": "white", "quantity": 2 },
-      { "sku": "LYR-BOMBER-BLK-M", "size": "M", "color": "black", "quantity": 4 },
-      { "sku": "LYR-BOMBER-BLK-L", "size": "L", "color": "black", "quantity": 4 },
-      { "sku": "LYR-BOMBER-BLK-XL", "size": "XL", "color": "black", "quantity": 2 }
-    ]
-  },
-  {
-    "img": "/products/layer-long-sleeve.png",
-    "title": "Long Sleeve Tee",
-    "description": "Relaxed long sleeve t-shirt made from premium cotton. Perfect for transitional seasons.",
-    "defaultPrice": 69,
-    "discountPrice": 55,
-    "discountPercent": 20,
-    "rating": 4.6,
-    "categories": ["t-shirts", "longsleeve", "streetwear"],
-    "audience": ["men", "women"],
-    "hasDiscount": true,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-LONG-GRY-S", "size": "S", "color": "grey", "quantity": 0 },
-      { "sku": "LYR-LONG-GRY-M", "size": "M", "color": "grey", "quantity": 0 },
-      { "sku": "LYR-LONG-GRY-L", "size": "L", "color": "grey", "quantity": 0 },
-      { "sku": "LYR-LONG-BLK-S", "size": "S", "color": "black", "quantity": 0 },
-      { "sku": "LYR-LONG-BLK-M", "size": "M", "color": "black", "quantity": 0 },
-      { "sku": "LYR-LONG-BLK-L", "size": "L", "color": "black", "quantity": 0 }
-    ]
-  },
-  {
-    "img": "/products/layer-beanie.png",
-    "title": "Essential Beanie",
-    "description": "Minimal beanie with a snug fit and subtle branding. Designed for everyday comfort.",
-    "defaultPrice": 29,
-    "discountPrice": 22,
-    "discountPercent": 24,
-    "rating": 4.3,
-    "categories": ["accessories", "beanies", "streetwear"],
-    "audience": ["unisex"],
-    "hasDiscount": true,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-BEANIE-GRY-OS", "size": "ONE_SIZE", "color": "grey", "quantity": 8 },
-      { "sku": "LYR-BEANIE-BLK-OS", "size": "ONE_SIZE", "color": "black", "quantity": 7 }
-    ]
-  },
-  {
-    "img": "/products/layer-track-pants.png",
-    "title": "Track Pants",
-    "description": "Relaxed track pants with elastic waistband and tapered legs. Clean design with functional comfort.",
-    "defaultPrice": 119,
-    "discountPrice": 95,
-    "discountPercent": 20,
-    "rating": 4.7,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["men"],
-    "hasDiscount": true,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-TRACK-WHT-S", "size": "S", "color": "white", "quantity": 2 },
-      { "sku": "LYR-TRACK-WHT-M", "size": "M", "color": "white", "quantity": 2 },
-      { "sku": "LYR-TRACK-WHT-L", "size": "L", "color": "white", "quantity": 1 },
-      { "sku": "LYR-TRACK-BLK-S", "size": "S", "color": "black", "quantity": 2 },
-      { "sku": "LYR-TRACK-BLK-M", "size": "M", "color": "black", "quantity": 2 },
-      { "sku": "LYR-TRACK-BLK-L", "size": "L", "color": "black", "quantity": 1 }
-    ]
-  },
-  {
-    "img": "/products/layer-heavyweight-box-tee.png",
-    "title": "Heavyweight Box Tee",
-    "description": "Boxy fit t-shirt made from dense heavyweight cotton with dropped shoulders and a clean neckline.",
+    "img": "/products/utility-heavyweight-box-tee-003.png",
+    "title": "Utility Heavyweight Box Tee",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
     "defaultPrice": 59,
     "discountPrice": 59,
     "discountPercent": 0,
-    "rating": 4.7,
-    "categories": ["t-shirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "rating": 4.8,
+    "categories": [
+      "t-shirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
-    "isNewProduct": true,
+    "isNewProduct": false,
     "variants": [
-      { "sku": "LYR-BOXTEE-CHR-S", "size": "S", "color": "charcoal", "quantity": 4 },
-      { "sku": "LYR-BOXTEE-CHR-M", "size": "M", "color": "charcoal", "quantity": 6 },
-      { "sku": "LYR-BOXTEE-CHR-L", "size": "L", "color": "charcoal", "quantity": 5 },
-      { "sku": "LYR-BOXTEE-CRM-S", "size": "S", "color": "cream", "quantity": 5 },
-      { "sku": "LYR-BOXTEE-CRM-M", "size": "M", "color": "cream", "quantity": 8 },
-      { "sku": "LYR-BOXTEE-CRM-L", "size": "L", "color": "cream", "quantity": 6 }
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CHARC-XS",
+        "size": "XS",
+        "color": "charcoal",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CHARC-S",
+        "size": "S",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CHARC-M",
+        "size": "M",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CHARC-L",
+        "size": "L",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CHARC-XL",
+        "size": "XL",
+        "color": "charcoal",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CHARC-XXL",
+        "size": "XXL",
+        "color": "charcoal",
+        "quantity": 8
+      },
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CREAM-XS",
+        "size": "XS",
+        "color": "cream",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-UTILITYHEAVYWEIGHT-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 18
+      }
     ]
   },
   {
-    "img": "/products/layer-washed-zip-hoodie.png",
-    "title": "Washed Zip Hoodie",
-    "description": "Relaxed zip hoodie with a vintage wash, double-layer hood and subtle tonal LAYER embroidery.",
-    "defaultPrice": 139,
-    "discountPrice": 139,
+    "img": "/products/city-graphic-t-shirt-004.png",
+    "title": "City Graphic T-Shirt",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 70,
+    "discountPrice": 70,
+    "discountPercent": 0,
+    "rating": 3.8,
+    "categories": [
+      "t-shirts",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-OLIVE-XS",
+        "size": "XS",
+        "color": "olive",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-OLIVE-XXL",
+        "size": "XXL",
+        "color": "olive",
+        "quantity": 5
+      },
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-KHAKI-XS",
+        "size": "XS",
+        "color": "khaki",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-KHAKI-S",
+        "size": "S",
+        "color": "khaki",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYGRAPHICTSHIRT0-KHAKI-M",
+        "size": "M",
+        "color": "khaki",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "img": "/products/relaxed-ribbed-longsleeve-005.png",
+    "title": "Relaxed Ribbed Longsleeve",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 85,
+    "discountPrice": 55,
+    "discountPercent": 35,
+    "rating": 4.5,
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "basics"
+    ],
+    "audience": [
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-NAVY-XS",
+        "size": "XS",
+        "color": "navy",
+        "quantity": 5
+      },
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 5
+      },
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-NAVY-XXL",
+        "size": "XXL",
+        "color": "navy",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-SAND-XS",
+        "size": "XS",
+        "color": "sand",
+        "quantity": 5
+      },
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDRIBBEDLONGS-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 4
+      }
+    ]
+  },
+  {
+    "img": "/products/boxy-thermal-long-sleeve-006.png",
+    "title": "Boxy Thermal Long Sleeve",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 69,
+    "discountPrice": 69,
+    "discountPercent": 0,
+    "rating": 3.5,
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BURGU-XS",
+        "size": "XS",
+        "color": "burgundy",
+        "quantity": 16
+      },
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BURGU-M",
+        "size": "M",
+        "color": "burgundy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BURGU-L",
+        "size": "L",
+        "color": "burgundy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BURGU-XL",
+        "size": "XL",
+        "color": "burgundy",
+        "quantity": 16
+      },
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BURGU-XXL",
+        "size": "XXL",
+        "color": "burgundy",
+        "quantity": 17
+      },
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BLACK-XS",
+        "size": "XS",
+        "color": "black",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-BOXYTHERMALLONGSLE-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 9
+      }
+    ]
+  },
+  {
+    "img": "/products/heavyweight-minimal-sweatshirt-007.png",
+    "title": "Heavyweight Minimal Sweatshirt",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 104,
+    "discountPrice": 104,
+    "discountPercent": 0,
+    "rating": 4.2,
+    "categories": [
+      "sweatshirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 8,
+        "image": "/products/heavyweight-minimal-sweatshirt-007-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-WASHE-M",
+        "size": "M",
+        "color": "washed-black",
+        "quantity": 8,
+        "image": "/products/heavyweight-minimal-sweatshirt-007-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-WASHE-L",
+        "size": "L",
+        "color": "washed-black",
+        "quantity": 8,
+        "image": "/products/heavyweight-minimal-sweatshirt-007-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-WASHE-XL",
+        "size": "XL",
+        "color": "washed-black",
+        "quantity": 9,
+        "image": "/products/heavyweight-minimal-sweatshirt-007-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 8,
+        "image": "/products/heavyweight-minimal-sweatshirt-007-heather-grey.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-HEATH-M",
+        "size": "M",
+        "color": "heather-grey",
+        "quantity": 8,
+        "image": "/products/heavyweight-minimal-sweatshirt-007-heather-grey.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-HEATH-L",
+        "size": "L",
+        "color": "heather-grey",
+        "quantity": 8,
+        "image": "/products/heavyweight-minimal-sweatshirt-007-heather-grey.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-HEATH-XL",
+        "size": "XL",
+        "color": "heather-grey",
+        "quantity": 9,
+        "image": "/products/heavyweight-minimal-sweatshirt-007-heather-grey.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTMINIMAL-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "img": "/products/tonal-quarter-zip-sweatshirt-008.png",
+    "title": "Tonal Quarter Zip Sweatshirt",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 115,
+    "discountPrice": 115,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "categories": [
+      "sweatshirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
-    "isNewProduct": true,
+    "isNewProduct": false,
     "variants": [
-      { "sku": "LYR-ZIP-WBLK-S", "size": "S", "color": "washed-black", "quantity": 2 },
-      { "sku": "LYR-ZIP-WBLK-M", "size": "M", "color": "washed-black", "quantity": 4 },
-      { "sku": "LYR-ZIP-WBLK-L", "size": "L", "color": "washed-black", "quantity": 3 },
-      { "sku": "LYR-ZIP-GRY-S", "size": "S", "color": "grey", "quantity": 2 },
-      { "sku": "LYR-ZIP-GRY-M", "size": "M", "color": "grey", "quantity": 4 },
-      { "sku": "LYR-ZIP-GRY-L", "size": "L", "color": "grey", "quantity": 3 }
+      {
+        "sku": "LYR-TONALQUARTERZIPSWE-DARKB-S",
+        "size": "S",
+        "color": "dark-brown",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-TONALQUARTERZIPSWE-DARKB-M",
+        "size": "M",
+        "color": "dark-brown",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-TONALQUARTERZIPSWE-DARKB-L",
+        "size": "L",
+        "color": "dark-brown",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-TONALQUARTERZIPSWE-DARKB-XL",
+        "size": "XL",
+        "color": "dark-brown",
+        "quantity": 8
+      },
+      {
+        "sku": "LYR-TONALQUARTERZIPSWE-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-TONALQUARTERZIPSWE-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-TONALQUARTERZIPSWE-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-TONALQUARTERZIPSWE-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 14
+      }
     ]
   },
   {
-    "img": "/products/layer-coach-jacket.png",
-    "title": "City Coach Jacket",
-    "description": "Lightweight coach jacket with snap buttons, a drawcord hem and a water-resistant outer shell.",
-    "defaultPrice": 169,
-    "discountPrice": 169,
-    "discountPercent": 0,
+    "img": "/products/archive-utility-jacket-009.png",
+    "title": "Archive Utility Jacket",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 204,
+    "discountPrice": 143,
+    "discountPercent": 30,
+    "rating": 3.9,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-ARCHIVEUTILITYJACK-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/seasonal-coach-jacket-010.png",
+    "title": "Seasonal Coach Jacket",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 189,
+    "discountPrice": 123,
+    "discountPercent": 35,
     "rating": 4.6,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
-    "hasDiscount": false,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
-      { "sku": "LYR-COACH-NVY-M", "size": "M", "color": "navy", "quantity": 4 },
-      { "sku": "LYR-COACH-NVY-L", "size": "L", "color": "navy", "quantity": 5 },
-      { "sku": "LYR-COACH-NVY-XL", "size": "XL", "color": "navy", "quantity": 2 },
-      { "sku": "LYR-COACH-BLK-M", "size": "M", "color": "black", "quantity": 4 },
-      { "sku": "LYR-COACH-BLK-L", "size": "L", "color": "black", "quantity": 5 },
-      { "sku": "LYR-COACH-BLK-XL", "size": "XL", "color": "black", "quantity": 2 }
+      {
+        "sku": "LYR-SEASONALCOACHJACKE-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-SEASONALCOACHJACKE-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-SEASONALCOACHJACKE-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-SEASONALCOACHJACKE-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-SEASONALCOACHJACKE-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SEASONALCOACHJACKE-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SEASONALCOACHJACKE-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SEASONALCOACHJACKE-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 2
+      }
     ]
   },
   {
-    "img": "/products/layer-carpenter-pants.png",
-    "title": "Carpenter Pants",
-    "description": "Loose carpenter pants in durable cotton canvas with reinforced knees and functional utility loops.",
-    "defaultPrice": 145,
-    "discountPrice": 145,
-    "discountPercent": 0,
-    "rating": 4.8,
-    "categories": ["pants", "cargo", "streetwear"],
-    "audience": ["men"],
-    "hasDiscount": false,
-    "isNewProduct": true,
-    "variants": [
-      { "sku": "LYR-CARP-SND-S", "size": "S", "color": "sand", "quantity": 3 },
-      { "sku": "LYR-CARP-SND-M", "size": "M", "color": "sand", "quantity": 5 },
-      { "sku": "LYR-CARP-SND-L", "size": "L", "color": "sand", "quantity": 4 },
-      { "sku": "LYR-CARP-BLK-S", "size": "S", "color": "black", "quantity": 4 },
-      { "sku": "LYR-CARP-BLK-M", "size": "M", "color": "black", "quantity": 6 },
-      { "sku": "LYR-CARP-BLK-L", "size": "L", "color": "black", "quantity": 5 }
-    ]
-  },
-  {
-    "img": "/products/layer-nylon-windbreaker.png",
-    "title": "Nylon Windbreaker",
-    "description": "Packable windbreaker with a high collar, mesh lining and adjustable cuffs for unpredictable city weather.",
-    "defaultPrice": 159,
-    "discountPrice": 159,
-    "discountPercent": 0,
-    "rating": 4.5,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
-    "hasDiscount": false,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-WIND-OLV-M", "size": "M", "color": "olive", "quantity": 3 },
-      { "sku": "LYR-WIND-OLV-L", "size": "L", "color": "olive", "quantity": 3 },
-      { "sku": "LYR-WIND-OLV-XL", "size": "XL", "color": "olive", "quantity": 2 },
-      { "sku": "LYR-WIND-BLK-M", "size": "M", "color": "black", "quantity": 3 },
-      { "sku": "LYR-WIND-BLK-L", "size": "L", "color": "black", "quantity": 3 },
-      { "sku": "LYR-WIND-BLK-XL", "size": "XL", "color": "black", "quantity": 2 }
-    ]
-  },
-  {
-    "img": "/products/layer-crossbody-utility-bag.png",
-    "title": "Crossbody Utility Bag",
-    "description": "Compact crossbody bag with multiple zip compartments and an adjustable webbing strap for daily essentials.",
-    "defaultPrice": 65,
-    "discountPrice": 65,
-    "discountPercent": 0,
-    "rating": 4.4,
-    "categories": ["accessories", "streetwear"],
-    "audience": ["unisex"],
-    "hasDiscount": false,
-    "isNewProduct": true,
-    "variants": [
-      { "sku": "LYR-BAG-BLK-OS", "size": "ONE_SIZE", "color": "black", "quantity": 23 },
-      { "sku": "LYR-BAG-OLV-OS", "size": "ONE_SIZE", "color": "olive", "quantity": 18 }
-    ]
-  },
-  {
-    "img": "/products/layer-five-panel-cap.png",
-    "title": "Five Panel Cap",
-    "description": "Low-profile five panel cap made from lightweight ripstop fabric with reflective logo detailing.",
-    "defaultPrice": 45,
-    "discountPrice": 45,
-    "discountPercent": 0,
-    "rating": 4.3,
-    "categories": ["accessories", "headwear", "streetwear"],
-    "audience": ["unisex"],
-    "hasDiscount": false,
-    "isNewProduct": false,
-    "variants": [
-      { "sku": "LYR-5CAP-BRG-OS", "size": "ONE_SIZE", "color": "burgundy", "quantity": 16 },
-      { "sku": "LYR-5CAP-BLK-OS", "size": "ONE_SIZE", "color": "black", "quantity": 13 }
-    ]
-  },
-  {
-    "img": "/products/layer-ribbed-longsleeve.png",
-    "title": "Ribbed Longsleeve",
-    "description": "Fitted ribbed longsleeve with extended cuffs and a minimal woven label at the side seam.",
-    "defaultPrice": 75,
-    "discountPrice": 75,
-    "discountPercent": 0,
-    "rating": 4.6,
-    "categories": ["t-shirts", "longsleeve", "basics"],
-    "audience": ["women"],
-    "hasDiscount": false,
-    "isNewProduct": true,
-    "variants": [
-      { "sku": "LYR-RIB-CRM-XS", "size": "XS", "color": "cream", "quantity": 3 },
-      { "sku": "LYR-RIB-CRM-S", "size": "S", "color": "cream", "quantity": 5 },
-      { "sku": "LYR-RIB-CRM-M", "size": "M", "color": "cream", "quantity": 6 },
-      { "sku": "LYR-RIB-CRM-L", "size": "L", "color": "cream", "quantity": 4 },
-      { "sku": "LYR-RIB-BLK-XS", "size": "XS", "color": "black", "quantity": 3 },
-      { "sku": "LYR-RIB-BLK-S", "size": "S", "color": "black", "quantity": 5 },
-      { "sku": "LYR-RIB-BLK-M", "size": "M", "color": "black", "quantity": 6 },
-      { "sku": "LYR-RIB-BLK-L", "size": "L", "color": "black", "quantity": 4 }
-    ]
-  },
-  {
-    "img": "/products/layer-wide-leg-sweatpants.png",
-    "title": "Wide Leg Sweatpants",
-    "description": "Heavyweight fleece sweatpants with a wide leg silhouette, deep pockets and an adjustable waistband.",
-    "defaultPrice": 125,
-    "discountPrice": 125,
-    "discountPercent": 0,
-    "rating": 4.8,
-    "categories": ["pants", "track", "streetwear"],
-    "audience": ["women"],
-    "hasDiscount": false,
-    "isNewProduct": true,
-    "variants": [
-      { "sku": "LYR-WIDE-HGR-S", "size": "S", "color": "heather-grey", "quantity": 3 },
-      { "sku": "LYR-WIDE-HGR-M", "size": "M", "color": "heather-grey", "quantity": 5 },
-      { "sku": "LYR-WIDE-HGR-L", "size": "L", "color": "heather-grey", "quantity": 4 },
-      { "sku": "LYR-WIDE-BLK-S", "size": "S", "color": "black", "quantity": 3 },
-      { "sku": "LYR-WIDE-BLK-M", "size": "M", "color": "black", "quantity": 5 },
-      { "sku": "LYR-WIDE-BLK-L", "size": "L", "color": "black", "quantity": 4 }
-    ]
-  },
-  {
-    "img": "/products/layer-canvas-overshirt.png",
-    "title": "Canvas Overshirt",
-    "description": "Structured canvas overshirt with oversized patch pockets, metal buttons and a relaxed layering fit.",
+    "img": "/products/studio-nylon-windbreaker-011.png",
+    "title": "Studio Nylon Windbreaker",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
     "defaultPrice": 149,
     "discountPrice": 149,
     "discountPercent": 0,
-    "rating": 4.7,
-    "categories": ["jackets", "outerwear", "streetwear"],
-    "audience": ["men"],
+    "rating": 3.6,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 6,
+        "image": "/products/studio-nylon-windbreaker-011-black.png"
+      },
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 6,
+        "image": "/products/studio-nylon-windbreaker-011-black.png"
+      },
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 6,
+        "image": "/products/studio-nylon-windbreaker-011-black.png"
+      },
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 7,
+        "image": "/products/studio-nylon-windbreaker-011-black.png"
+      },
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 6,
+        "image": "/products/studio-nylon-windbreaker-011-white.png"
+      },
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 6,
+        "image": "/products/studio-nylon-windbreaker-011-white.png"
+      },
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 6,
+        "image": "/products/studio-nylon-windbreaker-011-white.png"
+      },
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 7,
+        "image": "/products/studio-nylon-windbreaker-011-white.png"
+      },
+      {
+        "sku": "LYR-STUDIONYLONWINDBRE-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/studio-nylon-windbreaker-011-cream.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/cargo-bomber-jacket-012.png",
+    "title": "Cargo Bomber Jacket",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 174,
+    "discountPrice": 174,
+    "discountPercent": 0,
+    "rating": 4.3,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 7,
+        "image": "/products/cargo-bomber-jacket-012-grey.png"
+      },
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-GREY-M",
+        "size": "M",
+        "color": "grey",
+        "quantity": 7,
+        "image": "/products/cargo-bomber-jacket-012-grey.png"
+      },
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-GREY-L",
+        "size": "L",
+        "color": "grey",
+        "quantity": 7,
+        "image": "/products/cargo-bomber-jacket-012-grey.png"
+      },
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-GREY-XL",
+        "size": "XL",
+        "color": "grey",
+        "quantity": 8,
+        "image": "/products/cargo-bomber-jacket-012-grey.png"
+      },
+      {
+        "sku": "LYR-CARGOBOMBERJACKET0-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/cargo-bomber-jacket-012-navy.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/minimal-canvas-overshirt-013.png",
+    "title": "Minimal Canvas Overshirt",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 159,
+    "discountPrice": 119,
+    "discountPercent": 25,
+    "rating": 5,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-CHARC-S",
+        "size": "S",
+        "color": "charcoal",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-CHARC-M",
+        "size": "M",
+        "color": "charcoal",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-CHARC-L",
+        "size": "L",
+        "color": "charcoal",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-CHARC-XL",
+        "size": "XL",
+        "color": "charcoal",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-MINIMALCANVASOVERS-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 8,
+        "image": "/products/minimal-canvas-overshirt-013-washed-black.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/essential-cargo-pants-014.png",
+    "title": "Essential Cargo Pants",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 154,
+    "discountPrice": 154,
+    "discountPercent": 0,
+    "rating": 4,
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
-      { "sku": "LYR-OVER-DBR-M", "size": "M", "color": "dark-brown", "quantity": 3 },
-      { "sku": "LYR-OVER-DBR-L", "size": "L", "color": "dark-brown", "quantity": 3 },
-      { "sku": "LYR-OVER-DBR-XL", "size": "XL", "color": "dark-brown", "quantity": 1 },
-      { "sku": "LYR-OVER-BLK-M", "size": "M", "color": "black", "quantity": 2 },
-      { "sku": "LYR-OVER-BLK-L", "size": "L", "color": "black", "quantity": 3 },
-      { "sku": "LYR-OVER-BLK-XL", "size": "XL", "color": "black", "quantity": 1 }
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 15,
+        "image": "/products/essential-cargo-pants-014-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 15,
+        "image": "/products/essential-cargo-pants-014-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 15,
+        "image": "/products/essential-cargo-pants-014-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 16,
+        "image": "/products/essential-cargo-pants-014-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-OLIVE-XXL",
+        "size": "XXL",
+        "color": "olive",
+        "quantity": 0,
+        "image": "/products/essential-cargo-pants-014-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-KHAKI-S",
+        "size": "S",
+        "color": "khaki",
+        "quantity": 15,
+        "image": "/products/essential-cargo-pants-014-khaki.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-KHAKI-M",
+        "size": "M",
+        "color": "khaki",
+        "quantity": 15,
+        "image": "/products/essential-cargo-pants-014-khaki.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-KHAKI-L",
+        "size": "L",
+        "color": "khaki",
+        "quantity": 15,
+        "image": "/products/essential-cargo-pants-014-khaki.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALCARGOPANT-KHAKI-XL",
+        "size": "XL",
+        "color": "khaki",
+        "quantity": 16,
+        "image": "/products/essential-cargo-pants-014-khaki.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/layered-carpenter-pants-015.png",
+    "title": "Layered Carpenter Pants",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 155,
+    "discountPrice": 155,
+    "discountPercent": 0,
+    "rating": 4.7,
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 16,
+        "image": "/products/layered-carpenter-pants-015-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 16,
+        "image": "/products/layered-carpenter-pants-015-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 16,
+        "image": "/products/layered-carpenter-pants-015-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 17,
+        "image": "/products/layered-carpenter-pants-015-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-NAVY-XXL",
+        "size": "XXL",
+        "color": "navy",
+        "quantity": 0,
+        "image": "/products/layered-carpenter-pants-015-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 16,
+        "image": "/products/layered-carpenter-pants-015-sand.png"
+      },
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 16,
+        "image": "/products/layered-carpenter-pants-015-sand.png"
+      },
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 16,
+        "image": "/products/layered-carpenter-pants-015-sand.png"
+      },
+      {
+        "sku": "LYR-LAYEREDCARPENTERPA-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 17,
+        "image": "/products/layered-carpenter-pants-015-sand.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/ribbed-track-pants-016.png",
+    "title": "Ribbed Track Pants",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 119,
+    "discountPrice": 119,
+    "discountPercent": 0,
+    "rating": 3.7,
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BURGU-M",
+        "size": "M",
+        "color": "burgundy",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BURGU-L",
+        "size": "L",
+        "color": "burgundy",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BURGU-XL",
+        "size": "XL",
+        "color": "burgundy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BURGU-XXL",
+        "size": "XXL",
+        "color": "burgundy",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-RIBBEDTRACKPANTS01-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 4
+      }
+    ]
+  },
+  {
+    "img": "/products/nylon-wide-leg-sweatpants-017.png",
+    "title": "Nylon Wide Leg Sweatpants",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 120,
+    "discountPrice": 96,
+    "discountPercent": 20,
+    "rating": 4.4,
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-WASHE-M",
+        "size": "M",
+        "color": "washed-black",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-WASHE-L",
+        "size": "L",
+        "color": "washed-black",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-WASHE-XL",
+        "size": "XL",
+        "color": "washed-black",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-WASHE-XXL",
+        "size": "XXL",
+        "color": "washed-black",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-HEATH-M",
+        "size": "M",
+        "color": "heather-grey",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-HEATH-L",
+        "size": "L",
+        "color": "heather-grey",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONWIDELEGSWEATP-HEATH-XL",
+        "size": "XL",
+        "color": "heather-grey",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "img": "/products/canvas-logo-cap-018.png",
+    "title": "Canvas Logo Cap",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 39,
+    "discountPrice": 39,
+    "discountPercent": 0,
+    "rating": 3.4,
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CANVASLOGOCAP018-DARKB-OS",
+        "size": "ONE_SIZE",
+        "color": "dark-brown",
+        "quantity": 0,
+        "image": "/products/canvas-logo-cap-018-dark-brown.png"
+      },
+      {
+        "sku": "LYR-CANVASLOGOCAP018-SAND-OS",
+        "size": "ONE_SIZE",
+        "color": "sand",
+        "quantity": 0,
+        "image": "/products/canvas-logo-cap-018-sand.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/soft-five-panel-cap-019.png",
+    "title": "Soft Five Panel Cap",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 60,
+    "discountPrice": 42,
+    "discountPercent": 30,
+    "rating": 4.1,
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SOFTFIVEPANELCAP01-CREAM-OS",
+        "size": "ONE_SIZE",
+        "color": "cream",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-SOFTFIVEPANELCAP01-OLIVE-OS",
+        "size": "ONE_SIZE",
+        "color": "olive",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "img": "/products/structured-essential-beanie-020.png",
+    "title": "Structured Essential Beanie",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 39,
+    "discountPrice": 39,
+    "discountPercent": 0,
+    "rating": 4.8,
+    "categories": [
+      "accessories",
+      "beanies",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-STRUCTUREDESSENTIA-WHITE-OS",
+        "size": "ONE_SIZE",
+        "color": "white",
+        "quantity": 4,
+        "image": "/products/structured-essential-beanie-020-white.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDESSENTIA-NAVY-OS",
+        "size": "ONE_SIZE",
+        "color": "navy",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "img": "/products/core-ribbed-beanie-021.png",
+    "title": "Core Ribbed Beanie",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 25,
+    "discountPrice": 21,
+    "discountPercent": 15,
+    "rating": 3.8,
+    "categories": [
+      "accessories",
+      "beanies",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-CORERIBBEDBEANIE02-BLACK-OS",
+        "size": "ONE_SIZE",
+        "color": "black",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-CORERIBBEDBEANIE02-WHITE-OS",
+        "size": "ONE_SIZE",
+        "color": "white",
+        "quantity": 7
+      }
+    ]
+  },
+  {
+    "img": "/products/washed-crossbody-utility-bag-022.png",
+    "title": "Washed Crossbody Utility Bag",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 70,
+    "discountPrice": 70,
+    "discountPercent": 0,
+    "rating": 4.5,
+    "categories": [
+      "accessories",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-WASHEDCROSSBODYUTI-BLACK-OS",
+        "size": "ONE_SIZE",
+        "color": "black",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-WASHEDCROSSBODYUTI-GREY-OS",
+        "size": "ONE_SIZE",
+        "color": "grey",
+        "quantity": 8
+      }
+    ]
+  },
+  {
+    "img": "/products/utility-canvas-tote-bag-023.png",
+    "title": "Utility Canvas Tote Bag",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 49,
+    "discountPrice": 49,
+    "discountPercent": 0,
+    "rating": 3.5,
+    "categories": [
+      "accessories",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-UTILITYCANVASTOTEB-CHARC-OS",
+        "size": "ONE_SIZE",
+        "color": "charcoal",
+        "quantity": 1,
+        "image": "/products/utility-canvas-tote-bag-023-charcoal.png"
+      },
+      {
+        "sku": "LYR-UTILITYCANVASTOTEB-CREAM-OS",
+        "size": "ONE_SIZE",
+        "color": "cream",
+        "quantity": 0,
+        "image": "/products/utility-canvas-tote-bag-023-cream.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/city-unisex-fleece-vest-024.png",
+    "title": "City Unisex Fleece Vest",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 140,
+    "discountPrice": 140,
+    "discountPercent": 0,
+    "rating": 4.2,
+    "categories": [
+      "outerwear",
+      "streetwear",
+      "unisex"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-KHAKI-S",
+        "size": "S",
+        "color": "khaki",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-KHAKI-M",
+        "size": "M",
+        "color": "khaki",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-KHAKI-L",
+        "size": "L",
+        "color": "khaki",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-KHAKI-XL",
+        "size": "XL",
+        "color": "khaki",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-CITYUNISEXFLEECEVE-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 9
+      }
+    ]
+  },
+  {
+    "img": "/products/relaxed-everyday-crewneck-025.png",
+    "title": "Relaxed Everyday Crewneck",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 109,
+    "discountPrice": 71,
+    "discountPercent": 35,
+    "rating": 4.9,
+    "categories": [
+      "sweatshirts",
+      "basics"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-RELAXEDEVERYDAYCRE-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDEVERYDAYCRE-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDEVERYDAYCRE-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDEVERYDAYCRE-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-RELAXEDEVERYDAYCRE-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDEVERYDAYCRE-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDEVERYDAYCRE-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDEVERYDAYCRE-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 11
+      }
+    ]
+  },
+  {
+    "img": "/products/boxy-oversized-hoodie-026.png",
+    "title": "Boxy Oversized Hoodie",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 119,
+    "discountPrice": 119,
+    "discountPercent": 0,
+    "rating": 3.9,
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 3,
+        "image": "/products/boxy-oversized-hoodie-026-burgundy.png"
+      },
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-BURGU-M",
+        "size": "M",
+        "color": "burgundy",
+        "quantity": 3,
+        "image": "/products/boxy-oversized-hoodie-026-burgundy.png"
+      },
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-BURGU-L",
+        "size": "L",
+        "color": "burgundy",
+        "quantity": 3,
+        "image": "/products/boxy-oversized-hoodie-026-burgundy.png"
+      },
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-BURGU-XL",
+        "size": "XL",
+        "color": "burgundy",
+        "quantity": 0,
+        "image": "/products/boxy-oversized-hoodie-026-burgundy.png"
+      },
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/boxy-oversized-hoodie-026-black.png"
+      },
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/boxy-oversized-hoodie-026-black.png"
+      },
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/boxy-oversized-hoodie-026-black.png"
+      },
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 16,
+        "image": "/products/boxy-oversized-hoodie-026-black.png"
+      },
+      {
+        "sku": "LYR-BOXYOVERSIZEDHOODI-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 11
+      }
+    ]
+  },
+  {
+    "img": "/products/heavyweight-zip-hoodie-027.png",
+    "title": "Heavyweight Zip Hoodie",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 134,
+    "discountPrice": 134,
+    "discountPercent": 0,
+    "rating": 4.6,
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-WASHE-M",
+        "size": "M",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-WASHE-L",
+        "size": "L",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-WASHE-XL",
+        "size": "XL",
+        "color": "washed-black",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-HEATH-M",
+        "size": "M",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-HEATH-L",
+        "size": "L",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-HEATH-XL",
+        "size": "XL",
+        "color": "heather-grey",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTZIPHOOD-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "img": "/products/tonal-heavyweight-box-tee-028.png",
+    "title": "Tonal Heavyweight Box Tee",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 69,
+    "discountPrice": 52,
+    "discountPercent": 25,
+    "rating": 3.6,
+    "categories": [
+      "t-shirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-DARKB-XS",
+        "size": "XS",
+        "color": "dark-brown",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-DARKB-S",
+        "size": "S",
+        "color": "dark-brown",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-DARKB-M",
+        "size": "M",
+        "color": "dark-brown",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-DARKB-L",
+        "size": "L",
+        "color": "dark-brown",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-DARKB-XL",
+        "size": "XL",
+        "color": "dark-brown",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-DARKB-XXL",
+        "size": "XXL",
+        "color": "dark-brown",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-SAND-XS",
+        "size": "XS",
+        "color": "sand",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-TONALHEAVYWEIGHTBO-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "img": "/products/archive-graphic-t-shirt-029.png",
+    "title": "Archive Graphic T-Shirt",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 60,
+    "discountPrice": 42,
+    "discountPercent": 30,
+    "rating": 4.3,
+    "categories": [
+      "t-shirts",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-CREAM-XS",
+        "size": "XS",
+        "color": "cream",
+        "quantity": 0,
+        "image": "/products/archive-graphic-t-shirt-029-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/archive-graphic-t-shirt-029-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/archive-graphic-t-shirt-029-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/archive-graphic-t-shirt-029-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 0,
+        "image": "/products/archive-graphic-t-shirt-029-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-CREAM-XXL",
+        "size": "XXL",
+        "color": "cream",
+        "quantity": 8,
+        "image": "/products/archive-graphic-t-shirt-029-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-OLIVE-XS",
+        "size": "XS",
+        "color": "olive",
+        "quantity": 0,
+        "image": "/products/archive-graphic-t-shirt-029-olive.png"
+      },
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 6,
+        "image": "/products/archive-graphic-t-shirt-029-olive.png"
+      },
+      {
+        "sku": "LYR-ARCHIVEGRAPHICTSHI-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 6,
+        "image": "/products/archive-graphic-t-shirt-029-olive.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/seasonal-ribbed-longsleeve-030.png",
+    "title": "Seasonal Ribbed Longsleeve",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 85,
+    "discountPrice": 85,
+    "discountPercent": 0,
+    "rating": 5,
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "basics"
+    ],
+    "audience": [
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-WHITE-XS",
+        "size": "XS",
+        "color": "white",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-WHITE-XXL",
+        "size": "XXL",
+        "color": "white",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-NAVY-XS",
+        "size": "XS",
+        "color": "navy",
+        "quantity": 0,
+        "image": "/products/seasonal-ribbed-longsleeve-030-navy.png"
+      },
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/seasonal-ribbed-longsleeve-030-navy.png"
+      },
+      {
+        "sku": "LYR-SEASONALRIBBEDLONG-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/seasonal-ribbed-longsleeve-030-navy.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/studio-thermal-long-sleeve-031.png",
+    "title": "Studio Thermal Long Sleeve",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 79,
+    "discountPrice": 79,
+    "discountPercent": 0,
+    "rating": 4,
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-BLACK-XS",
+        "size": "XS",
+        "color": "black",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-BLACK-XXL",
+        "size": "XXL",
+        "color": "black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-WHITE-XS",
+        "size": "XS",
+        "color": "white",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTHERMALLONGS-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "img": "/products/cargo-minimal-sweatshirt-032.png",
+    "title": "Cargo Minimal Sweatshirt",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 94,
+    "discountPrice": 94,
+    "discountPercent": 0,
+    "rating": 4.7,
+    "categories": [
+      "sweatshirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CARGOMINIMALSWEATS-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/cargo-minimal-sweatshirt-032-black.png"
+      },
+      {
+        "sku": "LYR-CARGOMINIMALSWEATS-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/cargo-minimal-sweatshirt-032-black.png"
+      },
+      {
+        "sku": "LYR-CARGOMINIMALSWEATS-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/cargo-minimal-sweatshirt-032-black.png"
+      },
+      {
+        "sku": "LYR-CARGOMINIMALSWEATS-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 16,
+        "image": "/products/cargo-minimal-sweatshirt-032-black.png"
+      },
+      {
+        "sku": "LYR-CARGOMINIMALSWEATS-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CARGOMINIMALSWEATS-GREY-M",
+        "size": "M",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CARGOMINIMALSWEATS-GREY-L",
+        "size": "L",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CARGOMINIMALSWEATS-GREY-XL",
+        "size": "XL",
+        "color": "grey",
+        "quantity": 14
+      }
+    ]
+  },
+  {
+    "img": "/products/minimal-quarter-zip-sweatshirt-033.png",
+    "title": "Minimal Quarter Zip Sweatshirt",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 115,
+    "discountPrice": 86,
+    "discountPercent": 25,
+    "rating": 3.7,
+    "categories": [
+      "sweatshirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-CHARC-S",
+        "size": "S",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-CHARC-M",
+        "size": "M",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-CHARC-L",
+        "size": "L",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-CHARC-XL",
+        "size": "XL",
+        "color": "charcoal",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-MINIMALQUARTERZIPS-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "img": "/products/essential-utility-jacket-034.png",
+    "title": "Essential Utility Jacket",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 214,
+    "discountPrice": 214,
+    "discountPercent": 0,
+    "rating": 4.4,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-KHAKI-S",
+        "size": "S",
+        "color": "khaki",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-KHAKI-M",
+        "size": "M",
+        "color": "khaki",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-KHAKI-L",
+        "size": "L",
+        "color": "khaki",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-KHAKI-XL",
+        "size": "XL",
+        "color": "khaki",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-ESSENTIALUTILITYJA-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "img": "/products/layered-coach-jacket-035.png",
+    "title": "Layered Coach Jacket",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 179,
+    "discountPrice": 179,
+    "discountPercent": 0,
+    "rating": 3.4,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-LAYEREDCOACHJACKET-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/ribbed-nylon-windbreaker-036.png",
+    "title": "Ribbed Nylon Windbreaker",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 149,
+    "discountPrice": 149,
+    "discountPercent": 0,
+    "rating": 4.1,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-BURGU-M",
+        "size": "M",
+        "color": "burgundy",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-BURGU-L",
+        "size": "L",
+        "color": "burgundy",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-BURGU-XL",
+        "size": "XL",
+        "color": "burgundy",
+        "quantity": 16
+      },
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-RIBBEDNYLONWINDBRE-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 9
+      }
+    ]
+  },
+  {
+    "img": "/products/nylon-bomber-jacket-037.png",
+    "title": "Nylon Bomber Jacket",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 184,
+    "discountPrice": 147,
+    "discountPercent": 20,
+    "rating": 4.8,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 0,
+        "image": "/products/nylon-bomber-jacket-037-washed-black.png"
+      },
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-WASHE-M",
+        "size": "M",
+        "color": "washed-black",
+        "quantity": 0,
+        "image": "/products/nylon-bomber-jacket-037-washed-black.png"
+      },
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-WASHE-L",
+        "size": "L",
+        "color": "washed-black",
+        "quantity": 0,
+        "image": "/products/nylon-bomber-jacket-037-washed-black.png"
+      },
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-WASHE-XL",
+        "size": "XL",
+        "color": "washed-black",
+        "quantity": 9,
+        "image": "/products/nylon-bomber-jacket-037-washed-black.png"
+      },
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 0,
+        "image": "/products/nylon-bomber-jacket-037-heather-grey.png"
+      },
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-HEATH-M",
+        "size": "M",
+        "color": "heather-grey",
+        "quantity": 0,
+        "image": "/products/nylon-bomber-jacket-037-heather-grey.png"
+      },
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-HEATH-L",
+        "size": "L",
+        "color": "heather-grey",
+        "quantity": 0,
+        "image": "/products/nylon-bomber-jacket-037-heather-grey.png"
+      },
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-HEATH-XL",
+        "size": "XL",
+        "color": "heather-grey",
+        "quantity": 9,
+        "image": "/products/nylon-bomber-jacket-037-heather-grey.png"
+      },
+      {
+        "sku": "LYR-NYLONBOMBERJACKET0-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/canvas-canvas-overshirt-038.png",
+    "title": "Canvas Canvas Overshirt",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 149,
+    "discountPrice": 149,
+    "discountPercent": 0,
+    "rating": 3.8,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-DARKB-S",
+        "size": "S",
+        "color": "dark-brown",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-DARKB-M",
+        "size": "M",
+        "color": "dark-brown",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-DARKB-L",
+        "size": "L",
+        "color": "dark-brown",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-DARKB-XL",
+        "size": "XL",
+        "color": "dark-brown",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-CANVASCANVASOVERSH-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/soft-cargo-pants-039.png",
+    "title": "Soft Cargo Pants",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 154,
+    "discountPrice": 154,
+    "discountPercent": 0,
+    "rating": 4.5,
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-CREAM-XXL",
+        "size": "XXL",
+        "color": "cream",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTCARGOPANTS039-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "img": "/products/structured-carpenter-pants-040.png",
+    "title": "Structured Carpenter Pants",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 165,
+    "discountPrice": 165,
+    "discountPercent": 0,
+    "rating": 3.5,
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-WHITE-XXL",
+        "size": "XXL",
+        "color": "white",
+        "quantity": 5
+      },
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-STRUCTUREDCARPENTE-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "img": "/products/core-track-pants-041.png",
+    "title": "Core Track Pants",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 109,
+    "discountPrice": 93,
+    "discountPercent": 15,
+    "rating": 4.2,
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-CORETRACKPANTS041-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 6,
+        "image": "/products/core-track-pants-041-black.png"
+      },
+      {
+        "sku": "LYR-CORETRACKPANTS041-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 6,
+        "image": "/products/core-track-pants-041-black.png"
+      },
+      {
+        "sku": "LYR-CORETRACKPANTS041-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 6,
+        "image": "/products/core-track-pants-041-black.png"
+      },
+      {
+        "sku": "LYR-CORETRACKPANTS041-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 7,
+        "image": "/products/core-track-pants-041-black.png"
+      },
+      {
+        "sku": "LYR-CORETRACKPANTS041-BLACK-XXL",
+        "size": "XXL",
+        "color": "black",
+        "quantity": 8,
+        "image": "/products/core-track-pants-041-black.png"
+      },
+      {
+        "sku": "LYR-CORETRACKPANTS041-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 6,
+        "image": "/products/core-track-pants-041-white.png"
+      },
+      {
+        "sku": "LYR-CORETRACKPANTS041-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 6,
+        "image": "/products/core-track-pants-041-white.png"
+      },
+      {
+        "sku": "LYR-CORETRACKPANTS041-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 6,
+        "image": "/products/core-track-pants-041-white.png"
+      },
+      {
+        "sku": "LYR-CORETRACKPANTS041-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 7,
+        "image": "/products/core-track-pants-041-white.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/washed-wide-leg-sweatpants-042.png",
+    "title": "Washed Wide Leg Sweatpants",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 120,
+    "discountPrice": 120,
+    "discountPercent": 0,
+    "rating": 4.9,
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-BLACK-XXL",
+        "size": "XXL",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 7,
+        "image": "/products/washed-wide-leg-sweatpants-042-grey.png"
+      },
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-GREY-M",
+        "size": "M",
+        "color": "grey",
+        "quantity": 7,
+        "image": "/products/washed-wide-leg-sweatpants-042-grey.png"
+      },
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-GREY-L",
+        "size": "L",
+        "color": "grey",
+        "quantity": 7,
+        "image": "/products/washed-wide-leg-sweatpants-042-grey.png"
+      },
+      {
+        "sku": "LYR-WASHEDWIDELEGSWEAT-GREY-XL",
+        "size": "XL",
+        "color": "grey",
+        "quantity": 8,
+        "image": "/products/washed-wide-leg-sweatpants-042-grey.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/utility-logo-cap-043.png",
+    "title": "Utility Logo Cap",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 49,
+    "discountPrice": 49,
+    "discountPercent": 0,
+    "rating": 3.9,
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-UTILITYLOGOCAP043-CHARC-OS",
+        "size": "ONE_SIZE",
+        "color": "charcoal",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-UTILITYLOGOCAP043-CREAM-OS",
+        "size": "ONE_SIZE",
+        "color": "cream",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "img": "/products/city-five-panel-cap-044.png",
+    "title": "City Five Panel Cap",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 50,
+    "discountPrice": 50,
+    "discountPercent": 0,
+    "rating": 4.6,
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CITYFIVEPANELCAP04-OLIVE-OS",
+        "size": "ONE_SIZE",
+        "color": "olive",
+        "quantity": 0,
+        "image": "/products/city-five-panel-cap-044-olive.png"
+      },
+      {
+        "sku": "LYR-CITYFIVEPANELCAP04-KHAKI-OS",
+        "size": "ONE_SIZE",
+        "color": "khaki",
+        "quantity": 0,
+        "image": "/products/city-five-panel-cap-044-khaki.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/relaxed-essential-beanie-045.png",
+    "title": "Relaxed Essential Beanie",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 39,
+    "discountPrice": 25,
+    "discountPercent": 35,
+    "rating": 3.6,
+    "categories": [
+      "accessories",
+      "beanies",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-RELAXEDESSENTIALBE-NAVY-OS",
+        "size": "ONE_SIZE",
+        "color": "navy",
+        "quantity": 0,
+        "image": "/products/relaxed-essential-beanie-045-navy.png"
+      },
+      {
+        "sku": "LYR-RELAXEDESSENTIALBE-SAND-OS",
+        "size": "ONE_SIZE",
+        "color": "sand",
+        "quantity": 0,
+        "image": "/products/relaxed-essential-beanie-045-sand.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/boxy-ribbed-beanie-046.png",
+    "title": "Boxy Ribbed Beanie",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 35,
+    "discountPrice": 30,
+    "discountPercent": 15,
+    "rating": 4.3,
+    "categories": [
+      "accessories",
+      "beanies",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-BOXYRIBBEDBEANIE04-BURGU-OS",
+        "size": "ONE_SIZE",
+        "color": "burgundy",
+        "quantity": 16
+      },
+      {
+        "sku": "LYR-BOXYRIBBEDBEANIE04-BLACK-OS",
+        "size": "ONE_SIZE",
+        "color": "black",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "img": "/products/heavyweight-crossbody-utility-bag-047.png",
+    "title": "Heavyweight Crossbody Utility Bag",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 60,
+    "discountPrice": 60,
+    "discountPercent": 0,
+    "rating": 5,
+    "categories": [
+      "accessories",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-HEAVYWEIGHTCROSSBO-WASHE-OS",
+        "size": "ONE_SIZE",
+        "color": "washed-black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTCROSSBO-HEATH-OS",
+        "size": "ONE_SIZE",
+        "color": "heather-grey",
+        "quantity": 9
+      }
+    ]
+  },
+  {
+    "img": "/products/tonal-canvas-tote-bag-048.png",
+    "title": "Tonal Canvas Tote Bag",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 49,
+    "discountPrice": 49,
+    "discountPercent": 0,
+    "rating": 4,
+    "categories": [
+      "accessories",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-TONALCANVASTOTEBAG-DARKB-OS",
+        "size": "ONE_SIZE",
+        "color": "dark-brown",
+        "quantity": 8,
+        "image": "/products/tonal-canvas-tote-bag-048-dark-brown.png"
+      },
+      {
+        "sku": "LYR-TONALCANVASTOTEBAG-SAND-OS",
+        "size": "ONE_SIZE",
+        "color": "sand",
+        "quantity": 14,
+        "image": "/products/tonal-canvas-tote-bag-048-sand.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/archive-unisex-fleece-vest-049.png",
+    "title": "Archive Unisex Fleece Vest",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 150,
+    "discountPrice": 105,
+    "discountPercent": 30,
+    "rating": 4.7,
+    "categories": [
+      "outerwear",
+      "streetwear",
+      "unisex"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-ARCHIVEUNISEXFLEEC-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "img": "/products/seasonal-everyday-crewneck-050.png",
+    "title": "Seasonal Everyday Crewneck",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 99,
+    "discountPrice": 99,
+    "discountPercent": 0,
+    "rating": 3.7,
+    "categories": [
+      "sweatshirts",
+      "basics"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 15,
+        "image": "/products/seasonal-everyday-crewneck-050-white.png"
+      },
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 15,
+        "image": "/products/seasonal-everyday-crewneck-050-white.png"
+      },
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 15,
+        "image": "/products/seasonal-everyday-crewneck-050-white.png"
+      },
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 0,
+        "image": "/products/seasonal-everyday-crewneck-050-white.png"
+      },
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-SEASONALEVERYDAYCR-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 15,
+        "image": "/products/seasonal-everyday-crewneck-050-cream.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/studio-oversized-hoodie-051.png",
+    "title": "Studio Oversized Hoodie",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 119,
+    "discountPrice": 119,
+    "discountPercent": 0,
+    "rating": 4.4,
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-STUDIOOVERSIZEDHOO-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 16,
+        "image": "/products/studio-oversized-hoodie-051-navy.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/cargo-zip-hoodie-052.png",
+    "title": "Cargo Zip Hoodie",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 144,
+    "discountPrice": 144,
+    "discountPercent": 0,
+    "rating": 3.4,
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-GREY-M",
+        "size": "M",
+        "color": "grey",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-GREY-L",
+        "size": "L",
+        "color": "grey",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-GREY-XL",
+        "size": "XL",
+        "color": "grey",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOZIPHOODIE052-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 0,
+        "image": "/products/cargo-zip-hoodie-052-washed-black.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/minimal-heavyweight-box-tee-053.png",
+    "title": "Minimal Heavyweight Box Tee",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 59,
+    "discountPrice": 44,
+    "discountPercent": 25,
+    "rating": 4.1,
+    "categories": [
+      "t-shirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CHARC-XS",
+        "size": "XS",
+        "color": "charcoal",
+        "quantity": 13,
+        "image": "/products/minimal-heavyweight-box-tee-053-charcoal.png"
+      },
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CHARC-S",
+        "size": "S",
+        "color": "charcoal",
+        "quantity": 12,
+        "image": "/products/minimal-heavyweight-box-tee-053-charcoal.png"
+      },
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CHARC-M",
+        "size": "M",
+        "color": "charcoal",
+        "quantity": 12,
+        "image": "/products/minimal-heavyweight-box-tee-053-charcoal.png"
+      },
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CHARC-L",
+        "size": "L",
+        "color": "charcoal",
+        "quantity": 12,
+        "image": "/products/minimal-heavyweight-box-tee-053-charcoal.png"
+      },
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CHARC-XL",
+        "size": "XL",
+        "color": "charcoal",
+        "quantity": 13,
+        "image": "/products/minimal-heavyweight-box-tee-053-charcoal.png"
+      },
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CHARC-XXL",
+        "size": "XXL",
+        "color": "charcoal",
+        "quantity": 0,
+        "image": "/products/minimal-heavyweight-box-tee-053-charcoal.png"
+      },
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CREAM-XS",
+        "size": "XS",
+        "color": "cream",
+        "quantity": 7,
+        "image": "/products/minimal-heavyweight-box-tee-053-cream.png"
+      },
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/minimal-heavyweight-box-tee-053-cream.png"
+      },
+      {
+        "sku": "LYR-MINIMALHEAVYWEIGHT-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/minimal-heavyweight-box-tee-053-cream.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/essential-graphic-t-shirt-054.png",
+    "title": "Essential Graphic T-Shirt",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 60,
+    "discountPrice": 60,
+    "discountPercent": 0,
+    "rating": 4.8,
+    "categories": [
+      "t-shirts",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-OLIVE-XS",
+        "size": "XS",
+        "color": "olive",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-OLIVE-XXL",
+        "size": "XXL",
+        "color": "olive",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-KHAKI-XS",
+        "size": "XS",
+        "color": "khaki",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-KHAKI-S",
+        "size": "S",
+        "color": "khaki",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-ESSENTIALGRAPHICTS-KHAKI-M",
+        "size": "M",
+        "color": "khaki",
+        "quantity": 9
+      }
+    ]
+  },
+  {
+    "img": "/products/layered-ribbed-longsleeve-055.png",
+    "title": "Layered Ribbed Longsleeve",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 95,
+    "discountPrice": 62,
+    "discountPercent": 35,
+    "rating": 3.8,
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "basics"
+    ],
+    "audience": [
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-NAVY-XS",
+        "size": "XS",
+        "color": "navy",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-NAVY-XXL",
+        "size": "XXL",
+        "color": "navy",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-SAND-XS",
+        "size": "XS",
+        "color": "sand",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-LAYEREDRIBBEDLONGS-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "img": "/products/ribbed-thermal-long-sleeve-056.png",
+    "title": "Ribbed Thermal Long Sleeve",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 69,
+    "discountPrice": 69,
+    "discountPercent": 0,
+    "rating": 4.5,
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BURGU-XS",
+        "size": "XS",
+        "color": "burgundy",
+        "quantity": 4,
+        "image": "/products/ribbed-thermal-long-sleeve-056-burgundy.png"
+      },
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 3,
+        "image": "/products/ribbed-thermal-long-sleeve-056-burgundy.png"
+      },
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BURGU-M",
+        "size": "M",
+        "color": "burgundy",
+        "quantity": 3,
+        "image": "/products/ribbed-thermal-long-sleeve-056-burgundy.png"
+      },
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BURGU-L",
+        "size": "L",
+        "color": "burgundy",
+        "quantity": 3,
+        "image": "/products/ribbed-thermal-long-sleeve-056-burgundy.png"
+      },
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BURGU-XL",
+        "size": "XL",
+        "color": "burgundy",
+        "quantity": 4,
+        "image": "/products/ribbed-thermal-long-sleeve-056-burgundy.png"
+      },
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BURGU-XXL",
+        "size": "XXL",
+        "color": "burgundy",
+        "quantity": 5,
+        "image": "/products/ribbed-thermal-long-sleeve-056-burgundy.png"
+      },
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BLACK-XS",
+        "size": "XS",
+        "color": "black",
+        "quantity": 16,
+        "image": "/products/ribbed-thermal-long-sleeve-056-black.png"
+      },
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/ribbed-thermal-long-sleeve-056-black.png"
+      },
+      {
+        "sku": "LYR-RIBBEDTHERMALLONGS-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/ribbed-thermal-long-sleeve-056-black.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/nylon-minimal-sweatshirt-057.png",
+    "title": "Nylon Minimal Sweatshirt",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 94,
+    "discountPrice": 75,
+    "discountPercent": 20,
+    "rating": 3.5,
+    "categories": [
+      "sweatshirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-WASHE-M",
+        "size": "M",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-WASHE-L",
+        "size": "L",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-WASHE-XL",
+        "size": "XL",
+        "color": "washed-black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-HEATH-M",
+        "size": "M",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-HEATH-L",
+        "size": "L",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-HEATH-XL",
+        "size": "XL",
+        "color": "heather-grey",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-NYLONMINIMALSWEATS-DARKB-S",
+        "size": "S",
+        "color": "dark-brown",
+        "quantity": 10,
+        "image": "/products/nylon-minimal-sweatshirt-057-dark-brown.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/canvas-quarter-zip-sweatshirt-058.png",
+    "title": "Canvas Quarter Zip Sweatshirt",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 125,
+    "discountPrice": 125,
+    "discountPercent": 0,
+    "rating": 4.2,
+    "categories": [
+      "sweatshirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-DARKB-S",
+        "size": "S",
+        "color": "dark-brown",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-DARKB-M",
+        "size": "M",
+        "color": "dark-brown",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-DARKB-L",
+        "size": "L",
+        "color": "dark-brown",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-DARKB-XL",
+        "size": "XL",
+        "color": "dark-brown",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CANVASQUARTERZIPSW-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "img": "/products/soft-utility-jacket-059.png",
+    "title": "Soft Utility Jacket",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 204,
+    "discountPrice": 204,
+    "discountPercent": 0,
+    "rating": 4.9,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SOFTUTILITYJACKET0-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/soft-utility-jacket-059-cream.png"
+      },
+      {
+        "sku": "LYR-SOFTUTILITYJACKET0-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/soft-utility-jacket-059-cream.png"
+      },
+      {
+        "sku": "LYR-SOFTUTILITYJACKET0-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/soft-utility-jacket-059-cream.png"
+      },
+      {
+        "sku": "LYR-SOFTUTILITYJACKET0-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 7,
+        "image": "/products/soft-utility-jacket-059-cream.png"
+      },
+      {
+        "sku": "LYR-SOFTUTILITYJACKET0-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 6,
+        "image": "/products/soft-utility-jacket-059-olive.png"
+      },
+      {
+        "sku": "LYR-SOFTUTILITYJACKET0-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 6,
+        "image": "/products/soft-utility-jacket-059-olive.png"
+      },
+      {
+        "sku": "LYR-SOFTUTILITYJACKET0-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 6,
+        "image": "/products/soft-utility-jacket-059-olive.png"
+      },
+      {
+        "sku": "LYR-SOFTUTILITYJACKET0-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 7,
+        "image": "/products/soft-utility-jacket-059-olive.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/structured-coach-jacket-060.png",
+    "title": "Structured Coach Jacket",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 179,
+    "discountPrice": 179,
+    "discountPercent": 0,
+    "rating": 3.9,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/structured-coach-jacket-060-navy.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/structured-coach-jacket-060-navy.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/structured-coach-jacket-060-navy.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 8,
+        "image": "/products/structured-coach-jacket-060-navy.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDCOACHJAC-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 7,
+        "image": "/products/structured-coach-jacket-060-sand.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/core-nylon-windbreaker-061.png",
+    "title": "Core Nylon Windbreaker",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 159,
+    "discountPrice": 135,
+    "discountPercent": 15,
+    "rating": 4.6,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CORENYLONWINDBREAK-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 8,
+        "image": "/products/core-nylon-windbreaker-061-heather-grey.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/washed-bomber-jacket-062.png",
+    "title": "Washed Bomber Jacket",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 174,
+    "discountPrice": 174,
+    "discountPercent": 0,
+    "rating": 3.6,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/washed-bomber-jacket-062-black.png"
+      },
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/washed-bomber-jacket-062-black.png"
+      },
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/washed-bomber-jacket-062-black.png"
+      },
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 16,
+        "image": "/products/washed-bomber-jacket-062-black.png"
+      },
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-GREY-M",
+        "size": "M",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-GREY-L",
+        "size": "L",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-GREY-XL",
+        "size": "XL",
+        "color": "grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-WASHEDBOMBERJACKET-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 15,
+        "image": "/products/washed-bomber-jacket-062-white.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/utility-canvas-overshirt-063.png",
+    "title": "Utility Canvas Overshirt",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 149,
+    "discountPrice": 149,
+    "discountPercent": 0,
+    "rating": 4.3,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-UTILITYCANVASOVERS-CHARC-S",
+        "size": "S",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-UTILITYCANVASOVERS-CHARC-M",
+        "size": "M",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-UTILITYCANVASOVERS-CHARC-L",
+        "size": "L",
+        "color": "charcoal",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-UTILITYCANVASOVERS-CHARC-XL",
+        "size": "XL",
+        "color": "charcoal",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-UTILITYCANVASOVERS-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-UTILITYCANVASOVERS-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-UTILITYCANVASOVERS-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-UTILITYCANVASOVERS-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "img": "/products/city-cargo-pants-064.png",
+    "title": "City Cargo Pants",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 164,
+    "discountPrice": 115,
+    "discountPercent": 30,
+    "rating": 5,
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CITYCARGOPANTS064-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYCARGOPANTS064-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYCARGOPANTS064-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYCARGOPANTS064-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CITYCARGOPANTS064-OLIVE-XXL",
+        "size": "XXL",
+        "color": "olive",
+        "quantity": 5
+      },
+      {
+        "sku": "LYR-CITYCARGOPANTS064-KHAKI-S",
+        "size": "S",
+        "color": "khaki",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYCARGOPANTS064-KHAKI-M",
+        "size": "M",
+        "color": "khaki",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYCARGOPANTS064-KHAKI-L",
+        "size": "L",
+        "color": "khaki",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-CITYCARGOPANTS064-KHAKI-XL",
+        "size": "XL",
+        "color": "khaki",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/relaxed-carpenter-pants-065.png",
+    "title": "Relaxed Carpenter Pants",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 155,
+    "discountPrice": 101,
+    "discountPercent": 35,
+    "rating": 4,
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-NAVY-XXL",
+        "size": "XXL",
+        "color": "navy",
+        "quantity": 6
+      },
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RELAXEDCARPENTERPA-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/boxy-track-pants-066.png",
+    "title": "Boxy Track Pants",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 109,
+    "discountPrice": 109,
+    "discountPercent": 0,
+    "rating": 4.7,
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BURGU-M",
+        "size": "M",
+        "color": "burgundy",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BURGU-L",
+        "size": "L",
+        "color": "burgundy",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BURGU-XL",
+        "size": "XL",
+        "color": "burgundy",
+        "quantity": 16
+      },
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BURGU-XXL",
+        "size": "XXL",
+        "color": "burgundy",
+        "quantity": 17
+      },
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-BOXYTRACKPANTS066-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "img": "/products/heavyweight-wide-leg-sweatpants-067.png",
+    "title": "Heavyweight Wide Leg Sweatpants",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 130,
+    "discountPrice": 130,
+    "discountPercent": 0,
+    "rating": 3.7,
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 8,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-WASHE-M",
+        "size": "M",
+        "color": "washed-black",
+        "quantity": 8,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-WASHE-L",
+        "size": "L",
+        "color": "washed-black",
+        "quantity": 8,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-WASHE-XL",
+        "size": "XL",
+        "color": "washed-black",
+        "quantity": 9,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-WASHE-XXL",
+        "size": "XXL",
+        "color": "washed-black",
+        "quantity": 10,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-washed-black.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 8,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-heather-grey.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-HEATH-M",
+        "size": "M",
+        "color": "heather-grey",
+        "quantity": 8,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-heather-grey.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-HEATH-L",
+        "size": "L",
+        "color": "heather-grey",
+        "quantity": 8,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-heather-grey.png"
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTWIDELEG-HEATH-XL",
+        "size": "XL",
+        "color": "heather-grey",
+        "quantity": 9,
+        "image": "/products/heavyweight-wide-leg-sweatpants-067-heather-grey.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/tonal-logo-cap-068.png",
+    "title": "Tonal Logo Cap",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 39,
+    "discountPrice": 39,
+    "discountPercent": 0,
+    "rating": 4.4,
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-TONALLOGOCAP068-DARKB-OS",
+        "size": "ONE_SIZE",
+        "color": "dark-brown",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-TONALLOGOCAP068-SAND-OS",
+        "size": "ONE_SIZE",
+        "color": "sand",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "img": "/products/archive-five-panel-cap-069.png",
+    "title": "Archive Five Panel Cap",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 50,
+    "discountPrice": 35,
+    "discountPercent": 30,
+    "rating": 3.4,
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-ARCHIVEFIVEPANELCA-CREAM-OS",
+        "size": "ONE_SIZE",
+        "color": "cream",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-ARCHIVEFIVEPANELCA-OLIVE-OS",
+        "size": "ONE_SIZE",
+        "color": "olive",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/seasonal-essential-beanie-070.png",
+    "title": "Seasonal Essential Beanie",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 49,
+    "discountPrice": 49,
+    "discountPercent": 0,
+    "rating": 4.1,
+    "categories": [
+      "accessories",
+      "beanies",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SEASONALESSENTIALB-WHITE-OS",
+        "size": "ONE_SIZE",
+        "color": "white",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-SEASONALESSENTIALB-NAVY-OS",
+        "size": "ONE_SIZE",
+        "color": "navy",
+        "quantity": 8
+      }
+    ]
+  },
+  {
+    "img": "/products/studio-ribbed-beanie-071.png",
+    "title": "Studio Ribbed Beanie",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 25,
+    "discountPrice": 25,
+    "discountPercent": 0,
+    "rating": 4.8,
+    "categories": [
+      "accessories",
+      "beanies",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-STUDIORIBBEDBEANIE-BLACK-OS",
+        "size": "ONE_SIZE",
+        "color": "black",
+        "quantity": 13,
+        "image": "/products/studio-ribbed-beanie-071-black.png"
+      },
+      {
+        "sku": "LYR-STUDIORIBBEDBEANIE-WHITE-OS",
+        "size": "ONE_SIZE",
+        "color": "white",
+        "quantity": 13,
+        "image": "/products/studio-ribbed-beanie-071-white.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/cargo-crossbody-utility-bag-072.png",
+    "title": "Cargo Crossbody Utility Bag",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 60,
+    "discountPrice": 60,
+    "discountPercent": 0,
+    "rating": 3.8,
+    "categories": [
+      "accessories",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CARGOCROSSBODYUTIL-BLACK-OS",
+        "size": "ONE_SIZE",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-CARGOCROSSBODYUTIL-GREY-OS",
+        "size": "ONE_SIZE",
+        "color": "grey",
+        "quantity": 14,
+        "image": "/products/cargo-crossbody-utility-bag-072-grey.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/minimal-canvas-tote-bag-073.png",
+    "title": "Minimal Canvas Tote Bag",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 59,
+    "discountPrice": 44,
+    "discountPercent": 25,
+    "rating": 4.5,
+    "categories": [
+      "accessories",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-MINIMALCANVASTOTEB-CHARC-OS",
+        "size": "ONE_SIZE",
+        "color": "charcoal",
+        "quantity": 7
+      },
+      {
+        "sku": "LYR-MINIMALCANVASTOTEB-CREAM-OS",
+        "size": "ONE_SIZE",
+        "color": "cream",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "img": "/products/essential-unisex-fleece-vest-074.png",
+    "title": "Essential Unisex Fleece Vest",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 140,
+    "discountPrice": 140,
+    "discountPercent": 0,
+    "rating": 3.5,
+    "categories": [
+      "outerwear",
+      "streetwear",
+      "unisex"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 15,
+        "image": "/products/essential-unisex-fleece-vest-074-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 15,
+        "image": "/products/essential-unisex-fleece-vest-074-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 15,
+        "image": "/products/essential-unisex-fleece-vest-074-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 16,
+        "image": "/products/essential-unisex-fleece-vest-074-olive.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-KHAKI-S",
+        "size": "S",
+        "color": "khaki",
+        "quantity": 15,
+        "image": "/products/essential-unisex-fleece-vest-074-khaki.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-KHAKI-M",
+        "size": "M",
+        "color": "khaki",
+        "quantity": 15,
+        "image": "/products/essential-unisex-fleece-vest-074-khaki.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-KHAKI-L",
+        "size": "L",
+        "color": "khaki",
+        "quantity": 15,
+        "image": "/products/essential-unisex-fleece-vest-074-khaki.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-KHAKI-XL",
+        "size": "XL",
+        "color": "khaki",
+        "quantity": 16,
+        "image": "/products/essential-unisex-fleece-vest-074-khaki.png"
+      },
+      {
+        "sku": "LYR-ESSENTIALUNISEXFLE-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 11
+      }
+    ]
+  },
+  {
+    "img": "/products/layered-everyday-crewneck-075.png",
+    "title": "Layered Everyday Crewneck",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 99,
+    "discountPrice": 99,
+    "discountPercent": 0,
+    "rating": 4.2,
+    "categories": [
+      "sweatshirts",
+      "basics"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 16,
+        "image": "/products/layered-everyday-crewneck-075-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 16,
+        "image": "/products/layered-everyday-crewneck-075-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 16,
+        "image": "/products/layered-everyday-crewneck-075-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 17,
+        "image": "/products/layered-everyday-crewneck-075-navy.png"
+      },
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 16,
+        "image": "/products/layered-everyday-crewneck-075-sand.png"
+      },
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 16,
+        "image": "/products/layered-everyday-crewneck-075-sand.png"
+      },
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 16,
+        "image": "/products/layered-everyday-crewneck-075-sand.png"
+      },
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 17,
+        "image": "/products/layered-everyday-crewneck-075-sand.png"
+      },
+      {
+        "sku": "LYR-LAYEREDEVERYDAYCRE-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "img": "/products/ribbed-oversized-hoodie-076.png",
+    "title": "Ribbed Oversized Hoodie",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 129,
+    "discountPrice": 129,
+    "discountPercent": 0,
+    "rating": 4.9,
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-BURGU-M",
+        "size": "M",
+        "color": "burgundy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-BURGU-L",
+        "size": "L",
+        "color": "burgundy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-BURGU-XL",
+        "size": "XL",
+        "color": "burgundy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RIBBEDOVERSIZEDHOO-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "img": "/products/nylon-zip-hoodie-077.png",
+    "title": "Nylon Zip Hoodie",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 134,
+    "discountPrice": 107,
+    "discountPercent": 20,
+    "rating": 3.9,
+    "categories": [
+      "hoodies",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-WASHE-M",
+        "size": "M",
+        "color": "washed-black",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-WASHE-L",
+        "size": "L",
+        "color": "washed-black",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-WASHE-XL",
+        "size": "XL",
+        "color": "washed-black",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-HEATH-M",
+        "size": "M",
+        "color": "heather-grey",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-HEATH-L",
+        "size": "L",
+        "color": "heather-grey",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-HEATH-XL",
+        "size": "XL",
+        "color": "heather-grey",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-NYLONZIPHOODIE077-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 4
+      }
+    ]
+  },
+  {
+    "img": "/products/canvas-heavyweight-box-tee-078.png",
+    "title": "Canvas Heavyweight Box Tee",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 59,
+    "discountPrice": 59,
+    "discountPercent": 0,
+    "rating": 4.6,
+    "categories": [
+      "t-shirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-DARKB-XS",
+        "size": "XS",
+        "color": "dark-brown",
+        "quantity": 2,
+        "image": "/products/canvas-heavyweight-box-tee-078-dark-brown.png"
+      },
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-DARKB-S",
+        "size": "S",
+        "color": "dark-brown",
+        "quantity": 1,
+        "image": "/products/canvas-heavyweight-box-tee-078-dark-brown.png"
+      },
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-DARKB-M",
+        "size": "M",
+        "color": "dark-brown",
+        "quantity": 1,
+        "image": "/products/canvas-heavyweight-box-tee-078-dark-brown.png"
+      },
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-DARKB-L",
+        "size": "L",
+        "color": "dark-brown",
+        "quantity": 1,
+        "image": "/products/canvas-heavyweight-box-tee-078-dark-brown.png"
+      },
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-DARKB-XL",
+        "size": "XL",
+        "color": "dark-brown",
+        "quantity": 2,
+        "image": "/products/canvas-heavyweight-box-tee-078-dark-brown.png"
+      },
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-DARKB-XXL",
+        "size": "XXL",
+        "color": "dark-brown",
+        "quantity": 3,
+        "image": "/products/canvas-heavyweight-box-tee-078-dark-brown.png"
+      },
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-SAND-XS",
+        "size": "XS",
+        "color": "sand",
+        "quantity": 8,
+        "image": "/products/canvas-heavyweight-box-tee-078-sand.png"
+      },
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 7,
+        "image": "/products/canvas-heavyweight-box-tee-078-sand.png"
+      },
+      {
+        "sku": "LYR-CANVASHEAVYWEIGHTB-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 7,
+        "image": "/products/canvas-heavyweight-box-tee-078-sand.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/soft-graphic-t-shirt-079.png",
+    "title": "Soft Graphic T-Shirt",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 70,
+    "discountPrice": 70,
+    "discountPercent": 0,
+    "rating": 3.6,
+    "categories": [
+      "t-shirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-CREAM-XS",
+        "size": "XS",
+        "color": "cream",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-CREAM-XXL",
+        "size": "XXL",
+        "color": "cream",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-OLIVE-XS",
+        "size": "XS",
+        "color": "olive",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SOFTGRAPHICTSHIRT0-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/structured-ribbed-longsleeve-080.png",
+    "title": "Structured Ribbed Longsleeve",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 85,
+    "discountPrice": 85,
+    "discountPercent": 0,
+    "rating": 4.3,
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "basics"
+    ],
+    "audience": [
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-WHITE-XS",
+        "size": "XS",
+        "color": "white",
+        "quantity": 16,
+        "image": "/products/structured-ribbed-longsleeve-080-white.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 15,
+        "image": "/products/structured-ribbed-longsleeve-080-white.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 15,
+        "image": "/products/structured-ribbed-longsleeve-080-white.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 15,
+        "image": "/products/structured-ribbed-longsleeve-080-white.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 16,
+        "image": "/products/structured-ribbed-longsleeve-080-white.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-WHITE-XXL",
+        "size": "XXL",
+        "color": "white",
+        "quantity": 17,
+        "image": "/products/structured-ribbed-longsleeve-080-white.png"
+      },
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-NAVY-XS",
+        "size": "XS",
+        "color": "navy",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STRUCTUREDRIBBEDLO-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/core-thermal-long-sleeve-081.png",
+    "title": "Core Thermal Long Sleeve",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 69,
+    "discountPrice": 59,
+    "discountPercent": 15,
+    "rating": 5,
+    "categories": [
+      "t-shirts",
+      "longsleeve",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-BLACK-XS",
+        "size": "XS",
+        "color": "black",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-BLACK-XXL",
+        "size": "XXL",
+        "color": "black",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-WHITE-XS",
+        "size": "XS",
+        "color": "white",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-CORETHERMALLONGSLE-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "img": "/products/washed-minimal-sweatshirt-082.png",
+    "title": "Washed Minimal Sweatshirt",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 104,
+    "discountPrice": 83,
+    "discountPercent": 20,
+    "rating": 4,
+    "categories": [
+      "sweatshirts",
+      "basics",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 3
+      },
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-GREY-M",
+        "size": "M",
+        "color": "grey",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-GREY-L",
+        "size": "L",
+        "color": "grey",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-GREY-XL",
+        "size": "XL",
+        "color": "grey",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-WASHEDMINIMALSWEAT-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 9
+      }
+    ]
+  },
+  {
+    "img": "/products/utility-quarter-zip-sweatshirt-083.png",
+    "title": "Utility Quarter Zip Sweatshirt",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 115,
+    "discountPrice": 115,
+    "discountPercent": 0,
+    "rating": 4.7,
+    "categories": [
+      "sweatshirts",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-CHARC-S",
+        "size": "S",
+        "color": "charcoal",
+        "quantity": 0,
+        "image": "/products/utility-quarter-zip-sweatshirt-083-charcoal.png"
+      },
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-CHARC-M",
+        "size": "M",
+        "color": "charcoal",
+        "quantity": 0,
+        "image": "/products/utility-quarter-zip-sweatshirt-083-charcoal.png"
+      },
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-CHARC-L",
+        "size": "L",
+        "color": "charcoal",
+        "quantity": 0,
+        "image": "/products/utility-quarter-zip-sweatshirt-083-charcoal.png"
+      },
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-CHARC-XL",
+        "size": "XL",
+        "color": "charcoal",
+        "quantity": 13,
+        "image": "/products/utility-quarter-zip-sweatshirt-083-charcoal.png"
+      },
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/utility-quarter-zip-sweatshirt-083-cream.png"
+      },
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/utility-quarter-zip-sweatshirt-083-cream.png"
+      },
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/utility-quarter-zip-sweatshirt-083-cream.png"
+      },
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 7,
+        "image": "/products/utility-quarter-zip-sweatshirt-083-cream.png"
+      },
+      {
+        "sku": "LYR-UTILITYQUARTERZIPS-DARKB-S",
+        "size": "S",
+        "color": "dark-brown",
+        "quantity": 16
+      }
+    ]
+  },
+  {
+    "img": "/products/city-utility-jacket-084.png",
+    "title": "City Utility Jacket",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 204,
+    "discountPrice": 204,
+    "discountPercent": 0,
+    "rating": 3.7,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-KHAKI-S",
+        "size": "S",
+        "color": "khaki",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-KHAKI-M",
+        "size": "M",
+        "color": "khaki",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-KHAKI-L",
+        "size": "L",
+        "color": "khaki",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-KHAKI-XL",
+        "size": "XL",
+        "color": "khaki",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-CITYUTILITYJACKET0-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 7,
+        "image": "/products/city-utility-jacket-084-grey.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/relaxed-coach-jacket-085.png",
+    "title": "Relaxed Coach Jacket",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 189,
+    "discountPrice": 123,
+    "discountPercent": 35,
+    "rating": 4.4,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-RELAXEDCOACHJACKET-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "img": "/products/boxy-nylon-windbreaker-086.png",
+    "title": "Boxy Nylon Windbreaker",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 149,
+    "discountPrice": 149,
+    "discountPercent": 0,
+    "rating": 3.4,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-BURGU-S",
+        "size": "S",
+        "color": "burgundy",
+        "quantity": 0,
+        "image": "/products/boxy-nylon-windbreaker-086-burgundy.png"
+      },
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-BURGU-M",
+        "size": "M",
+        "color": "burgundy",
+        "quantity": 0,
+        "image": "/products/boxy-nylon-windbreaker-086-burgundy.png"
+      },
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-BURGU-L",
+        "size": "L",
+        "color": "burgundy",
+        "quantity": 0,
+        "image": "/products/boxy-nylon-windbreaker-086-burgundy.png"
+      },
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-BURGU-XL",
+        "size": "XL",
+        "color": "burgundy",
+        "quantity": 0,
+        "image": "/products/boxy-nylon-windbreaker-086-burgundy.png"
+      },
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 0,
+        "image": "/products/boxy-nylon-windbreaker-086-black.png"
+      },
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 0,
+        "image": "/products/boxy-nylon-windbreaker-086-black.png"
+      },
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 0,
+        "image": "/products/boxy-nylon-windbreaker-086-black.png"
+      },
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 0,
+        "image": "/products/boxy-nylon-windbreaker-086-black.png"
+      },
+      {
+        "sku": "LYR-BOXYNYLONWINDBREAK-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/heavyweight-bomber-jacket-087.png",
+    "title": "Heavyweight Bomber Jacket",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 174,
+    "discountPrice": 174,
+    "discountPercent": 0,
+    "rating": 4.1,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-HEAVYWEIGHTBOMBERJ-WASHE-S",
+        "size": "S",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTBOMBERJ-WASHE-M",
+        "size": "M",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTBOMBERJ-WASHE-L",
+        "size": "L",
+        "color": "washed-black",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTBOMBERJ-WASHE-XL",
+        "size": "XL",
+        "color": "washed-black",
+        "quantity": 15
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTBOMBERJ-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTBOMBERJ-HEATH-M",
+        "size": "M",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTBOMBERJ-HEATH-L",
+        "size": "L",
+        "color": "heather-grey",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-HEAVYWEIGHTBOMBERJ-HEATH-XL",
+        "size": "XL",
+        "color": "heather-grey",
+        "quantity": 15
+      }
+    ]
+  },
+  {
+    "img": "/products/tonal-canvas-overshirt-088.png",
+    "title": "Tonal Canvas Overshirt",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 159,
+    "discountPrice": 159,
+    "discountPercent": 0,
+    "rating": 4.8,
+    "categories": [
+      "jackets",
+      "outerwear",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-DARKB-S",
+        "size": "S",
+        "color": "dark-brown",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-DARKB-M",
+        "size": "M",
+        "color": "dark-brown",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-DARKB-L",
+        "size": "L",
+        "color": "dark-brown",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-DARKB-XL",
+        "size": "XL",
+        "color": "dark-brown",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-SAND-M",
+        "size": "M",
+        "color": "sand",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-SAND-L",
+        "size": "L",
+        "color": "sand",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-SAND-XL",
+        "size": "XL",
+        "color": "sand",
+        "quantity": 2
+      },
+      {
+        "sku": "LYR-TONALCANVASOVERSHI-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "img": "/products/archive-cargo-pants-089.png",
+    "title": "Archive Cargo Pants",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 154,
+    "discountPrice": 108,
+    "discountPercent": 30,
+    "rating": 3.8,
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/archive-cargo-pants-089-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/archive-cargo-pants-089-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 6,
+        "image": "/products/archive-cargo-pants-089-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 7,
+        "image": "/products/archive-cargo-pants-089-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-CREAM-XXL",
+        "size": "XXL",
+        "color": "cream",
+        "quantity": 8,
+        "image": "/products/archive-cargo-pants-089-cream.png"
+      },
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 6,
+        "image": "/products/archive-cargo-pants-089-olive.png"
+      },
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 6,
+        "image": "/products/archive-cargo-pants-089-olive.png"
+      },
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 6,
+        "image": "/products/archive-cargo-pants-089-olive.png"
+      },
+      {
+        "sku": "LYR-ARCHIVECARGOPANTS0-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 7,
+        "image": "/products/archive-cargo-pants-089-olive.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/seasonal-carpenter-pants-090.png",
+    "title": "Seasonal Carpenter Pants",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 155,
+    "discountPrice": 155,
+    "discountPercent": 0,
+    "rating": 4.5,
+    "categories": [
+      "pants",
+      "cargo",
+      "streetwear"
+    ],
+    "audience": [
+      "men"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SEASONALCARPENTERP-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-SEASONALCARPENTERP-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-SEASONALCARPENTERP-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 9
+      },
+      {
+        "sku": "LYR-SEASONALCARPENTERP-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-SEASONALCARPENTERP-WHITE-XXL",
+        "size": "XXL",
+        "color": "white",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-SEASONALCARPENTERP-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/seasonal-carpenter-pants-090-navy.png"
+      },
+      {
+        "sku": "LYR-SEASONALCARPENTERP-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/seasonal-carpenter-pants-090-navy.png"
+      },
+      {
+        "sku": "LYR-SEASONALCARPENTERP-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 7,
+        "image": "/products/seasonal-carpenter-pants-090-navy.png"
+      },
+      {
+        "sku": "LYR-SEASONALCARPENTERP-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 8,
+        "image": "/products/seasonal-carpenter-pants-090-navy.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/studio-track-pants-091.png",
+    "title": "Studio Track Pants",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 119,
+    "discountPrice": 101,
+    "discountPercent": 15,
+    "rating": 3.5,
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-BLACK-XXL",
+        "size": "XXL",
+        "color": "black",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 12
+      },
+      {
+        "sku": "LYR-STUDIOTRACKPANTS09-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 13
+      }
+    ]
+  },
+  {
+    "img": "/products/cargo-wide-leg-sweatpants-092.png",
+    "title": "Cargo Wide Leg Sweatpants",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 120,
+    "discountPrice": 120,
+    "discountPercent": 0,
+    "rating": 4.2,
+    "categories": [
+      "pants",
+      "track",
+      "streetwear"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-BLACK-S",
+        "size": "S",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/cargo-wide-leg-sweatpants-092-black.png"
+      },
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-BLACK-M",
+        "size": "M",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/cargo-wide-leg-sweatpants-092-black.png"
+      },
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-BLACK-L",
+        "size": "L",
+        "color": "black",
+        "quantity": 15,
+        "image": "/products/cargo-wide-leg-sweatpants-092-black.png"
+      },
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-BLACK-XL",
+        "size": "XL",
+        "color": "black",
+        "quantity": 0,
+        "image": "/products/cargo-wide-leg-sweatpants-092-black.png"
+      },
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-BLACK-XXL",
+        "size": "XXL",
+        "color": "black",
+        "quantity": 17,
+        "image": "/products/cargo-wide-leg-sweatpants-092-black.png"
+      },
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-GREY-S",
+        "size": "S",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-GREY-M",
+        "size": "M",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-GREY-L",
+        "size": "L",
+        "color": "grey",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-CARGOWIDELEGSWEATP-GREY-XL",
+        "size": "XL",
+        "color": "grey",
+        "quantity": 14
+      }
+    ]
+  },
+  {
+    "img": "/products/minimal-logo-cap-093.png",
+    "title": "Minimal Logo Cap",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 39,
+    "discountPrice": 29,
+    "discountPercent": 25,
+    "rating": 4.9,
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-MINIMALLOGOCAP093-CHARC-OS",
+        "size": "ONE_SIZE",
+        "color": "charcoal",
+        "quantity": 13
+      },
+      {
+        "sku": "LYR-MINIMALLOGOCAP093-CREAM-OS",
+        "size": "ONE_SIZE",
+        "color": "cream",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "img": "/products/essential-five-panel-cap-094.png",
+    "title": "Essential Five Panel Cap",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 60,
+    "discountPrice": 60,
+    "discountPercent": 0,
+    "rating": 3.9,
+    "categories": [
+      "accessories",
+      "headwear",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-ESSENTIALFIVEPANEL-OLIVE-OS",
+        "size": "ONE_SIZE",
+        "color": "olive",
+        "quantity": 10
+      },
+      {
+        "sku": "LYR-ESSENTIALFIVEPANEL-KHAKI-OS",
+        "size": "ONE_SIZE",
+        "color": "khaki",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "img": "/products/layered-essential-beanie-095.png",
+    "title": "Layered Essential Beanie",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 39,
+    "discountPrice": 39,
+    "discountPercent": 0,
+    "rating": 4.6,
+    "categories": [
+      "accessories",
+      "beanies",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-LAYEREDESSENTIALBE-NAVY-OS",
+        "size": "ONE_SIZE",
+        "color": "navy",
+        "quantity": 11
+      },
+      {
+        "sku": "LYR-LAYEREDESSENTIALBE-SAND-OS",
+        "size": "ONE_SIZE",
+        "color": "sand",
+        "quantity": 11
+      }
+    ]
+  },
+  {
+    "img": "/products/ribbed-ribbed-beanie-096.png",
+    "title": "Ribbed Ribbed Beanie",
+    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "defaultPrice": 25,
+    "discountPrice": 25,
+    "discountPercent": 0,
+    "rating": 3.6,
+    "categories": [
+      "accessories",
+      "beanies",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-RIBBEDRIBBEDBEANIE-BURGU-OS",
+        "size": "ONE_SIZE",
+        "color": "burgundy",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-RIBBEDRIBBEDBEANIE-BLACK-OS",
+        "size": "ONE_SIZE",
+        "color": "black",
+        "quantity": 16
+      }
+    ]
+  },
+  {
+    "img": "/products/nylon-crossbody-utility-bag-097.png",
+    "title": "Nylon Crossbody Utility Bag",
+    "description": "Designed for layering, movement and repeat wear across city days.",
+    "defaultPrice": 70,
+    "discountPrice": 56,
+    "discountPercent": 20,
+    "rating": 4.3,
+    "categories": [
+      "accessories",
+      "streetwear"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-NYLONCROSSBODYUTIL-WASHE-OS",
+        "size": "ONE_SIZE",
+        "color": "washed-black",
+        "quantity": 15,
+        "image": "/products/nylon-crossbody-utility-bag-097-washed-black.png"
+      },
+      {
+        "sku": "LYR-NYLONCROSSBODYUTIL-HEATH-OS",
+        "size": "ONE_SIZE",
+        "color": "heather-grey",
+        "quantity": 15,
+        "image": "/products/nylon-crossbody-utility-bag-097-heather-grey.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/canvas-canvas-tote-bag-098.png",
+    "title": "Canvas Canvas Tote Bag",
+    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "defaultPrice": 49,
+    "discountPrice": 49,
+    "discountPercent": 0,
+    "rating": 5,
+    "categories": [
+      "accessories",
+      "basics"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-CANVASCANVASTOTEBA-DARKB-OS",
+        "size": "ONE_SIZE",
+        "color": "dark-brown",
+        "quantity": 14
+      },
+      {
+        "sku": "LYR-CANVASCANVASTOTEBA-SAND-OS",
+        "size": "ONE_SIZE",
+        "color": "sand",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "img": "/products/soft-unisex-fleece-vest-099.png",
+    "title": "Soft Unisex Fleece Vest",
+    "description": "Made for transitional weather, long weekends and daily styling.",
+    "defaultPrice": 140,
+    "discountPrice": 140,
+    "discountPercent": 0,
+    "rating": 4,
+    "categories": [
+      "outerwear",
+      "streetwear",
+      "unisex"
+    ],
+    "audience": [
+      "unisex"
+    ],
+    "hasDiscount": false,
+    "isNewProduct": false,
+    "variants": [
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-CREAM-S",
+        "size": "S",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-CREAM-M",
+        "size": "M",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-CREAM-L",
+        "size": "L",
+        "color": "cream",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-CREAM-XL",
+        "size": "XL",
+        "color": "cream",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-OLIVE-S",
+        "size": "S",
+        "color": "olive",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-OLIVE-M",
+        "size": "M",
+        "color": "olive",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-OLIVE-L",
+        "size": "L",
+        "color": "olive",
+        "quantity": 18
+      },
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-OLIVE-XL",
+        "size": "XL",
+        "color": "olive",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-SOFTUNISEXFLEECEVE-SAND-S",
+        "size": "S",
+        "color": "sand",
+        "quantity": 16,
+        "image": "/products/soft-unisex-fleece-vest-099-sand.png"
+      }
+    ]
+  },
+  {
+    "img": "/products/structured-everyday-crewneck-100.png",
+    "title": "Structured Everyday Crewneck",
+    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "defaultPrice": 109,
+    "discountPrice": 71,
+    "discountPercent": 35,
+    "rating": 4.7,
+    "categories": [
+      "sweatshirts",
+      "basics"
+    ],
+    "audience": [
+      "men",
+      "women"
+    ],
+    "hasDiscount": true,
+    "isNewProduct": true,
+    "variants": [
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-WHITE-S",
+        "size": "S",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-WHITE-M",
+        "size": "M",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-WHITE-L",
+        "size": "L",
+        "color": "white",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-WHITE-XL",
+        "size": "XL",
+        "color": "white",
+        "quantity": 4
+      },
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-NAVY-S",
+        "size": "S",
+        "color": "navy",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-NAVY-M",
+        "size": "M",
+        "color": "navy",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-NAVY-L",
+        "size": "L",
+        "color": "navy",
+        "quantity": 1
+      },
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-NAVY-XL",
+        "size": "XL",
+        "color": "navy",
+        "quantity": 0
+      },
+      {
+        "sku": "LYR-STRUCTUREDEVERYDAY-HEATH-S",
+        "size": "S",
+        "color": "heather-grey",
+        "quantity": 0,
+        "image": "/products/structured-everyday-crewneck-100-heather-grey.png"
+      }
     ]
   }
 ]

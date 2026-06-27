@@ -1,7 +1,14 @@
 import { Link } from 'react-router';
-import { ProductCardProps } from '../../../shared/types';
 
-export const ProductCard = ({ product }: { product: ProductCardProps }) => {
+import type { ProductCardProps as ProductCardData } from '../types';
+import { ProductPrice } from './product-price';
+
+type ProductCardProps = {
+  product: ProductCardData;
+  to: string;
+};
+
+export const ProductCard = ({ product, to }: ProductCardProps) => {
   const availableColors = [
     ...new Set(
       product.variants
@@ -11,32 +18,25 @@ export const ProductCard = ({ product }: { product: ProductCardProps }) => {
   ];
 
   return (
-    <div className="border rounded p-1 lg:py-2 lg:px-1 2xl:py-3 2xl:px-2 flex flex-col gap-3">
-      <Link
-        to={`/products/${product._id}`}
-        className="bg-gray-300 text-gray-300 rounded"
-      >
+    <div className="flex flex-col gap-3 rounded border p-1 lg:px-1 lg:py-2 2xl:px-2 2xl:py-3">
+      <Link to={to} className="rounded bg-gray-300 text-gray-300">
         <img
           src={product.img}
           alt={product.title}
-          className="w-full h-48 object-cover rounded"
+          className="h-48 w-full rounded object-cover"
         />
       </Link>
       <div className="flex flex-col gap-1">
-        <Link to={`/products/${product._id}`}>
-          <h3 className="font-bold capitalize text-xl">{product.title}</h3>
+        <Link to={to}>
+          <h3 className="text-xl font-bold capitalize">{product.title}</h3>
         </Link>
         <p>{product.description}</p>
-        {product.hasDiscount ? (
-          <div>
-            <span className="line-through">
-              {product.defaultPrice.toFixed(2)}
-            </span>{' '}
-            <span>{product.discountPrice.toFixed(2)}</span>
-          </div>
-        ) : (
-          <div>{product.defaultPrice.toFixed(2)}</div>
-        )}
+        <ProductPrice
+          defaultPrice={product.defaultPrice}
+          discountPrice={product.discountPrice}
+          discountPercent={product.discountPercent}
+          hasDiscount={product.hasDiscount}
+        />
         <div>rating: {product.rating}</div>
         <div>categories: {product.categories.join(', ')}</div>
         <div className="flex flex-col gap-1">
@@ -60,3 +60,4 @@ export const ProductCard = ({ product }: { product: ProductCardProps }) => {
     </div>
   );
 };
+

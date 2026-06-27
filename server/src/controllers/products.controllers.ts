@@ -180,7 +180,7 @@ export const getProductById = async (
     categories: {
       $in: product.categories,
     },
-  }).limit(4);
+  }).limit(10);
 
   res.status(200).json({
     message: 'Product fetched successfully',
