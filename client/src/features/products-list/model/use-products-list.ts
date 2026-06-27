@@ -20,8 +20,8 @@ export const useProductsList = ({
 
   const params = useMemo(() => {
     return buildSearchParams({
-      ...baseFilters,
       ...debouncedFilters,
+      ...baseFilters,
     });
   }, [baseFilters, debouncedFilters]);
 

@@ -75,5 +75,23 @@ export const getActiveFilters = (filters: Filters, initialFilters: Filters) => {
     });
   }
 
+  if (filters.hasDiscount) {
+    activeFilters.push({
+      key: 'discount',
+      name: 'hasDiscount',
+      label: 'Sale',
+      value: 'true',
+    });
+  }
+
+  if (filters.isNewProduct) {
+    activeFilters.push({
+      key: 'new',
+      name: 'isNewProduct',
+      label: 'New',
+      value: 'true',
+    });
+  }
+
   return activeFilters;
 };

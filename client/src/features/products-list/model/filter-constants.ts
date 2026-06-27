@@ -46,5 +46,7 @@ export const initialFilters: Filters = {
     value: 'default',
   },
   inStockOnly: false,
+  hasDiscount: false,
+  isNewProduct: false,
   page: 1,
 };

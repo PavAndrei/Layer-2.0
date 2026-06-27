@@ -132,6 +132,8 @@ const PRODUCT_FILTERS_URL_SCHEMA = {
     },
   }),
   inStockOnly: booleanParam({ name: 'inStockOnly' }),
+  hasDiscount: booleanParam({ name: 'hasDiscount' }),
+  isNewProduct: booleanParam({ name: 'isNewProduct' }),
   page: numberParam({
     name: 'page',
     defaultValue: 1,

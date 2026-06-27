@@ -29,6 +29,8 @@ type ProductsListVisibleFilters = Partial<{
   price: boolean;
   sort: boolean;
   inStockOnly: boolean;
+  hasDiscount: boolean;
+  isNewProduct: boolean;
   activeFilters: boolean;
   clearButton: boolean;
 }>;
@@ -49,6 +51,8 @@ const DEFAULT_VISIBLE_FILTERS = {
   price: true,
   sort: true,
   inStockOnly: true,
+  hasDiscount: true,
+  isNewProduct: true,
   activeFilters: true,
   clearButton: true,
 } satisfies Required<ProductsListVisibleFilters>;
@@ -186,6 +190,36 @@ export const ProductsListLayoutFilters = ({
             setFilters({
               ...filters,
               inStockOnly,
+              page: 1,
+            })
+          }
+        />
+      )}
+
+      {visible.hasDiscount && (
+        <CheckboxFilter
+          id="hasDiscount"
+          label="Show only sale products"
+          checked={filters.hasDiscount}
+          onChange={(hasDiscount) =>
+            setFilters({
+              ...filters,
+              hasDiscount,
+              page: 1,
+            })
+          }
+        />
+      )}
+
+      {visible.isNewProduct && (
+        <CheckboxFilter
+          id="isNewProduct"
+          label="Show only new products"
+          checked={filters.isNewProduct}
+          onChange={(isNewProduct) =>
+            setFilters({
+              ...filters,
+              isNewProduct,
               page: 1,
             })
           }

@@ -1,6 +1,6 @@
-import { useCallback, useMemo } from 'react';
-import type { Dispatch, SetStateAction } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
+import type { UrlStateSetter } from '../../../shared/model';
 import {
   PRODUCT_SIZES,
   type ProductCardProps,
@@ -11,12 +11,10 @@ type UseSingleProductVariantParams = {
   product: ProductCardProps | null;
   selectedColor: string | null;
   selectedSize: ProductSize | null;
-  setVariantParams: Dispatch<
-    SetStateAction<{
-      color: string;
-      size: ProductSize | '';
-    }>
-  >;
+  setVariantParams: UrlStateSetter<{
+    color: string;
+    size: ProductSize | '';
+  }>;
 };
 
 export const useSingleProductVariant = ({
@@ -52,6 +50,64 @@ export const useSingleProductVariant = ({
     );
   }, [product, selectedColor, selectedSize]);
 
+  useEffect(() => {
+    if (!product) return;
+
+    const firstAvailableVariant =
+      product.variants.find((variant) => variant.quantity > 0) ?? null;
+
+    if (!firstAvailableVariant) {
+      if (selectedColor || selectedSize) {
+        setVariantParams(
+          {
+            color: '',
+            size: '',
+          },
+          { replace: true },
+        );
+      }
+
+      return;
+    }
+
+    if (selectedVariant?.quantity && selectedVariant.quantity > 0) {
+      return;
+    }
+
+    const selectedColorExists = product.variants.some(
+      (variant) => variant.color === selectedColor,
+    );
+    const firstAvailableVariantForSelectedColor = selectedColorExists
+      ? product.variants.find(
+          (variant) =>
+            variant.color === selectedColor && variant.quantity > 0,
+        )
+      : null;
+    const nextVariant =
+      firstAvailableVariantForSelectedColor ?? firstAvailableVariant;
+
+    if (
+      selectedColor === nextVariant.color &&
+      selectedSize === nextVariant.size
+    ) {
+      return;
+    }
+
+    setVariantParams(
+      {
+        color: nextVariant.color,
+        size: nextVariant.size,
+      },
+      { replace: true },
+    );
+  }, [
+    product,
+    selectedColor,
+    selectedSize,
+    selectedVariant,
+    setVariantParams,
+  ]);
+
   const isColorAvailable = useCallback(
     (color: string) => {
       return Boolean(
@@ -80,30 +136,32 @@ export const useSingleProductVariant = ({
   const handleColorChange = useCallback(
     (color: string) => {
       if (!product) {
-        setVariantParams((prev) => ({
-          ...prev,
+        setVariantParams({
           color,
           size: '',
-        }));
+        });
         return;
       }
 
-      const availableSizes = PRODUCT_SIZES.filter((size) =>
-        product.variants.some(
-          (variant) =>
-            variant.color === color &&
-            variant.size === size &&
-            variant.quantity > 0,
-        ),
+      const currentSizeVariant = selectedSize
+        ? product.variants.find(
+            (variant) =>
+              variant.color === color &&
+              variant.size === selectedSize &&
+              variant.quantity > 0,
+          )
+        : null;
+      const firstAvailableVariantForColor = product.variants.find(
+        (variant) => variant.color === color && variant.quantity > 0,
       );
+      const nextVariant = currentSizeVariant ?? firstAvailableVariantForColor;
 
-      setVariantParams((prev) => ({
-        ...prev,
+      setVariantParams({
         color,
-        size: availableSizes.length === 1 ? availableSizes[0] : '',
-      }));
+        size: nextVariant?.size ?? '',
+      });
     },
-    [product, setVariantParams],
+    [product, selectedSize, setVariantParams],
   );
 
   return {

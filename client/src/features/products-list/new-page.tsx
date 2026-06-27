@@ -47,6 +47,10 @@ export const NewPage = () => {
             setFilters={setFilters}
             resetFilters={resetFilters}
             handleRemoveFilter={removeFilter}
+            visibleFilters={{
+              hasDiscount: false,
+              isNewProduct: false,
+            }}
           />
         ) : null
       }

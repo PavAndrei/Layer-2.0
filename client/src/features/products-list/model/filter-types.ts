@@ -13,5 +13,7 @@ export type Filters = {
   priceRange: { minPrice: number; maxPrice: number };
   sortBy: SortingOption;
   inStockOnly: boolean;
+  hasDiscount: boolean;
+  isNewProduct: boolean;
   page: number;
 };
