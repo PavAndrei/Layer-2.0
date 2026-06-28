@@ -130,3 +130,51 @@ export const CartIcon = ({
     </svg>
   );
 };
+
+export const BurgerMenuIcon = ({
+  size = 24,
+  iconColor = DEFAULT_ICON_COLOR,
+  accentColor = DEFAULT_ACCENT_COLOR,
+  strokeWidth = 3.8,
+  ...props
+}: HeaderIconProps) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        d="M10 15H38"
+        stroke={iconColor}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M10 24H38"
+        stroke={iconColor}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M10 33H38"
+        stroke={iconColor}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M30 24H38"
+        stroke={accentColor}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+};

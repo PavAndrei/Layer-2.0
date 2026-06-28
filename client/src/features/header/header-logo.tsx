@@ -1,9 +1,8 @@
 export const HeaderLogo = () => {
   return (
-    <div>
+    <div className="w-full min-[350px]:w-auto">
       <svg
-        width="190"
-        height="46"
+        className="h-auto w-full min-[350px]:w-47.5"
         viewBox="0 0 190 46"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

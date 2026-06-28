@@ -1,6 +1,7 @@
 export { Button } from './button';
 export { CheckboxFilter } from './checkbox-filter';
 export { DualRangeFilter } from './dual-range-filter';
+export { MobileFullscreenDrawer } from './mobile-fullscreen-drawer';
 export { MultiSelectFilter } from './multi-select-filter';
 export { Pagination } from './pagination';
 export { ProductCard } from './product-card';

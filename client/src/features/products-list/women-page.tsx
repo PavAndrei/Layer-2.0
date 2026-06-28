@@ -16,11 +16,20 @@ import {
 
 export const WomenPage = () => {
   const collectionConfig = PRODUCT_COLLECTIONS.women;
-  const isFiltersOpen = useProductsListUiStore(
-    (state) => state.isFiltersOpen,
+  const isDesktopFiltersOpen = useProductsListUiStore(
+    (state) => state.isDesktopFiltersOpen,
   );
-  const toggleFilters = useProductsListUiStore(
-    (state) => state.toggleFilters,
+  const isMobileFiltersOpen = useProductsListUiStore(
+    (state) => state.isMobileFiltersOpen,
+  );
+  const closeMobileFilters = useProductsListUiStore(
+    (state) => state.closeMobileFilters,
+  );
+  const toggleDesktopFilters = useProductsListUiStore(
+    (state) => state.toggleDesktopFilters,
+  );
+  const toggleMobileFilters = useProductsListUiStore(
+    (state) => state.toggleMobileFilters,
   );
 
   const filters = useProductsFilters();
@@ -41,13 +50,17 @@ export const WomenPage = () => {
           description={collectionConfig.description}
           actions={
             <ProductsListFiltersToggle
-              isOpen={isFiltersOpen}
-              onToggle={toggleFilters}
+              isDesktopOpen={isDesktopFiltersOpen}
+              isMobileOpen={isMobileFiltersOpen}
+              onDesktopToggle={toggleDesktopFilters}
+              onMobileToggle={toggleMobileFilters}
             />
           }
         />
       }
-      filtersOpen={isFiltersOpen}
+      desktopFiltersOpen={isDesktopFiltersOpen}
+      mobileFiltersOpen={isMobileFiltersOpen}
+      onMobileFiltersClose={closeMobileFilters}
       filters={
         <ProductsListLayoutFilters
           filters={filters}

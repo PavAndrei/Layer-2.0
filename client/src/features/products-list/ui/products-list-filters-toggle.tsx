@@ -1,14 +1,18 @@
 type ProductsListFiltersToggleProps = {
-  isOpen: boolean;
-  onToggle: () => void;
+  isDesktopOpen: boolean;
+  isMobileOpen: boolean;
+  onDesktopToggle: () => void;
+  onMobileToggle: () => void;
 };
 
 export const ProductsListFiltersToggle = ({
-  isOpen,
-  onToggle,
+  isDesktopOpen,
+  isMobileOpen,
+  onDesktopToggle,
+  onMobileToggle,
 }: ProductsListFiltersToggleProps) => {
-  return (
-    <div className="flex gap-2 items-center">
+  const renderToggle = (isOpen: boolean, onToggle: () => void) => (
+    <div className="flex items-center gap-2">
       <span className="block-medium text-typography-secondary">
         {isOpen ? 'Hide filters' : 'Show filters'}
       </span>
@@ -16,12 +20,24 @@ export const ProductsListFiltersToggle = ({
       <button
         type="button"
         onClick={onToggle}
-        className="w-12 h-4 border border-border-strong rounded flex items-center p-1 cursor-pointer"
+        aria-pressed={isOpen}
+        className="flex h-4 w-12 cursor-pointer items-center rounded border border-border-strong p-1 transition-colors hover:bg-background-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-black"
       >
         <span
-          className={`${isOpen ? 'translate-x-6.5' : 'translate-x-0'} rounded-full w-3 h-3 bg-accent-primary transition-all duration-150 ease-in`}
+          className={`${isOpen ? 'translate-x-6.5' : 'translate-x-0'} h-3 w-3 rounded-full bg-accent-primary transition-transform duration-150 ease-in`}
         />
       </button>
     </div>
+  );
+
+  return (
+    <>
+      <div className="md:hidden">
+        {renderToggle(isMobileOpen, onMobileToggle)}
+      </div>
+      <div className="hidden md:block">
+        {renderToggle(isDesktopOpen, onDesktopToggle)}
+      </div>
+    </>
   );
 };
