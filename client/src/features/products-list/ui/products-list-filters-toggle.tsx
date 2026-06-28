@@ -16,7 +16,7 @@ export const ProductsListFiltersToggle = ({
       <button
         type="button"
         onClick={onToggle}
-        className="w-12 h-4 border rounded flex items-center p-1 cursor-pointer"
+        className="w-12 h-4 border border-border-strong rounded flex items-center p-1 cursor-pointer"
       >
         <span
           className={`${isOpen ? 'translate-x-6.5' : 'translate-x-0'} rounded-full w-3 h-3 bg-accent-primary transition-all duration-150 ease-in`}

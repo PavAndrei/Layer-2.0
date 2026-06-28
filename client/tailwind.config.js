@@ -22,7 +22,7 @@ export default {
         },
         accent: {
           primary: '#4B5320',
-          hover: '#3F461B',
+          hover: '#6B6A2F',
           secondary: '#9A3412',
           black: '#111111',
         },

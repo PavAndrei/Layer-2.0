@@ -58,17 +58,19 @@ export const ProductsListLayoutContent = ({
 
   return (
     <>
-      {resultsSummary ??
-        (total !== undefined && (
+      <div className="flex items-center gap-2">
+        {resultsSummary ??
+          (total !== undefined && (
+            <span className="block-small text-typography-secondary">
+              {total} products found
+            </span>
+          ))}
+        {isFetching && (
           <span className="block-small text-typography-secondary">
-            {total} products found
+            Updating products...
           </span>
-        ))}
-      {isFetching && (
-        <span className="block-small text-typography-secondary">
-          Updating products...
-        </span>
-      )}
+        )}
+      </div>
       {children}
     </>
   );
