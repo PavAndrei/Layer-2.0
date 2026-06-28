@@ -2,6 +2,7 @@ import Select from 'react-select';
 import type { SingleValue } from 'react-select';
 
 import type { SelectFilterOption } from './multi-select-filter';
+import { getSelectStyles, getSelectTheme } from './select-filter-styles';
 
 type SelectFilterProps<Option extends SelectFilterOption> = {
   id: string;
@@ -20,12 +21,16 @@ export const SelectFilter = <Option extends SelectFilterOption>({
 }: SelectFilterProps<Option>) => {
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={id}>{label}</label>
+      <label className="block-medium" htmlFor={id}>
+        {label}
+      </label>
       <Select
         inputId={id}
         options={options}
         value={value}
         onChange={(newValue: SingleValue<Option>) => onChange(newValue)}
+        styles={getSelectStyles<Option, false>()}
+        theme={getSelectTheme}
       />
     </div>
   );

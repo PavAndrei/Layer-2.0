@@ -10,6 +10,7 @@ import {
   PRODUCT_SIZE_OPTIONS,
 } from '../../../shared/constants';
 import {
+  Button,
   CheckboxFilter,
   DualRangeFilter,
   MultiSelectFilter,
@@ -82,7 +83,7 @@ export const ProductsListLayoutFilters = ({
   };
 
   return (
-    <form className="flex flex-col gap-4 rounded border border-gray-200 p-4">
+    <form className="flex flex-col gap-4 rounded border border-border-soft bg-background-surface p-4">
       {visible.search && (
         <TextFilter
           id="filterString"
@@ -231,10 +232,13 @@ export const ProductsListLayoutFilters = ({
           {activeFilters.map((filter) => (
             <div
               key={filter.key}
-              className="flex items-center justify-between gap-1 rounded-full bg-gray-200 px-3 py-1"
+              className="flex items-center justify-between gap-1 rounded-full bg-background-primary border border-border-soft px-3 py-1"
             >
-              <span>{filter.label}</span>
+              <span className="block-medium text-typography-secondary">
+                {filter.label}
+              </span>
               <button
+                className="cursor-pointer"
                 type="button"
                 aria-label={`Remove ${filter.label}`}
                 onClick={() => {
@@ -249,13 +253,9 @@ export const ProductsListLayoutFilters = ({
       )}
 
       {visible.clearButton && (
-        <button
-          className="max-w-30 cursor-pointer rounded border px-2 py-1 transition-colors hover:bg-gray-200"
-          type="button"
-          onClick={resetFilters}
-        >
+        <Button size="sm" variant="secondary" onClick={resetFilters}>
           Clear Filters
-        </button>
+        </Button>
       )}
     </form>
   );

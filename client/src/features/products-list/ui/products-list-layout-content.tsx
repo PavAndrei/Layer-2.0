@@ -26,7 +26,13 @@ export const ProductsListLayoutContent = ({
   total,
 }: ProductsListLayoutContentProps) => {
   if (isLoading) {
-    return <>{loadingFallback ?? <p>Loading...</p>}</>;
+    return (
+      <>
+        {loadingFallback ?? (
+          <p className="block-small text-typography-secondary">Loading...</p>
+        )}
+      </>
+    );
   }
 
   if (error) {
@@ -41,7 +47,11 @@ export const ProductsListLayoutContent = ({
   if (isEmpty) {
     return (
       <>
-        {emptyFallback ?? <p>No products found. Try adjusting your filters.</p>}
+        {emptyFallback ?? (
+          <p className="block-small text-typography-secondary">
+            No products found. Try adjusting your filters.
+          </p>
+        )}
       </>
     );
   }
@@ -49,8 +59,16 @@ export const ProductsListLayoutContent = ({
   return (
     <>
       {resultsSummary ??
-        (total !== undefined ? <span>{total} products found</span> : null)}
-      {isFetching && <span>Updating products...</span>}
+        (total !== undefined ? (
+          <span className="block-small text-typography-secondary">
+            {total} products found
+          </span>
+        ) : null)}
+      {isFetching && (
+        <span className="block-small text-typography-secondary">
+          Updating products...
+        </span>
+      )}
       {children}
     </>
   );

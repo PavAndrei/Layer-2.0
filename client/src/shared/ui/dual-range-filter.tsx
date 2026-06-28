@@ -45,9 +45,9 @@ export const DualRangeFilter = ({
 
   return (
     <div className="w-full max-w-md">
-      {label && <p className="mb-2 font-medium">{label}</p>}
+      {label && <p className="mb-2 block-medium">{label}</p>}
 
-      <div className="mb-4 flex justify-between font-semibold">
+      <div className="mb-4 flex justify-between block-medium">
         <span>{formatValue(value.min)}</span>
         <span>{formatValue(value.max)}</span>
       </div>
@@ -57,7 +57,7 @@ export const DualRangeFilter = ({
 
         <div
           ref={rangeRef}
-          className="absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-black"
+          className="absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-typography-primary"
         />
 
         <input
@@ -79,7 +79,7 @@ export const DualRangeFilter = ({
           className="
           pointer-events-none
           absolute
-          z-30
+          z-10
           h-0
           w-full
           appearance-none
@@ -91,7 +91,7 @@ export const DualRangeFilter = ({
           [&::-webkit-slider-thumb]:cursor-pointer
           [&::-webkit-slider-thumb]:appearance-none
           [&::-webkit-slider-thumb]:rounded-full
-          [&::-webkit-slider-thumb]:bg-black
+          [&::-webkit-slider-thumb]:bg-typography-primary
 
           [&::-moz-range-thumb]:pointer-events-auto
           [&::-moz-range-thumb]:h-5
@@ -99,7 +99,7 @@ export const DualRangeFilter = ({
           [&::-moz-range-thumb]:cursor-pointer
           [&::-moz-range-thumb]:rounded-full
           [&::-moz-range-thumb]:border-none
-          [&::-moz-range-thumb]:bg-black
+          [&::-moz-range-thumb]:bg-typography-primary
         "
         />
 
@@ -122,7 +122,7 @@ export const DualRangeFilter = ({
           className="
           pointer-events-none
           absolute
-          z-40
+          z-20
           h-0
           w-full
           appearance-none
@@ -134,7 +134,7 @@ export const DualRangeFilter = ({
           [&::-webkit-slider-thumb]:cursor-pointer
           [&::-webkit-slider-thumb]:appearance-none
           [&::-webkit-slider-thumb]:rounded-full
-          [&::-webkit-slider-thumb]:bg-black
+          [&::-webkit-slider-thumb]:bg-typography-primary
 
           [&::-moz-range-thumb]:pointer-events-auto
           [&::-moz-range-thumb]:h-5
@@ -142,7 +142,7 @@ export const DualRangeFilter = ({
           [&::-moz-range-thumb]:cursor-pointer
           [&::-moz-range-thumb]:rounded-full
           [&::-moz-range-thumb]:border-none
-          [&::-moz-range-thumb]:bg-black
+          [&::-moz-range-thumb]:bg-typography-primary
         "
         />
       </div>

@@ -1,3 +1,4 @@
+export { Button } from './button';
 export { CheckboxFilter } from './checkbox-filter';
 export { DualRangeFilter } from './dual-range-filter';
 export { MultiSelectFilter } from './multi-select-filter';
