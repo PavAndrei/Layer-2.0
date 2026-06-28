@@ -35,7 +35,7 @@ body {
   }
 
   .block-small {
-    @apply text-[13px] leading-[18px] font-normal;
+    @apply text-[13px] leading-4.5 font-normal;
   }
 
   .block-micro {

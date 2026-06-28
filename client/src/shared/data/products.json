@@ -78,8 +78,44 @@
     "images": [
       {
         "src": "/products/core-oversized-hoodie-001.png",
-        "alt": "Core Oversized Hoodie main view",
+        "alt": "Core Oversized Hoodie neutral main view",
         "role": "main"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-black.png",
+        "alt": "Core Oversized Hoodie in black front view",
+        "role": "front",
+        "color": "black"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-black-model.png",
+        "alt": "Core Oversized Hoodie in black on model",
+        "role": "model",
+        "color": "black"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-black-side.png",
+        "alt": "Core Oversized Hoodie in black side view",
+        "role": "side",
+        "color": "black"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-black-back.png",
+        "alt": "Core Oversized Hoodie in black back view",
+        "role": "back",
+        "color": "black"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-black-detail.png",
+        "alt": "Core Oversized Hoodie in black cuff and pocket detail",
+        "role": "detail",
+        "color": "black"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-black-fabric.png",
+        "alt": "Core Oversized Hoodie in black fleece fabric close-up",
+        "role": "fabric",
+        "color": "black"
       },
       {
         "src": "/products/core-oversized-hoodie-001-white.png",
@@ -88,10 +124,34 @@
         "color": "white"
       },
       {
-        "src": "/products/core-oversized-hoodie-001-black.png",
-        "alt": "Core Oversized Hoodie in black front view",
-        "role": "front",
-        "color": "black"
+        "src": "/products/core-oversized-hoodie-001-white-model.png",
+        "alt": "Core Oversized Hoodie in white on model",
+        "role": "model",
+        "color": "white"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-white-side.png",
+        "alt": "Core Oversized Hoodie in white side view",
+        "role": "side",
+        "color": "white"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-white-back.png",
+        "alt": "Core Oversized Hoodie in white back view",
+        "role": "back",
+        "color": "white"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-white-detail.png",
+        "alt": "Core Oversized Hoodie in white cuff and pocket detail",
+        "role": "detail",
+        "color": "white"
+      },
+      {
+        "src": "/products/core-oversized-hoodie-001-white-fabric.png",
+        "alt": "Core Oversized Hoodie in white fleece fabric close-up",
+        "role": "fabric",
+        "color": "white"
       }
     ]
   },

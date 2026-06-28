@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import {
+  getProductGalleryImages,
   useSingleProduct,
   useSingleProductVariant,
   useSingleProductVariantParams,
@@ -38,6 +40,15 @@ export const SingleProductPage = () => {
     selectedSize,
     setVariantParams,
   });
+  const galleryImages = useMemo(() => {
+    if (!product) return [];
+
+    return getProductGalleryImages({
+      product,
+      selectedColor,
+      selectedVariant,
+    });
+  }, [product, selectedColor, selectedVariant]);
 
   if (isLoading) return <SingleProductLoading />;
 
@@ -62,7 +73,7 @@ export const SingleProductPage = () => {
         <SingleProductLayoutMain
           gallery={
             <ProductGallery
-              image={selectedVariant?.image ?? product.img}
+              images={galleryImages}
               title={product.title}
             />
           }
