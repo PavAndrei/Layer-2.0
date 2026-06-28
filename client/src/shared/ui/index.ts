@@ -3,7 +3,6 @@ export { CheckboxFilter } from './checkbox-filter';
 export { DualRangeFilter } from './dual-range-filter';
 export { MultiSelectFilter } from './multi-select-filter';
 export { Pagination } from './pagination';
-export { PaginationWrapper } from './pagination-wrapper';
 export { ProductCard } from './product-card';
 export { ProductCardColorSelector } from './product-card-color-selector';
 export { formatProductPrice } from './product-price-format';

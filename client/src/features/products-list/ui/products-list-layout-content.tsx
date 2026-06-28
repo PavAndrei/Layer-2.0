@@ -59,11 +59,11 @@ export const ProductsListLayoutContent = ({
   return (
     <>
       {resultsSummary ??
-        (total !== undefined ? (
+        (total !== undefined && (
           <span className="block-small text-typography-secondary">
             {total} products found
           </span>
-        ) : null)}
+        ))}
       {isFetching && (
         <span className="block-small text-typography-secondary">
           Updating products...

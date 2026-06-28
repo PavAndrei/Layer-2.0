@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-import { PaginationWrapper } from '../../shared/ui';
+import { Pagination } from '../../shared/ui';
 import {
   ProductGrid,
   ProductsListFiltersToggle,
@@ -10,11 +8,20 @@ import {
   ProductsListLayoutHeader,
 } from './ui';
 import { PAGINATION, PRODUCT_COLLECTIONS } from '../../shared/constants';
-import { useProductsFilters, useProductsList } from './model';
+import {
+  useProductsFilters,
+  useProductsList,
+  useProductsListUiStore,
+} from './model';
 
 export const CatalogPage = () => {
   const collectionConfig = PRODUCT_COLLECTIONS.catalog;
-  const [isFiltersOpen, setIsFiltersOpen] = useState(true);
+  const isFiltersOpen = useProductsListUiStore(
+    (state) => state.isFiltersOpen,
+  );
+  const toggleFilters = useProductsListUiStore(
+    (state) => state.toggleFilters,
+  );
 
   const filters = useProductsFilters();
   const { handlePageChange, page, removeFilter, resetFilters, setFilters } =
@@ -35,20 +42,19 @@ export const CatalogPage = () => {
           actions={
             <ProductsListFiltersToggle
               isOpen={isFiltersOpen}
-              onToggle={() => setIsFiltersOpen((prev) => !prev)}
+              onToggle={toggleFilters}
             />
           }
         />
       }
+      filtersOpen={isFiltersOpen}
       filters={
-        isFiltersOpen ? (
-          <ProductsListLayoutFilters
-            filters={filters}
-            setFilters={setFilters}
-            resetFilters={resetFilters}
-            handleRemoveFilter={removeFilter}
-          />
-        ) : null
+        <ProductsListLayoutFilters
+          filters={filters}
+          setFilters={setFilters}
+          resetFilters={resetFilters}
+          handleRemoveFilter={removeFilter}
+        />
       }
     >
       <ProductsListLayoutContent
@@ -68,7 +74,7 @@ export const CatalogPage = () => {
         total={total}
       >
         <ProductGrid products={products} />
-        <PaginationWrapper
+        <Pagination
           total={total}
           limit={PAGINATION.PRODUCTS_LIMIT}
           currentPage={page}

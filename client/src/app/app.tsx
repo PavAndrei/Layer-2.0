@@ -14,7 +14,7 @@ import { SingleProductPage } from '../features/single-product';
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col gap-8">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -27,7 +27,7 @@ function App() {
         <Route path="/products/:id" element={<SingleProductPage />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -12,7 +12,7 @@ export const ProductsListLayoutHeader = ({
   actions,
 }: ProductsListLayoutHeaderProps) => {
   return (
-    <div className="flex flex-col gap-4 py-4 md:flex-row md:items-start md:justify-between">
+    <div className="flex flex-col gap-4 pb-4 md:flex-row md:items-start md:justify-between">
       <div className="flex flex-col gap-2">
         <h1 className="heading text-typography-heading">{title}</h1>
         <p className="text-typography-secondary description">{description}</p>

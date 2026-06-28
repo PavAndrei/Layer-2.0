@@ -2,8 +2,8 @@ import { Link } from 'react-router';
 
 export const Header = () => {
   return (
-    <header>
-      <div className="max-w-322.5 px-1.25 mx-auto py-5">
+    <header className="py-8 border-b border-border-strong">
+      <div className="container mx-auto px-2.5">
         <div className="flex justify-between items-center">
           <Link to="/">Logo</Link>
           <nav>

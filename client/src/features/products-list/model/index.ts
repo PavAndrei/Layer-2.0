@@ -6,5 +6,6 @@ export {
 } from './filter-constants';
 export type { Filters, SortingOption } from './filter-types';
 export { productsListQueryKeys } from './products-list-query-keys';
+export { useProductsListUiStore } from './products-list-ui-store';
 export { useProductsFilters } from './use-products-filters';
 export { useProductsList } from './use-products-list';

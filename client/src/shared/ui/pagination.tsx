@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 const getPaginationItems = (
   currentPage: number,
   totalPages: number,
@@ -50,6 +52,7 @@ export const Pagination = ({
   currentPage: number;
   onPageChange: (page: number) => void;
 }) => {
+  const previousPageRef = useRef(currentPage);
   const totalPages = Math.ceil(total / limit);
 
   const isFirstPage = currentPage === 1;
@@ -57,17 +60,27 @@ export const Pagination = ({
 
   const paginationItems = getPaginationItems(currentPage, totalPages);
 
+  useEffect(() => {
+    if (previousPageRef.current === currentPage) return;
+
+    previousPageRef.current = currentPage;
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [currentPage]);
+
   if (totalPages <= 1) {
     return null;
   }
 
   return (
-    <div className="flex justify-center items-center gap-2">
+    <div className="flex justify-center items-center gap-2 mt-auto mb-0">
       <button
         type="button"
         disabled={isFirstPage}
         onClick={() => onPageChange(currentPage - 1)}
-        className="px-2 py-1 rounded border hover:bg-gray-200 transition-colors cursor-pointer"
+        className={`${isFirstPage && 'pointer-events-none'} px-2 py-1 rounded text-typography-secondary border border-border-strong hover:bg-background-hover transition-colors cursor-pointer`}
       >
         {'<'}
       </button>
@@ -80,8 +93,10 @@ export const Pagination = ({
             key={item}
             onClick={() => onPageChange(item)}
             className={`${
-              currentPage === item ? 'bg-gray-200' : ''
-            } px-2 py-1 rounded border hover:bg-gray-200 transition-colors cursor-pointer`}
+              currentPage === item
+                ? 'bg-background-primary pointer-events-none'
+                : 'bg-background-secondary'
+            } px-2 py-1 rounded text-typography-secondary border border-border-strong hover:bg-background-hover transition-colors cursor-pointer`}
           >
             {item}
           </button>
@@ -91,7 +106,7 @@ export const Pagination = ({
         type="button"
         disabled={isLastPage}
         onClick={() => onPageChange(currentPage + 1)}
-        className="px-2 py-1 rounded border hover:bg-gray-200 transition-colors cursor-pointer"
+        className={`${isLastPage && 'pointer-events-none'} px-2 py-1 rounded text-typography-secondary border border-border-strong hover:bg-background-hover transition-colors cursor-pointer`}
       >
         {'>'}
       </button>
