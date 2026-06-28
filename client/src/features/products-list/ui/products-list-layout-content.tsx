@@ -5,6 +5,7 @@ type ProductsListLayoutContentProps = {
   emptyFallback?: ReactNode;
   error?: ReactNode;
   errorAction?: ReactNode;
+  errorFallback?: ReactNode;
   isEmpty: boolean;
   isFetching?: boolean;
   isLoading: boolean;
@@ -18,6 +19,7 @@ export const ProductsListLayoutContent = ({
   emptyFallback,
   error,
   errorAction,
+  errorFallback,
   isEmpty,
   isFetching = false,
   isLoading,
@@ -37,10 +39,14 @@ export const ProductsListLayoutContent = ({
 
   if (error) {
     return (
-      <div className="flex flex-col gap-2">
-        <div>{error}</div>
-        {errorAction}
-      </div>
+      <>
+        {errorFallback ?? (
+          <div className="flex flex-col gap-2">
+            <div>{error}</div>
+            {errorAction}
+          </div>
+        )}
+      </>
     );
   }
 

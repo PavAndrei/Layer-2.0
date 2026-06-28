@@ -1,4 +1,5 @@
 export { ProductGrid } from './product-grid';
+export { ProductGridSkeleton } from './product-grid-skeleton';
 export { ProductsListFiltersToggle } from './products-list-filters-toggle';
 export { ProductsListLayout } from './products-list-layout';
 export { ProductsListLayoutContent } from './products-list-layout-content';

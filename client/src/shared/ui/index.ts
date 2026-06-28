@@ -1,6 +1,7 @@
 export { Button } from './button';
 export { CheckboxFilter } from './checkbox-filter';
 export { DualRangeFilter } from './dual-range-filter';
+export { FeedbackMessage } from './feedback-message';
 export { MobileFullscreenDrawer } from './mobile-fullscreen-drawer';
 export { MultiSelectFilter } from './multi-select-filter';
 export { Pagination } from './pagination';
@@ -9,6 +10,7 @@ export { ProductCardColorSelector } from './product-card-color-selector';
 export { formatProductPrice } from './product-price-format';
 export { ProductPrice } from './product-price';
 export { SelectFilter } from './select-filter';
+export { Skeleton } from './skeleton';
 export { StarRating } from './star-rating';
 export { TextFilter } from './text-filter';
 export type { SelectFilterOption } from './multi-select-filter';
