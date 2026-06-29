@@ -15,7 +15,13 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
         discountPercent={product.discountPercent}
         hasDiscount={product.hasDiscount}
       />
-      <StarRating rating={product.rating} />
+      <div className="flex flex-wrap items-center gap-2">
+        <StarRating rating={product.rating} />
+        <span className="block-small text-typography-secondary">
+          {product.reviewsCount}{' '}
+          {product.reviewsCount === 1 ? 'review' : 'reviews'}
+        </span>
+      </div>
 
       <div className="flex flex-wrap items-center gap-2">
         {product.hasDiscount && <p className="badge animate-pulse">Sale</p>}

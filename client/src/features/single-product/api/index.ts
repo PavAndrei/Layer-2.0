@@ -1,1 +1,1 @@
-export { getProductById } from './single-product-api';
+export { getProductById, getProductReviews } from './single-product-api';

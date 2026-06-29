@@ -19,24 +19,48 @@ export const MobileFullscreenDrawer = ({
   title,
 }: MobileFullscreenDrawerProps) => {
   const [shouldRender, setShouldRender] = useState(isOpen);
+  const [isVisible, setIsVisible] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const titleId = useId();
 
   useEffect(() => {
+    let animationFrameId: number | null = null;
+    let visibilityFrameId: number | null = null;
+    let timeoutId: number | null = null;
+
     if (isOpen) {
       setShouldRender(true);
-      return;
+      animationFrameId = window.requestAnimationFrame(() => {
+        visibilityFrameId = window.requestAnimationFrame(() => {
+          setIsVisible(true);
+        });
+      });
+
+      return () => {
+        if (animationFrameId !== null) {
+          window.cancelAnimationFrame(animationFrameId);
+        }
+
+        if (visibilityFrameId !== null) {
+          window.cancelAnimationFrame(visibilityFrameId);
+        }
+      };
     }
 
-    const timeoutId = window.setTimeout(() => {
+    setIsVisible(false);
+    timeoutId = window.setTimeout(() => {
       setShouldRender(false);
     }, ANIMATION_DURATION_MS);
 
-    return () => window.clearTimeout(timeoutId);
+    return () => {
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+    };
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || !shouldRender) return;
 
     const previousOverflow = document.body.style.overflow;
 
@@ -55,7 +79,7 @@ export const MobileFullscreenDrawer = ({
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, shouldRender]);
 
   if (!shouldRender) return null;
 
@@ -63,7 +87,7 @@ export const MobileFullscreenDrawer = ({
     <div
       aria-hidden={!isOpen}
       className={`fixed inset-0 z-50 bg-background-surface transition-[opacity,transform] duration-300 ease-out md:hidden ${
-        isOpen
+        isVisible
           ? 'translate-y-0 opacity-100'
           : 'pointer-events-none translate-y-3 opacity-0'
       }`}

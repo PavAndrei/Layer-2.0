@@ -1,7 +1,14 @@
 import type { ProductDocument } from '../models/products.model';
 import type { ProductDto } from '../types/api';
 
-export const productToDto = (product: ProductDocument): ProductDto => ({
+type ProductToDtoOptions = {
+  reviewsCount?: number;
+};
+
+export const productToDto = (
+  product: ProductDocument,
+  options: ProductToDtoOptions = {},
+): ProductDto => ({
   _id: product._id.toString(),
   img: product.img,
   title: product.title,
@@ -15,6 +22,7 @@ export const productToDto = (product: ProductDocument): ProductDto => ({
   hasDiscount: product.hasDiscount,
   isNewProduct: product.isNewProduct,
   images: product.images ?? [],
+  reviewsCount: options.reviewsCount ?? 0,
   variants: product.variants.map((variant) => ({
     _id: variant._id.toString(),
     sku: variant.sku,

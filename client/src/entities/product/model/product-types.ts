@@ -16,6 +16,7 @@ export interface ProductCardProps {
   hasDiscount: boolean;
   isNewProduct: boolean;
   images: ProductImage[];
+  reviewsCount: number;
   variants: ProductVariant[];
   totalQuantity: number;
 }

@@ -1,6 +1,7 @@
 export { ProductGallery } from './product-gallery';
 export { ProductInfo } from './product-info';
 export { ProductPurchasePanel } from './product-purchase-panel';
+export { ProductReviewsAccordion } from './product-reviews-accordion';
 export { ProductVariantSelector } from './product-variant-selector';
 export { RelatedProductsSlider } from './related-products-slider';
 export { SingleProductError } from './single-product-error';

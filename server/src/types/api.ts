@@ -28,6 +28,7 @@ export type ProductDto = {
   hasDiscount: boolean;
   isNewProduct: boolean;
   images: ProductImage[];
+  reviewsCount: number;
   variants: ProductVariant[];
   totalQuantity: number;
 };

@@ -10,6 +10,7 @@ import {
   ProductGallery,
   ProductInfo,
   ProductPurchasePanel,
+  ProductReviewsAccordion,
   ProductVariantSelector,
   RelatedProductsSlider,
   SingleProductError,
@@ -80,6 +81,10 @@ export const SingleProductPage = () => {
           details={
             <>
               <ProductInfo product={product} />
+              <ProductReviewsAccordion
+                productId={product._id}
+                reviewsCount={product.reviewsCount}
+              />
               <ProductVariantSelector
                 colors={colors}
                 sizes={sizes}

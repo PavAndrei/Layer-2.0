@@ -7,6 +7,7 @@ import {
   parseProductsQuery,
 } from '../utils/parse-products-query';
 import { productToDto } from '../utils/product-to-dto';
+import { getReviewCountsByProductIds } from '../utils/get-review-counts';
 import type { ProductResponse, ProductsResponse } from '../types/api';
 
 export const getProducts = async (
@@ -143,12 +144,19 @@ export const getProducts = async (
     .sort(sort)
     .skip((safePage - 1) * limit)
     .limit(limit);
+  const reviewCounts = await getReviewCountsByProductIds(
+    products.map((product) => product._id),
+  );
 
   res.status(200).json({
     message: 'Products fetched successfully',
     success: true,
     data: {
-      products: products.map(productToDto),
+      products: products.map((product) =>
+        productToDto(product, {
+          reviewsCount: reviewCounts.get(product._id.toString()),
+        }),
+      ),
       pagination: {
         total,
         page: safePage,
@@ -181,13 +189,23 @@ export const getProductById = async (
       $in: product.categories,
     },
   }).limit(10);
+  const reviewCounts = await getReviewCountsByProductIds([
+    product._id,
+    ...relatedProducts.map((relatedProduct) => relatedProduct._id),
+  ]);
 
   res.status(200).json({
     message: 'Product fetched successfully',
     success: true,
     data: {
-      product: productToDto(product),
-      relatedProducts: relatedProducts.map(productToDto),
+      product: productToDto(product, {
+        reviewsCount: reviewCounts.get(product._id.toString()),
+      }),
+      relatedProducts: relatedProducts.map((relatedProduct) =>
+        productToDto(relatedProduct, {
+          reviewsCount: reviewCounts.get(relatedProduct._id.toString()),
+        }),
+      ),
     },
   });
 };
