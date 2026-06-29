@@ -46,3 +46,42 @@ body {
     @apply text-xs leading-4 font-semibold tracking-wide uppercase;
   }
 }
+
+@layer components {
+  .swiper-button-next,
+  .swiper-button-prev {
+    @apply flex h-10 w-10 items-center justify-center rounded border border-border-strong bg-background-surface p-2 text-accent-primary shadow-sm transition-[color,background-color,border-color,transform];
+
+    --swiper-navigation-color: theme('colors.accent.primary');
+
+    color: theme('colors.accent.primary');
+  }
+
+  .swiper-button-next:active,
+  .swiper-button-prev:active {
+    @apply scale-95;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    @apply border-border-active bg-background-secondary text-accent-hover;
+
+    --swiper-navigation-color: theme('colors.accent.hover');
+
+    color: theme('colors.accent.hover');
+  }
+
+  .swiper-button-next:focus-visible,
+  .swiper-button-prev:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-black;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    @apply text-sm font-bold;
+  }
+
+  .swiper-button-disabled {
+    @apply opacity-35;
+  }
+}

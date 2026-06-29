@@ -1,59 +1,33 @@
-import { useEffect, useState } from 'react';
-
-import {
-  ReviewCard,
-  ReviewListSkeleton,
-  type ProductReview,
-} from '../../../entities/review';
+import { ReviewCard, ReviewListSkeleton } from '../../../entities/review';
 import { Button, FeedbackMessage } from '../../../shared/ui';
-import { useProductReviews } from '../model';
+import { useProductReviewsAccordion } from '../model';
 
 type ProductReviewsAccordionProps = {
   productId: string;
   reviewsCount: number;
 };
 
-const REVIEWS_LIMIT = 5;
-
-const formatReviewsCount = (count: number) =>
-  `${count} ${count === 1 ? 'review' : 'reviews'}`;
-
 export const ProductReviewsAccordion = ({
   productId,
   reviewsCount,
 }: ProductReviewsAccordionProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [page, setPage] = useState(1);
-  const [loadedReviews, setLoadedReviews] = useState<ProductReview[]>([]);
-  const { reviews, pagination, isLoading, isFetching, error, refetch } =
-    useProductReviews({
-      productId,
-      isEnabled: isOpen,
-      limit: REVIEWS_LIMIT,
-      page,
-    });
-  const isInitialLoading = isLoading && loadedReviews.length === 0;
-  const isEmpty = !isInitialLoading && loadedReviews.length === 0;
-  const hasMoreReviews = pagination.page < pagination.totalPages;
-  const totalReviews = pagination.total || reviewsCount;
-
-  useEffect(() => {
-    setPage(1);
-    setLoadedReviews([]);
-  }, [productId]);
-
-  useEffect(() => {
-    if (reviews.length === 0) return;
-
-    setLoadedReviews((currentReviews) => {
-      if (page === 1) return reviews;
-
-      const reviewIds = new Set(currentReviews.map((review) => review._id));
-      const nextReviews = reviews.filter((review) => !reviewIds.has(review._id));
-
-      return [...currentReviews, ...nextReviews];
-    });
-  }, [page, reviews]);
+  const {
+    error,
+    hasMoreReviews,
+    isEmpty,
+    isFetching,
+    isInitialLoading,
+    isOpen,
+    loadedReviews,
+    loadMoreReviews,
+    refetch,
+    reviewsCountLabel,
+    toggleReviews,
+    totalReviews,
+  } = useProductReviewsAccordion({
+    productId,
+    reviewsCount,
+  });
 
   return (
     <section className="flex flex-col gap-3 rounded border border-border-soft bg-background-surface p-4">
@@ -61,12 +35,12 @@ export const ProductReviewsAccordion = ({
         type="button"
         className="flex w-full cursor-pointer items-center justify-between gap-3 text-left"
         aria-expanded={isOpen}
-        onClick={() => setIsOpen((currentValue) => !currentValue)}
+        onClick={toggleReviews}
       >
         <span className="flex flex-col gap-1">
           <span className="block-title text-typography-heading">Reviews</span>
           <span className="block-small text-typography-secondary">
-            {formatReviewsCount(reviewsCount)}
+            {reviewsCountLabel}
           </span>
         </span>
         <span
@@ -139,7 +113,7 @@ export const ProductReviewsAccordion = ({
                 size="sm"
                 variant="secondary"
                 disabled={isFetching}
-                onClick={() => setPage((currentPage) => currentPage + 1)}
+                onClick={loadMoreReviews}
               >
                 Load more reviews
               </Button>

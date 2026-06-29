@@ -3,10 +3,10 @@ import type {
   ApiResponse,
   PaginationData,
 } from '../../../shared/api';
-import type { ProductCardProps } from '../../../entities/product';
+import type { Product } from '../../../entities/product';
 
 type ProductsResponseData = {
-  products: ProductCardProps[];
+  products: Product[];
   pagination: PaginationData;
 };
 

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router';
 
 import type {
-  ProductCardProps as ProductCardData,
+  Product,
   ProductVariant,
 } from '../model';
 import { StarRating } from '../../../shared/ui';
@@ -10,7 +10,7 @@ import { ProductCardColorSelector } from './product-card-color-selector';
 import { ProductPrice } from './product-price';
 
 type ProductCardProps = {
-  product: ProductCardData;
+  product: Product;
   to: string;
 };
 

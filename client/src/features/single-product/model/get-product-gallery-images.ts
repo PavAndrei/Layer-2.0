@@ -1,12 +1,12 @@
 import type {
-  ProductCardProps,
+  Product,
   ProductImage,
   ProductImageRole,
   ProductVariant,
 } from '../../../entities/product';
 
 type GetProductGalleryImagesParams = {
-  product: ProductCardProps;
+  product: Product;
   selectedColor: string | null;
   selectedVariant: ProductVariant | null;
 };

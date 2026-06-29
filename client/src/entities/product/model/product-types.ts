@@ -2,7 +2,7 @@ import type { ProductAudience } from './product-audience-types';
 import type { ProductImage } from './product-image-types';
 import type { ProductVariant } from './product-variant-types';
 
-export interface ProductCardProps {
+export interface Product {
   _id: string;
   img: string;
   title: string;

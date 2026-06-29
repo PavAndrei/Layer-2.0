@@ -3,12 +3,12 @@ import { useCallback, useEffect, useMemo } from 'react';
 import type { UrlStateSetter } from '../../../shared/model';
 import {
   PRODUCT_SIZES,
-  type ProductCardProps,
+  type Product,
   type ProductSize,
 } from '../../../entities/product';
 
 type UseSingleProductVariantParams = {
-  product: ProductCardProps | null;
+  product: Product | null;
   selectedColor: string | null;
   selectedSize: ProductSize | null;
   setVariantParams: UrlStateSetter<{

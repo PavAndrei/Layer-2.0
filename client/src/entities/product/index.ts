@@ -10,7 +10,7 @@ export {
   PRODUCT_SIZES,
   type CategoryOption,
   type ProductAudience,
-  type ProductCardProps,
+  type Product,
   type ProductCollection,
   type ProductCollectionBaseFilters,
   type ProductCollectionId,

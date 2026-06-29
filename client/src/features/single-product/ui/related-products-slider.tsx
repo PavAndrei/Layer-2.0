@@ -3,10 +3,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { ProductCard, type ProductCardProps } from '../../../entities/product';
+import { ProductCard, type Product } from '../../../entities/product';
 
 type RelatedProductsSliderProps = {
-  products: ProductCardProps[];
+  products: Product[];
 };
 
 export const RelatedProductsSlider = ({
@@ -23,22 +23,14 @@ export const RelatedProductsSlider = ({
         modules={[A11y, Navigation]}
         navigation
         spaceBetween={16}
-        slidesPerView={1.2}
-        breakpoints={{
-          640: {
-            slidesPerView: 2.2,
-          },
-          1024: {
-            slidesPerView: 3.2,
-          },
-          1280: {
-            slidesPerView: 4,
-          },
-        }}
+        slidesPerView="auto"
         className="w-full"
       >
         {products.map((product) => (
-          <SwiperSlide key={product._id} className="h-auto">
+          <SwiperSlide
+            key={product._id}
+            className="h-auto !w-full md:!w-[calc((100%_-_1rem)/2)] lg:!w-[calc((100%_-_2rem)/3)] xl:!w-[calc((100%_-_3rem)/4)]"
+          >
             <ProductCard
               product={product}
               to={`/products/${product._id}`}

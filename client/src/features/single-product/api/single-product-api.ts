@@ -1,6 +1,6 @@
 import { apiClient } from '../../../shared/api';
 import type { ApiResponse } from '../../../shared/api';
-import type { ProductCardProps } from '../../../entities/product';
+import type { Product } from '../../../entities/product';
 import type {
   ProductReview,
   ProductReviewsSummary,
@@ -8,8 +8,8 @@ import type {
 import type { PaginationData } from '../../../shared/api';
 
 type ProductResponseData = {
-  product: ProductCardProps;
-  relatedProducts: ProductCardProps[];
+  product: Product;
+  relatedProducts: Product[];
 };
 
 type ProductResponse = ApiResponse<ProductResponseData>;

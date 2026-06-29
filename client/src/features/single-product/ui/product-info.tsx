@@ -1,8 +1,8 @@
-import { ProductPrice, type ProductCardProps } from '../../../entities/product';
+import { ProductPrice, type Product } from '../../../entities/product';
 import { StarRating } from '../../../shared/ui';
 
 type ProductInfoProps = {
-  product: ProductCardProps;
+  product: Product;
 };
 
 export const ProductInfo = ({ product }: ProductInfoProps) => {

@@ -51,7 +51,7 @@ export const ProductGallery = ({ images, title }: ProductGalleryProps) => {
   }
 
   return (
-    <div className="flex min-w-0 flex-col gap-3">
+    <div className="flex min-w-0 flex-col gap-3 sm:gap-4">
       <Swiper
         modules={[A11y, Keyboard, Navigation, Thumbs]}
         onSwiper={setMainSwiper}
@@ -63,7 +63,7 @@ export const ProductGallery = ({ images, title }: ProductGalleryProps) => {
       >
         {images.map((image) => (
           <SwiperSlide key={image.src}>
-            <div className="aspect-4/5 bg-gray-100">
+            <div className="aspect-4/5 bg-gray-100 sm:aspect-3/4 lg:aspect-4/5">
               <img
                 src={image.src}
                 alt={image.alt || title}

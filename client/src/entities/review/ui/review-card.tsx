@@ -1,16 +1,9 @@
 import type { ProductReview } from '../model';
+import { formatDisplayDate } from '../../../shared/lib';
 import { StarRating } from '../../../shared/ui';
 
 type ReviewCardProps = {
   review: ProductReview;
-};
-
-const formatReviewDate = (date: string) => {
-  return new Intl.DateTimeFormat('en', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date(date));
 };
 
 export const ReviewCard = ({ review }: ReviewCardProps) => {
@@ -34,7 +27,7 @@ export const ReviewCard = ({ review }: ReviewCardProps) => {
           className="block-small text-typography-muted"
           dateTime={review.createdAt}
         >
-          {formatReviewDate(review.createdAt)}
+          {formatDisplayDate(review.createdAt)}
         </time>
       </div>
 

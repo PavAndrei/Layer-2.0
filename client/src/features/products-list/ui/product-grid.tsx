@@ -1,6 +1,6 @@
-import { ProductCard, type ProductCardProps } from '../../../entities/product';
+import { ProductCard, type Product } from '../../../entities/product';
 
-export const ProductGrid = ({ products }: { products: ProductCardProps[] }) => {
+export const ProductGrid = ({ products }: { products: Product[] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-1 md:gap-2 lg:gap-3 2xl:gap-4">
       {products?.map((product) => (

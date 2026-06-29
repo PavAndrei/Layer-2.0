@@ -1,4 +1,4 @@
-import { Button } from '../../../shared/ui';
+import { ArrowLeftIcon, Button } from '../../../shared/ui';
 
 type SingleProductLayoutHeaderProps = {
   title: string;
@@ -20,8 +20,13 @@ export const SingleProductLayoutHeader = ({
         </p>
       </div>
 
-      <Button onClick={onBack} variant="secondary">
-        Back
+      <Button
+        aria-label="Go back"
+        onClick={onBack}
+        size="icon"
+        variant="secondary"
+      >
+        <ArrowLeftIcon className="h-5 w-5" />
       </Button>
     </header>
   );
