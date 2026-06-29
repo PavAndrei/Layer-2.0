@@ -1,6 +1,7 @@
 import type { ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
+import type { ReviewStatus } from './review';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -31,6 +32,24 @@ export type ProductDto = {
   totalQuantity: number;
 };
 
+export type ReviewDto = {
+  _id: string;
+  productId: string;
+  authorName: string;
+  rating: number;
+  title: string;
+  text: string;
+  verifiedPurchase: boolean;
+  status: ReviewStatus;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ReviewSummaryDto = {
+  count: number;
+  averageRating: number;
+};
+
 export type PaginationData = {
   total: number;
   page: number;
@@ -46,4 +65,10 @@ export type ProductsResponse = ApiSuccess<{
 export type ProductResponse = ApiSuccess<{
   product: ProductDto;
   relatedProducts: ProductDto[];
+}>;
+
+export type ProductReviewsResponse = ApiSuccess<{
+  reviews: ReviewDto[];
+  summary: ReviewSummaryDto;
+  pagination: PaginationData;
 }>;
