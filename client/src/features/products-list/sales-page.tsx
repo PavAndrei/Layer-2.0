@@ -102,7 +102,10 @@ export const SalesPage = () => {
         isEmpty={total === 0}
         total={total}
       >
-        <ProductGrid products={products} />
+        <ProductGrid
+          products={products}
+          sourceLabel={collectionConfig.title}
+        />
         <Pagination
           total={total}
           limit={PAGINATION.PRODUCTS_LIMIT}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import type { LinkProps } from 'react-router';
 import { Link } from 'react-router';
 
 import type {
@@ -11,6 +12,7 @@ import { ProductPrice } from './product-price';
 
 type ProductCardProps = {
   product: Product;
+  state?: LinkProps['state'];
   to: string;
 };
 
@@ -25,7 +27,7 @@ const buildProductUrl = (to: string, variant: ProductVariant | null) => {
   return `${to}?${searchParams.toString()}`;
 };
 
-export const ProductCard = ({ product, to }: ProductCardProps) => {
+export const ProductCard = ({ product, state, to }: ProductCardProps) => {
   const firstAvailableVariant = useMemo(() => {
     return product.variants.find((variant) => variant.quantity > 0) ?? null;
   }, [product.variants]);
@@ -69,6 +71,7 @@ export const ProductCard = ({ product, to }: ProductCardProps) => {
       <div className="flex flex-col gap-2">
         <Link
           to={productUrl}
+          state={state}
           className="group aspect-4/5 overflow-hidden rounded bg-background-secondary"
         >
           <img
@@ -90,7 +93,7 @@ export const ProductCard = ({ product, to }: ProductCardProps) => {
         </div>
       </div>
       <div className="flex flex-col max-h-full h-full">
-        <Link to={productUrl} className="mb-1">
+        <Link to={productUrl} state={state} className="mb-1">
           <h3 className="block-title text-typography-heading">
             {product.title}
           </h3>

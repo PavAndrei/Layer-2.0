@@ -7,12 +7,12 @@ export const SingleProductLoading = () => {
       className="container mx-auto flex flex-col gap-6 px-2.5"
       aria-label="Loading product"
     >
-      <header className="flex flex-col gap-4 pb-4 md:flex-row md:justify-between">
+      <header className="flex flex-col gap-2 pb-4">
         <div className="flex flex-col gap-2">
+          <Skeleton className="h-4 w-44" />
           <Skeleton className="h-10 w-5/6 max-w-md" />
           <Skeleton className="h-7 w-2/3 max-w-md" />
         </div>
-        <Skeleton className="h-10 w-10" />
       </header>
 
       <main className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,28rem)] lg:items-start">

@@ -1,33 +1,26 @@
-import { ArrowLeftIcon, Button } from '../../../shared/ui';
+import { Breadcrumbs, type BreadcrumbItem } from '../../../shared/ui';
 
 type SingleProductLayoutHeaderProps = {
   title: string;
   categories: string[];
-  onBack: () => void;
+  breadcrumbs: BreadcrumbItem[];
 };
 
 export const SingleProductLayoutHeader = ({
   title,
+  breadcrumbs,
   categories,
-  onBack,
 }: SingleProductLayoutHeaderProps) => {
   return (
-    <header className="flex flex-col md:flex-row md:justify-between gap-4 pb-4">
+    <header className="flex flex-col gap-2 pb-4">
+      <Breadcrumbs items={breadcrumbs} />
+
       <div className="flex flex-col gap-1">
         <h1 className="heading text-typography-heading">{title}</h1>
         <p className="text-typography-secondary description">
           Categories: {categories.join(', ')}
         </p>
       </div>
-
-      <Button
-        aria-label="Go back"
-        onClick={onBack}
-        size="icon"
-        variant="secondary"
-      >
-        <ArrowLeftIcon className="h-5 w-5" />
-      </Button>
     </header>
   );
 };

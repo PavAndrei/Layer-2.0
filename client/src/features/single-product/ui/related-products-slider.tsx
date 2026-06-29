@@ -1,3 +1,4 @@
+import type { LinkProps } from 'react-router';
 import { A11y, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -6,10 +7,12 @@ import 'swiper/css/navigation';
 import { ProductCard, type Product } from '../../../entities/product';
 
 type RelatedProductsSliderProps = {
+  productLinkState?: LinkProps['state'];
   products: Product[];
 };
 
 export const RelatedProductsSlider = ({
+  productLinkState,
   products,
 }: RelatedProductsSliderProps) => {
   if (products.length === 0) {
@@ -33,6 +36,7 @@ export const RelatedProductsSlider = ({
           >
             <ProductCard
               product={product}
+              state={productLinkState}
               to={`/products/${product._id}`}
             />
           </SwiperSlide>

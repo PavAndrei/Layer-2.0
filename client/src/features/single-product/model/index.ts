@@ -5,5 +5,6 @@ export { singleProductQueryKeys } from './single-product-query-keys';
 export { useProductReviews } from './use-product-reviews';
 export { useProductReviewsAccordion } from './use-product-reviews-accordion';
 export { useSingleProduct } from './use-single-product';
+export { useSingleProductNavigation } from './use-single-product-navigation';
 export { useSingleProductVariant } from './use-single-product-variant';
 export { useSingleProductVariantParams } from './use-single-product-variant-params';

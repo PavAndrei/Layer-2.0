@@ -1,4 +1,5 @@
 export { ArrowLeftIcon } from './arrow-left-icon';
+export { Breadcrumbs } from './breadcrumbs';
 export { Button } from './button';
 export { CheckboxFilter } from './checkbox-filter';
 export { DualRangeFilter } from './dual-range-filter';
@@ -10,4 +11,5 @@ export { SelectFilter } from './select-filter';
 export { Skeleton } from './skeleton';
 export { StarRating } from './star-rating';
 export { TextFilter } from './text-filter';
+export type { BreadcrumbItem } from './breadcrumbs';
 export type { SelectFilterOption } from './multi-select-filter';

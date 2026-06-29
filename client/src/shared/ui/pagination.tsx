@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useScrollToTopOnChange } from '../hooks';
 
 const getPaginationItems = (
   currentPage: number,
@@ -52,7 +52,6 @@ export const Pagination = ({
   currentPage: number;
   onPageChange: (page: number) => void;
 }) => {
-  const previousPageRef = useRef(currentPage);
   const totalPages = Math.ceil(total / limit);
 
   const isFirstPage = currentPage === 1;
@@ -60,15 +59,7 @@ export const Pagination = ({
 
   const paginationItems = getPaginationItems(currentPage, totalPages);
 
-  useEffect(() => {
-    if (previousPageRef.current === currentPage) return;
-
-    previousPageRef.current = currentPage;
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, [currentPage]);
+  useScrollToTopOnChange(currentPage);
 
   if (totalPages <= 1) {
     return null;

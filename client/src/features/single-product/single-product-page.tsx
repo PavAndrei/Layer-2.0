@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
+import { useScrollToTopOnChange } from '../../shared/hooks';
 import {
   getProductGalleryImages,
   useSingleProduct,
+  useSingleProductNavigation,
   useSingleProductVariant,
   useSingleProductVariantParams,
 } from './model';
@@ -23,9 +25,16 @@ import {
 
 export const SingleProductPage = () => {
   const { id } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
 
   const { product, relatedProducts, isLoading, error } = useSingleProduct(id);
+  useScrollToTopOnChange(id, { skipInitialScroll: false });
+  const { breadcrumbs, productLinkState } = useSingleProductNavigation({
+    productTitle: product?.title,
+    state: location.state,
+  });
+
   const { selectedColor, selectedSize, setSelectedSize, setVariantParams } =
     useSingleProductVariantParams();
   const {
@@ -66,8 +75,8 @@ export const SingleProductPage = () => {
       header={
         <SingleProductLayoutHeader
           title={product.title}
+          breadcrumbs={breadcrumbs}
           categories={product.categories}
-          onBack={() => navigate(-1)}
         />
       }
       main={
@@ -105,7 +114,10 @@ export const SingleProductPage = () => {
       }
       footer={
         <SingleProductLayoutFooter>
-          <RelatedProductsSlider products={relatedProducts} />
+          <RelatedProductsSlider
+            products={relatedProducts}
+            productLinkState={productLinkState}
+          />
         </SingleProductLayoutFooter>
       }
     />
