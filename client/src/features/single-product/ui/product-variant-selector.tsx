@@ -1,4 +1,5 @@
-import type { ProductSize } from '../../../shared/types';
+import type { ProductSize } from '../../../entities/product';
+import { Button } from '../../../shared/ui';
 
 type ProductVariantSelectorProps = {
   colors: string[];
@@ -24,24 +25,23 @@ export const ProductVariantSelector = ({
   return (
     <div className="flex flex-col gap-4">
       <fieldset className="flex flex-col gap-2">
-        <legend className="font-semibold">Color</legend>
+        <legend className="block-title text-typography-heading">Color</legend>
         <div className="flex flex-wrap gap-2">
           {colors.map((color) => {
             const isAvailable = isColorAvailable(color);
 
             return (
-              <button
-                type="button"
+              <Button
                 key={color}
                 disabled={!isAvailable}
                 aria-pressed={selectedColor === color}
                 onClick={() => onColorChange(color)}
-                className={`rounded border px-3 py-1 capitalize transition-colors ${
-                  selectedColor === color ? 'bg-black text-white' : ''
-                } disabled:cursor-not-allowed disabled:opacity-40`}
+                size="sm"
+                variant={selectedColor === color ? 'primary' : 'secondary'}
+                className="capitalize"
               >
                 {color.replace(/-/g, ' ')}
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -49,24 +49,22 @@ export const ProductVariantSelector = ({
 
       {selectedColor && (
         <fieldset className="flex flex-col gap-2">
-          <legend className="font-semibold">Size</legend>
+          <legend className="block-title text-typography-heading">Size</legend>
           <div className="flex flex-wrap gap-2">
             {sizes.map((size) => {
               const isAvailable = isSizeAvailable(size);
 
               return (
-                <button
-                  type="button"
+                <Button
                   key={size}
                   disabled={!isAvailable}
                   aria-pressed={selectedSize === size}
                   onClick={() => onSizeChange(size)}
-                  className={`rounded border px-3 py-1 transition-colors ${
-                    selectedSize === size ? 'bg-black text-white' : ''
-                  } disabled:cursor-not-allowed disabled:opacity-40`}
+                  size="sm"
+                  variant={selectedSize === size ? 'primary' : 'secondary'}
                 >
                   {size === 'ONE_SIZE' ? 'One size' : size}
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -75,4 +73,3 @@ export const ProductVariantSelector = ({
     </div>
   );
 };
-

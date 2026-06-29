@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-import type { ProductImage } from '../../../shared/types';
+import type { ProductImage } from '../../../entities/product';
 
 type ProductGalleryProps = {
   images: ProductImage[];

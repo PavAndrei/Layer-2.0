@@ -1,4 +1,5 @@
 import { Button, FeedbackMessage, Pagination } from '../../shared/ui';
+import { PRODUCT_COLLECTIONS } from '../../entities/product';
 import {
   ProductGrid,
   ProductGridSkeleton,
@@ -8,7 +9,7 @@ import {
   ProductsListLayoutFilters,
   ProductsListLayoutHeader,
 } from './ui';
-import { PAGINATION, PRODUCT_COLLECTIONS } from '../../shared/constants';
+import { PAGINATION } from '../../shared/constants';
 import {
   useProductsFilters,
   useProductsList,

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { customParam, stringParam, useUrlState } from '../../../shared/model';
-import { PRODUCT_SIZES, type ProductSize } from '../../../shared/types';
+import { PRODUCT_SIZES, type ProductSize } from '../../../entities/product';
 
 type SingleProductVariantParams = {
   color: string;

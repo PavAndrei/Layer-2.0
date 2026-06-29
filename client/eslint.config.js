@@ -24,6 +24,10 @@ const publicApiImportRestrictions = [
     message:
       'Import feature internals through the feature public api or import page files only.',
   },
+  {
+    regex: '^(\\.\\.?/)+entities/[^/]+/(?!index$).+',
+    message: 'Import entity internals through the entity public api.',
+  },
 ]
 
 const appImportRestriction = {
@@ -33,7 +37,12 @@ const appImportRestriction = {
 
 const featuresImportRestriction = {
   regex: '^(\\.\\.?/)+features(/.*)?$',
-  message: 'Shared code must not import from the features layer.',
+  message: 'Lower layers must not import from the features layer.',
+}
+
+const entitiesImportRestriction = {
+  regex: '^(\\.\\.?/)+entities(/.*)?$',
+  message: 'Shared code must not import from the entities layer.',
 }
 
 export default tseslint.config(
@@ -75,6 +84,21 @@ export default tseslint.config(
     },
   },
   {
+    files: ['src/entities/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...publicApiImportRestrictions,
+            appImportRestriction,
+            featuresImportRestriction,
+          ],
+        },
+      ],
+    },
+  },
+  {
     files: ['src/shared/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': [
@@ -84,6 +108,7 @@ export default tseslint.config(
             ...publicApiImportRestrictions,
             appImportRestriction,
             featuresImportRestriction,
+            entitiesImportRestriction,
           ],
         },
       ],

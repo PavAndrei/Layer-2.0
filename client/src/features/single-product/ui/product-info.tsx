@@ -1,5 +1,5 @@
-import type { ProductCardProps } from '../../../shared/types';
-import { ProductPrice } from '../../../shared/ui';
+import { ProductPrice, type ProductCardProps } from '../../../entities/product';
+import { StarRating } from '../../../shared/ui';
 
 type ProductInfoProps = {
   product: ProductCardProps;
@@ -8,18 +8,21 @@ type ProductInfoProps = {
 export const ProductInfo = ({ product }: ProductInfoProps) => {
   return (
     <div className="flex flex-col gap-2">
-      <p>{product.description}</p>
+      <p className="block-medium">{product.description}</p>
       <ProductPrice
         defaultPrice={product.defaultPrice}
         discountPrice={product.discountPrice}
         discountPercent={product.discountPercent}
         hasDiscount={product.hasDiscount}
       />
-      <p>Total in stock: {product.totalQuantity}</p>
-      <p>Discount: {product.discountPercent}%</p>
-      <p>Rating: {product.rating}</p>
-      <p>Has Discount: {product.hasDiscount ? 'Yes' : 'No'}</p>
-      <p>Is New: {product.isNewProduct ? 'Yes' : 'No'}</p>
+      <StarRating rating={product.rating} />
+
+      <div className="flex flex-wrap items-center gap-2">
+        {product.hasDiscount && <p className="badge animate-pulse">Sale</p>}
+        {product.isNewProduct && (
+          <p className="badge animate-pulse">New Arrival</p>
+        )}
+      </div>
     </div>
   );
 };

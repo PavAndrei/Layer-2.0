@@ -1,5 +1,5 @@
 import { PAGINATION } from '../../../shared/constants';
-import type { ProductCollectionBaseFilters } from '../../../shared/types';
+import type { ProductCollectionBaseFilters } from '../../../entities/product';
 import { MAXIMAL_PRICE_RANGE, MINIMAL_PRICE_RANGE } from '../model';
 import type { Filters } from '../model';
 

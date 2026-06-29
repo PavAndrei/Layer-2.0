@@ -3,7 +3,7 @@ import type {
   ApiResponse,
   PaginationData,
 } from '../../../shared/api';
-import type { ProductCardProps } from '../../../shared/types';
+import type { ProductCardProps } from '../../../entities/product';
 
 type ProductsResponseData = {
   products: ProductCardProps[];

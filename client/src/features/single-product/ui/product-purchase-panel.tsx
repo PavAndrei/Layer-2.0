@@ -1,4 +1,5 @@
-import type { ProductVariant } from '../../../shared/types';
+import type { ProductVariant } from '../../../entities/product';
+import { Button } from '../../../shared/ui';
 import { getPurchaseState } from '../model';
 
 type ProductPurchasePanelProps = {
@@ -15,31 +16,29 @@ export const ProductPurchasePanel = ({
   return (
     <div className="flex flex-col gap-3">
       {selectedVariant && (
-        <div>
+        <div className="block-medium">
           <p>SKU: {selectedVariant.sku}</p>
           <p>Variant in stock: {selectedVariant.quantity}</p>
         </div>
       )}
 
       <div className="flex flex-wrap gap-2">
-        <button
-          type="button"
-          disabled
-          className="max-w-50 cursor-not-allowed rounded border px-2 py-1 opacity-40"
-        >
+        <Button disabled variant="ghost" className="max-w-50">
           Add to Favorites
-        </button>
+        </Button>
 
-        <button
-          type="button"
+        <Button
           disabled={purchaseState.isDisabled}
-          className="max-w-50 cursor-pointer rounded border px-2 py-1 transition-colors hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-40"
+          variant="primary"
+          className="max-w-50"
         >
           {purchaseState.buttonLabel}
-        </button>
+        </Button>
       </div>
 
-      <p className="text-sm text-gray-600">{purchaseState.message}</p>
+      <p className="block-medium text-typography-secondary">
+        {purchaseState.message}
+      </p>
     </div>
   );
 };

@@ -12,7 +12,8 @@ import type { UrlStateSetter } from '../../../shared/model';
 import {
   CATEGORIES_COLLECTION,
   PRODUCT_COLOR_OPTIONS,
-} from '../../../shared/constants';
+  PRODUCT_SIZES,
+} from '../../../entities/product';
 import {
   initialFilters,
   MAXIMAL_PRICE_RANGE,
@@ -20,7 +21,6 @@ import {
   SORTING_OPTIONS,
 } from './filter-constants';
 import type { Filters, SortingOption } from './filter-types';
-import { PRODUCT_SIZES } from '../../../shared/types';
 
 export type ProductsFilters = Filters & {
   debouncedFilters: Filters;

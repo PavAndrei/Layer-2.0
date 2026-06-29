@@ -1,6 +1,6 @@
 import { apiClient } from '../../../shared/api';
 import type { ApiResponse } from '../../../shared/api';
-import type { ProductCardProps } from '../../../shared/types';
+import type { ProductCardProps } from '../../../entities/product';
 
 type ProductResponseData = {
   product: ProductCardProps;

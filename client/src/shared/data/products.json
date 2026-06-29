@@ -2,19 +2,13 @@
   {
     "img": "/products/core-oversized-hoodie-001-black-front.webp",
     "title": "Core Oversized Hoodie",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Core Oversized Hoodie is built around a relaxed streetwear shape with a soft interior, balanced weight and clean everyday finish. It layers easily over tees or under outerwear, making it a dependable piece for city routines, travel days and cooler evening plans.",
     "defaultPrice": 129,
     "discountPrice": 110,
     "discountPercent": 15,
     "rating": 3.4,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -153,19 +147,13 @@
   {
     "img": "/products/washed-zip-hoodie-002-black-front.webp",
     "title": "Washed Zip Hoodie",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Washed Zip Hoodie is built around a relaxed streetwear shape with a soft interior, balanced weight and clean everyday finish. It layers easily over tees or under outerwear, making it a dependable piece for city routines, travel days and cooler evening plans.",
     "defaultPrice": 134,
     "discountPrice": 134,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -347,20 +335,13 @@
   {
     "img": "/products/utility-heavyweight-box-tee-003-charcoal-front.webp",
     "title": "Utility Heavyweight Box Tee",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Utility Heavyweight Box Tee is cut as an easy daily tee with a stable shape, soft touch and enough structure to sit cleanly under layers. It works as a simple base for streetwear outfits while still carrying enough detail to stand on its own.",
     "defaultPrice": 59,
     "discountPrice": 59,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "t-shirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "basics", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -506,18 +487,13 @@
   {
     "img": "/products/city-graphic-t-shirt-004-olive-front.webp",
     "title": "City Graphic T-Shirt",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "City Graphic T-Shirt is cut as an easy daily tee with a stable shape, soft touch and enough structure to sit cleanly under layers. It works as a simple base for streetwear outfits while still carrying enough detail to stand on its own.",
     "defaultPrice": 70,
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": [
-      "t-shirts",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["t-shirts", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -663,19 +639,13 @@
   {
     "img": "/products/relaxed-ribbed-longsleeve-005-navy-front.webp",
     "title": "Relaxed Ribbed Longsleeve",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Relaxed Ribbed Longsleeve is a versatile long sleeve layer with a comfortable fit, clean neckline and fabric weight suited for year-round styling. Wear it on its own in mild weather or under overshirts, hoodies and jackets when the temperature drops.",
     "defaultPrice": 85,
     "discountPrice": 55,
     "discountPercent": 35,
     "rating": 4.5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "basics"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -821,20 +791,13 @@
   {
     "img": "/products/boxy-thermal-long-sleeve-006-burgundy-front.webp",
     "title": "Boxy Thermal Long Sleeve",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Boxy Thermal Long Sleeve is a versatile long sleeve layer with a comfortable fit, clean neckline and fabric weight suited for year-round styling. Wear it on its own in mild weather or under overshirts, hoodies and jackets when the temperature drops.",
     "defaultPrice": 69,
     "discountPrice": 69,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -980,20 +943,13 @@
   {
     "img": "/products/heavyweight-minimal-sweatshirt-007-washed-black-front.webp",
     "title": "Heavyweight Minimal Sweatshirt",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Heavyweight Minimal Sweatshirt balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 104,
     "discountPrice": 104,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "sweatshirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1175,19 +1131,13 @@
   {
     "img": "/products/tonal-quarter-zip-sweatshirt-008-dark-brown-front.webp",
     "title": "Tonal Quarter Zip Sweatshirt",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Tonal Quarter Zip Sweatshirt balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 115,
     "discountPrice": 115,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": [
-      "sweatshirts",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1326,19 +1276,13 @@
   {
     "img": "/products/archive-utility-jacket-009-cream-front.webp",
     "title": "Archive Utility Jacket",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Archive Utility Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 204,
     "discountPrice": 143,
     "discountPercent": 30,
     "rating": 3.9,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1520,19 +1464,13 @@
   {
     "img": "/products/seasonal-coach-jacket-010-white-front.webp",
     "title": "Seasonal Coach Jacket",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Seasonal Coach Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 189,
     "discountPrice": 123,
     "discountPercent": 35,
     "rating": 4.6,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1671,19 +1609,13 @@
   {
     "img": "/products/studio-nylon-windbreaker-011-black-front.webp",
     "title": "Studio Nylon Windbreaker",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Studio Nylon Windbreaker is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 149,
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -1865,19 +1797,13 @@
   {
     "img": "/products/cargo-bomber-jacket-012-black-front.webp",
     "title": "Cargo Bomber Jacket",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Cargo Bomber Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 174,
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -2059,19 +1985,13 @@
   {
     "img": "/products/minimal-canvas-overshirt-013-charcoal-front.webp",
     "title": "Minimal Canvas Overshirt",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Minimal Canvas Overshirt is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 159,
     "discountPrice": 119,
     "discountPercent": 25,
     "rating": 5,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -2253,20 +2173,13 @@
   {
     "img": "/products/essential-cargo-pants-014-olive-front.webp",
     "title": "Essential Cargo Pants",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Essential Cargo Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 154,
     "discountPrice": 154,
     "discountPercent": 0,
     "rating": 4,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2412,19 +2325,13 @@
   {
     "img": "/products/layered-carpenter-pants-015-navy-front.webp",
     "title": "Layered Carpenter Pants",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Layered Carpenter Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 155,
     "discountPrice": 155,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2570,20 +2477,13 @@
   {
     "img": "/products/ribbed-track-pants-016-burgundy-front.webp",
     "title": "Ribbed Track Pants",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Ribbed Track Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 119,
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -2729,19 +2629,13 @@
   {
     "img": "/products/nylon-wide-leg-sweatpants-017-washed-black-front.webp",
     "title": "Nylon Wide Leg Sweatpants",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Nylon Wide Leg Sweatpants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 120,
     "discountPrice": 96,
     "discountPercent": 20,
     "rating": 4.4,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -2887,19 +2781,13 @@
   {
     "img": "/products/canvas-logo-cap-018-dark-brown-front.webp",
     "title": "Canvas Logo Cap",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Canvas Logo Cap is a compact finishing piece for everyday outfits, made to add shape, texture and a quiet Layer accent without overpowering the rest of the look. It works across casual rotations, travel packing and transitional weather styling.",
     "defaultPrice": 39,
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2996,19 +2884,13 @@
   {
     "img": "/products/soft-five-panel-cap-019-cream-front.webp",
     "title": "Soft Five Panel Cap",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Soft Five Panel Cap is a compact finishing piece for everyday outfits, made to add shape, texture and a quiet Layer accent without overpowering the rest of the look. It works across casual rotations, travel packing and transitional weather styling.",
     "defaultPrice": 60,
     "discountPrice": 42,
     "discountPercent": 30,
     "rating": 4.1,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -3105,19 +2987,13 @@
   {
     "img": "/products/structured-essential-beanie-020-white-front.webp",
     "title": "Structured Essential Beanie",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Structured Essential Beanie is a soft cold-weather accessory with a close fit, ribbed texture and minimal branding for easy daily wear. It adds warmth without visual noise and pairs naturally with hoodies, jackets and heavier seasonal layers.",
     "defaultPrice": 39,
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "accessories",
-      "beanies",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3214,19 +3090,13 @@
   {
     "img": "/products/core-ribbed-beanie-021-black-front.webp",
     "title": "Core Ribbed Beanie",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Core Ribbed Beanie is a soft cold-weather accessory with a close fit, ribbed texture and minimal branding for easy daily wear. It adds warmth without visual noise and pairs naturally with hoodies, jackets and heavier seasonal layers.",
     "defaultPrice": 25,
     "discountPrice": 21,
     "discountPercent": 15,
     "rating": 3.8,
-    "categories": [
-      "accessories",
-      "beanies",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -3323,18 +3193,13 @@
   {
     "img": "/products/washed-crossbody-utility-bag-022-black-front.webp",
     "title": "Washed Crossbody Utility Bag",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Washed Crossbody Utility Bag is made for daily carry with a useful shape, durable feel and a minimal streetwear finish. It keeps essentials close without adding bulk, making it easy to style with outerwear, sweats or simple everyday basics.",
     "defaultPrice": 70,
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": [
-      "accessories",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3431,18 +3296,13 @@
   {
     "img": "/products/utility-canvas-tote-bag-023-charcoal-front.webp",
     "title": "Utility Canvas Tote Bag",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Utility Canvas Tote Bag is made for daily carry with a useful shape, durable feel and a minimal streetwear finish. It keeps essentials close without adding bulk, making it easy to style with outerwear, sweats or simple everyday basics.",
     "defaultPrice": 49,
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": [
-      "accessories",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -3539,19 +3399,13 @@
   {
     "img": "/products/city-unisex-fleece-vest-024-olive-front.webp",
     "title": "City Unisex Fleece Vest",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "City Unisex Fleece Vest is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 140,
     "discountPrice": 140,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "outerwear",
-      "streetwear",
-      "unisex"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["outerwear", "streetwear", "unisex"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3733,19 +3587,13 @@
   {
     "img": "/products/relaxed-everyday-crewneck-025-navy-front.webp",
     "title": "Relaxed Everyday Crewneck",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Relaxed Everyday Crewneck balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 109,
     "discountPrice": 71,
     "discountPercent": 35,
     "rating": 4.9,
-    "categories": [
-      "sweatshirts",
-      "basics"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -3884,19 +3732,13 @@
   {
     "img": "/products/boxy-oversized-hoodie-026-burgundy-front.webp",
     "title": "Boxy Oversized Hoodie",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Boxy Oversized Hoodie is built around a relaxed streetwear shape with a soft interior, balanced weight and clean everyday finish. It layers easily over tees or under outerwear, making it a dependable piece for city routines, travel days and cooler evening plans.",
     "defaultPrice": 119,
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4078,19 +3920,13 @@
   {
     "img": "/products/heavyweight-zip-hoodie-027-washed-black-front.webp",
     "title": "Heavyweight Zip Hoodie",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Heavyweight Zip Hoodie is built around a relaxed streetwear shape with a soft interior, balanced weight and clean everyday finish. It layers easily over tees or under outerwear, making it a dependable piece for city routines, travel days and cooler evening plans.",
     "defaultPrice": 134,
     "discountPrice": 134,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4272,20 +4108,13 @@
   {
     "img": "/products/tonal-heavyweight-box-tee-028-dark-brown-front.webp",
     "title": "Tonal Heavyweight Box Tee",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Tonal Heavyweight Box Tee is cut as an easy daily tee with a stable shape, soft touch and enough structure to sit cleanly under layers. It works as a simple base for streetwear outfits while still carrying enough detail to stand on its own.",
     "defaultPrice": 69,
     "discountPrice": 52,
     "discountPercent": 25,
     "rating": 3.6,
-    "categories": [
-      "t-shirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "basics", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4431,18 +4260,13 @@
   {
     "img": "/products/archive-graphic-t-shirt-029-cream-front.webp",
     "title": "Archive Graphic T-Shirt",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Archive Graphic T-Shirt is cut as an easy daily tee with a stable shape, soft touch and enough structure to sit cleanly under layers. It works as a simple base for streetwear outfits while still carrying enough detail to stand on its own.",
     "defaultPrice": 60,
     "discountPrice": 42,
     "discountPercent": 30,
     "rating": 4.3,
-    "categories": [
-      "t-shirts",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["t-shirts", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4588,19 +4412,13 @@
   {
     "img": "/products/seasonal-ribbed-longsleeve-030-white-front.webp",
     "title": "Seasonal Ribbed Longsleeve",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Seasonal Ribbed Longsleeve is a versatile long sleeve layer with a comfortable fit, clean neckline and fabric weight suited for year-round styling. Wear it on its own in mild weather or under overshirts, hoodies and jackets when the temperature drops.",
     "defaultPrice": 85,
     "discountPrice": 85,
     "discountPercent": 0,
     "rating": 5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "basics"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4746,20 +4564,13 @@
   {
     "img": "/products/studio-thermal-long-sleeve-031-black-front.webp",
     "title": "Studio Thermal Long Sleeve",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Studio Thermal Long Sleeve is a versatile long sleeve layer with a comfortable fit, clean neckline and fabric weight suited for year-round styling. Wear it on its own in mild weather or under overshirts, hoodies and jackets when the temperature drops.",
     "defaultPrice": 79,
     "discountPrice": 79,
     "discountPercent": 0,
     "rating": 4,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4905,20 +4716,13 @@
   {
     "img": "/products/cargo-minimal-sweatshirt-032-black-front.webp",
     "title": "Cargo Minimal Sweatshirt",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Cargo Minimal Sweatshirt balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 94,
     "discountPrice": 94,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": [
-      "sweatshirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5057,19 +4861,13 @@
   {
     "img": "/products/minimal-quarter-zip-sweatshirt-033-charcoal-front.webp",
     "title": "Minimal Quarter Zip Sweatshirt",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Minimal Quarter Zip Sweatshirt balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 115,
     "discountPrice": 86,
     "discountPercent": 25,
     "rating": 3.7,
-    "categories": [
-      "sweatshirts",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -5251,19 +5049,13 @@
   {
     "img": "/products/essential-utility-jacket-034-olive-front.webp",
     "title": "Essential Utility Jacket",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Essential Utility Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 214,
     "discountPrice": 214,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -5445,19 +5237,13 @@
   {
     "img": "/products/layered-coach-jacket-035-navy-front.webp",
     "title": "Layered Coach Jacket",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Layered Coach Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 179,
     "discountPrice": 179,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5639,19 +5425,13 @@
   {
     "img": "/products/ribbed-nylon-windbreaker-036-burgundy-front.webp",
     "title": "Ribbed Nylon Windbreaker",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Ribbed Nylon Windbreaker is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 149,
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -5833,19 +5613,13 @@
   {
     "img": "/products/nylon-bomber-jacket-037-washed-black-front.webp",
     "title": "Nylon Bomber Jacket",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Nylon Bomber Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 184,
     "discountPrice": 147,
     "discountPercent": 20,
     "rating": 4.8,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -6027,19 +5801,13 @@
   {
     "img": "/products/canvas-canvas-overshirt-038-dark-brown-front.webp",
     "title": "Canvas Canvas Overshirt",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Canvas Canvas Overshirt is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 149,
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6221,19 +5989,13 @@
   {
     "img": "/products/soft-cargo-pants-039-cream-front.webp",
     "title": "Soft Cargo Pants",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Soft Cargo Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 154,
     "discountPrice": 154,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6379,20 +6141,13 @@
   {
     "img": "/products/structured-carpenter-pants-040-white-front.webp",
     "title": "Structured Carpenter Pants",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Structured Carpenter Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 165,
     "discountPrice": 165,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6538,20 +6293,13 @@
   {
     "img": "/products/core-track-pants-041-black-front.webp",
     "title": "Core Track Pants",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Core Track Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 109,
     "discountPrice": 93,
     "discountPercent": 15,
     "rating": 4.2,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -6697,19 +6445,13 @@
   {
     "img": "/products/washed-wide-leg-sweatpants-042-black-front.webp",
     "title": "Washed Wide Leg Sweatpants",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Washed Wide Leg Sweatpants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 120,
     "discountPrice": 120,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6855,19 +6597,13 @@
   {
     "img": "/products/utility-logo-cap-043-charcoal-front.webp",
     "title": "Utility Logo Cap",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Utility Logo Cap is a compact finishing piece for everyday outfits, made to add shape, texture and a quiet Layer accent without overpowering the rest of the look. It works across casual rotations, travel packing and transitional weather styling.",
     "defaultPrice": 49,
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6964,19 +6700,13 @@
   {
     "img": "/products/city-five-panel-cap-044-olive-front.webp",
     "title": "City Five Panel Cap",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "City Five Panel Cap is a compact finishing piece for everyday outfits, made to add shape, texture and a quiet Layer accent without overpowering the rest of the look. It works across casual rotations, travel packing and transitional weather styling.",
     "defaultPrice": 50,
     "discountPrice": 50,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -7073,19 +6803,13 @@
   {
     "img": "/products/relaxed-essential-beanie-045-navy-front.webp",
     "title": "Relaxed Essential Beanie",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Relaxed Essential Beanie is a soft cold-weather accessory with a close fit, ribbed texture and minimal branding for easy daily wear. It adds warmth without visual noise and pairs naturally with hoodies, jackets and heavier seasonal layers.",
     "defaultPrice": 39,
     "discountPrice": 25,
     "discountPercent": 35,
     "rating": 3.6,
-    "categories": [
-      "accessories",
-      "beanies",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -7182,19 +6906,13 @@
   {
     "img": "/products/boxy-ribbed-beanie-046-burgundy-front.webp",
     "title": "Boxy Ribbed Beanie",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Boxy Ribbed Beanie is a soft cold-weather accessory with a close fit, ribbed texture and minimal branding for easy daily wear. It adds warmth without visual noise and pairs naturally with hoodies, jackets and heavier seasonal layers.",
     "defaultPrice": 35,
     "discountPrice": 30,
     "discountPercent": 15,
     "rating": 4.3,
-    "categories": [
-      "accessories",
-      "beanies",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -7291,18 +7009,13 @@
   {
     "img": "/products/heavyweight-crossbody-utility-bag-047-washed-black-front.webp",
     "title": "Heavyweight Crossbody Utility Bag",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Heavyweight Crossbody Utility Bag is made for daily carry with a useful shape, durable feel and a minimal streetwear finish. It keeps essentials close without adding bulk, making it easy to style with outerwear, sweats or simple everyday basics.",
     "defaultPrice": 60,
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 5,
-    "categories": [
-      "accessories",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -7399,18 +7112,13 @@
   {
     "img": "/products/tonal-canvas-tote-bag-048-dark-brown-front.webp",
     "title": "Tonal Canvas Tote Bag",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Tonal Canvas Tote Bag is made for daily carry with a useful shape, durable feel and a minimal streetwear finish. It keeps essentials close without adding bulk, making it easy to style with outerwear, sweats or simple everyday basics.",
     "defaultPrice": 49,
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 4,
-    "categories": [
-      "accessories",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -7507,19 +7215,13 @@
   {
     "img": "/products/archive-unisex-fleece-vest-049-cream-front.webp",
     "title": "Archive Unisex Fleece Vest",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Archive Unisex Fleece Vest is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 150,
     "discountPrice": 105,
     "discountPercent": 30,
     "rating": 4.7,
-    "categories": [
-      "outerwear",
-      "streetwear",
-      "unisex"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["outerwear", "streetwear", "unisex"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -7701,19 +7403,13 @@
   {
     "img": "/products/seasonal-everyday-crewneck-050-white-front.webp",
     "title": "Seasonal Everyday Crewneck",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Seasonal Everyday Crewneck balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 99,
     "discountPrice": 99,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": [
-      "sweatshirts",
-      "basics"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -7895,19 +7591,13 @@
   {
     "img": "/products/studio-oversized-hoodie-051-black-front.webp",
     "title": "Studio Oversized Hoodie",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Studio Oversized Hoodie is built around a relaxed streetwear shape with a soft interior, balanced weight and clean everyday finish. It layers easily over tees or under outerwear, making it a dependable piece for city routines, travel days and cooler evening plans.",
     "defaultPrice": 119,
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -8089,19 +7779,13 @@
   {
     "img": "/products/cargo-zip-hoodie-052-black-front.webp",
     "title": "Cargo Zip Hoodie",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Cargo Zip Hoodie is built around a relaxed streetwear shape with a soft interior, balanced weight and clean everyday finish. It layers easily over tees or under outerwear, making it a dependable piece for city routines, travel days and cooler evening plans.",
     "defaultPrice": 144,
     "discountPrice": 144,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -8283,20 +7967,13 @@
   {
     "img": "/products/minimal-heavyweight-box-tee-053-charcoal-front.webp",
     "title": "Minimal Heavyweight Box Tee",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Minimal Heavyweight Box Tee is cut as an easy daily tee with a stable shape, soft touch and enough structure to sit cleanly under layers. It works as a simple base for streetwear outfits while still carrying enough detail to stand on its own.",
     "defaultPrice": 59,
     "discountPrice": 44,
     "discountPercent": 25,
     "rating": 4.1,
-    "categories": [
-      "t-shirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "basics", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -8442,18 +8119,13 @@
   {
     "img": "/products/essential-graphic-t-shirt-054-olive-front.webp",
     "title": "Essential Graphic T-Shirt",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Essential Graphic T-Shirt is cut as an easy daily tee with a stable shape, soft touch and enough structure to sit cleanly under layers. It works as a simple base for streetwear outfits while still carrying enough detail to stand on its own.",
     "defaultPrice": 60,
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "t-shirts",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["t-shirts", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -8599,19 +8271,13 @@
   {
     "img": "/products/layered-ribbed-longsleeve-055-navy-front.webp",
     "title": "Layered Ribbed Longsleeve",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Layered Ribbed Longsleeve is a versatile long sleeve layer with a comfortable fit, clean neckline and fabric weight suited for year-round styling. Wear it on its own in mild weather or under overshirts, hoodies and jackets when the temperature drops.",
     "defaultPrice": 95,
     "discountPrice": 62,
     "discountPercent": 35,
     "rating": 3.8,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "basics"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -8757,20 +8423,13 @@
   {
     "img": "/products/ribbed-thermal-long-sleeve-056-burgundy-front.webp",
     "title": "Ribbed Thermal Long Sleeve",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Ribbed Thermal Long Sleeve is a versatile long sleeve layer with a comfortable fit, clean neckline and fabric weight suited for year-round styling. Wear it on its own in mild weather or under overshirts, hoodies and jackets when the temperature drops.",
     "defaultPrice": 69,
     "discountPrice": 69,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -8916,20 +8575,13 @@
   {
     "img": "/products/nylon-minimal-sweatshirt-057-washed-black-front.webp",
     "title": "Nylon Minimal Sweatshirt",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Nylon Minimal Sweatshirt balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 94,
     "discountPrice": 75,
     "discountPercent": 20,
     "rating": 3.5,
-    "categories": [
-      "sweatshirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -9111,19 +8763,13 @@
   {
     "img": "/products/canvas-quarter-zip-sweatshirt-058-dark-brown-front.webp",
     "title": "Canvas Quarter Zip Sweatshirt",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Canvas Quarter Zip Sweatshirt balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 125,
     "discountPrice": 125,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "sweatshirts",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -9305,19 +8951,13 @@
   {
     "img": "/products/soft-utility-jacket-059-cream-front.webp",
     "title": "Soft Utility Jacket",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Soft Utility Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 204,
     "discountPrice": 204,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -9456,19 +9096,13 @@
   {
     "img": "/products/structured-coach-jacket-060-white-front.webp",
     "title": "Structured Coach Jacket",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Structured Coach Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 179,
     "discountPrice": 179,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -9650,19 +9284,13 @@
   {
     "img": "/products/core-nylon-windbreaker-061-black-front.webp",
     "title": "Core Nylon Windbreaker",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Core Nylon Windbreaker is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 159,
     "discountPrice": 135,
     "discountPercent": 15,
     "rating": 4.6,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -9844,19 +9472,13 @@
   {
     "img": "/products/washed-bomber-jacket-062-black-front.webp",
     "title": "Washed Bomber Jacket",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Washed Bomber Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 174,
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -10038,19 +9660,13 @@
   {
     "img": "/products/utility-canvas-overshirt-063-charcoal-front.webp",
     "title": "Utility Canvas Overshirt",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Utility Canvas Overshirt is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 149,
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -10189,19 +9805,13 @@
   {
     "img": "/products/city-cargo-pants-064-olive-front.webp",
     "title": "City Cargo Pants",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "City Cargo Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 164,
     "discountPrice": 115,
     "discountPercent": 30,
     "rating": 5,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -10347,19 +9957,13 @@
   {
     "img": "/products/relaxed-carpenter-pants-065-navy-front.webp",
     "title": "Relaxed Carpenter Pants",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Relaxed Carpenter Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 155,
     "discountPrice": 101,
     "discountPercent": 35,
     "rating": 4,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -10505,20 +10109,13 @@
   {
     "img": "/products/boxy-track-pants-066-burgundy-front.webp",
     "title": "Boxy Track Pants",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Boxy Track Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 109,
     "discountPrice": 109,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -10664,19 +10261,13 @@
   {
     "img": "/products/heavyweight-wide-leg-sweatpants-067-washed-black-front.webp",
     "title": "Heavyweight Wide Leg Sweatpants",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Heavyweight Wide Leg Sweatpants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 130,
     "discountPrice": 130,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -10822,19 +10413,13 @@
   {
     "img": "/products/tonal-logo-cap-068-dark-brown-front.webp",
     "title": "Tonal Logo Cap",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Tonal Logo Cap is a compact finishing piece for everyday outfits, made to add shape, texture and a quiet Layer accent without overpowering the rest of the look. It works across casual rotations, travel packing and transitional weather styling.",
     "defaultPrice": 39,
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -10931,19 +10516,13 @@
   {
     "img": "/products/archive-five-panel-cap-069-cream-front.webp",
     "title": "Archive Five Panel Cap",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Archive Five Panel Cap is a compact finishing piece for everyday outfits, made to add shape, texture and a quiet Layer accent without overpowering the rest of the look. It works across casual rotations, travel packing and transitional weather styling.",
     "defaultPrice": 50,
     "discountPrice": 35,
     "discountPercent": 30,
     "rating": 3.4,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -11040,19 +10619,13 @@
   {
     "img": "/products/seasonal-essential-beanie-070-white-front.webp",
     "title": "Seasonal Essential Beanie",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Seasonal Essential Beanie is a soft cold-weather accessory with a close fit, ribbed texture and minimal branding for easy daily wear. It adds warmth without visual noise and pairs naturally with hoodies, jackets and heavier seasonal layers.",
     "defaultPrice": 49,
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": [
-      "accessories",
-      "beanies",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -11149,19 +10722,13 @@
   {
     "img": "/products/studio-ribbed-beanie-071-black-front.webp",
     "title": "Studio Ribbed Beanie",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Studio Ribbed Beanie is a soft cold-weather accessory with a close fit, ribbed texture and minimal branding for easy daily wear. It adds warmth without visual noise and pairs naturally with hoodies, jackets and heavier seasonal layers.",
     "defaultPrice": 25,
     "discountPrice": 25,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "accessories",
-      "beanies",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -11258,18 +10825,13 @@
   {
     "img": "/products/cargo-crossbody-utility-bag-072-black-front.webp",
     "title": "Cargo Crossbody Utility Bag",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Cargo Crossbody Utility Bag is made for daily carry with a useful shape, durable feel and a minimal streetwear finish. It keeps essentials close without adding bulk, making it easy to style with outerwear, sweats or simple everyday basics.",
     "defaultPrice": 60,
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": [
-      "accessories",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -11366,18 +10928,13 @@
   {
     "img": "/products/minimal-canvas-tote-bag-073-charcoal-front.webp",
     "title": "Minimal Canvas Tote Bag",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Minimal Canvas Tote Bag is made for daily carry with a useful shape, durable feel and a minimal streetwear finish. It keeps essentials close without adding bulk, making it easy to style with outerwear, sweats or simple everyday basics.",
     "defaultPrice": 59,
     "discountPrice": 44,
     "discountPercent": 25,
     "rating": 4.5,
-    "categories": [
-      "accessories",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -11474,19 +11031,13 @@
   {
     "img": "/products/essential-unisex-fleece-vest-074-olive-front.webp",
     "title": "Essential Unisex Fleece Vest",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Essential Unisex Fleece Vest is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 140,
     "discountPrice": 140,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": [
-      "outerwear",
-      "streetwear",
-      "unisex"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["outerwear", "streetwear", "unisex"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -11668,19 +11219,13 @@
   {
     "img": "/products/layered-everyday-crewneck-075-navy-front.webp",
     "title": "Layered Everyday Crewneck",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Layered Everyday Crewneck balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 99,
     "discountPrice": 99,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "sweatshirts",
-      "basics"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -11862,19 +11407,13 @@
   {
     "img": "/products/ribbed-oversized-hoodie-076-burgundy-front.webp",
     "title": "Ribbed Oversized Hoodie",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Ribbed Oversized Hoodie is built around a relaxed streetwear shape with a soft interior, balanced weight and clean everyday finish. It layers easily over tees or under outerwear, making it a dependable piece for city routines, travel days and cooler evening plans.",
     "defaultPrice": 129,
     "discountPrice": 129,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -12056,19 +11595,13 @@
   {
     "img": "/products/nylon-zip-hoodie-077-washed-black-front.webp",
     "title": "Nylon Zip Hoodie",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Nylon Zip Hoodie is built around a relaxed streetwear shape with a soft interior, balanced weight and clean everyday finish. It layers easily over tees or under outerwear, making it a dependable piece for city routines, travel days and cooler evening plans.",
     "defaultPrice": 134,
     "discountPrice": 107,
     "discountPercent": 20,
     "rating": 3.9,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -12250,20 +11783,13 @@
   {
     "img": "/products/canvas-heavyweight-box-tee-078-dark-brown-front.webp",
     "title": "Canvas Heavyweight Box Tee",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Canvas Heavyweight Box Tee is cut as an easy daily tee with a stable shape, soft touch and enough structure to sit cleanly under layers. It works as a simple base for streetwear outfits while still carrying enough detail to stand on its own.",
     "defaultPrice": 59,
     "discountPrice": 59,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": [
-      "t-shirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "basics", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -12409,19 +11935,13 @@
   {
     "img": "/products/soft-graphic-t-shirt-079-cream-front.webp",
     "title": "Soft Graphic T-Shirt",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Soft Graphic T-Shirt is cut as an easy daily tee with a stable shape, soft touch and enough structure to sit cleanly under layers. It works as a simple base for streetwear outfits while still carrying enough detail to stand on its own.",
     "defaultPrice": 70,
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": [
-      "t-shirts",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -12567,19 +12087,13 @@
   {
     "img": "/products/structured-ribbed-longsleeve-080-white-front.webp",
     "title": "Structured Ribbed Longsleeve",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Structured Ribbed Longsleeve is a versatile long sleeve layer with a comfortable fit, clean neckline and fabric weight suited for year-round styling. Wear it on its own in mild weather or under overshirts, hoodies and jackets when the temperature drops.",
     "defaultPrice": 85,
     "discountPrice": 85,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "basics"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -12725,20 +12239,13 @@
   {
     "img": "/products/core-thermal-long-sleeve-081-black-front.webp",
     "title": "Core Thermal Long Sleeve",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Core Thermal Long Sleeve is a versatile long sleeve layer with a comfortable fit, clean neckline and fabric weight suited for year-round styling. Wear it on its own in mild weather or under overshirts, hoodies and jackets when the temperature drops.",
     "defaultPrice": 69,
     "discountPrice": 59,
     "discountPercent": 15,
     "rating": 5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -12884,20 +12391,13 @@
   {
     "img": "/products/washed-minimal-sweatshirt-082-black-front.webp",
     "title": "Washed Minimal Sweatshirt",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Washed Minimal Sweatshirt balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 104,
     "discountPrice": 83,
     "discountPercent": 20,
     "rating": 4,
-    "categories": [
-      "sweatshirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -13079,19 +12579,13 @@
   {
     "img": "/products/utility-quarter-zip-sweatshirt-083-charcoal-front.webp",
     "title": "Utility Quarter Zip Sweatshirt",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Utility Quarter Zip Sweatshirt balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 115,
     "discountPrice": 115,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": [
-      "sweatshirts",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -13273,19 +12767,13 @@
   {
     "img": "/products/city-utility-jacket-084-olive-front.webp",
     "title": "City Utility Jacket",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "City Utility Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 204,
     "discountPrice": 204,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -13467,19 +12955,13 @@
   {
     "img": "/products/relaxed-coach-jacket-085-navy-front.webp",
     "title": "Relaxed Coach Jacket",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Relaxed Coach Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 189,
     "discountPrice": 123,
     "discountPercent": 35,
     "rating": 4.4,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -13661,19 +13143,13 @@
   {
     "img": "/products/boxy-nylon-windbreaker-086-burgundy-front.webp",
     "title": "Boxy Nylon Windbreaker",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Boxy Nylon Windbreaker is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 149,
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -13855,19 +13331,13 @@
   {
     "img": "/products/heavyweight-bomber-jacket-087-washed-black-front.webp",
     "title": "Heavyweight Bomber Jacket",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Heavyweight Bomber Jacket is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 174,
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -14006,19 +13476,13 @@
   {
     "img": "/products/tonal-canvas-overshirt-088-dark-brown-front.webp",
     "title": "Tonal Canvas Overshirt",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Tonal Canvas Overshirt is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 159,
     "discountPrice": 159,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -14200,19 +13664,13 @@
   {
     "img": "/products/archive-cargo-pants-089-cream-front.webp",
     "title": "Archive Cargo Pants",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Archive Cargo Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 154,
     "discountPrice": 108,
     "discountPercent": 30,
     "rating": 3.8,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -14358,19 +13816,13 @@
   {
     "img": "/products/seasonal-carpenter-pants-090-white-front.webp",
     "title": "Seasonal Carpenter Pants",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Seasonal Carpenter Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 155,
     "discountPrice": 155,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -14516,20 +13968,13 @@
   {
     "img": "/products/studio-track-pants-091-black-front.webp",
     "title": "Studio Track Pants",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Studio Track Pants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 119,
     "discountPrice": 101,
     "discountPercent": 15,
     "rating": 3.5,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -14675,20 +14120,13 @@
   {
     "img": "/products/cargo-wide-leg-sweatpants-092-black-front.webp",
     "title": "Cargo Wide Leg Sweatpants",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Cargo Wide Leg Sweatpants brings a relaxed fit, durable handfeel and utility-minded proportions to everyday rotation. It is made to pair with hoodies, tees and outerwear while keeping enough comfort for movement, travel and repeat wear throughout the week.",
     "defaultPrice": 120,
     "discountPrice": 120,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -14834,19 +14272,13 @@
   {
     "img": "/products/minimal-logo-cap-093-charcoal-front.webp",
     "title": "Minimal Logo Cap",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Minimal Logo Cap is a compact finishing piece for everyday outfits, made to add shape, texture and a quiet Layer accent without overpowering the rest of the look. It works across casual rotations, travel packing and transitional weather styling.",
     "defaultPrice": 39,
     "discountPrice": 29,
     "discountPercent": 25,
     "rating": 4.9,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -14943,19 +14375,13 @@
   {
     "img": "/products/essential-five-panel-cap-094-olive-front.webp",
     "title": "Essential Five Panel Cap",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Essential Five Panel Cap is a compact finishing piece for everyday outfits, made to add shape, texture and a quiet Layer accent without overpowering the rest of the look. It works across casual rotations, travel packing and transitional weather styling.",
     "defaultPrice": 60,
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -15052,19 +14478,13 @@
   {
     "img": "/products/layered-essential-beanie-095-navy-front.webp",
     "title": "Layered Essential Beanie",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Layered Essential Beanie is a soft cold-weather accessory with a close fit, ribbed texture and minimal branding for easy daily wear. It adds warmth without visual noise and pairs naturally with hoodies, jackets and heavier seasonal layers.",
     "defaultPrice": 39,
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": [
-      "accessories",
-      "beanies",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -15161,19 +14581,13 @@
   {
     "img": "/products/ribbed-ribbed-beanie-096-burgundy-front.webp",
     "title": "Ribbed Ribbed Beanie",
-    "description": "Built for everyday rotation with a clean streetwear silhouette and durable finish.",
+    "description": "Ribbed Ribbed Beanie is a soft cold-weather accessory with a close fit, ribbed texture and minimal branding for easy daily wear. It adds warmth without visual noise and pairs naturally with hoodies, jackets and heavier seasonal layers.",
     "defaultPrice": 25,
     "discountPrice": 25,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": [
-      "accessories",
-      "beanies",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -15270,18 +14684,13 @@
   {
     "img": "/products/nylon-crossbody-utility-bag-097-washed-black-front.webp",
     "title": "Nylon Crossbody Utility Bag",
-    "description": "Designed for layering, movement and repeat wear across city days.",
+    "description": "Nylon Crossbody Utility Bag is made for daily carry with a useful shape, durable feel and a minimal streetwear finish. It keeps essentials close without adding bulk, making it easy to style with outerwear, sweats or simple everyday basics.",
     "defaultPrice": 70,
     "discountPrice": 56,
     "discountPercent": 20,
     "rating": 4.3,
-    "categories": [
-      "accessories",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -15378,18 +14787,13 @@
   {
     "img": "/products/canvas-canvas-tote-bag-098-dark-brown-front.webp",
     "title": "Canvas Canvas Tote Bag",
-    "description": "A versatile Layer staple with functional details and a relaxed fit.",
+    "description": "Canvas Canvas Tote Bag is made for daily carry with a useful shape, durable feel and a minimal streetwear finish. It keeps essentials close without adding bulk, making it easy to style with outerwear, sweats or simple everyday basics.",
     "defaultPrice": 49,
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 5,
-    "categories": [
-      "accessories",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -15486,19 +14890,13 @@
   {
     "img": "/products/soft-unisex-fleece-vest-099-cream-front.webp",
     "title": "Soft Unisex Fleece Vest",
-    "description": "Made for transitional weather, long weekends and daily styling.",
+    "description": "Soft Unisex Fleece Vest is designed as a practical outer layer with a structured feel, easy movement and enough room for seasonal styling. The silhouette keeps the look clean while functional details make it useful for changing weather, commutes and long days outside.",
     "defaultPrice": 140,
     "discountPrice": 140,
     "discountPercent": 0,
     "rating": 4,
-    "categories": [
-      "outerwear",
-      "streetwear",
-      "unisex"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["outerwear", "streetwear", "unisex"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -15680,19 +15078,13 @@
   {
     "img": "/products/structured-everyday-crewneck-100-white-front.webp",
     "title": "Structured Everyday Crewneck",
-    "description": "Cut from comfortable materials with minimal branding and practical utility.",
+    "description": "Structured Everyday Crewneck balances casual comfort with a cleaner, more structured Layer silhouette. The piece is made for repeat wear, pairing naturally with cargos, denim or track pants while keeping a minimal finish that feels intentional.",
     "defaultPrice": 109,
     "discountPrice": 71,
     "discountPercent": 35,
     "rating": 4.7,
-    "categories": [
-      "sweatshirts",
-      "basics"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics"],
+    "audience": ["men", "women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [

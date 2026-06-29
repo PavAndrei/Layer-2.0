@@ -1,4 +1,4 @@
-import type { ProductVariant } from '../../../shared/types';
+import type { ProductVariant } from '../../../entities/product';
 
 export type PurchaseState = {
   buttonLabel: string;

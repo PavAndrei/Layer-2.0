@@ -3,8 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import type { ProductCardProps } from '../../../shared/types';
-import { ProductCard } from '../../../shared/ui';
+import { ProductCard, type ProductCardProps } from '../../../entities/product';
 
 type RelatedProductsSliderProps = {
   products: ProductCardProps[];
@@ -50,4 +49,3 @@ export const RelatedProductsSlider = ({
     </section>
   );
 };
-

@@ -1,4 +1,4 @@
-import { CategoryOption, type ProductSize } from '../../../shared/types';
+import { CategoryOption, type ProductSize } from '../../../entities/product';
 
 export type SortingOption = {
   value: string;

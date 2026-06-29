@@ -1,14 +1,15 @@
-import { CATEGORIES_COLLECTION } from '../../../shared/constants';
+import {
+  CATEGORIES_COLLECTION,
+  PRODUCT_COLOR_OPTIONS,
+  PRODUCT_SIZE_OPTIONS,
+  type CategoryOption,
+} from '../../../entities/product';
 import {
   initialFilters,
   MAXIMAL_PRICE_RANGE,
   MINIMAL_PRICE_RANGE,
   SORTING_OPTIONS,
 } from '../model';
-import {
-  PRODUCT_COLOR_OPTIONS,
-  PRODUCT_SIZE_OPTIONS,
-} from '../../../shared/constants';
 import {
   Button,
   CheckboxFilter,
@@ -17,7 +18,6 @@ import {
   SelectFilter,
   TextFilter,
 } from '../../../shared/ui';
-import type { CategoryOption } from '../../../shared/types';
 import type { UrlStateSetter } from '../../../shared/model';
 import type { Filters, SortingOption } from '../model';
 import { getActiveFilters } from '../helpers';

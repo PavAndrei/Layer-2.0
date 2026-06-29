@@ -3,7 +3,7 @@ import type {
   ProductImage,
   ProductImageRole,
   ProductVariant,
-} from '../../../shared/types';
+} from '../../../entities/product';
 
 type GetProductGalleryImagesParams = {
   product: ProductCardProps;

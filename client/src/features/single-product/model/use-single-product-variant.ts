@@ -5,7 +5,7 @@ import {
   PRODUCT_SIZES,
   type ProductCardProps,
   type ProductSize,
-} from '../../../shared/types';
+} from '../../../entities/product';
 
 type UseSingleProductVariantParams = {
   product: ProductCardProps | null;

@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import type { ProductCollectionBaseFilters } from '../../../shared/types';
+import type { ProductCollectionBaseFilters } from '../../../entities/product';
 import { getProducts } from '../api';
 import { buildSearchParams } from '../helpers';
 import { productsListQueryKeys } from './products-list-query-keys';
