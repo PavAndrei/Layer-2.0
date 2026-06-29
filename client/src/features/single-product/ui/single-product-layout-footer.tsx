@@ -7,6 +7,5 @@ type SingleProductLayoutFooterProps = {
 export const SingleProductLayoutFooter = ({
   children,
 }: SingleProductLayoutFooterProps) => {
-  return <footer className="py-6">{children}</footer>;
+  return <div className="py-6">{children}</div>;
 };
-

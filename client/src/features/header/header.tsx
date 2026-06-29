@@ -5,7 +5,11 @@ import { HeaderMobileMenu } from './header-mobile-menu';
 import { HeaderNav } from './header-nav';
 import { useHeaderMobileMenu } from './use-header-mobile-menu';
 
-export const Header = () => {
+type HeaderProps = {
+  cartItemsCount: number;
+};
+
+export const Header = ({ cartItemsCount }: HeaderProps) => {
   const { pathname } = useLocation();
   const { closeMobileMenu, isMobileMenuOpen, openMobileMenu } =
     useHeaderMobileMenu();
@@ -19,6 +23,7 @@ export const Header = () => {
           </Link>
           <HeaderNav pathname={pathname} />
           <HeaderActions
+            cartItemsCount={cartItemsCount}
             isMobileMenuOpen={isMobileMenuOpen}
             onMobileMenuOpen={openMobileMenu}
           />

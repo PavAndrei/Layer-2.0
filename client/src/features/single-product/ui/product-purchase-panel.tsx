@@ -3,15 +3,26 @@ import { Button } from '../../../shared/ui';
 import { getPurchaseState } from '../model';
 
 type ProductPurchasePanelProps = {
+  isSelectedVariantInCart: boolean;
   selectedVariant: ProductVariant | null;
   totalQuantity: number;
+  onAddToCart: () => void;
+  onViewCart: () => void;
 };
 
 export const ProductPurchasePanel = ({
+  isSelectedVariantInCart,
   selectedVariant,
   totalQuantity,
+  onAddToCart,
+  onViewCart,
 }: ProductPurchasePanelProps) => {
   const purchaseState = getPurchaseState(selectedVariant, totalQuantity);
+  const shouldShowViewCartButton =
+    isSelectedVariantInCart && !purchaseState.isDisabled;
+  const purchaseMessage = shouldShowViewCartButton
+    ? 'This variant is already in your cart.'
+    : purchaseState.message;
 
   return (
     <div className="flex flex-col gap-3">
@@ -31,13 +42,14 @@ export const ProductPurchasePanel = ({
           disabled={purchaseState.isDisabled}
           variant="primary"
           className="max-w-50"
+          onClick={shouldShowViewCartButton ? onViewCart : onAddToCart}
         >
-          {purchaseState.buttonLabel}
+          {shouldShowViewCartButton ? 'View Cart' : purchaseState.buttonLabel}
         </Button>
       </div>
 
       <p className="block-medium text-typography-secondary">
-        {purchaseState.message}
+        {purchaseMessage}
       </p>
     </div>
   );

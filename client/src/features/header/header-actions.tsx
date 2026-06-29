@@ -1,11 +1,12 @@
 import {
   BurgerMenuIcon,
-  CartIcon,
   FavoriteIcon,
   UserIcon,
 } from './header-icons';
+import { HeaderCartButton } from './header-cart-button';
 
 type HeaderActionsProps = {
+  cartItemsCount: number;
   isMobileMenuOpen: boolean;
   onMobileMenuOpen: () => void;
 };
@@ -14,6 +15,7 @@ const ICON_BUTTON_CLASS_NAME =
   'transition-colors hover:text-accent-hover cursor-pointer';
 
 export const HeaderActions = ({
+  cartItemsCount,
   isMobileMenuOpen,
   onMobileMenuOpen,
 }: HeaderActionsProps) => {
@@ -35,13 +37,10 @@ export const HeaderActions = ({
         <FavoriteIcon size={24} />
       </button>
 
-      <button
-        type="button"
+      <HeaderCartButton
+        itemsCount={cartItemsCount}
         className={ICON_BUTTON_CLASS_NAME}
-        aria-label="Cart"
-      >
-        <CartIcon size={24} />
-      </button>
+      />
 
       <button
         type="button"

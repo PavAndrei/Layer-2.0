@@ -39,7 +39,7 @@ export const Button = ({
       type={type}
       disabled={disabled}
       className={[
-        'inline-flex w-fit cursor-pointer items-center justify-center rounded border transition-[color,background-color,border-color,transform] active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-black disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100',
+        'inline-flex w-fit cursor-pointer items-center justify-center rounded border transition-[color,background-color,border-color,transform] duration-150 ease-out active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-black disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100',
         variantClasses[variant],
         sizeClasses[size],
         className,

@@ -12,15 +12,15 @@ export const SingleProductLayoutHeader = ({
   categories,
 }: SingleProductLayoutHeaderProps) => {
   return (
-    <header className="flex flex-col gap-2 pb-4">
+    <div className="flex flex-col gap-2 pb-4">
       <Breadcrumbs items={breadcrumbs} />
 
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-2">
         <h1 className="heading text-typography-heading">{title}</h1>
         <p className="text-typography-secondary description">
           Categories: {categories.join(', ')}
         </p>
       </div>
-    </header>
+    </div>
   );
 };
