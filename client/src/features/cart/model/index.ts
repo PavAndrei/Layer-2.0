@@ -14,5 +14,6 @@ export {
   selectCartItemsCount,
 } from './cart-selectors';
 export { useCartStore } from './cart-store';
+export { useCartPage } from './use-cart-page';
 export type { CartState } from './cart-store';
 export type { CartItem, CartItemKey, CartTotals } from './cart-types';

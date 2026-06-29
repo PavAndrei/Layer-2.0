@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import { Link } from 'react-router';
 
 import { formatProductPrice } from '../../../entities/product';
 import { Button } from '../../../shared/ui';
 import type { CartTotals } from '../model';
+import { useCartSummary } from './use-cart-summary';
 
 type CartSummaryProps = {
   totals: CartTotals;
@@ -11,12 +11,12 @@ type CartSummaryProps = {
 };
 
 export const CartSummary = ({ totals, onClearCart }: CartSummaryProps) => {
-  const [isClearConfirmOpen, setIsClearConfirmOpen] = useState(false);
-
-  const handleClearCart = () => {
-    onClearCart();
-    setIsClearConfirmOpen(false);
-  };
+  const {
+    closeClearConfirm,
+    handleClearCart,
+    isClearConfirmOpen,
+    openClearConfirm,
+  } = useCartSummary({ onClearCart });
 
   return (
     <section className="sticky top-4 flex flex-col gap-4 rounded border border-border-soft bg-background-surface p-4">
@@ -69,9 +69,14 @@ export const CartSummary = ({ totals, onClearCart }: CartSummaryProps) => {
         >
           Continue Shopping
         </Link>
-        <Button variant="primary" className="w-full">
-          Checkout
-        </Button>
+        <div className="flex flex-col gap-1">
+          <Button disabled variant="primary" className="w-full">
+            Checkout
+          </Button>
+          <p className="block-small text-typography-secondary">
+            Checkout will be available soon.
+          </p>
+        </div>
         {isClearConfirmOpen ? (
           <div className="flex flex-col gap-2 rounded border border-border-soft bg-background-primary p-3">
             <p className="block-small text-typography-secondary">
@@ -82,7 +87,7 @@ export const CartSummary = ({ totals, onClearCart }: CartSummaryProps) => {
                 size="sm"
                 variant="ghost"
                 className="w-full"
-                onClick={() => setIsClearConfirmOpen(false)}
+                onClick={closeClearConfirm}
               >
                 Cancel
               </Button>
@@ -100,7 +105,7 @@ export const CartSummary = ({ totals, onClearCart }: CartSummaryProps) => {
           <Button
             variant="ghost"
             className="w-full"
-            onClick={() => setIsClearConfirmOpen(true)}
+            onClick={openClearConfirm}
           >
             Clear Cart
           </Button>

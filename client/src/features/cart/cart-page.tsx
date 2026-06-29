@@ -1,12 +1,4 @@
-import { useMemo } from 'react';
-
-import { useScrollToTopOnChange } from '../../shared/hooks';
-import {
-  getCartTotals,
-  getCartItemKey,
-  selectCartItems,
-  useCartStore,
-} from './model';
+import { useCartPage } from './model';
 import {
   CartEmptyState,
   CartItemRow,
@@ -15,19 +7,18 @@ import {
 } from './ui';
 
 export const CartPage = () => {
-  const items = useCartStore(selectCartItems);
-  const totals = useMemo(() => getCartTotals(items), [items]);
-  useScrollToTopOnChange('cart-page', { skipInitialScroll: false });
-  const increaseItemQuantity = useCartStore(
-    (state) => state.increaseItemQuantity,
-  );
-  const decreaseItemQuantity = useCartStore(
-    (state) => state.decreaseItemQuantity,
-  );
-  const removeItem = useCartStore((state) => state.removeItem);
-  const clearCart = useCartStore((state) => state.clearCart);
+  const {
+    clearCart,
+    decreaseItemQuantity,
+    getCartItemKey,
+    increaseItemQuantity,
+    isEmpty,
+    items,
+    removeItem,
+    totals,
+  } = useCartPage();
 
-  if (items.length === 0) {
+  if (isEmpty) {
     return (
       <CartLayout itemsCount={0}>
         <CartEmptyState />
