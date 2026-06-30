@@ -1,8 +1,10 @@
 import type { Response } from 'express';
 
+import { REFRESH_TOKEN_EXPIRES_IN_MS } from '../constants/env';
+
 const REFRESH_TOKEN_COOKIE_NAME = 'refreshToken';
 const REFRESH_TOKEN_COOKIE_PATH = '/auth';
-const REFRESH_TOKEN_COOKIE_MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000;
+const REFRESH_TOKEN_COOKIE_MAX_AGE_MS = REFRESH_TOKEN_EXPIRES_IN_MS;
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -28,4 +30,4 @@ export const clearRefreshTokenCookie = (res: Response) => {
   });
 };
 
-export { REFRESH_TOKEN_COOKIE_NAME };
+export { REFRESH_TOKEN_COOKIE_MAX_AGE_MS, REFRESH_TOKEN_COOKIE_NAME };

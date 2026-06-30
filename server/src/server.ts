@@ -1,19 +1,26 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 
+import authRoutes from './routes/auth.route';
 import productsRoutes from './routes/products.route';
 import { errorHandler } from './middlewares/error-handler';
 import connectToDB from './utils/connect-to-database';
+import { CLIENT_ORIGIN, PORT } from './constants/env';
 
 dotenv.config();
 
 export const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: CLIENT_ORIGIN,
+  }),
+);
 app.use(express.json());
-
-const PORT = process.env.PORT || 5000;
+app.use(cookieParser());
 
 app.listen(PORT, async () => {
   console.log(`Server running on port ${PORT}`);
@@ -30,5 +37,6 @@ app.get('/', (_, res) => {
 });
 
 app.use('/products', productsRoutes);
+app.use('/auth', authRoutes);
 
 app.use(errorHandler);

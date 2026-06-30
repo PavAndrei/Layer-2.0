@@ -2,6 +2,7 @@ import type { ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
 import type { ReviewStatus } from './review';
+import type { UserRole } from './user';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -51,6 +52,14 @@ export type ReviewSummaryDto = {
   averageRating: number;
 };
 
+export type UserDto = {
+  _id: string;
+  email: string;
+  name: string;
+  role: UserRole;
+  isEmailVerified: boolean;
+};
+
 export type PaginationData = {
   total: number;
   page: number;
@@ -73,3 +82,14 @@ export type ProductReviewsResponse = ApiSuccess<{
   summary: ReviewSummaryDto;
   pagination: PaginationData;
 }>;
+
+export type AuthResponse = ApiSuccess<{
+  user: UserDto;
+  accessToken: string;
+}>;
+
+export type CurrentUserResponse = ApiSuccess<{
+  user: UserDto;
+}>;
+
+export type LogoutResponse = ApiSuccess<null>;

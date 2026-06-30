@@ -1,40 +1,19 @@
 import { Request, Response } from 'express';
-import { isObjectIdOrHexString } from 'mongoose';
 
 import { ApiError } from '../exceptions/api-error';
 import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
 import type { ProductReviewsResponse } from '../types/api';
 import { reviewToDto } from '../utils/review-to-dto';
-
-const DEFAULT_REVIEWS_LIMIT = 5;
-const MAX_REVIEWS_LIMIT = 20;
-
-const readPositiveInteger = (
-  value: unknown,
-  defaultValue: number,
-  maxValue?: number,
-) => {
-  if (typeof value !== 'string') return defaultValue;
-
-  const parsedValue = Number(value);
-
-  if (!Number.isInteger(parsedValue) || parsedValue < 1) {
-    return defaultValue;
-  }
-
-  return maxValue ? Math.min(parsedValue, maxValue) : parsedValue;
-};
+import type { ProductReviewsQuery } from '../validators/reviews.validators';
 
 export const getProductReviews = async (
   req: Request,
   res: Response<ProductReviewsResponse>,
 ) => {
-  const { id } = req.params;
-
-  if (!isObjectIdOrHexString(id)) {
-    throw ApiError.BadRequest('Invalid product id');
-  }
+  const { id } = req.validated?.params as { id: string };
+  const { limit, page: requestedPage } =
+    req.validated?.query as ProductReviewsQuery;
 
   const productExists = await Product.exists({ _id: id });
 
@@ -42,12 +21,6 @@ export const getProductReviews = async (
     throw ApiError.NotFound('Product not found');
   }
 
-  const requestedPage = readPositiveInteger(req.query.page, 1);
-  const limit = readPositiveInteger(
-    req.query.limit,
-    DEFAULT_REVIEWS_LIMIT,
-    MAX_REVIEWS_LIMIT,
-  );
   const filter = {
     productId: id,
     status: 'approved',
