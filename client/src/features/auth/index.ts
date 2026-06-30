@@ -6,6 +6,7 @@ export {
   useAuthBootstrap,
   useAuthStore,
 } from './model';
+export { LoginPage, RegisterPage } from './ui';
 export type {
   AuthBootstrapResponseData,
   AuthResponseData,

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router';
 
+import { LoginPage, RegisterPage } from '../features/auth';
 import { CartPage } from '../features/cart';
 import { HomePage } from '../features/home';
 import {
@@ -22,6 +23,8 @@ export const AppRoutes = () => {
       <Route path="/sales" element={<SalesPage />} />
       <Route path="/new" element={<NewPage />} />
       <Route path="/catalog" element={<CatalogPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/products/:id" element={<SingleProductPage />} />
     </Routes>
