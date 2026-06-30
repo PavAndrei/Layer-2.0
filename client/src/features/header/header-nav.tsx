@@ -47,7 +47,7 @@ export const HeaderNav = ({
                 aria-current={isActive ? 'page' : undefined}
                 onClick={onNavigate}
                 className={`${LINK_CLASS_NAMES[variant]} relative text-typography-heading transition-colors hover:text-accent-hover after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-accent-primary after:transition-[width] after:duration-200 ${
-                  isActive ? 'after:w-full' : 'after:w-0'
+                  isActive ? 'after:w-full pointer-events-none' : 'after:w-0'
                 }`}
               >
                 {item.label}
