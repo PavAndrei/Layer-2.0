@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import {
+  bootstrap,
   getCurrentUser,
   login,
   logout,
@@ -20,6 +21,7 @@ authRoute.post(
   catchErrors(register),
 );
 authRoute.post('/login', validateRequest(loginSchema), catchErrors(login));
+authRoute.post('/bootstrap', catchErrors(bootstrap));
 authRoute.post('/refresh', catchErrors(refresh));
 authRoute.post('/logout', catchErrors(logout));
 authRoute.get('/me', authMiddleware, catchErrors(getCurrentUser));

@@ -15,6 +15,7 @@ import {
   setRefreshTokenCookie,
 } from '../utils/refresh-token-cookie';
 import type {
+  AuthBootstrapResponse,
   AuthResponse,
   CurrentUserResponse,
   LogoutResponse,
@@ -49,6 +50,18 @@ const sendAuthResponse = (
     data: {
       user: result.user,
       accessToken: result.accessToken,
+    },
+  });
+};
+
+const sendGuestBootstrapResponse = (res: Response<AuthBootstrapResponse>) => {
+  res.status(200).json({
+    success: true,
+    message: 'No active auth session',
+    data: {
+      isAuthenticated: false,
+      user: null,
+      accessToken: null,
     },
   });
 };
@@ -93,6 +106,46 @@ export const refresh = async (
     sendAuthResponse(res, result, 'Token refreshed successfully');
   } catch (error) {
     clearRefreshTokenCookie(res);
+    throw error;
+  }
+};
+
+export const bootstrap = async (
+  req: Request,
+  res: Response<AuthBootstrapResponse>,
+) => {
+  const refreshToken = getRefreshTokenFromCookies(req);
+
+  if (!refreshToken) {
+    sendGuestBootstrapResponse(res);
+    return;
+  }
+
+  try {
+    const result = await refreshAuthSession(
+      refreshToken,
+      getAuthContext(req),
+    );
+
+    setRefreshTokenCookie(res, result.refreshToken);
+
+    res.status(200).json({
+      success: true,
+      message: 'Auth session restored successfully',
+      data: {
+        isAuthenticated: true,
+        user: result.user,
+        accessToken: result.accessToken,
+      },
+    });
+  } catch (error) {
+    clearRefreshTokenCookie(res);
+
+    if (error instanceof ApiError) {
+      sendGuestBootstrapResponse(res);
+      return;
+    }
+
     throw error;
   }
 };

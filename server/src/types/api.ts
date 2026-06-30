@@ -88,6 +88,19 @@ export type AuthResponse = ApiSuccess<{
   accessToken: string;
 }>;
 
+export type AuthBootstrapResponse = ApiSuccess<
+  | {
+      isAuthenticated: true;
+      user: UserDto;
+      accessToken: string;
+    }
+  | {
+      isAuthenticated: false;
+      user: null;
+      accessToken: null;
+    }
+>;
+
 export type CurrentUserResponse = ApiSuccess<{
   user: UserDto;
 }>;
