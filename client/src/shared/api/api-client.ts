@@ -24,6 +24,13 @@ type ApiClientPostOptions<Body> = {
   skipAuthRefresh?: boolean;
 };
 
+type ApiClientDeleteOptions = {
+  path: string;
+  signal?: AbortSignal;
+  errorMessage?: string;
+  skipAuthRefresh?: boolean;
+};
+
 type ApiAuthRefreshHandler = () => Promise<boolean>;
 
 let apiAuthRefreshHandler: ApiAuthRefreshHandler | null = null;
@@ -152,6 +159,21 @@ export const apiClient = {
     return requestWithAuthRefresh(
       () =>
         apiInstance.post<ApiResponse<Data>>(path, body, {
+          signal,
+        }),
+      errorMessage,
+      skipAuthRefresh,
+    );
+  },
+  delete: async <Data>({
+    path,
+    signal,
+    errorMessage = 'Request failed',
+    skipAuthRefresh,
+  }: ApiClientDeleteOptions): Promise<ApiResponse<Data>> => {
+    return requestWithAuthRefresh(
+      () =>
+        apiInstance.delete<ApiResponse<Data>>(path, {
           signal,
         }),
       errorMessage,

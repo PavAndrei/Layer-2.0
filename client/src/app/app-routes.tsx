@@ -7,6 +7,7 @@ import {
   RegisterPage,
 } from '../features/auth';
 import { CartPage } from '../features/cart';
+import { FavoritesPage } from '../features/favorites';
 import { HomePage } from '../features/home';
 import { ProfilePage } from '../features/profile';
 import {
@@ -46,6 +47,14 @@ export const AppRoutes = () => {
         }
       />
       <Route path="/cart" element={<CartPage />} />
+      <Route
+        path="/favorites"
+        element={
+          <ProtectedRoute>
+            <FavoritesPage />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/profile"
         element={

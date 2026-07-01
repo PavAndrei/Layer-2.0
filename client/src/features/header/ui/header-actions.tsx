@@ -3,15 +3,16 @@ import { Link } from 'react-router';
 import type { HeaderAuthStatus, HeaderUser } from '../model';
 import {
   BurgerMenuIcon,
-  FavoriteIcon,
   UserIcon,
 } from './header-icons';
 import { HeaderCartButton } from './header-cart-button';
+import { HeaderFavoriteButton } from './header-favorite-button';
 import { HeaderUserMenu } from './header-user-menu';
 
 type HeaderActionsProps = {
   authStatus: HeaderAuthStatus;
   cartItemsCount: number;
+  favoriteItemsCount: number;
   isMobileMenuOpen: boolean;
   isLogoutPending: boolean;
   user: HeaderUser | null;
@@ -25,6 +26,7 @@ const ICON_BUTTON_CLASS_NAME =
 export const HeaderActions = ({
   authStatus,
   cartItemsCount,
+  favoriteItemsCount,
   isMobileMenuOpen,
   isLogoutPending,
   user,
@@ -56,13 +58,11 @@ export const HeaderActions = ({
         </Link>
       )}
 
-      <button
-        type="button"
+      <HeaderFavoriteButton
+        isAuthenticated={Boolean(isAuthenticated)}
+        itemsCount={favoriteItemsCount}
         className={ICON_BUTTON_CLASS_NAME}
-        aria-label="Favorites"
-      >
-        <FavoriteIcon size={24} />
-      </button>
+      />
 
       <HeaderCartButton
         itemsCount={cartItemsCount}

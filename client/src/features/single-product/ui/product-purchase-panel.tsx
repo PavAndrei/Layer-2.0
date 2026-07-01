@@ -1,8 +1,11 @@
+import type { ReactNode } from 'react';
+
 import type { ProductVariant } from '../../../entities/product';
 import { Button } from '../../../shared/ui';
 import { getPurchaseState } from '../model';
 
 type ProductPurchasePanelProps = {
+  favoriteActionSlot?: ReactNode;
   isSelectedVariantInCart: boolean;
   selectedVariant: ProductVariant | null;
   totalQuantity: number;
@@ -11,6 +14,7 @@ type ProductPurchasePanelProps = {
 };
 
 export const ProductPurchasePanel = ({
+  favoriteActionSlot,
   isSelectedVariantInCart,
   selectedVariant,
   totalQuantity,
@@ -34,9 +38,7 @@ export const ProductPurchasePanel = ({
       )}
 
       <div className="flex flex-wrap gap-2">
-        <Button disabled variant="ghost" className="max-w-50">
-          Add to Favorites
-        </Button>
+        {favoriteActionSlot}
 
         <Button
           disabled={purchaseState.isDisabled}

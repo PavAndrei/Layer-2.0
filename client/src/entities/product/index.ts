@@ -23,5 +23,6 @@ export {
   ProductCard,
   ProductCardColorSelector,
   ProductCardSkeleton,
+  ProductGrid,
   ProductPrice,
 } from './ui';

@@ -1,7 +1,7 @@
 import { Button, FeedbackMessage, Pagination } from '../../shared/ui';
-import { PRODUCT_COLLECTIONS } from '../../entities/product';
+import { PRODUCT_COLLECTIONS, ProductGrid } from '../../entities/product';
+import { FavoriteProductButton, useFavoriteProductActions } from '../favorites';
 import {
-  ProductGrid,
   ProductGridSkeleton,
   ProductsListFiltersToggle,
   ProductsListLayout,
@@ -43,6 +43,11 @@ export const SalesPage = () => {
       baseFilters: collectionConfig.baseFilters,
       filters,
     });
+  const {
+    favoriteProductIds,
+    isFavoriteActionPending,
+    toggleFavorite,
+  } = useFavoriteProductActions();
 
   return (
     <ProductsListLayout
@@ -104,6 +109,14 @@ export const SalesPage = () => {
       >
         <ProductGrid
           products={products}
+          renderProductAction={(product) => (
+            <FavoriteProductButton
+              product={product}
+              isFavorite={favoriteProductIds.has(product._id)}
+              isPending={isFavoriteActionPending(product._id)}
+              onToggle={toggleFavorite}
+            />
+          )}
           sourceLabel={collectionConfig.title}
         />
         <Pagination

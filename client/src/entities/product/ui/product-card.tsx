@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
 import type { LinkProps } from 'react-router';
 import { Link } from 'react-router';
 
@@ -11,6 +12,7 @@ import { ProductCardColorSelector } from './product-card-color-selector';
 import { ProductPrice } from './product-price';
 
 type ProductCardProps = {
+  actionSlot?: ReactNode;
   product: Product;
   state?: LinkProps['state'];
   to: string;
@@ -27,7 +29,12 @@ const buildProductUrl = (to: string, variant: ProductVariant | null) => {
   return `${to}?${searchParams.toString()}`;
 };
 
-export const ProductCard = ({ product, state, to }: ProductCardProps) => {
+export const ProductCard = ({
+  actionSlot,
+  product,
+  state,
+  to,
+}: ProductCardProps) => {
   const firstAvailableVariant = useMemo(() => {
     return product.variants.find((variant) => variant.quantity > 0) ?? null;
   }, [product.variants]);
@@ -69,17 +76,23 @@ export const ProductCard = ({ product, state, to }: ProductCardProps) => {
   return (
     <div className="flex flex-col gap-4 rounded border border-border-soft p-2 bg-background-surface">
       <div className="flex flex-col gap-2">
-        <Link
-          to={productUrl}
-          state={state}
-          className="group aspect-4/5 overflow-hidden rounded bg-background-secondary"
-        >
-          <img
-            src={previewImage}
-            alt={product.title}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-          />
-        </Link>
+        <div className="relative">
+          <Link
+            to={productUrl}
+            state={state}
+            className="group block aspect-4/5 overflow-hidden rounded bg-background-secondary"
+          >
+            <img
+              src={previewImage}
+              alt={product.title}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+          </Link>
+
+          {actionSlot && (
+            <div className="absolute right-2 top-2 z-10">{actionSlot}</div>
+          )}
+        </div>
         <div className="flex items-center justify-between">
           <ProductCardColorSelector
             colors={colorOptions}

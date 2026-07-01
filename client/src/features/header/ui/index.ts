@@ -1,5 +1,6 @@
 export { HeaderActions } from './header-actions';
 export { HeaderCartButton } from './header-cart-button';
+export { HeaderFavoriteButton } from './header-favorite-button';
 export {
   BurgerMenuIcon,
   CartIcon,

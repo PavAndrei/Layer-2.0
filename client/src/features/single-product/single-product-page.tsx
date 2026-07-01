@@ -1,6 +1,10 @@
 import { useMemo } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router';
 import {
+  FavoriteProductButton,
+  useFavoriteProductActions,
+} from '../favorites';
+import {
   createCartItem,
   getCartItemKey,
   selectCartItems,
@@ -35,6 +39,11 @@ export const SingleProductPage = () => {
   const navigate = useNavigate();
   const cartItems = useCartStore(selectCartItems);
   const addCartItem = useCartStore((state) => state.addItem);
+  const {
+    favoriteProductIds,
+    isFavoriteActionPending,
+    toggleFavorite,
+  } = useFavoriteProductActions();
 
   const { product, relatedProducts, isLoading, error } = useSingleProduct(id);
   useScrollToTopOnChange(id, { skipInitialScroll: false });
@@ -138,6 +147,14 @@ export const SingleProductPage = () => {
                 isSizeAvailable={isSizeAvailable}
               />
               <ProductPurchasePanel
+                favoriteActionSlot={
+                  <FavoriteProductButton
+                    product={product}
+                    isFavorite={favoriteProductIds.has(product._id)}
+                    isPending={isFavoriteActionPending(product._id)}
+                    onToggle={toggleFavorite}
+                  />
+                }
                 isSelectedVariantInCart={isSelectedVariantInCart}
                 selectedVariant={selectedVariant}
                 totalQuantity={product.totalQuantity}

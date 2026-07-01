@@ -12,6 +12,7 @@ import {
 type HeaderProps = {
   authStatus: HeaderAuthStatus;
   cartItemsCount: number;
+  favoriteItemsCount: number;
   isLogoutPending: boolean;
   user: HeaderUser | null;
   onLogout: () => void;
@@ -20,6 +21,7 @@ type HeaderProps = {
 export const Header = ({
   authStatus,
   cartItemsCount,
+  favoriteItemsCount,
   isLogoutPending,
   user,
   onLogout,
@@ -39,6 +41,7 @@ export const Header = ({
           <HeaderActions
             authStatus={authStatus}
             cartItemsCount={cartItemsCount}
+            favoriteItemsCount={favoriteItemsCount}
             isMobileMenuOpen={isMobileMenuOpen}
             isLogoutPending={isLogoutPending}
             user={user}
