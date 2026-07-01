@@ -1,9 +1,12 @@
 import { Link, useLocation } from 'react-router';
-import { HeaderActions } from './header-actions';
-import { HeaderLogo } from './header-logo';
-import { HeaderMobileMenu } from './header-mobile-menu';
-import { HeaderNav } from './header-nav';
-import { useHeaderMobileMenu } from './use-header-mobile-menu';
+
+import { useHeaderMobileMenu } from './model';
+import {
+  HeaderActions,
+  HeaderLogo,
+  HeaderMobileMenu,
+  HeaderNav,
+} from './ui';
 
 type HeaderProps = {
   cartItemsCount: number;

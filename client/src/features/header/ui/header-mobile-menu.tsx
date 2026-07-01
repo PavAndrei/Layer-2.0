@@ -1,4 +1,4 @@
-import { MobileFullscreenDrawer } from '../../shared/ui';
+import { MobileFullscreenDrawer } from '../../../shared/ui';
 import { HeaderNav } from './header-nav';
 
 type HeaderMobileMenuProps = {

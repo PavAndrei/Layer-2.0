@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import {
   HEADER_NAVIGATION_ITEMS,
   isHeaderNavigationItemActive,
-} from './header-navigation';
+} from '../model';
 
 type HeaderNavProps = {
   pathname: string;
