@@ -2,16 +2,15 @@ import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { bootstrapAuth } from '../api';
+import { AUTH_QUERY_KEYS } from './auth-query-keys';
 import { useAuthStore } from './auth-store';
-
-const AUTH_BOOTSTRAP_QUERY_KEY = ['auth', 'bootstrap'] as const;
 
 export const useAuthBootstrap = () => {
   const clearSession = useAuthStore((state) => state.clearSession);
   const setSession = useAuthStore((state) => state.setSession);
   const setStatus = useAuthStore((state) => state.setStatus);
   const bootstrapQuery = useQuery({
-    queryKey: AUTH_BOOTSTRAP_QUERY_KEY,
+    queryKey: AUTH_QUERY_KEYS.bootstrap,
     queryFn: bootstrapAuth,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,

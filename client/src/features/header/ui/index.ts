@@ -9,3 +9,4 @@ export {
 export { HeaderLogo } from './header-logo';
 export { HeaderMobileMenu } from './header-mobile-menu';
 export { HeaderNav } from './header-nav';
+export { HeaderUserMenu } from './header-user-menu';

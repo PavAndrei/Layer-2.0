@@ -11,6 +11,7 @@ export {
 export { useAuthStore } from './auth-store';
 export { useAuthBootstrap } from './use-auth-bootstrap';
 export { useLogin } from './use-login';
+export { useLogout } from './use-logout';
 export { useRegister } from './use-register';
 export {
   getZodErrorMessage,

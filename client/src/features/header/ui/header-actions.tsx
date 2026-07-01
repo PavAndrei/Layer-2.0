@@ -1,33 +1,60 @@
+import { Link } from 'react-router';
+
+import type { HeaderAuthStatus, HeaderUser } from '../model';
 import {
   BurgerMenuIcon,
   FavoriteIcon,
   UserIcon,
 } from './header-icons';
 import { HeaderCartButton } from './header-cart-button';
+import { HeaderUserMenu } from './header-user-menu';
 
 type HeaderActionsProps = {
+  authStatus: HeaderAuthStatus;
   cartItemsCount: number;
   isMobileMenuOpen: boolean;
+  isLogoutPending: boolean;
+  user: HeaderUser | null;
   onMobileMenuOpen: () => void;
+  onLogout: () => void;
 };
 
 const ICON_BUTTON_CLASS_NAME =
   'transition-colors hover:text-accent-hover cursor-pointer';
 
 export const HeaderActions = ({
+  authStatus,
   cartItemsCount,
   isMobileMenuOpen,
+  isLogoutPending,
+  user,
   onMobileMenuOpen,
+  onLogout,
 }: HeaderActionsProps) => {
+  const isAuthenticated = authStatus === 'authenticated' && user;
+  const isAuthLoading = authStatus === 'idle' || authStatus === 'loading';
+
   return (
     <div className="flex items-center gap-5 text-typography-heading order-3 sm:order-2 lg:order-3">
-      <button
-        type="button"
-        className={ICON_BUTTON_CLASS_NAME}
-        aria-label="User profile"
-      >
-        <UserIcon size={24} />
-      </button>
+      {isAuthenticated ? (
+        <HeaderUserMenu
+          user={user}
+          isLogoutPending={isLogoutPending}
+          triggerClassName={ICON_BUTTON_CLASS_NAME}
+          onLogout={onLogout}
+        />
+      ) : (
+        <Link
+          to="/login"
+          className={`${ICON_BUTTON_CLASS_NAME} ${
+            isAuthLoading ? 'pointer-events-none opacity-50' : ''
+          }`}
+          aria-disabled={isAuthLoading}
+          aria-label={isAuthLoading ? 'Loading account' : 'Sign in'}
+        >
+          <UserIcon size={24} />
+        </Link>
+      )}
 
       <button
         type="button"

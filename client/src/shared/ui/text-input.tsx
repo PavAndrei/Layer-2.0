@@ -54,7 +54,7 @@ export const TextInput = ({
           <button
             aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
             aria-pressed={isPasswordVisible}
-            className="absolute right-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded text-typography-muted transition-colors hover:text-typography-heading focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary disabled:cursor-not-allowed disabled:opacity-50"
+            className="absolute right-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded text-typography-muted transition-colors hover:text-typography-heading focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary disabled:cursor-not-allowed disabled:opacity-50"
             disabled={disabled}
             type="button"
             onClick={() => setIsPasswordVisible((current) => !current)}

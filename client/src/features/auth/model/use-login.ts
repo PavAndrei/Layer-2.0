@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 
 import { login } from '../api';
+import { setAuthenticatedAuthBootstrapQueryData } from './auth-query-cache';
 import type { LoginPayload } from './auth-types';
 import { useAuthStore } from './auth-store';
 import {
@@ -23,6 +24,7 @@ const initialValues: LoginPayload = {
 
 export const useLogin = ({ redirectTo = '/' }: UseLoginOptions = {}) => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const setSession = useAuthStore((state) => state.setSession);
   const [values, setValues] = useState<LoginPayload>(initialValues);
   const [error, setError] = useState<string | null>(null);
@@ -36,6 +38,7 @@ export const useLogin = ({ redirectTo = '/' }: UseLoginOptions = {}) => {
       }
 
       setSession(response.data);
+      setAuthenticatedAuthBootstrapQueryData(queryClient, response.data);
       navigate(redirectTo, { replace: true });
     },
     onError: () => {

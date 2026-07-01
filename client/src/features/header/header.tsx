@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router';
 
+import type { HeaderAuthStatus, HeaderUser } from './model';
 import { useHeaderMobileMenu } from './model';
 import {
   HeaderActions,
@@ -9,10 +10,20 @@ import {
 } from './ui';
 
 type HeaderProps = {
+  authStatus: HeaderAuthStatus;
   cartItemsCount: number;
+  isLogoutPending: boolean;
+  user: HeaderUser | null;
+  onLogout: () => void;
 };
 
-export const Header = ({ cartItemsCount }: HeaderProps) => {
+export const Header = ({
+  authStatus,
+  cartItemsCount,
+  isLogoutPending,
+  user,
+  onLogout,
+}: HeaderProps) => {
   const { pathname } = useLocation();
   const { closeMobileMenu, isMobileMenuOpen, openMobileMenu } =
     useHeaderMobileMenu();
@@ -26,9 +37,13 @@ export const Header = ({ cartItemsCount }: HeaderProps) => {
           </Link>
           <HeaderNav pathname={pathname} />
           <HeaderActions
+            authStatus={authStatus}
             cartItemsCount={cartItemsCount}
             isMobileMenuOpen={isMobileMenuOpen}
+            isLogoutPending={isLogoutPending}
+            user={user}
             onMobileMenuOpen={openMobileMenu}
+            onLogout={onLogout}
           />
         </div>
       </div>

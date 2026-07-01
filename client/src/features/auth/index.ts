@@ -6,6 +6,7 @@ export {
   useAuthBootstrap,
   useAuthStore,
   useLogin,
+  useLogout,
   useRegister,
 } from './model';
 export { LoginPage } from './login-page';

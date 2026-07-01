@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 
 import { register } from '../api';
+import { setAuthenticatedAuthBootstrapQueryData } from './auth-query-cache';
 import type { RegisterFormValues } from './auth-types';
 import { useAuthStore } from './auth-store';
 import {
@@ -27,6 +28,7 @@ export const useRegister = ({
   redirectTo = '/',
 }: UseRegisterOptions = {}) => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const setSession = useAuthStore((state) => state.setSession);
   const [values, setValues] = useState<RegisterFormValues>(initialValues);
   const [error, setError] = useState<string | null>(null);
@@ -41,6 +43,7 @@ export const useRegister = ({
       }
 
       setSession(response.data);
+      setAuthenticatedAuthBootstrapQueryData(queryClient, response.data);
       navigate(redirectTo, { replace: true });
     },
     onError: () => {
