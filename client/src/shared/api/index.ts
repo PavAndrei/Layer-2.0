@@ -1,4 +1,9 @@
-export { apiClient, apiInstance, setApiAccessToken } from './api-client';
+export {
+  apiClient,
+  apiInstance,
+  setApiAccessToken,
+  setApiAuthRefreshHandler,
+} from './api-client';
 export { BASE_API_URL } from './api-constants';
 export type {
   ApiErrorResponse,

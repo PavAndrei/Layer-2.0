@@ -1,8 +1,14 @@
 import { Route, Routes } from 'react-router';
 
-import { GuestRoute, LoginPage, RegisterPage } from '../features/auth';
+import {
+  GuestRoute,
+  LoginPage,
+  ProtectedRoute,
+  RegisterPage,
+} from '../features/auth';
 import { CartPage } from '../features/cart';
 import { HomePage } from '../features/home';
+import { ProfilePage } from '../features/profile';
 import {
   CatalogPage,
   MenPage,
@@ -40,6 +46,14 @@ export const AppRoutes = () => {
         }
       />
       <Route path="/cart" element={<CartPage />} />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/products/:id" element={<SingleProductPage />} />
     </Routes>
   );

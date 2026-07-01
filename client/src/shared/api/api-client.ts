@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { AxiosResponse } from 'axios';
 
 import { BASE_API_URL } from './api-constants';
 import type { ApiResponse } from './api-types';
@@ -12,6 +13,7 @@ type ApiClientGetOptions = {
   params?: ApiClientParams;
   signal?: AbortSignal;
   errorMessage?: string;
+  skipAuthRefresh?: boolean;
 };
 
 type ApiClientPostOptions<Body> = {
@@ -19,7 +21,13 @@ type ApiClientPostOptions<Body> = {
   body?: Body;
   signal?: AbortSignal;
   errorMessage?: string;
+  skipAuthRefresh?: boolean;
 };
+
+type ApiAuthRefreshHandler = () => Promise<boolean>;
+
+let apiAuthRefreshHandler: ApiAuthRefreshHandler | null = null;
+let apiAuthRefreshPromise: Promise<boolean> | null = null;
 
 const buildQueryString = (params?: ApiClientParams) => {
   if (!params) return '';
@@ -59,6 +67,12 @@ export const setApiAccessToken = (accessToken: string | null) => {
   delete apiInstance.defaults.headers.common.Authorization;
 };
 
+export const setApiAuthRefreshHandler = (
+  handler: ApiAuthRefreshHandler | null,
+) => {
+  apiAuthRefreshHandler = handler;
+};
+
 const normalizeApiResponse = <Data>(
   responseStatus: number,
   responseData: ApiResponse<Data>,
@@ -74,30 +88,74 @@ const normalizeApiResponse = <Data>(
   return responseData;
 };
 
+const refreshApiAuthSession = async () => {
+  if (!apiAuthRefreshHandler) return false;
+
+  apiAuthRefreshPromise ??= apiAuthRefreshHandler().finally(() => {
+    apiAuthRefreshPromise = null;
+  });
+
+  return apiAuthRefreshPromise;
+};
+
+const requestWithAuthRefresh = async <Data>(
+  request: () => Promise<AxiosResponse<ApiResponse<Data>>>,
+  errorMessage: string,
+  skipAuthRefresh = false,
+): Promise<ApiResponse<Data>> => {
+  const response = await request();
+
+  if (response.status !== 401 || skipAuthRefresh) {
+    return normalizeApiResponse(response.status, response.data, errorMessage);
+  }
+
+  const isAuthRefreshed = await refreshApiAuthSession();
+
+  if (!isAuthRefreshed) {
+    return normalizeApiResponse(response.status, response.data, errorMessage);
+  }
+
+  const retryResponse = await request();
+
+  return normalizeApiResponse(
+    retryResponse.status,
+    retryResponse.data,
+    errorMessage,
+  );
+};
+
 export const apiClient = {
   get: async <Data>({
     path,
     params,
     signal,
     errorMessage = 'Request failed',
+    skipAuthRefresh,
   }: ApiClientGetOptions): Promise<ApiResponse<Data>> => {
-    const response = await apiInstance.get<ApiResponse<Data>>(
-      `${path}${buildQueryString(params)}`,
-      { signal },
+    return requestWithAuthRefresh(
+      () =>
+        apiInstance.get<ApiResponse<Data>>(
+          `${path}${buildQueryString(params)}`,
+          { signal },
+        ),
+      errorMessage,
+      skipAuthRefresh,
     );
-
-    return normalizeApiResponse(response.status, response.data, errorMessage);
   },
   post: async <Data, Body = unknown>({
     path,
     body,
     signal,
     errorMessage = 'Request failed',
+    skipAuthRefresh,
   }: ApiClientPostOptions<Body>): Promise<ApiResponse<Data>> => {
-    const response = await apiInstance.post<ApiResponse<Data>>(path, body, {
-      signal,
-    });
-
-    return normalizeApiResponse(response.status, response.data, errorMessage);
+    return requestWithAuthRefresh(
+      () =>
+        apiInstance.post<ApiResponse<Data>>(path, body, {
+          signal,
+        }),
+      errorMessage,
+      skipAuthRefresh,
+    );
   },
 };

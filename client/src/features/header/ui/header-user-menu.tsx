@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 import type { HeaderUser } from '../model';
 import { useHeaderUserMenu } from '../model';
 import { UserIcon } from './header-icons';
@@ -28,7 +30,7 @@ export const HeaderUserMenu = ({
   };
 
   return (
-    <div className="relative" ref={userMenuRef}>
+    <div className="relative inline-flex h-6 w-6 items-center justify-center" ref={userMenuRef}>
       <button
         type="button"
         className={triggerClassName}
@@ -43,7 +45,7 @@ export const HeaderUserMenu = ({
       {isUserMenuOpen && (
         <div
           role="menu"
-          className="absolute right-0 top-full z-30 mt-3 w-64 border border-border-strong bg-background-surface shadow-lg"
+          className="fixed right-2 top-22 z-30 w-[calc(100vw-1rem)] max-w-64 border border-border-strong bg-background-surface shadow-lg min-[400px]:absolute min-[400px]:right-0 min-[400px]:top-full min-[400px]:mt-3 min-[400px]:w-64"
         >
           <div className="border-b border-border-strong px-4 py-3">
             <p className="block-medium text-typography-heading">{user.name}</p>
@@ -51,6 +53,15 @@ export const HeaderUserMenu = ({
               {user.email}
             </p>
           </div>
+
+          <Link
+            to="/profile"
+            role="menuitem"
+            className="block w-full border-b border-border-strong px-4 py-3 text-left block-medium text-typography-heading transition-colors hover:bg-background-secondary hover:text-accent-hover"
+            onClick={closeUserMenu}
+          >
+            Profile
+          </Link>
 
           <button
             type="button"

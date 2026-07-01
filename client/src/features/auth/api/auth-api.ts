@@ -19,6 +19,7 @@ export const register = async (
     path: '/auth/register',
     body: payload,
     errorMessage: 'Failed to register',
+    skipAuthRefresh: true,
   });
 };
 
@@ -29,6 +30,7 @@ export const login = async (
     path: '/auth/login',
     body: payload,
     errorMessage: 'Failed to login',
+    skipAuthRefresh: true,
   });
 };
 
@@ -36,6 +38,7 @@ export const refreshAuth = async (): Promise<ApiResponse<AuthResponseData>> => {
   return apiClient.post<AuthResponseData>({
     path: '/auth/refresh',
     errorMessage: 'Failed to refresh session',
+    skipAuthRefresh: true,
   });
 };
 
@@ -45,6 +48,7 @@ export const bootstrapAuth = async (): Promise<
   return apiClient.post<AuthBootstrapResponseData>({
     path: '/auth/bootstrap',
     errorMessage: 'Failed to restore auth session',
+    skipAuthRefresh: true,
   });
 };
 
@@ -52,6 +56,7 @@ export const logout = async (): Promise<ApiResponse<null>> => {
   return apiClient.post<null>({
     path: '/auth/logout',
     errorMessage: 'Failed to logout',
+    skipAuthRefresh: true,
   });
 };
 

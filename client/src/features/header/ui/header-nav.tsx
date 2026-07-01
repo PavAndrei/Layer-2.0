@@ -12,7 +12,7 @@ type HeaderNavProps = {
 
 const NAV_CLASS_NAMES = {
   desktop:
-    'hidden sm:block sm:w-full sm:pt-8 sm:order-3 lg:pt-0 lg:order-2 lg:w-auto',
+    'hidden sm:block sm:w-full sm:pt-8 sm:pl-2.5 sm:order-3 lg:pt-0 lg:pl-0 lg:order-2 lg:w-auto',
   mobile: '',
 } as const;
 

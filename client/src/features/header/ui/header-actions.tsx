@@ -20,7 +20,7 @@ type HeaderActionsProps = {
 };
 
 const ICON_BUTTON_CLASS_NAME =
-  'transition-colors hover:text-accent-hover cursor-pointer';
+  'inline-flex h-6 w-6 items-center justify-center leading-none transition-colors hover:text-accent-hover cursor-pointer';
 
 export const HeaderActions = ({
   authStatus,
