@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from './routes/auth.route';
+import favoritesRoutes from './routes/favorites.route';
 import productsRoutes from './routes/products.route';
 import { errorHandler } from './middlewares/error-handler';
 import connectToDB from './utils/connect-to-database';
@@ -38,5 +39,6 @@ app.get('/', (_, res) => {
 
 app.use('/products', productsRoutes);
 app.use('/auth', authRoutes);
+app.use('/favorites', favoritesRoutes);
 
 app.use(errorHandler);

@@ -83,6 +83,18 @@ export type ProductReviewsResponse = ApiSuccess<{
   pagination: PaginationData;
 }>;
 
+export type FavoritesResponse = ApiSuccess<{
+  products: ProductDto[];
+}>;
+
+export type AddFavoriteResponse = ApiSuccess<{
+  product: ProductDto;
+}>;
+
+export type RemoveFavoriteResponse = ApiSuccess<{
+  productId: string;
+}>;
+
 export type AuthResponse = ApiSuccess<{
   user: UserDto;
   accessToken: string;
