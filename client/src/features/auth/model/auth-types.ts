@@ -1,3 +1,7 @@
+import type { z } from 'zod';
+
+import type { loginSchema, registerSchema } from './auth-validation';
+
 export type UserRole = 'customer' | 'admin';
 
 export type User = {
@@ -25,15 +29,15 @@ export type AuthBootstrapResponseData =
       accessToken: null;
     };
 
-export type RegisterPayload = {
-  email: string;
-  password: string;
-  name: string;
+export type AuthBenefitsContent = {
+  title: string;
+  items: string[];
 };
 
-export type LoginPayload = {
-  email: string;
-  password: string;
-};
+export type RegisterFormValues = z.infer<typeof registerSchema>;
+
+export type RegisterPayload = Omit<RegisterFormValues, 'confirmPassword'>;
+
+export type LoginPayload = z.infer<typeof loginSchema>;
 
 export type AuthStatus = 'idle' | 'loading' | 'authenticated' | 'guest';

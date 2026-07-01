@@ -9,6 +9,36 @@ body {
   font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  -webkit-text-fill-color: #111111;
+  caret-color: #111111;
+  transition: background-color 9999s ease-out;
+}
+
+input:autofill {
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  color: #111111;
+  caret-color: #111111;
+}
+
+[data-password-input='true']::-ms-reveal,
+[data-password-input='true']::-ms-clear {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+[data-password-input='true']::-webkit-credentials-auto-fill-button,
+[data-password-input='true']::-webkit-contacts-auto-fill-button {
+  display: none !important;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 @layer utilities {
   .promo {
     @apply text-5xl lg:text-6xl font-bold tracking-tight leading-none;

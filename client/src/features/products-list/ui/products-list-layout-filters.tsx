@@ -16,7 +16,7 @@ import {
   DualRangeFilter,
   MultiSelectFilter,
   SelectFilter,
-  TextFilter,
+  TextInput,
 } from '../../../shared/ui';
 import type { UrlStateSetter } from '../../../shared/model';
 import type { Filters, SortingOption } from '../model';
@@ -85,7 +85,7 @@ export const ProductsListLayoutFilters = ({
   return (
     <form className="flex flex-col gap-4 rounded border border-border-soft bg-background-surface p-4">
       {visible.search && (
-        <TextFilter
+        <TextInput
           id="filterString"
           label="Search for the products:"
           placeholder="Type to filter products..."

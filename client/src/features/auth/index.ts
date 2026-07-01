@@ -5,14 +5,18 @@ export {
   selectIsAuthenticated,
   useAuthBootstrap,
   useAuthStore,
+  useLogin,
+  useRegister,
 } from './model';
-export { LoginPage, RegisterPage } from './ui';
+export { LoginPage } from './login-page';
+export { RegisterPage } from './register-page';
 export type {
   AuthBootstrapResponseData,
   AuthResponseData,
   AuthState,
   AuthStatus,
   LoginPayload,
+  RegisterFormValues,
   RegisterPayload,
   User,
   UserRole,
