@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 import { login } from '../api';
 import { setAuthenticatedAuthBootstrapQueryData } from './auth-query-cache';
@@ -22,7 +22,25 @@ const initialValues: LoginPayload = {
   password: '',
 };
 
+type RedirectLocationState = {
+  from?: {
+    hash?: string;
+    pathname?: string;
+    search?: string;
+  };
+};
+
+const getRedirectPathFromState = (state: unknown): string | null => {
+  const redirectState = state as RedirectLocationState | null;
+  const from = redirectState?.from;
+
+  if (!from?.pathname) return null;
+
+  return `${from.pathname}${from.search ?? ''}${from.hash ?? ''}`;
+};
+
 export const useLogin = ({ redirectTo = '/' }: UseLoginOptions = {}) => {
+  const location = useLocation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const setSession = useAuthStore((state) => state.setSession);
@@ -39,7 +57,9 @@ export const useLogin = ({ redirectTo = '/' }: UseLoginOptions = {}) => {
 
       setSession(response.data);
       setAuthenticatedAuthBootstrapQueryData(queryClient, response.data);
-      navigate(redirectTo, { replace: true });
+      navigate(getRedirectPathFromState(location.state) ?? redirectTo, {
+        replace: true,
+      });
     },
     onError: () => {
       setError('Failed to login');

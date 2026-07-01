@@ -9,6 +9,7 @@ export {
   useLogout,
   useRegister,
 } from './model';
+export { GuestRoute, ProtectedRoute } from './ui';
 export { LoginPage } from './login-page';
 export { RegisterPage } from './register-page';
 export type {
