@@ -10,6 +10,7 @@ export const productToDto = (
   options: ProductToDtoOptions = {},
 ): ProductDto => ({
   _id: product._id.toString(),
+  slug: product.slug,
   img: product.img,
   title: product.title,
   description: product.description,

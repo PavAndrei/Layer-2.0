@@ -3926,7 +3926,7 @@
     "discountPercent": 0,
     "rating": 4.6,
     "categories": ["hoodies", "streetwear"],
-    "audience": ["men", "women"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4867,7 +4867,7 @@
     "discountPercent": 25,
     "rating": 3.7,
     "categories": ["sweatshirts", "streetwear"],
-    "audience": ["men", "women"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -10115,7 +10115,7 @@
     "discountPercent": 0,
     "rating": 4.7,
     "categories": ["pants", "track", "streetwear"],
-    "audience": ["men", "women"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -11789,7 +11789,7 @@
     "discountPercent": 0,
     "rating": 4.6,
     "categories": ["t-shirts", "basics", "streetwear"],
-    "audience": ["men", "women"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [

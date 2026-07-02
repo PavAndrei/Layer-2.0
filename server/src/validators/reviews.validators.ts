@@ -1,6 +1,5 @@
+import { isObjectIdOrHexString } from 'mongoose';
 import { z } from 'zod';
-
-import { productParamsSchema } from './products.validators';
 
 const positiveIntegerParam = (
   name: string,
@@ -34,8 +33,18 @@ export const productReviewsQuerySchema = z
   })
   .strict();
 
-export const productReviewsSchema = productParamsSchema.extend({
+export const productReviewsParamsSchema = z
+  .object({
+    productId: z
+      .string()
+      .refine(isObjectIdOrHexString, 'Invalid product id'),
+  })
+  .strict();
+
+export const productReviewsSchema = z.object({
+  params: productReviewsParamsSchema,
   query: productReviewsQuerySchema,
 });
 
+export type ProductReviewsParams = z.infer<typeof productReviewsParamsSchema>;
 export type ProductReviewsQuery = z.infer<typeof productReviewsQuerySchema>;

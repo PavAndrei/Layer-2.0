@@ -102,6 +102,15 @@ const productSchema = new Schema(
       required: true,
     },
 
+    slug: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+      unique: true,
+      index: true,
+    },
+
     description: {
       type: String,
       required: true,

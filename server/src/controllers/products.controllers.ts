@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import {
-  getProductByIdData,
+  getProductByIdentifierData,
   getProductsData,
 } from '../services/products.service';
 import type { ProductResponse, ProductsResponse } from '../types/api';
@@ -21,12 +21,12 @@ export const getProducts = async (
   });
 };
 
-export const getProductById = async (
+export const getProductByIdentifier = async (
   req: Request,
   res: Response<ProductResponse>,
 ) => {
-  const { id } = req.validated?.params as { id: string };
-  const data = await getProductByIdData(id);
+  const { identifier } = req.validated?.params as { identifier: string };
+  const data = await getProductByIdentifierData(identifier);
 
   res.status(200).json({
     message: 'Product fetched successfully',

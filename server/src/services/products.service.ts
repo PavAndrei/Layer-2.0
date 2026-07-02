@@ -171,14 +171,12 @@ export const getProductsData = async (
   };
 };
 
-export const getProductByIdData = async (
-  id: string,
+export const getProductByIdentifierData = async (
+  identifier: string,
 ): Promise<ProductResponse['data']> => {
-  if (!isObjectIdOrHexString(id)) {
-    throw ApiError.BadRequest('Invalid product id');
-  }
-
-  const product = await Product.findById(id);
+  const product = isObjectIdOrHexString(identifier)
+    ? await Product.findById(identifier)
+    : await Product.findOne({ slug: identifier });
 
   if (!product) {
     throw ApiError.NotFound('Product not found');

@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { MONGO_URI } from '../constants/env';
 import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
+import { createProductSlug } from '../utils/create-product-slug';
 import type { ReviewStatus } from '../types/review';
 
 type ProductSeed = {
@@ -68,7 +69,12 @@ const seedDatabase = async () => {
   await Review.deleteMany({});
   await Product.deleteMany({});
 
-  const products = await Product.insertMany(productsSeed);
+  const products = await Product.insertMany(
+    productsSeed.map((product) => ({
+      ...product,
+      slug: createProductSlug(product.title),
+    })),
+  );
   const productByTitle = new Map(
     products.map((product) => [product.title, product]),
   );

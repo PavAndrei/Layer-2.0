@@ -1,4 +1,4 @@
-import type { ProductVariant } from './product-variant';
+import type { ProductSize, ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
 import type { ReviewStatus } from './review';
@@ -17,6 +17,7 @@ export type ApiErrorResponse = {
 
 export type ProductDto = {
   _id: string;
+  slug: string;
   img: string;
   title: string;
   description: string;
@@ -93,6 +94,48 @@ export type AddFavoriteResponse = ApiSuccess<{
 
 export type RemoveFavoriteResponse = ApiSuccess<{
   productId: string;
+}>;
+
+export type CartValidationRemovedItemReason =
+  | 'product-not-found'
+  | 'variant-not-found'
+  | 'out-of-stock';
+
+export type CartValidationUpdatedItemReason = 'quantity-reduced';
+
+export type CartValidationItemDto = {
+  productId: string;
+  productSlug: string;
+  variantId: string;
+  sku: string;
+  title: string;
+  image: string;
+  color: string;
+  size: ProductSize;
+  price: number;
+  compareAtPrice?: number;
+  quantity: number;
+  maxQuantity: number;
+};
+
+export type CartValidationRemovedItemDto = {
+  productId: string;
+  variantId: string;
+  reason: CartValidationRemovedItemReason;
+};
+
+export type CartValidationUpdatedItemDto = {
+  productId: string;
+  variantId: string;
+  reason: CartValidationUpdatedItemReason;
+  previousQuantity: number;
+  nextQuantity: number;
+};
+
+export type CartValidationResponse = ApiSuccess<{
+  items: CartValidationItemDto[];
+  removedItems: CartValidationRemovedItemDto[];
+  updatedItems: CartValidationUpdatedItemDto[];
 }>;
 
 export type AuthResponse = ApiSuccess<{

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import {
-  getProductById,
+  getProductByIdentifier,
   getProducts,
 } from '../controllers/products.controllers';
 import { getProductReviews } from '../controllers/reviews.controllers';
@@ -21,14 +21,14 @@ productsRoute.get(
   catchErrors(getProducts),
 );
 productsRoute.get(
-  '/:id/reviews',
+  '/:productId/reviews',
   validateRequest(productReviewsSchema),
   catchErrors(getProductReviews),
 );
 productsRoute.get(
-  '/:id',
+  '/:identifier',
   validateRequest(productParamsSchema),
-  catchErrors(getProductById),
+  catchErrors(getProductByIdentifier),
 );
 
 export default productsRoute;

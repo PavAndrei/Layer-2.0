@@ -5,24 +5,27 @@ import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
 import type { ProductReviewsResponse } from '../types/api';
 import { reviewToDto } from '../utils/review-to-dto';
-import type { ProductReviewsQuery } from '../validators/reviews.validators';
+import type {
+  ProductReviewsParams,
+  ProductReviewsQuery,
+} from '../validators/reviews.validators';
 
 export const getProductReviews = async (
   req: Request,
   res: Response<ProductReviewsResponse>,
 ) => {
-  const { id } = req.validated?.params as { id: string };
+  const { productId } = req.validated?.params as ProductReviewsParams;
   const { limit, page: requestedPage } =
     req.validated?.query as ProductReviewsQuery;
 
-  const productExists = await Product.exists({ _id: id });
+  const productExists = await Product.exists({ _id: productId });
 
   if (!productExists) {
     throw ApiError.NotFound('Product not found');
   }
 
   const filter = {
-    productId: id,
+    productId,
     status: 'approved',
   } as const;
 

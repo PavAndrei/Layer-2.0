@@ -209,9 +209,15 @@ export type ProductsQuery = z.infer<typeof productsQuerySchema>;
 export const productParamsSchema = z.object({
   params: z
     .object({
-      id: z
+      identifier: z
         .string()
-        .refine(isObjectIdOrHexString, 'Invalid product id'),
+        .trim()
+        .min(1, 'Product identifier is required')
+        .max(140, 'Product identifier is too long')
+        .refine(
+          (value) => isObjectIdOrHexString(value) || SLUG_PATTERN.test(value),
+          'Invalid product identifier',
+        ),
     })
     .strict(),
 });
