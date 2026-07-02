@@ -1,21 +1,22 @@
 import { useMemo } from 'react';
-import { useLocation, useNavigate } from 'react-router';
 
 import type { Product } from '../../../entities/product';
-import {
-  useAuthStatus,
-  useIsAuthenticated,
-} from '../../auth';
 import { useFavorites } from './use-favorites';
 import { useToggleFavorite } from './use-toggle-favorite';
 
-export const useFavoriteProductActions = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const authStatus = useAuthStatus();
-  const isAuthenticated = useIsAuthenticated();
+type UseFavoriteProductActionsOptions = {
+  isAccessPending?: boolean;
+  isEnabled?: boolean;
+  onAccessDenied?: () => void;
+};
+
+export const useFavoriteProductActions = ({
+  isAccessPending = false,
+  isEnabled = true,
+  onAccessDenied,
+}: UseFavoriteProductActionsOptions = {}) => {
   const favorites = useFavorites({
-    enabled: isAuthenticated,
+    enabled: isEnabled,
   });
   const favoriteProductIds = useMemo(() => {
     return new Set(favorites.products.map((product) => product._id));
@@ -25,14 +26,10 @@ export const useFavoriteProductActions = () => {
   });
 
   const handleToggleFavorite = (product: Product) => {
-    if (authStatus === 'idle' || authStatus === 'loading') return;
+    if (isAccessPending) return;
 
-    if (!isAuthenticated) {
-      navigate('/login', {
-        state: {
-          from: location,
-        },
-      });
+    if (!isEnabled) {
+      onAccessDenied?.();
       return;
     }
 
@@ -42,7 +39,7 @@ export const useFavoriteProductActions = () => {
   return {
     favoriteProductIds,
     isFavoriteActionPending: (productId: string) =>
-      favorites.isLoading || pendingProductId === productId,
+      isAccessPending || favorites.isLoading || pendingProductId === productId,
     toggleFavorite: handleToggleFavorite,
   };
 };

@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router';
+import { useAuthStatus, useIsAuthenticated } from '../auth';
 import {
   FavoriteProductButton,
   useFavoriteProductActions,
@@ -32,11 +33,23 @@ export const SingleProductPage = () => {
   const { identifier } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const authStatus = useAuthStatus();
+  const isAuthenticated = useIsAuthenticated();
   const {
     favoriteProductIds,
     isFavoriteActionPending,
     toggleFavorite,
-  } = useFavoriteProductActions();
+  } = useFavoriteProductActions({
+    isAccessPending: authStatus === 'idle' || authStatus === 'loading',
+    isEnabled: isAuthenticated,
+    onAccessDenied: () => {
+      navigate('/login', {
+        state: {
+          from: location,
+        },
+      });
+    },
+  });
 
   const { product, relatedProducts, isLoading, error } =
     useSingleProduct(identifier);

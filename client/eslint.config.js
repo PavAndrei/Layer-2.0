@@ -40,6 +40,12 @@ const featuresImportRestriction = {
   message: 'Lower layers must not import from the features layer.',
 }
 
+const featureSiblingImportRestriction = {
+  regex: '^\\.\\./\\.\\./[^./][^/]*(/.*)?$',
+  message:
+    'Feature model/ui/api code must not import other features. Compose features in page files instead.',
+}
+
 const entitiesImportRestriction = {
   regex: '^(\\.\\.?/)+entities(/.*)?$',
   message: 'Shared code must not import from the entities layer.',
@@ -79,6 +85,25 @@ export default tseslint.config(
         'error',
         {
           patterns: [...publicApiImportRestrictions, appImportRestriction],
+        },
+      ],
+    },
+  },
+  {
+    files: [
+      'src/features/*/api/**/*.{ts,tsx}',
+      'src/features/*/model/**/*.{ts,tsx}',
+      'src/features/*/ui/**/*.{ts,tsx}',
+    ],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...publicApiImportRestrictions,
+            appImportRestriction,
+            featureSiblingImportRestriction,
+          ],
         },
       ],
     },

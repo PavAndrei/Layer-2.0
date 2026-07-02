@@ -1,5 +1,8 @@
+import { useLocation, useNavigate } from 'react-router';
+
 import { Button, FeedbackMessage, Pagination } from '../../shared/ui';
 import { PRODUCT_COLLECTIONS, ProductGrid } from '../../entities/product';
+import { useAuthStatus, useIsAuthenticated } from '../auth';
 import { FavoriteProductButton, useFavoriteProductActions } from '../favorites';
 import {
   ProductGridSkeleton,
@@ -17,6 +20,10 @@ import {
 } from './model';
 
 export const NewPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const authStatus = useAuthStatus();
+  const isAuthenticated = useIsAuthenticated();
   const collectionConfig = PRODUCT_COLLECTIONS.new;
   const isDesktopFiltersOpen = useProductsListUiStore(
     (state) => state.isDesktopFiltersOpen,
@@ -47,7 +54,17 @@ export const NewPage = () => {
     favoriteProductIds,
     isFavoriteActionPending,
     toggleFavorite,
-  } = useFavoriteProductActions();
+  } = useFavoriteProductActions({
+    isAccessPending: authStatus === 'idle' || authStatus === 'loading',
+    isEnabled: isAuthenticated,
+    onAccessDenied: () => {
+      navigate('/login', {
+        state: {
+          from: location,
+        },
+      });
+    },
+  });
 
   return (
     <ProductsListLayout
