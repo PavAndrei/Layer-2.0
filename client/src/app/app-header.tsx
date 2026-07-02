@@ -1,3 +1,5 @@
+import { useQueryClient } from '@tanstack/react-query';
+
 import {
   useAuthStatus,
   useAuthUser,
@@ -8,8 +10,10 @@ import {
 } from '../features/cart';
 import { useFavoriteProductsCount } from '../features/favorites';
 import { Header } from '../features/header';
+import { clearUserSessionQueryCache } from './user-session-query-cache';
 
 export const AppHeader = () => {
+  const queryClient = useQueryClient();
   const authStatus = useAuthStatus();
   const user = useAuthUser();
   const isAuthenticated = authStatus === 'authenticated';
@@ -18,6 +22,13 @@ export const AppHeader = () => {
     enabled: isAuthenticated,
   });
   const logoutMutation = useLogout();
+  const handleLogout = () => {
+    logoutMutation.mutate(undefined, {
+      onSettled: () => {
+        clearUserSessionQueryCache(queryClient);
+      },
+    });
+  };
 
   return (
     <Header
@@ -26,7 +37,7 @@ export const AppHeader = () => {
       favoriteItemsCount={favoriteItemsCount}
       isLogoutPending={logoutMutation.isPending}
       user={user}
-      onLogout={() => logoutMutation.mutate()}
+      onLogout={handleLogout}
     />
   );
 };

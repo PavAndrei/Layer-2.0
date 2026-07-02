@@ -1,5 +1,6 @@
 export { FavoritesPage } from './favorites-page';
 export {
+  favoritesQueryKeys,
   useFavoriteProductsCount,
   useFavoriteProductActions,
   useFavorites,

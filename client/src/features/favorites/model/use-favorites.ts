@@ -22,7 +22,8 @@ export const useFavorites = ({
   });
 
   const response = favoritesQuery.data;
-  const products = response?.success ? response.data.products : [];
+  const products =
+    enabled && response?.success ? response.data.products : [];
   const responseError = response && !response.success ? response.message : null;
   const queryError =
     favoritesQuery.error instanceof Error
