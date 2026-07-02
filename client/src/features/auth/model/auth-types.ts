@@ -1,16 +1,7 @@
 import type { z } from 'zod';
 
+import type { User } from '../../../entities/user';
 import type { loginSchema, registerSchema } from './auth-validation';
-
-export type UserRole = 'customer' | 'admin';
-
-export type User = {
-  _id: string;
-  email: string;
-  name: string;
-  role: UserRole;
-  isEmailVerified: boolean;
-};
 
 export type AuthResponseData = {
   user: User;

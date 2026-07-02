@@ -2,9 +2,8 @@ import type { ReactNode } from 'react';
 import { Navigate } from 'react-router';
 
 import {
-  selectAuthStatus,
-  selectIsAuthenticated,
-  useAuthStore,
+  useAuthStatus,
+  useIsAuthenticated,
 } from '../model';
 
 type GuestRouteProps = {
@@ -16,8 +15,8 @@ export const GuestRoute = ({
   children,
   redirectTo = '/',
 }: GuestRouteProps) => {
-  const authStatus = useAuthStore(selectAuthStatus);
-  const isAuthenticated = useAuthStore(selectIsAuthenticated);
+  const authStatus = useAuthStatus();
+  const isAuthenticated = useIsAuthenticated();
 
   if (authStatus === 'idle' || authStatus === 'loading') {
     return null;

@@ -7,17 +7,6 @@ import { favoritesQueryKeys } from './favorites-query-keys';
 
 type FavoritesQueryData = ApiResponse<FavoritesResponseData>;
 
-export const getFavoriteProductIds = (
-  queryClient: QueryClient,
-): Set<string> => {
-  const response = queryClient.getQueryData<FavoritesQueryData>(
-    favoritesQueryKeys.list(),
-  );
-  const products = response?.success ? response.data.products : [];
-
-  return new Set(products.map((product) => product._id));
-};
-
 export const addFavoriteProductToCache = (
   queryClient: QueryClient,
   product: Product,

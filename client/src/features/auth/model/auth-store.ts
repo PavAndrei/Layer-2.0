@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 
+import type { User } from '../../../entities/user';
 import { setApiAccessToken } from '../../../shared/api';
-import type { AuthResponseData, AuthStatus, User } from './auth-types';
+import type { AuthResponseData, AuthStatus } from './auth-types';
 
 type AuthSession = AuthResponseData;
 

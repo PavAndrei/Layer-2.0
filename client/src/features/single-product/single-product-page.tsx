@@ -4,12 +4,7 @@ import {
   FavoriteProductButton,
   useFavoriteProductActions,
 } from '../favorites';
-import {
-  createCartItem,
-  getCartItemKey,
-  selectCartItems,
-  useCartStore,
-} from '../cart';
+import { useProductVariantCart } from '../cart';
 import { useScrollToTopOnChange } from '../../shared/hooks';
 import {
   getProductGalleryImages,
@@ -37,8 +32,6 @@ export const SingleProductPage = () => {
   const { identifier } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const cartItems = useCartStore(selectCartItems);
-  const addCartItem = useCartStore((state) => state.addItem);
   const {
     favoriteProductIds,
     isFavoriteActionPending,
@@ -77,27 +70,13 @@ export const SingleProductPage = () => {
       selectedVariant,
     });
   }, [product, selectedColor, selectedVariant]);
-
-  const isSelectedVariantInCart = useMemo(() => {
-    if (!product || !selectedVariant) return false;
-
-    const selectedVariantKey = getCartItemKey(product._id, selectedVariant._id);
-
-    return cartItems.some((item) => {
-      return getCartItemKey(item.productId, item.variantId) === selectedVariantKey;
-    });
-  }, [cartItems, product, selectedVariant]);
-
-  const handleAddToCart = () => {
-    if (!product || !selectedVariant) return;
-
-    addCartItem(
-      createCartItem({
-        product,
-        variant: selectedVariant,
-      }),
-    );
-  };
+  const {
+    addToCart,
+    isInCart: isSelectedVariantInCart,
+  } = useProductVariantCart({
+    product,
+    variant: selectedVariant,
+  });
 
   const handleViewCart = () => {
     navigate('/cart');
@@ -159,7 +138,7 @@ export const SingleProductPage = () => {
                 isSelectedVariantInCart={isSelectedVariantInCart}
                 selectedVariant={selectedVariant}
                 totalQuantity={product.totalQuantity}
-                onAddToCart={handleAddToCart}
+                onAddToCart={addToCart}
                 onViewCart={handleViewCart}
               />
             </>

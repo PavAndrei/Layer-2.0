@@ -1,4 +1,4 @@
-import type { User } from '../../auth';
+import type { User } from '../../../entities/user';
 
 type ProfileDetailsProps = {
   user: User;

@@ -2,9 +2,8 @@ import type { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router';
 
 import {
-  selectAuthStatus,
-  selectIsAuthenticated,
-  useAuthStore,
+  useAuthStatus,
+  useIsAuthenticated,
 } from '../model';
 
 type ProtectedRouteProps = {
@@ -17,8 +16,8 @@ export const ProtectedRoute = ({
   redirectTo = '/login',
 }: ProtectedRouteProps) => {
   const location = useLocation();
-  const authStatus = useAuthStore(selectAuthStatus);
-  const isAuthenticated = useAuthStore(selectIsAuthenticated);
+  const authStatus = useAuthStatus();
+  const isAuthenticated = useIsAuthenticated();
 
   if (authStatus === 'idle' || authStatus === 'loading') {
     return null;

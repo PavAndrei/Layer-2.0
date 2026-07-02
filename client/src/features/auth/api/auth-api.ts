@@ -1,11 +1,11 @@
 import { apiClient } from '../../../shared/api';
 import type { ApiResponse } from '../../../shared/api';
+import type { User } from '../../../entities/user';
 import type {
   AuthBootstrapResponseData,
   AuthResponseData,
   LoginPayload,
   RegisterPayload,
-  User,
 } from '../model';
 
 type CurrentUserResponseData = {

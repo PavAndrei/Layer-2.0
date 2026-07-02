@@ -3,9 +3,8 @@ import { useLocation, useNavigate } from 'react-router';
 
 import type { Product } from '../../../entities/product';
 import {
-  selectAuthStatus,
-  selectIsAuthenticated,
-  useAuthStore,
+  useAuthStatus,
+  useIsAuthenticated,
 } from '../../auth';
 import { useFavorites } from './use-favorites';
 import { useToggleFavorite } from './use-toggle-favorite';
@@ -13,8 +12,8 @@ import { useToggleFavorite } from './use-toggle-favorite';
 export const useFavoriteProductActions = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const authStatus = useAuthStore(selectAuthStatus);
-  const isAuthenticated = useAuthStore(selectIsAuthenticated);
+  const authStatus = useAuthStatus();
+  const isAuthenticated = useIsAuthenticated();
   const favorites = useFavorites({
     enabled: isAuthenticated,
   });

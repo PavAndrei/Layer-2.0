@@ -4,7 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import type { ProductCollectionBaseFilters } from '../../../entities/product';
 import { getProducts } from '../api';
 import { buildSearchParams } from '../helpers';
-import { productsListQueryKeys } from './products-list-query-keys';
+import {
+  PRODUCTS_LIST_STALE_TIME_MS,
+  productsListQueryKeys,
+} from './products-list-query-keys';
 import type { ProductsFilters } from './use-products-filters';
 
 type UseProductsListParams = {
@@ -30,6 +33,7 @@ export const useProductsList = ({
     queryFn: ({ signal }) => getProducts(params, signal),
     enabled: !isDebouncing,
     placeholderData: (previousData) => previousData,
+    staleTime: PRODUCTS_LIST_STALE_TIME_MS,
   });
 
   const response = productsQuery.data;

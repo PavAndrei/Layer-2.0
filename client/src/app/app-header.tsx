@@ -1,22 +1,20 @@
 import {
-  selectAuthStatus,
-  selectAuthUser,
-  useAuthStore,
+  useAuthStatus,
+  useAuthUser,
   useLogout,
 } from '../features/auth';
 import {
-  selectCartItemsCount,
-  useCartStore,
+  useCartItemsCount,
 } from '../features/cart';
-import { useFavorites } from '../features/favorites';
+import { useFavoriteProductsCount } from '../features/favorites';
 import { Header } from '../features/header';
 
 export const AppHeader = () => {
-  const authStatus = useAuthStore(selectAuthStatus);
-  const user = useAuthStore(selectAuthUser);
+  const authStatus = useAuthStatus();
+  const user = useAuthUser();
   const isAuthenticated = authStatus === 'authenticated';
-  const cartItemsCount = useCartStore(selectCartItemsCount);
-  const { products: favoriteProducts } = useFavorites({
+  const cartItemsCount = useCartItemsCount();
+  const favoriteItemsCount = useFavoriteProductsCount({
     enabled: isAuthenticated,
   });
   const logoutMutation = useLogout();
@@ -25,7 +23,7 @@ export const AppHeader = () => {
     <Header
       authStatus={authStatus}
       cartItemsCount={cartItemsCount}
-      favoriteItemsCount={favoriteProducts.length}
+      favoriteItemsCount={favoriteItemsCount}
       isLogoutPending={logoutMutation.isPending}
       user={user}
       onLogout={() => logoutMutation.mutate()}

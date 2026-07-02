@@ -1,17 +1,12 @@
 import { Link } from 'react-router';
 
+import { formatHeaderItemsCount } from '../helpers';
 import { FavoriteIcon } from './header-icons';
 
 type HeaderFavoriteButtonProps = {
   className?: string;
   isAuthenticated: boolean;
   itemsCount: number;
-};
-
-const formatFavoriteItemsCount = (itemsCount: number) => {
-  if (itemsCount > 99) return '99+';
-
-  return String(itemsCount);
 };
 
 export const HeaderFavoriteButton = ({
@@ -37,7 +32,7 @@ export const HeaderFavoriteButton = ({
 
       {isAuthenticated && hasItems && (
         <span className="absolute -right-2 -top-2 flex min-h-5 min-w-5 animate-pulse items-center justify-center rounded-full border border-background-surface bg-accent-primary px-1 text-[10px] font-semibold leading-none text-background-surface">
-          {formatFavoriteItemsCount(itemsCount)}
+          {formatHeaderItemsCount(itemsCount)}
         </span>
       )}
     </Link>
