@@ -4,6 +4,7 @@ import type { ProductVariant } from './product-variant-types';
 
 export interface Product {
   _id: string;
+  slug: string;
   img: string;
   title: string;
   description: string;

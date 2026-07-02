@@ -1,1 +1,4 @@
-export { getProductById, getProductReviews } from './single-product-api';
+export {
+  getProductByIdentifier,
+  getProductReviews,
+} from './single-product-api';

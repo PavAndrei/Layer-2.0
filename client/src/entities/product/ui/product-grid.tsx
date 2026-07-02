@@ -35,7 +35,7 @@ export const ProductGrid = ({
           key={product._id}
           product={product}
           state={productLinkState}
-          to={`/products/${product._id}`}
+          to={`/products/${product.slug}`}
         />
       ))}
     </div>

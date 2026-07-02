@@ -83,6 +83,7 @@ export const createCartItem = ({
 
   return {
     productId: product._id,
+    productSlug: product.slug,
     variantId: variant._id,
     sku: variant.sku,
     title: product.title,

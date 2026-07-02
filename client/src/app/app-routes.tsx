@@ -63,7 +63,7 @@ export const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
-      <Route path="/products/:id" element={<SingleProductPage />} />
+      <Route path="/products/:identifier" element={<SingleProductPage />} />
     </Routes>
   );
 };

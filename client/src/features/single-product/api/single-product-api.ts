@@ -27,12 +27,12 @@ type ProductReviewsResponseData = {
 
 type ProductReviewsResponse = ApiResponse<ProductReviewsResponseData>;
 
-export const getProductById = async (
-  id: string,
+export const getProductByIdentifier = async (
+  identifier: string,
   signal?: AbortSignal,
 ): Promise<ProductResponse> => {
   return apiClient.get<ProductResponseData>({
-    path: `/products/${id}`,
+    path: `/products/${identifier}`,
     signal,
     errorMessage: 'Failed to load product',
   });

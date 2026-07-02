@@ -37,7 +37,7 @@ export const RelatedProductsSlider = ({
             <ProductCard
               product={product}
               state={productLinkState}
-              to={`/products/${product._id}`}
+              to={`/products/${product.slug}`}
             />
           </SwiperSlide>
         ))}

@@ -4,6 +4,7 @@ export type CartItemKey = `${string}:${string}`;
 
 export type CartItem = {
   productId: string;
+  productSlug?: string;
   variantId: string;
   sku: string;
   title: string;

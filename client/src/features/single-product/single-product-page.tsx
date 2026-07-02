@@ -34,7 +34,7 @@ import {
 } from './ui';
 
 export const SingleProductPage = () => {
-  const { id } = useParams();
+  const { identifier } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const cartItems = useCartStore(selectCartItems);
@@ -45,8 +45,9 @@ export const SingleProductPage = () => {
     toggleFavorite,
   } = useFavoriteProductActions();
 
-  const { product, relatedProducts, isLoading, error } = useSingleProduct(id);
-  useScrollToTopOnChange(id, { skipInitialScroll: false });
+  const { product, relatedProducts, isLoading, error } =
+    useSingleProduct(identifier);
+  useScrollToTopOnChange(identifier, { skipInitialScroll: false });
   const { breadcrumbs, productLinkState } = useSingleProductNavigation({
     productTitle: product?.title,
     state: location.state,

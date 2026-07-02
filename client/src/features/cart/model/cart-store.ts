@@ -12,6 +12,7 @@ export type CartState = {
   items: CartItem[];
   addItem: (item: CartItem) => void;
   removeItem: (key: CartItemKey) => void;
+  replaceCart: (items: CartItem[]) => void;
   increaseItemQuantity: (key: CartItemKey) => void;
   decreaseItemQuantity: (key: CartItemKey) => void;
   setItemQuantity: (key: CartItemKey, quantity: number) => void;
@@ -37,6 +38,8 @@ const isCartItem = (value: unknown): value is CartItem => {
 
   return (
     typeof value.productId === 'string' &&
+    (value.productSlug === undefined ||
+      typeof value.productSlug === 'string') &&
     typeof value.variantId === 'string' &&
     typeof value.sku === 'string' &&
     typeof value.title === 'string' &&
@@ -106,6 +109,10 @@ export const useCartStore = create<CartState>()(
         set((state) => ({
           items: state.items.filter((item) => getItemKey(item) !== key),
         })),
+      replaceCart: (items) =>
+        set({
+          items: normalizeCartItems(items),
+        }),
       increaseItemQuantity: (key) =>
         set((state) => ({
           items: state.items.map((item) => {

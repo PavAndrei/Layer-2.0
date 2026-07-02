@@ -17,7 +17,7 @@ const buildProductUrl = (item: CartItem) => {
     size: item.size,
   });
 
-  return `/products/${item.productId}?${searchParams.toString()}`;
+  return `/products/${item.productSlug ?? item.productId}?${searchParams.toString()}`;
 };
 
 export const CartItemRow = ({

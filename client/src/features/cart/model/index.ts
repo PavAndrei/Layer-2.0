@@ -15,5 +15,6 @@ export {
 } from './cart-selectors';
 export { useCartStore } from './cart-store';
 export { useCartPage } from './use-cart-page';
+export { useValidateCart } from './use-validate-cart';
 export type { CartState } from './cart-store';
 export type { CartItem, CartItemKey, CartTotals } from './cart-types';

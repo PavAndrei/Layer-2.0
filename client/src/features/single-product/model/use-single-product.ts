@@ -1,18 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getProductById } from '../api';
+import { getProductByIdentifier } from '../api';
 import { singleProductQueryKeys } from './single-product-query-keys';
 
-export const useSingleProduct = (id?: string) => {
+export const useSingleProduct = (identifier?: string) => {
   const productQuery = useQuery({
-    queryKey: singleProductQueryKeys.detail(id ?? ''),
-    enabled: Boolean(id),
+    queryKey: singleProductQueryKeys.detail(identifier ?? ''),
+    enabled: Boolean(identifier),
     queryFn: async ({ signal }) => {
-      if (!id) {
-        throw new Error('Product id is required');
+      if (!identifier) {
+        throw new Error('Product identifier is required');
       }
 
-      const response = await getProductById(id, signal);
+      const response = await getProductByIdentifier(identifier, signal);
 
       if (!response.success) {
         throw new Error(response.message);

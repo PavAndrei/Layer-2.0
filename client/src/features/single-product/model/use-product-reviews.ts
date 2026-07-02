@@ -19,6 +19,7 @@ export const useProductReviews = ({
   const reviewsQuery = useQuery({
     queryKey: singleProductQueryKeys.reviews(productId ?? '', page, limit),
     enabled: Boolean(productId) && isEnabled,
+    retry: false,
     queryFn: async ({ signal }) => {
       if (!productId) {
         throw new Error('Product id is required');

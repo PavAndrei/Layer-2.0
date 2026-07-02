@@ -80,8 +80,11 @@ export const useRegister = ({
       return;
     }
 
-    const { confirmPassword: _confirmPassword, ...payload } =
-      validationResult.data;
+    const payload = {
+      email: validationResult.data.email,
+      name: validationResult.data.name,
+      password: validationResult.data.password,
+    };
 
     registerMutation.mutate(payload);
   };
