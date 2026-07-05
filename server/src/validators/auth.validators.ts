@@ -12,6 +12,13 @@ const passwordSchema = z
   .min(8, 'Password must contain at least 8 characters')
   .max(128, 'Password is too long');
 
+const accountTokenSchema = z
+  .string()
+  .trim()
+  .min(20, 'Token is too short')
+  .max(200, 'Token is too long')
+  .regex(/^[A-Za-z0-9_-]+$/, 'Invalid token');
+
 export const registerSchema = z.object({
   body: z
     .object({
@@ -35,5 +42,16 @@ export const loginSchema = z.object({
     .strict(),
 });
 
+export const emailVerificationConfirmSchema = z.object({
+  body: z
+    .object({
+      token: accountTokenSchema,
+    })
+    .strict(),
+});
+
 export type RegisterBody = z.infer<typeof registerSchema>['body'];
 export type LoginBody = z.infer<typeof loginSchema>['body'];
+export type EmailVerificationConfirmBody = z.infer<
+  typeof emailVerificationConfirmSchema
+>['body'];

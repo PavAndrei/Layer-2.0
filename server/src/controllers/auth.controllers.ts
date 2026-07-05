@@ -3,10 +3,12 @@ import type { Request, Response } from 'express';
 import { ApiError } from '../exceptions/api-error';
 import {
   getCurrentUser as getCurrentUserData,
+  confirmEmailVerification as confirmEmailVerificationData,
   loginUser,
   logoutAuthSession,
   refreshAuthSession,
   registerUser,
+  requestEmailVerification as requestEmailVerificationData,
   type AuthResult,
 } from '../services/auth.service';
 import {
@@ -18,9 +20,14 @@ import type {
   AuthBootstrapResponse,
   AuthResponse,
   CurrentUserResponse,
+  EmailVerificationResponse,
   LogoutResponse,
 } from '../types/api';
-import type { LoginBody, RegisterBody } from '../validators/auth.validators';
+import type {
+  EmailVerificationConfirmBody,
+  LoginBody,
+  RegisterBody,
+} from '../validators/auth.validators';
 
 const getRefreshTokenFromCookies = (req: Request): string | null => {
   const cookies = req.cookies as
@@ -163,6 +170,44 @@ export const getCurrentUser = async (
   res.status(200).json({
     success: true,
     message: 'Current user fetched successfully',
+    data: {
+      user,
+    },
+  });
+};
+
+export const requestEmailVerification = async (
+  req: Request,
+  res: Response<EmailVerificationResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const user = await requestEmailVerificationData(
+    req.user.userId,
+    getAuthContext(req),
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Email verification requested successfully',
+    data: {
+      user,
+    },
+  });
+};
+
+export const confirmEmailVerification = async (
+  req: Request,
+  res: Response<EmailVerificationResponse>,
+) => {
+  const { token } = req.body as EmailVerificationConfirmBody;
+  const user = await confirmEmailVerificationData(token);
+
+  res.status(200).json({
+    success: true,
+    message: 'Email verified successfully',
     data: {
       user,
     },

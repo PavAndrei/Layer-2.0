@@ -1,10 +1,19 @@
 import { isObjectIdOrHexString, Types } from 'mongoose';
 
-import { REFRESH_TOKEN_EXPIRES_IN_MS } from '../constants/env';
+import {
+  EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MS,
+  REFRESH_TOKEN_EXPIRES_IN_MS,
+} from '../constants/env';
 import { ApiError } from '../exceptions/api-error';
 import { AuthSession } from '../models/auth-sessions.model';
 import { User, type UserDocument } from '../models/users.model';
 import type { UserDto } from '../types/api';
+import {
+  consumeAccountToken,
+  createAccountToken,
+  revokeActiveAccountTokens,
+} from './account-tokens.service';
+import { sendEmailVerificationEmail } from './email.service';
 import {
   hashRefreshToken,
   signAccessToken,
@@ -28,6 +37,24 @@ export type AuthResult = {
 
 const getRefreshTokenExpiresAt = () =>
   new Date(Date.now() + REFRESH_TOKEN_EXPIRES_IN_MS);
+
+const sendEmailVerificationToken = async (
+  user: UserDocument,
+  context: AuthContext,
+) => {
+  const { token } = await createAccountToken({
+    context,
+    expiresInMs: EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MS,
+    purpose: 'email-verification',
+    userId: user._id,
+  });
+
+  await sendEmailVerificationEmail({
+    email: user.email,
+    name: user.name,
+    token,
+  });
+};
 
 const createAuthSession = async (
   user: UserDocument,
@@ -90,6 +117,8 @@ export const registerUser = async (
     name,
     role: 'customer',
   });
+
+  await sendEmailVerificationToken(user, context);
 
   return createAuthResult(user, context);
 };
@@ -181,6 +210,52 @@ export const getCurrentUser = async (userId: string): Promise<UserDto> => {
   if (!user) {
     throw ApiError.Unauthorized('User not found');
   }
+
+  return userToDto(user);
+};
+
+export const requestEmailVerification = async (
+  userId: string,
+  context: AuthContext,
+): Promise<UserDto> => {
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw ApiError.Unauthorized('User not found');
+  }
+
+  if (!user.isEmailVerified) {
+    await sendEmailVerificationToken(user, context);
+  }
+
+  return userToDto(user);
+};
+
+export const confirmEmailVerification = async (
+  token: string,
+): Promise<UserDto> => {
+  const accountToken = await consumeAccountToken({
+    purpose: 'email-verification',
+    token,
+  });
+  const user = await User.findByIdAndUpdate(
+    accountToken.userId,
+    {
+      isEmailVerified: true,
+    },
+    {
+      new: true,
+    },
+  );
+
+  if (!user) {
+    throw ApiError.BadRequest('Invalid or expired account token');
+  }
+
+  await revokeActiveAccountTokens({
+    purpose: 'email-verification',
+    userId: user._id,
+  });
 
   return userToDto(user);
 };
