@@ -7,6 +7,7 @@ import type { EmailVerificationConfirmPayload } from './auth-types';
 
 export const useConfirmEmailVerification = () => {
   const queryClient = useQueryClient();
+  const authStatus = useAuthStore((state) => state.status);
   const setUser = useAuthStore((state) => state.setUser);
 
   return useMutation({
@@ -14,6 +15,7 @@ export const useConfirmEmailVerification = () => {
       confirmEmailVerification(payload),
     onSuccess: (response) => {
       if (!response.success) return;
+      if (authStatus !== 'authenticated') return;
 
       syncAuthUser({
         queryClient,

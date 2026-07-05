@@ -5,6 +5,7 @@ import {
   LoginPage,
   ProtectedRoute,
   RegisterPage,
+  VerifyEmailPage,
 } from '../features/auth';
 import { CartPage } from '../features/cart';
 import { FavoritesPage } from '../features/favorites';
@@ -30,6 +31,7 @@ export const AppRoutes = () => {
       <Route path="/sales" element={<SalesPage />} />
       <Route path="/new" element={<NewPage />} />
       <Route path="/catalog" element={<CatalogPage />} />
+      <Route path="/verify-email" element={<VerifyEmailPage />} />
       <Route
         path="/login"
         element={
