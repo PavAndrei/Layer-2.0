@@ -1,5 +1,6 @@
 import type { QueryClient } from '@tanstack/react-query';
 
+import type { User } from '../../../entities/user';
 import type { ApiResponse } from '../../../shared/api';
 import type { AuthBootstrapResponseData, AuthResponseData } from './auth-types';
 import { AUTH_QUERY_KEYS } from './auth-query-keys';
@@ -36,5 +37,27 @@ export const setAuthenticatedAuthBootstrapQueryData = (
   queryClient.setQueryData(
     AUTH_QUERY_KEYS.bootstrap,
     authenticatedBootstrapResponse,
+  );
+};
+
+export const setAuthBootstrapUserQueryData = (
+  queryClient: QueryClient,
+  user: User,
+) => {
+  queryClient.setQueryData<ApiResponse<AuthBootstrapResponseData>>(
+    AUTH_QUERY_KEYS.bootstrap,
+    (previousData) => {
+      if (!previousData?.success || !previousData.data.isAuthenticated) {
+        return previousData;
+      }
+
+      return {
+        ...previousData,
+        data: {
+          ...previousData.data,
+          user,
+        },
+      };
+    },
   );
 };

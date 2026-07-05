@@ -13,6 +13,7 @@ export type AuthState = {
   clearSession: () => void;
   setSession: (session: AuthSession) => void;
   setStatus: (status: AuthStatus) => void;
+  setUser: (user: User) => void;
 };
 
 export const useAuthStore = create<AuthState>()((set) => ({
@@ -38,4 +39,5 @@ export const useAuthStore = create<AuthState>()((set) => ({
     });
   },
   setStatus: (status) => set({ status }),
+  setUser: (user) => set({ user }),
 }));

@@ -8,6 +8,10 @@ export type AuthResponseData = {
   accessToken: string;
 };
 
+export type AuthUserResponseData = {
+  user: User;
+};
+
 export type AuthBootstrapResponseData =
   | {
       isAuthenticated: true;
@@ -30,5 +34,9 @@ export type RegisterFormValues = z.infer<typeof registerSchema>;
 export type RegisterPayload = Omit<RegisterFormValues, 'confirmPassword'>;
 
 export type LoginPayload = z.infer<typeof loginSchema>;
+
+export type EmailVerificationConfirmPayload = {
+  token: string;
+};
 
 export type AuthStatus = 'idle' | 'loading' | 'authenticated' | 'guest';

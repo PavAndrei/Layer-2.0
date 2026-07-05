@@ -1,16 +1,15 @@
 import { apiClient } from '../../../shared/api';
 import type { ApiResponse } from '../../../shared/api';
-import type { User } from '../../../entities/user';
 import type {
   AuthBootstrapResponseData,
   AuthResponseData,
+  AuthUserResponseData,
+  EmailVerificationConfirmPayload,
   LoginPayload,
   RegisterPayload,
 } from '../model';
 
-type CurrentUserResponseData = {
-  user: User;
-};
+type CurrentUserResponseData = AuthUserResponseData;
 
 export const register = async (
   payload: RegisterPayload,
@@ -66,5 +65,28 @@ export const getCurrentUser = async (): Promise<
   return apiClient.get<CurrentUserResponseData>({
     path: '/auth/me',
     errorMessage: 'Failed to load current user',
+  });
+};
+
+export const requestEmailVerification = async (): Promise<
+  ApiResponse<AuthUserResponseData>
+> => {
+  return apiClient.post<AuthUserResponseData>({
+    path: '/auth/email-verification/request',
+    errorMessage: 'Failed to request email verification',
+  });
+};
+
+export const confirmEmailVerification = async (
+  payload: EmailVerificationConfirmPayload,
+): Promise<ApiResponse<AuthUserResponseData>> => {
+  return apiClient.post<
+    AuthUserResponseData,
+    EmailVerificationConfirmPayload
+  >({
+    path: '/auth/email-verification/confirm',
+    body: payload,
+    errorMessage: 'Failed to confirm email verification',
+    skipAuthRefresh: true,
   });
 };
