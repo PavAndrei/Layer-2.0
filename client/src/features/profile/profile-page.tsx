@@ -1,4 +1,3 @@
-import { useRequestEmailVerification } from '../auth';
 import { FeedbackMessage, Skeleton } from '../../shared/ui';
 import { useProfile } from './model';
 import {
@@ -6,21 +5,11 @@ import {
   ProfileEmailVerification,
   ProfileLayout,
 } from './ui';
+import { useProfileEmailVerification } from './use-profile-email-verification';
 
 export const ProfilePage = () => {
   const profileQuery = useProfile();
-  const emailVerificationMutation = useRequestEmailVerification();
-  const emailVerificationResponse = emailVerificationMutation.data;
-  const emailVerificationResponseError =
-    emailVerificationResponse && !emailVerificationResponse.success
-      ? emailVerificationResponse.message
-      : null;
-  const emailVerificationMutationError =
-    emailVerificationMutation.error instanceof Error
-      ? emailVerificationMutation.error.message
-      : emailVerificationMutation.error
-        ? 'Failed to send verification email'
-        : null;
+  const emailVerification = useProfileEmailVerification();
 
   if (profileQuery.isPending) {
     return (
@@ -49,13 +38,14 @@ export const ProfilePage = () => {
     <ProfileLayout>
       <ProfileDetails user={profileQuery.data.data.user} />
       <ProfileEmailVerification
-        error={
-          emailVerificationResponseError ?? emailVerificationMutationError
-        }
+        error={emailVerification.error}
         isEmailVerified={profileQuery.data.data.user.isEmailVerified}
-        isPending={emailVerificationMutation.isPending}
-        isSuccess={Boolean(emailVerificationResponse?.success)}
-        onRequest={() => emailVerificationMutation.mutate()}
+        isPending={emailVerification.isPending}
+        isSuccess={emailVerification.isSuccess}
+        resendAvailableInSeconds={
+          emailVerification.resendAvailableInSeconds
+        }
+        onRequest={emailVerification.requestEmailVerification}
       />
     </ProfileLayout>
   );

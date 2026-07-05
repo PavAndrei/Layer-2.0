@@ -35,14 +35,20 @@ export type AuthResult = {
   user: UserDto;
 };
 
+const EMAIL_VERIFICATION_REQUEST_COOLDOWN_MS = 60 * 1000;
+
 const getRefreshTokenExpiresAt = () =>
   new Date(Date.now() + REFRESH_TOKEN_EXPIRES_IN_MS);
 
 const sendEmailVerificationToken = async (
   user: UserDocument,
   context: AuthContext,
+  options: {
+    cooldownMs?: number;
+  } = {},
 ) => {
   const { token } = await createAccountToken({
+    cooldownMs: options.cooldownMs,
     context,
     expiresInMs: EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MS,
     purpose: 'email-verification',
@@ -225,7 +231,9 @@ export const requestEmailVerification = async (
   }
 
   if (!user.isEmailVerified) {
-    await sendEmailVerificationToken(user, context);
+    await sendEmailVerificationToken(user, context, {
+      cooldownMs: EMAIL_VERIFICATION_REQUEST_COOLDOWN_MS,
+    });
   }
 
   return userToDto(user);

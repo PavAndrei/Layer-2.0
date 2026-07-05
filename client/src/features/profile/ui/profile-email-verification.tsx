@@ -6,6 +6,7 @@ type ProfileEmailVerificationProps = {
   isPending: boolean;
   isSuccess: boolean;
   onRequest: () => void;
+  resendAvailableInSeconds: number;
 };
 
 export const ProfileEmailVerification = ({
@@ -14,7 +15,18 @@ export const ProfileEmailVerification = ({
   isPending,
   isSuccess,
   onRequest,
+  resendAvailableInSeconds,
 }: ProfileEmailVerificationProps) => {
+  const isCooldownActive = resendAvailableInSeconds > 0;
+  const isActionDisabled = isPending || isCooldownActive;
+  const actionLabel = isPending
+    ? 'Sending...'
+    : isCooldownActive
+      ? `Send again in ${resendAvailableInSeconds}s`
+      : isSuccess
+        ? 'Send again'
+        : 'Send verification email';
+
   if (isEmailVerified) {
     return (
       <FeedbackMessage
@@ -36,12 +48,12 @@ export const ProfileEmailVerification = ({
       tone={error ? 'danger' : 'neutral'}
       action={
         <Button
-          disabled={isPending}
+          disabled={isActionDisabled}
           size="sm"
           variant="secondary"
           onClick={onRequest}
         >
-          {isPending ? 'Sending...' : 'Send verification email'}
+          {actionLabel}
         </Button>
       }
     />

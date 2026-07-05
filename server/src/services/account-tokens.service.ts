@@ -16,6 +16,7 @@ export type AccountTokenContext = {
 };
 
 type CreateAccountTokenParams = {
+  cooldownMs?: number;
   context?: AccountTokenContext;
   expiresInMs: number;
   purpose: AccountTokenPurpose;
@@ -49,6 +50,38 @@ const getAccountTokenExpiresAt = (expiresInMs: number) => {
   }
 
   return new Date(Date.now() + expiresInMs);
+};
+
+const assertAccountTokenCooldown = async ({
+  cooldownMs,
+  purpose,
+  userId,
+}: {
+  cooldownMs?: number;
+  purpose: AccountTokenPurpose;
+  userId: Types.ObjectId;
+}) => {
+  if (cooldownMs === undefined) return;
+
+  if (!Number.isFinite(cooldownMs) || cooldownMs <= 0) {
+    throw ApiError.BadRequest('Invalid account token cooldown');
+  }
+
+  const now = new Date();
+  const recentActiveToken = await AccountToken.exists({
+    userId,
+    purpose,
+    consumedAt: { $exists: false },
+    revokedAt: { $exists: false },
+    expiresAt: { $gt: now },
+    createdAt: { $gt: new Date(Date.now() - cooldownMs) },
+  });
+
+  if (recentActiveToken) {
+    throw ApiError.TooManyRequests(
+      'Please wait before requesting another email',
+    );
+  }
 };
 
 export const generateAccountToken = (): string => {
@@ -85,6 +118,7 @@ export const revokeActiveAccountTokens = async ({
 };
 
 export const createAccountToken = async ({
+  cooldownMs,
   context,
   expiresInMs,
   purpose,
@@ -94,6 +128,12 @@ export const createAccountToken = async ({
   const userObjectId = getUserObjectId(userId);
   const token = generateAccountToken();
   const expiresAt = getAccountTokenExpiresAt(expiresInMs);
+
+  await assertAccountTokenCooldown({
+    cooldownMs,
+    purpose,
+    userId: userObjectId,
+  });
 
   if (revokeExisting) {
     await revokeActiveAccountTokens({

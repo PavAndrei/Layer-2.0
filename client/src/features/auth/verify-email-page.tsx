@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { Link, useSearchParams } from 'react-router';
 
 import { FeedbackMessage, Skeleton } from '../../shared/ui';
+import { PROFILE_QUERY_KEYS } from '../profile';
 import { useConfirmEmailVerification } from './model';
 
 const linkClassName =
@@ -9,6 +11,7 @@ const linkClassName =
 
 export const VerifyEmailPage = () => {
   const [searchParams] = useSearchParams();
+  const queryClient = useQueryClient();
   const token = searchParams.get('token')?.trim() ?? '';
   const confirmEmailVerification = useConfirmEmailVerification();
   const submittedTokenRef = useRef<string | null>(null);
@@ -26,10 +29,21 @@ export const VerifyEmailPage = () => {
     if (!token || submittedTokenRef.current === token) return;
 
     submittedTokenRef.current = token;
-    confirmEmailVerification.mutate({
-      token,
-    });
-  }, [confirmEmailVerification, token]);
+    confirmEmailVerification.mutate(
+      {
+        token,
+      },
+      {
+        onSuccess: (response) => {
+          if (!response.success) return;
+
+          queryClient.invalidateQueries({
+            queryKey: PROFILE_QUERY_KEYS.profile,
+          });
+        },
+      },
+    );
+  }, [confirmEmailVerification, queryClient, token]);
 
   return (
     <main className="container mx-auto flex flex-col gap-6 px-2.5">
