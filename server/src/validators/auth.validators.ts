@@ -50,8 +50,31 @@ export const emailVerificationConfirmSchema = z.object({
     .strict(),
 });
 
+export const passwordResetRequestSchema = z.object({
+  body: z
+    .object({
+      email: emailSchema,
+    })
+    .strict(),
+});
+
+export const passwordResetConfirmSchema = z.object({
+  body: z
+    .object({
+      password: passwordSchema,
+      token: accountTokenSchema,
+    })
+    .strict(),
+});
+
 export type RegisterBody = z.infer<typeof registerSchema>['body'];
 export type LoginBody = z.infer<typeof loginSchema>['body'];
 export type EmailVerificationConfirmBody = z.infer<
   typeof emailVerificationConfirmSchema
+>['body'];
+export type PasswordResetRequestBody = z.infer<
+  typeof passwordResetRequestSchema
+>['body'];
+export type PasswordResetConfirmBody = z.infer<
+  typeof passwordResetConfirmSchema
 >['body'];

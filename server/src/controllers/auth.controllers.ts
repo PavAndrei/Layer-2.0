@@ -2,6 +2,7 @@ import type { Request, Response } from 'express';
 
 import { ApiError } from '../exceptions/api-error';
 import {
+  confirmPasswordReset as confirmPasswordResetData,
   getCurrentUser as getCurrentUserData,
   confirmEmailVerification as confirmEmailVerificationData,
   loginUser,
@@ -9,6 +10,7 @@ import {
   refreshAuthSession,
   registerUser,
   requestEmailVerification as requestEmailVerificationData,
+  requestPasswordReset as requestPasswordResetData,
   type AuthResult,
 } from '../services/auth.service';
 import {
@@ -22,10 +24,13 @@ import type {
   CurrentUserResponse,
   EmailVerificationResponse,
   LogoutResponse,
+  PasswordResetResponse,
 } from '../types/api';
 import type {
   EmailVerificationConfirmBody,
   LoginBody,
+  PasswordResetConfirmBody,
+  PasswordResetRequestBody,
   RegisterBody,
 } from '../validators/auth.validators';
 
@@ -211,6 +216,36 @@ export const confirmEmailVerification = async (
     data: {
       user,
     },
+  });
+};
+
+export const requestPasswordReset = async (
+  req: Request,
+  res: Response<PasswordResetResponse>,
+) => {
+  await requestPasswordResetData(
+    req.body as PasswordResetRequestBody,
+    getAuthContext(req),
+  );
+
+  res.status(200).json({
+    success: true,
+    message:
+      'If an account exists for this email, a password reset link has been sent',
+    data: null,
+  });
+};
+
+export const confirmPasswordReset = async (
+  req: Request,
+  res: Response<PasswordResetResponse>,
+) => {
+  await confirmPasswordResetData(req.body as PasswordResetConfirmBody);
+
+  res.status(200).json({
+    success: true,
+    message: 'Password reset successfully',
+    data: null,
   });
 };
 

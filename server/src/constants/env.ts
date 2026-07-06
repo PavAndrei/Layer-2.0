@@ -26,6 +26,10 @@ export const EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MS = getDurationInMs(
   '1d',
 );
 export const MONGO_URI = getEnv('MONGO_URI');
+export const PASSWORD_RESET_TOKEN_EXPIRES_IN_MS = getDurationInMs(
+  'PASSWORD_RESET_TOKEN_EXPIRES_IN',
+  '1h',
+);
 export const PORT = getEnv('PORT', '5000');
 export const REFRESH_TOKEN_EXPIRES_IN = getJwtExpiresIn(
   'REFRESH_TOKEN_EXPIRES_IN',

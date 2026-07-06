@@ -2,6 +2,7 @@ import { isObjectIdOrHexString, Types } from 'mongoose';
 
 import {
   EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MS,
+  PASSWORD_RESET_TOKEN_EXPIRES_IN_MS,
   REFRESH_TOKEN_EXPIRES_IN_MS,
 } from '../constants/env';
 import { ApiError } from '../exceptions/api-error';
@@ -13,7 +14,10 @@ import {
   createAccountToken,
   revokeActiveAccountTokens,
 } from './account-tokens.service';
-import { sendEmailVerificationEmail } from './email.service';
+import {
+  sendEmailVerificationEmail,
+  sendPasswordResetEmail,
+} from './email.service';
 import {
   hashRefreshToken,
   signAccessToken,
@@ -22,7 +26,12 @@ import {
 } from '../utils/auth-tokens';
 import { hashPassword, verifyPassword } from '../utils/password';
 import { userToDto } from '../utils/user-to-dto';
-import type { LoginBody, RegisterBody } from '../validators/auth.validators';
+import type {
+  LoginBody,
+  PasswordResetConfirmBody,
+  PasswordResetRequestBody,
+  RegisterBody,
+} from '../validators/auth.validators';
 
 export type AuthContext = {
   ip?: string;
@@ -36,6 +45,7 @@ export type AuthResult = {
 };
 
 const EMAIL_VERIFICATION_REQUEST_COOLDOWN_MS = 60 * 1000;
+const PASSWORD_RESET_REQUEST_COOLDOWN_MS = 60 * 1000;
 
 const getRefreshTokenExpiresAt = () =>
   new Date(Date.now() + REFRESH_TOKEN_EXPIRES_IN_MS);
@@ -60,6 +70,40 @@ const sendEmailVerificationToken = async (
     name: user.name,
     token,
   });
+};
+
+const sendPasswordResetToken = async (
+  user: UserDocument,
+  context: AuthContext,
+  options: {
+    cooldownMs?: number;
+  } = {},
+) => {
+  const { token } = await createAccountToken({
+    cooldownMs: options.cooldownMs,
+    context,
+    expiresInMs: PASSWORD_RESET_TOKEN_EXPIRES_IN_MS,
+    purpose: 'password-reset',
+    userId: user._id,
+  });
+
+  await sendPasswordResetEmail({
+    email: user.email,
+    name: user.name,
+    token,
+  });
+};
+
+const revokeAuthSessionsForUser = async (userId: Types.ObjectId) => {
+  await AuthSession.updateMany(
+    {
+      userId,
+      revokedAt: { $exists: false },
+    },
+    {
+      revokedAt: new Date(),
+    },
+  );
 };
 
 const createAuthSession = async (
@@ -266,6 +310,59 @@ export const confirmEmailVerification = async (
   });
 
   return userToDto(user);
+};
+
+export const requestPasswordReset = async (
+  body: PasswordResetRequestBody,
+  context: AuthContext,
+): Promise<void> => {
+  const user = await User.findOne({ email: body.email });
+
+  if (!user) return;
+
+  try {
+    await sendPasswordResetToken(user, context, {
+      cooldownMs: PASSWORD_RESET_REQUEST_COOLDOWN_MS,
+    });
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 429) {
+      return;
+    }
+
+    throw error;
+  }
+};
+
+export const confirmPasswordReset = async ({
+  password,
+  token,
+}: PasswordResetConfirmBody): Promise<void> => {
+  const accountToken = await consumeAccountToken({
+    purpose: 'password-reset',
+    token,
+  });
+  const passwordHash = await hashPassword(password);
+  const user = await User.findByIdAndUpdate(
+    accountToken.userId,
+    {
+      passwordHash,
+    },
+    {
+      new: true,
+    },
+  );
+
+  if (!user) {
+    throw ApiError.BadRequest('Invalid or expired account token');
+  }
+
+  await Promise.all([
+    revokeActiveAccountTokens({
+      purpose: 'password-reset',
+      userId: user._id,
+    }),
+    revokeAuthSessionsForUser(user._id),
+  ]);
 };
 
 export const logoutAuthSession = async (

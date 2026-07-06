@@ -164,4 +164,6 @@ export type EmailVerificationResponse = ApiSuccess<{
   user: UserDto;
 }>;
 
+export type PasswordResetResponse = ApiSuccess<null>;
+
 export type LogoutResponse = ApiSuccess<null>;

@@ -3,18 +3,22 @@ import { Router } from 'express';
 import {
   bootstrap,
   confirmEmailVerification,
+  confirmPasswordReset,
   getCurrentUser,
   login,
   logout,
   refresh,
   register,
   requestEmailVerification,
+  requestPasswordReset,
 } from '../controllers/auth.controllers';
 import { authMiddleware } from '../middlewares/auth.middleware';
 import { validateRequest } from '../middlewares/validate-request';
 import {
   emailVerificationConfirmSchema,
   loginSchema,
+  passwordResetConfirmSchema,
+  passwordResetRequestSchema,
   registerSchema,
 } from '../validators/auth.validators';
 import { catchErrors } from '../utils/catch-errors';
@@ -39,6 +43,16 @@ authRoute.post(
   '/email-verification/confirm',
   validateRequest(emailVerificationConfirmSchema),
   catchErrors(confirmEmailVerification),
+);
+authRoute.post(
+  '/password-reset/request',
+  validateRequest(passwordResetRequestSchema),
+  catchErrors(requestPasswordReset),
+);
+authRoute.post(
+  '/password-reset/confirm',
+  validateRequest(passwordResetConfirmSchema),
+  catchErrors(confirmPasswordReset),
 );
 authRoute.get('/me', authMiddleware, catchErrors(getCurrentUser));
 
