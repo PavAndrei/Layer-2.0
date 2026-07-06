@@ -198,6 +198,10 @@ export const loginUser = async (
     throw ApiError.Unauthorized('Invalid email or password');
   }
 
+  if (!user.passwordHash) {
+    throw ApiError.Unauthorized('Invalid email or password');
+  }
+
   const isPasswordValid = await verifyPassword(password, user.passwordHash);
 
   if (!isPasswordValid) {

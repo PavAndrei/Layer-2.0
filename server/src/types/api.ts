@@ -2,7 +2,7 @@ import type { ProductSize, ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
 import type { ReviewStatus } from './review';
-import type { UserRole } from './user';
+import type { UserAuthProvider, UserRole } from './user';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -55,6 +55,8 @@ export type ReviewSummaryDto = {
 
 export type UserDto = {
   _id: string;
+  authProviders: UserAuthProvider[];
+  avatarUrl?: string;
   email: string;
   name: string;
   role: UserRole;

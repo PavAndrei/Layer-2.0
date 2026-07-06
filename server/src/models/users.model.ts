@@ -1,6 +1,11 @@
 import { HydratedDocument, InferSchemaType, Schema, model } from 'mongoose';
 
-import { USER_ROLES, type UserRole } from '../types/user';
+import {
+  USER_AUTH_PROVIDERS,
+  USER_ROLES,
+  type UserAuthProvider,
+  type UserRole,
+} from '../types/user';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -19,8 +24,15 @@ const userSchema = new Schema(
 
     passwordHash: {
       type: String,
-      required: true,
       select: false,
+    },
+
+    googleId: {
+      type: String,
+      trim: true,
+      unique: true,
+      sparse: true,
+      index: true,
     },
 
     name: {
@@ -36,6 +48,18 @@ const userSchema = new Schema(
       enum: USER_ROLES,
       default: 'customer' satisfies UserRole,
       index: true,
+    },
+
+    authProviders: {
+      type: [String],
+      enum: USER_AUTH_PROVIDERS,
+      default: ['password'] satisfies UserAuthProvider[],
+    },
+
+    avatarUrl: {
+      type: String,
+      trim: true,
+      maxlength: 2048,
     },
 
     isEmailVerified: {
