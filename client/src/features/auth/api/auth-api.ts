@@ -6,6 +6,8 @@ import type {
   AuthUserResponseData,
   EmailVerificationConfirmPayload,
   LoginPayload,
+  PasswordResetConfirmPayload,
+  PasswordResetRequestPayload,
   RegisterPayload,
 } from '../model';
 
@@ -87,6 +89,28 @@ export const confirmEmailVerification = async (
     path: '/auth/email-verification/confirm',
     body: payload,
     errorMessage: 'Failed to confirm email verification',
+    skipAuthRefresh: true,
+  });
+};
+
+export const requestPasswordReset = async (
+  payload: PasswordResetRequestPayload,
+): Promise<ApiResponse<null>> => {
+  return apiClient.post<null, PasswordResetRequestPayload>({
+    path: '/auth/password-reset/request',
+    body: payload,
+    errorMessage: 'Failed to request password reset',
+    skipAuthRefresh: true,
+  });
+};
+
+export const confirmPasswordReset = async (
+  payload: PasswordResetConfirmPayload,
+): Promise<ApiResponse<null>> => {
+  return apiClient.post<null, PasswordResetConfirmPayload>({
+    path: '/auth/password-reset/confirm',
+    body: payload,
+    errorMessage: 'Failed to reset password',
     skipAuthRefresh: true,
   });
 };

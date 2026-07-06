@@ -39,4 +39,13 @@ export type EmailVerificationConfirmPayload = {
   token: string;
 };
 
+export type PasswordResetRequestPayload = {
+  email: string;
+};
+
+export type PasswordResetConfirmPayload = {
+  password: string;
+  token: string;
+};
+
 export type AuthStatus = 'idle' | 'loading' | 'authenticated' | 'guest';
