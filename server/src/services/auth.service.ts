@@ -94,6 +94,20 @@ const sendPasswordResetToken = async (
   });
 };
 
+const sendInitialEmailVerificationToken = async (
+  user: UserDocument,
+  context: AuthContext,
+) => {
+  try {
+    await sendEmailVerificationToken(user, context);
+  } catch (error) {
+    console.error('Failed to send registration verification email', {
+      error,
+      userId: user._id.toString(),
+    });
+  }
+};
+
 const revokeAuthSessionsForUser = async (userId: Types.ObjectId) => {
   await AuthSession.updateMany(
     {
@@ -168,7 +182,7 @@ export const registerUser = async (
     role: 'customer',
   });
 
-  await sendEmailVerificationToken(user, context);
+  await sendInitialEmailVerificationToken(user, context);
 
   return createAuthResult(user, context);
 };

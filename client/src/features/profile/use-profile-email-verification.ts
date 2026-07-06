@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
-
+import { useCooldown } from '../../shared/hooks';
 import { useRequestEmailVerification } from '../auth';
 
 const EMAIL_VERIFICATION_COOLDOWN_SECONDS = 60;
 
 export const useProfileEmailVerification = () => {
-  const [resendAvailableInSeconds, setResendAvailableInSeconds] =
-    useState(0);
+  const cooldown = useCooldown();
   const emailVerificationMutation = useRequestEmailVerification();
   const response = emailVerificationMutation.data;
   const responseError =
@@ -18,26 +16,14 @@ export const useProfileEmailVerification = () => {
         ? 'Failed to send verification email'
         : null;
 
-  useEffect(() => {
-    if (resendAvailableInSeconds <= 0) return;
-
-    const timeoutId = window.setTimeout(() => {
-      setResendAvailableInSeconds((seconds) => Math.max(seconds - 1, 0));
-    }, 1000);
-
-    return () => window.clearTimeout(timeoutId);
-  }, [resendAvailableInSeconds]);
-
-  useEffect(() => {
-    if (!response) return;
-
-    setResendAvailableInSeconds(EMAIL_VERIFICATION_COOLDOWN_SECONDS);
-  }, [response]);
-
   const requestEmailVerification = () => {
-    if (resendAvailableInSeconds > 0) return;
+    if (cooldown.isActive) return;
 
-    emailVerificationMutation.mutate();
+    emailVerificationMutation.mutate(undefined, {
+      onSettled: () => {
+        cooldown.start(EMAIL_VERIFICATION_COOLDOWN_SECONDS);
+      },
+    });
   };
 
   return {
@@ -45,6 +31,6 @@ export const useProfileEmailVerification = () => {
     isPending: emailVerificationMutation.isPending,
     isSuccess: Boolean(response?.success),
     requestEmailVerification,
-    resendAvailableInSeconds,
+    resendAvailableInSeconds: cooldown.remainingSeconds,
   };
 };

@@ -17,6 +17,10 @@ export const loginSchema = z.object({
     .max(128, 'Password is too long'),
 });
 
+export const passwordResetRequestSchema = loginSchema.pick({
+  email: true,
+});
+
 export const registerSchema = loginSchema
   .extend({
     confirmPassword: z.string(),
@@ -25,6 +29,16 @@ export const registerSchema = loginSchema
       .trim()
       .min(2, 'Name must contain at least 2 characters')
       .max(80, 'Name is too long'),
+  })
+  .refine((values) => values.password === values.confirmPassword, {
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
+  });
+
+export const passwordResetConfirmSchema = z
+  .object({
+    confirmPassword: z.string(),
+    password: loginSchema.shape.password,
   })
   .refine((values) => values.password === values.confirmPassword, {
     message: 'Passwords do not match',

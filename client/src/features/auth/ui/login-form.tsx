@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 import { Button, TextInput } from '../../../shared/ui';
 import { useLogin } from '../model';
 
@@ -39,6 +41,13 @@ export const LoginForm = () => {
         value={values.password}
         onChange={(value) => updateField('password', value)}
       />
+
+      <Link
+        to="/forgot-password"
+        className="block w-fit block-small text-typography-secondary underline underline-offset-4 transition-colors hover:text-accent-hover"
+      >
+        Forgot password?
+      </Link>
 
       {error && (
         <p className="block-small text-red-600" role="alert">

@@ -1,7 +1,12 @@
 import type { z } from 'zod';
 
 import type { User } from '../../../entities/user';
-import type { loginSchema, registerSchema } from './auth-validation';
+import type {
+  loginSchema,
+  passwordResetConfirmSchema,
+  passwordResetRequestSchema,
+  registerSchema,
+} from './auth-validation';
 
 export type AuthResponseData = {
   user: User;
@@ -39,9 +44,15 @@ export type EmailVerificationConfirmPayload = {
   token: string;
 };
 
-export type PasswordResetRequestPayload = {
-  email: string;
-};
+export type PasswordResetRequestFormValues = z.infer<
+  typeof passwordResetRequestSchema
+>;
+
+export type PasswordResetRequestPayload = PasswordResetRequestFormValues;
+
+export type PasswordResetConfirmFormValues = z.infer<
+  typeof passwordResetConfirmSchema
+>;
 
 export type PasswordResetConfirmPayload = {
   password: string;

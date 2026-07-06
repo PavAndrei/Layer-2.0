@@ -1,10 +1,12 @@
 import { Route, Routes } from 'react-router';
 
 import {
+  ForgotPasswordPage,
   GuestRoute,
   LoginPage,
   ProtectedRoute,
   RegisterPage,
+  ResetPasswordPage,
   VerifyEmailPage,
 } from '../features/auth';
 import { CartPage } from '../features/cart';
@@ -48,6 +50,15 @@ export const AppRoutes = () => {
           </GuestRoute>
         }
       />
+      <Route
+        path="/forgot-password"
+        element={
+          <GuestRoute>
+            <ForgotPasswordPage />
+          </GuestRoute>
+        }
+      />
+      <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route
         path="/favorites"

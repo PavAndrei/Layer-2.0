@@ -13,6 +13,7 @@ import {
   requestPasswordReset,
 } from '../controllers/auth.controllers';
 import { authMiddleware } from '../middlewares/auth.middleware';
+import { rateLimit } from '../middlewares/rate-limit.middleware';
 import { validateRequest } from '../middlewares/validate-request';
 import {
   emailVerificationConfirmSchema,
@@ -24,6 +25,19 @@ import {
 import { catchErrors } from '../utils/catch-errors';
 
 const authRoute = Router();
+const ACCOUNT_TOKEN_REQUEST_RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const ACCOUNT_TOKEN_CONFIRM_RATE_LIMIT_WINDOW_MS = 60 * 1000;
+
+const accountTokenRequestRateLimit = rateLimit({
+  keyPrefix: 'account-token-request',
+  maxRequests: 5,
+  windowMs: ACCOUNT_TOKEN_REQUEST_RATE_LIMIT_WINDOW_MS,
+});
+const accountTokenConfirmRateLimit = rateLimit({
+  keyPrefix: 'account-token-confirm',
+  maxRequests: 20,
+  windowMs: ACCOUNT_TOKEN_CONFIRM_RATE_LIMIT_WINDOW_MS,
+});
 
 authRoute.post(
   '/register',
@@ -36,21 +50,25 @@ authRoute.post('/refresh', catchErrors(refresh));
 authRoute.post('/logout', catchErrors(logout));
 authRoute.post(
   '/email-verification/request',
+  accountTokenRequestRateLimit,
   authMiddleware,
   catchErrors(requestEmailVerification),
 );
 authRoute.post(
   '/email-verification/confirm',
+  accountTokenConfirmRateLimit,
   validateRequest(emailVerificationConfirmSchema),
   catchErrors(confirmEmailVerification),
 );
 authRoute.post(
   '/password-reset/request',
+  accountTokenRequestRateLimit,
   validateRequest(passwordResetRequestSchema),
   catchErrors(requestPasswordReset),
 );
 authRoute.post(
   '/password-reset/confirm',
+  accountTokenConfirmRateLimit,
   validateRequest(passwordResetConfirmSchema),
   catchErrors(confirmPasswordReset),
 );

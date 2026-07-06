@@ -1,6 +1,8 @@
 export { AuthBenefits } from './auth-benefits';
 export { AuthLayout } from './auth-layout';
+export { ForgotPasswordForm } from './forgot-password-form';
 export { GuestRoute } from './guest-route';
 export { LoginForm } from './login-form';
 export { ProtectedRoute } from './protected-route';
 export { RegisterForm } from './register-form';
+export { ResetPasswordForm } from './reset-password-form';
