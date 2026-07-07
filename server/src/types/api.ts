@@ -1,6 +1,11 @@
 import type { ProductSize, ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
+import type {
+  OrderItemSnapshot,
+  OrderShippingAddress,
+  OrderStatus,
+} from './order';
 import type { ReviewStatus } from './review';
 import type { UserAuthProvider, UserRole } from './user';
 
@@ -53,6 +58,20 @@ export type ReviewSummaryDto = {
   averageRating: number;
 };
 
+export type OrderDto = {
+  _id: string;
+  contactEmail: string;
+  createdAt: string;
+  discountTotal: number;
+  items: OrderItemSnapshot[];
+  shippingAddress: OrderShippingAddress;
+  status: OrderStatus;
+  subtotal: number;
+  total: number;
+  updatedAt: string;
+  userId: string;
+};
+
 export type UserDto = {
   _id: string;
   authProviders: UserAuthProvider[];
@@ -84,6 +103,15 @@ export type ProductReviewsResponse = ApiSuccess<{
   reviews: ReviewDto[];
   summary: ReviewSummaryDto;
   pagination: PaginationData;
+}>;
+
+export type OrdersResponse = ApiSuccess<{
+  orders: OrderDto[];
+  pagination: PaginationData;
+}>;
+
+export type OrderResponse = ApiSuccess<{
+  order: OrderDto;
 }>;
 
 export type FavoritesResponse = ApiSuccess<{

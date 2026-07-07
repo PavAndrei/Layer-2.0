@@ -5,7 +5,9 @@ import cookieParser from 'cookie-parser';
 
 import authRoutes from './routes/auth.route';
 import cartRoutes from './routes/cart.route';
+import checkoutRoutes from './routes/checkout.route';
 import favoritesRoutes from './routes/favorites.route';
+import ordersRoutes from './routes/orders.route';
 import productsRoutes from './routes/products.route';
 import { errorHandler } from './middlewares/error-handler';
 import connectToDB from './utils/connect-to-database';
@@ -41,6 +43,8 @@ app.get('/', (_, res) => {
 app.use('/products', productsRoutes);
 app.use('/auth', authRoutes);
 app.use('/cart', cartRoutes);
+app.use('/checkout', checkoutRoutes);
 app.use('/favorites', favoritesRoutes);
+app.use('/orders', ordersRoutes);
 
 app.use(errorHandler);
