@@ -5,6 +5,7 @@ import type {
   AuthResponseData,
   AuthUserResponseData,
   EmailVerificationConfirmPayload,
+  GoogleLoginPayload,
   LoginPayload,
   PasswordResetConfirmPayload,
   PasswordResetRequestPayload,
@@ -31,6 +32,17 @@ export const login = async (
     path: '/auth/login',
     body: payload,
     errorMessage: 'Failed to login',
+    skipAuthRefresh: true,
+  });
+};
+
+export const loginWithGoogle = async (
+  payload: GoogleLoginPayload,
+): Promise<ApiResponse<AuthResponseData>> => {
+  return apiClient.post<AuthResponseData, GoogleLoginPayload>({
+    path: '/auth/google',
+    body: payload,
+    errorMessage: 'Failed to login with Google',
     skipAuthRefresh: true,
   });
 };

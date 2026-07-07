@@ -2,6 +2,11 @@ export {
   LOGIN_BENEFITS,
   REGISTER_BENEFITS,
 } from './auth-benefits-constants';
+export { GOOGLE_CLIENT_ID } from './google-auth-config';
+export {
+  loadGoogleIdentityService,
+  requestGoogleAuthorizationCode,
+} from './google-identity-service';
 export { useAuthBootstrap } from './use-auth-bootstrap';
 export {
   useAuthStatus,
@@ -11,6 +16,8 @@ export {
 export { useConfirmEmailVerification } from './use-confirm-email-verification';
 export { useConfirmPasswordReset } from './use-confirm-password-reset';
 export { useForgotPassword } from './use-forgot-password';
+export { useGoogleAuthButton } from './use-google-auth-button';
+export { useGoogleLogin } from './use-google-login';
 export { useLogin } from './use-login';
 export { useLogout } from './use-logout';
 export { useRequestEmailVerification } from './use-request-email-verification';
@@ -23,6 +30,7 @@ export type {
   AuthResponseData,
   AuthUserResponseData,
   EmailVerificationConfirmPayload,
+  GoogleLoginPayload,
   LoginPayload,
   PasswordResetConfirmFormValues,
   PasswordResetConfirmPayload,

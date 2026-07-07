@@ -1,4 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router';
 
 import {
   useAuthStatus,
@@ -14,6 +15,7 @@ import { clearUserSessionQueryCache } from './user-session-query-cache';
 
 export const AppHeader = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const authStatus = useAuthStatus();
   const user = useAuthUser();
   const isAuthenticated = authStatus === 'authenticated';
@@ -26,6 +28,7 @@ export const AppHeader = () => {
     logoutMutation.mutate(undefined, {
       onSettled: () => {
         clearUserSessionQueryCache(queryClient);
+        navigate('/login', { replace: true });
       },
     });
   };

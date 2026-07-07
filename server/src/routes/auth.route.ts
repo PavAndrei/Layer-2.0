@@ -5,6 +5,7 @@ import {
   confirmEmailVerification,
   confirmPasswordReset,
   getCurrentUser,
+  googleLogin,
   login,
   logout,
   refresh,
@@ -17,6 +18,7 @@ import { rateLimit } from '../middlewares/rate-limit.middleware';
 import { validateRequest } from '../middlewares/validate-request';
 import {
   emailVerificationConfirmSchema,
+  googleLoginSchema,
   loginSchema,
   passwordResetConfirmSchema,
   passwordResetRequestSchema,
@@ -45,6 +47,11 @@ authRoute.post(
   catchErrors(register),
 );
 authRoute.post('/login', validateRequest(loginSchema), catchErrors(login));
+authRoute.post(
+  '/google',
+  validateRequest(googleLoginSchema),
+  catchErrors(googleLogin),
+);
 authRoute.post('/bootstrap', catchErrors(bootstrap));
 authRoute.post('/refresh', catchErrors(refresh));
 authRoute.post('/logout', catchErrors(logout));

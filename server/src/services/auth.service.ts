@@ -9,6 +9,7 @@ import { ApiError } from '../exceptions/api-error';
 import { AuthSession } from '../models/auth-sessions.model';
 import { User, type UserDocument } from '../models/users.model';
 import type { UserDto } from '../types/api';
+import type { UserAuthProvider } from '../types/user';
 import {
   consumeAccountToken,
   createAccountToken,
@@ -19,6 +20,10 @@ import {
   sendPasswordResetEmail,
 } from './email.service';
 import {
+  verifyGoogleAuthorizationCode,
+  type GoogleAccountProfile,
+} from './google-auth.service';
+import {
   hashRefreshToken,
   signAccessToken,
   signRefreshToken,
@@ -27,6 +32,7 @@ import {
 import { hashPassword, verifyPassword } from '../utils/password';
 import { userToDto } from '../utils/user-to-dto';
 import type {
+  GoogleLoginBody,
   LoginBody,
   PasswordResetConfirmBody,
   PasswordResetRequestBody,
@@ -163,6 +169,68 @@ const createAuthResult = async (
   };
 };
 
+const ensureAuthProvider = (
+  user: UserDocument,
+  provider: UserAuthProvider,
+) => {
+  user.authProviders = user.authProviders ?? [];
+
+  if (user.authProviders.includes(provider)) return;
+
+  user.authProviders.push(provider);
+};
+
+const findOrCreateGoogleUser = async ({
+  avatarUrl,
+  email,
+  emailVerified,
+  googleId,
+  name,
+}: GoogleAccountProfile): Promise<UserDocument> => {
+  const existingGoogleUser = await User.findOne({ googleId });
+
+  if (existingGoogleUser) {
+    existingGoogleUser.avatarUrl = avatarUrl;
+    existingGoogleUser.isEmailVerified =
+      existingGoogleUser.isEmailVerified || emailVerified;
+    ensureAuthProvider(existingGoogleUser, 'google');
+
+    await existingGoogleUser.save();
+
+    return existingGoogleUser;
+  }
+
+  const existingEmailUser = await User.findOne({ email });
+
+  if (existingEmailUser) {
+    if (existingEmailUser.googleId) {
+      throw ApiError.Conflict(
+        'This email is already linked to another Google account',
+      );
+    }
+
+    existingEmailUser.googleId = googleId;
+    existingEmailUser.avatarUrl = avatarUrl;
+    existingEmailUser.isEmailVerified =
+      existingEmailUser.isEmailVerified || emailVerified;
+    ensureAuthProvider(existingEmailUser, 'google');
+
+    await existingEmailUser.save();
+
+    return existingEmailUser;
+  }
+
+  return User.create({
+    authProviders: ['google'],
+    avatarUrl,
+    email,
+    googleId,
+    isEmailVerified: emailVerified,
+    name,
+    role: 'customer',
+  });
+};
+
 export const registerUser = async (
   body: RegisterBody,
   context: AuthContext,
@@ -176,6 +244,7 @@ export const registerUser = async (
 
   const passwordHash = await hashPassword(password);
   const user = await User.create({
+    authProviders: ['password'],
     email,
     passwordHash,
     name,
@@ -183,6 +252,16 @@ export const registerUser = async (
   });
 
   await sendInitialEmailVerificationToken(user, context);
+
+  return createAuthResult(user, context);
+};
+
+export const loginWithGoogle = async (
+  body: GoogleLoginBody,
+  context: AuthContext,
+): Promise<AuthResult> => {
+  const googleProfile = await verifyGoogleAuthorizationCode(body.code);
+  const user = await findOrCreateGoogleUser(googleProfile);
 
   return createAuthResult(user, context);
 };
@@ -363,7 +442,12 @@ export const confirmPasswordReset = async ({
   const user = await User.findByIdAndUpdate(
     accountToken.userId,
     {
-      passwordHash,
+      $addToSet: {
+        authProviders: 'password',
+      },
+      $set: {
+        passwordHash,
+      },
     },
     {
       new: true,

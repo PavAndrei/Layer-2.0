@@ -19,6 +19,13 @@ const accountTokenSchema = z
   .max(200, 'Token is too long')
   .regex(/^[A-Za-z0-9_-]+$/, 'Invalid token');
 
+const googleAuthorizationCodeSchema = z
+  .string()
+  .trim()
+  .min(10, 'Google authorization code is too short')
+  .max(2048, 'Google authorization code is too long')
+  .regex(/^[A-Za-z0-9/_.-]+$/, 'Invalid Google authorization code');
+
 export const registerSchema = z.object({
   body: z
     .object({
@@ -38,6 +45,14 @@ export const loginSchema = z.object({
     .object({
       email: emailSchema,
       password: passwordSchema,
+    })
+    .strict(),
+});
+
+export const googleLoginSchema = z.object({
+  body: z
+    .object({
+      code: googleAuthorizationCodeSchema,
     })
     .strict(),
 });
@@ -69,6 +84,7 @@ export const passwordResetConfirmSchema = z.object({
 
 export type RegisterBody = z.infer<typeof registerSchema>['body'];
 export type LoginBody = z.infer<typeof loginSchema>['body'];
+export type GoogleLoginBody = z.infer<typeof googleLoginSchema>['body'];
 export type EmailVerificationConfirmBody = z.infer<
   typeof emailVerificationConfirmSchema
 >['body'];

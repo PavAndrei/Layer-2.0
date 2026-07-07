@@ -1,7 +1,9 @@
 export { AuthBenefits } from './auth-benefits';
 export { AuthLayout } from './auth-layout';
+export { AuthMethodDivider } from './auth-method-divider';
 export { ForgotPasswordForm } from './forgot-password-form';
 export { GuestRoute } from './guest-route';
+export { GoogleAuthButton } from './google-auth-button';
 export { LoginForm } from './login-form';
 export { ProtectedRoute } from './protected-route';
 export { RegisterForm } from './register-form';

@@ -2,6 +2,8 @@ import { Link } from 'react-router';
 
 import { Button, TextInput } from '../../../shared/ui';
 import { useLogin } from '../model';
+import { AuthMethodDivider } from './auth-method-divider';
+import { GoogleAuthButton } from './google-auth-button';
 
 export const LoginForm = () => {
   const {
@@ -11,8 +13,7 @@ export const LoginForm = () => {
     isSubmitting,
     updateField,
     values,
-  } =
-    useLogin();
+  } = useLogin();
 
   return (
     <form className="space-y-4" noValidate onSubmit={handleSubmit}>
@@ -63,6 +64,9 @@ export const LoginForm = () => {
       >
         {isSubmitting ? 'Signing in...' : 'Sign in'}
       </Button>
+
+      <AuthMethodDivider />
+      <GoogleAuthButton />
     </form>
   );
 };

@@ -39,7 +39,7 @@ const getRedirectPathFromState = (state: unknown): string | null => {
   return `${from.pathname}${from.search ?? ''}${from.hash ?? ''}`;
 };
 
-export const useLogin = ({ redirectTo = '/' }: UseLoginOptions = {}) => {
+export const useLogin = ({ redirectTo = '/profile' }: UseLoginOptions = {}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();

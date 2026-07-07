@@ -40,6 +40,10 @@ export type RegisterPayload = Omit<RegisterFormValues, 'confirmPassword'>;
 
 export type LoginPayload = z.infer<typeof loginSchema>;
 
+export type GoogleLoginPayload = {
+  code: string;
+};
+
 export type EmailVerificationConfirmPayload = {
   token: string;
 };

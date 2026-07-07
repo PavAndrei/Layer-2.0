@@ -5,6 +5,7 @@ import {
   confirmPasswordReset as confirmPasswordResetData,
   getCurrentUser as getCurrentUserData,
   confirmEmailVerification as confirmEmailVerificationData,
+  loginWithGoogle,
   loginUser,
   logoutAuthSession,
   refreshAuthSession,
@@ -28,6 +29,7 @@ import type {
 } from '../types/api';
 import type {
   EmailVerificationConfirmBody,
+  GoogleLoginBody,
   LoginBody,
   PasswordResetConfirmBody,
   PasswordResetRequestBody,
@@ -97,6 +99,18 @@ export const login = async (
   const result = await loginUser(req.body as LoginBody, getAuthContext(req));
 
   sendAuthResponse(res, result, 'User logged in successfully');
+};
+
+export const googleLogin = async (
+  req: Request,
+  res: Response<AuthResponse>,
+) => {
+  const result = await loginWithGoogle(
+    req.body as GoogleLoginBody,
+    getAuthContext(req),
+  );
+
+  sendAuthResponse(res, result, 'User logged in with Google successfully');
 };
 
 export const refresh = async (

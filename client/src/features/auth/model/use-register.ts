@@ -25,7 +25,7 @@ const initialValues: RegisterFormValues = {
 };
 
 export const useRegister = ({
-  redirectTo = '/',
+  redirectTo = '/profile',
 }: UseRegisterOptions = {}) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();

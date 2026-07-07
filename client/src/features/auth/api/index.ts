@@ -4,6 +4,7 @@ export {
   confirmPasswordReset,
   getCurrentUser,
   login,
+  loginWithGoogle,
   logout,
   refreshAuth,
   register,

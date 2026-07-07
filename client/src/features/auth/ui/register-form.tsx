@@ -1,5 +1,7 @@
 import { Button, TextInput } from '../../../shared/ui';
 import { useRegister } from '../model';
+import { AuthMethodDivider } from './auth-method-divider';
+import { GoogleAuthButton } from './google-auth-button';
 
 export const RegisterForm = () => {
   const {
@@ -9,8 +11,7 @@ export const RegisterForm = () => {
     isSubmitting,
     updateField,
     values,
-  } =
-    useRegister();
+  } = useRegister();
 
   return (
     <form className="space-y-4" noValidate onSubmit={handleSubmit}>
@@ -82,6 +83,9 @@ export const RegisterForm = () => {
       >
         {isSubmitting ? 'Creating account...' : 'Create account'}
       </Button>
+
+      <AuthMethodDivider />
+      <GoogleAuthButton />
     </form>
   );
 };
