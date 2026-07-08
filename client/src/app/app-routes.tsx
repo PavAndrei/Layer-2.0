@@ -10,8 +10,10 @@ import {
   VerifyEmailPage,
 } from '../features/auth';
 import { CartPage } from '../features/cart';
+import { CheckoutPage } from '../features/checkout';
 import { FavoritesPage } from '../features/favorites';
 import { HomePage } from '../features/home';
+import { OrderPage } from '../features/orders';
 import { ProfilePage } from '../features/profile';
 import {
   CatalogPage,
@@ -61,6 +63,14 @@ export const AppRoutes = () => {
       <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route
+        path="/checkout"
+        element={
+          <ProtectedRoute>
+            <CheckoutPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="/favorites"
         element={
           <ProtectedRoute>
@@ -73,6 +83,14 @@ export const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <ProfilePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/orders/:orderId"
+        element={
+          <ProtectedRoute>
+            <OrderPage />
           </ProtectedRoute>
         }
       />

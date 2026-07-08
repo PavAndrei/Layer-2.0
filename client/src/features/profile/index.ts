@@ -1,2 +1,2 @@
-export { PROFILE_QUERY_KEYS } from './model';
+export { useProfile } from './model';
 export { ProfilePage } from './profile-page';

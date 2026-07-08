@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link, useSearchParams } from 'react-router';
 
+import { userQueryKeys } from '../../entities/user';
 import { FeedbackMessage, Skeleton } from '../../shared/ui';
-import { PROFILE_QUERY_KEYS } from '../profile';
 import { useConfirmEmailVerification } from './model';
 
 const linkClassName =
@@ -38,7 +38,7 @@ export const VerifyEmailPage = () => {
           if (!response.success) return;
 
           queryClient.invalidateQueries({
-            queryKey: PROFILE_QUERY_KEYS.profile,
+            queryKey: userQueryKeys.current(),
           });
         },
       },

@@ -69,14 +69,12 @@ export const CartSummary = ({ totals, onClearCart }: CartSummaryProps) => {
         >
           Continue Shopping
         </Link>
-        <div className="flex flex-col gap-1">
-          <Button disabled variant="primary" className="w-full">
+        <Link
+          to="/checkout"
+          className="inline-flex min-h-10 w-full items-center justify-center rounded border border-accent-primary bg-accent-primary px-4 py-2 block-medium text-background-surface transition-[color,background-color,border-color,transform] duration-150 ease-out hover:border-accent-hover hover:bg-accent-hover active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-black"
+        >
             Checkout
-          </Button>
-          <p className="block-small text-typography-secondary">
-            Checkout will be available soon.
-          </p>
-        </div>
+        </Link>
         {isClearConfirmOpen ? (
           <div className="flex flex-col gap-2 rounded border border-border-soft bg-background-primary p-3">
             <p className="block-small text-typography-secondary">
