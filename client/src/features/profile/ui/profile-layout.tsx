@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 
 import { Breadcrumbs } from '../../../shared/ui';
+import type { ProfileSection } from '../model';
+import { ProfileSidebar } from './profile-sidebar';
 
 type ProfileLayoutProps = {
   children: ReactNode;
@@ -27,5 +29,22 @@ export const ProfileLayout = ({ children }: ProfileLayoutProps) => {
 
       {children}
     </main>
+  );
+};
+
+type ProfileContentLayoutProps = {
+  activeSection: ProfileSection;
+  children: ReactNode;
+};
+
+export const ProfileContentLayout = ({
+  activeSection,
+  children,
+}: ProfileContentLayoutProps) => {
+  return (
+    <div className="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)]">
+      <ProfileSidebar activeSection={activeSection} />
+      <div className="flex min-w-0 flex-col gap-6">{children}</div>
+    </div>
   );
 };
