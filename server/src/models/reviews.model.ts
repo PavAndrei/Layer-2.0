@@ -1,10 +1,4 @@
-import {
-  HydratedDocument,
-  InferSchemaType,
-  Schema,
-  Types,
-  model,
-} from 'mongoose';
+import { HydratedDocument, InferSchemaType, Schema, model } from 'mongoose';
 
 import { REVIEW_STATUSES, type ReviewStatus } from '../types/review';
 
@@ -14,6 +8,12 @@ const reviewSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Product',
       required: true,
+      index: true,
+    },
+
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
       index: true,
     },
 
@@ -63,10 +63,15 @@ const reviewSchema = new Schema(
 );
 
 reviewSchema.index({ productId: 1, status: 1, createdAt: -1 });
+reviewSchema.index(
+  { productId: 1, userId: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { userId: { $exists: true } },
+  },
+);
 
 export type ReviewData = InferSchemaType<typeof reviewSchema>;
-export type ReviewDocument = HydratedDocument<
-  Omit<ReviewData, 'productId'> & { productId: Types.ObjectId }
->;
+export type ReviewDocument = HydratedDocument<ReviewData>;
 
 export const Review = model<ReviewData>('Review', reviewSchema);

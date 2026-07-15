@@ -46,5 +46,31 @@ export const productReviewsSchema = z.object({
   query: productReviewsQuerySchema,
 });
 
+export const createProductReviewSchema = z.object({
+  params: productReviewsParamsSchema,
+  body: z
+    .object({
+      rating: z
+        .number()
+        .int('Rating must be an integer')
+        .min(1, 'Rating must be at least 1')
+        .max(5, 'Rating must be at most 5'),
+      title: z
+        .string()
+        .trim()
+        .min(1, 'Title is required')
+        .max(120, 'Title is too long'),
+      text: z
+        .string()
+        .trim()
+        .min(1, 'Review text is required')
+        .max(2000, 'Review text is too long'),
+    })
+    .strict(),
+});
+
 export type ProductReviewsParams = z.infer<typeof productReviewsParamsSchema>;
 export type ProductReviewsQuery = z.infer<typeof productReviewsQuerySchema>;
+export type CreateProductReviewBody = z.infer<
+  typeof createProductReviewSchema
+>['body'];

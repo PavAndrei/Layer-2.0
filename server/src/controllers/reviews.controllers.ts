@@ -3,12 +3,25 @@ import { Request, Response } from 'express';
 import { ApiError } from '../exceptions/api-error';
 import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
-import type { ProductReviewsResponse } from '../types/api';
+import { createProductReviewData } from '../services/reviews.service';
+import type {
+  CreateProductReviewResponse,
+  ProductReviewsResponse,
+} from '../types/api';
 import { reviewToDto } from '../utils/review-to-dto';
 import type {
+  CreateProductReviewBody,
   ProductReviewsParams,
   ProductReviewsQuery,
 } from '../validators/reviews.validators';
+
+const getAuthenticatedUserId = (req: Request) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  return req.user.userId;
+};
 
 export const getProductReviews = async (
   req: Request,
@@ -65,5 +78,24 @@ export const getProductReviews = async (
         totalPages,
       },
     },
+  });
+};
+
+export const createProductReview = async (
+  req: Request,
+  res: Response<CreateProductReviewResponse>,
+) => {
+  const { productId } = req.validated?.params as ProductReviewsParams;
+  const reviewData = req.validated?.body as CreateProductReviewBody;
+  const data = await createProductReviewData(
+    getAuthenticatedUserId(req),
+    productId,
+    reviewData,
+  );
+
+  res.status(201).json({
+    success: true,
+    message: 'Review created successfully',
+    data,
   });
 };

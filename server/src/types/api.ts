@@ -105,6 +105,10 @@ export type ProductReviewsResponse = ApiSuccess<{
   pagination: PaginationData;
 }>;
 
+export type CreateProductReviewResponse = ApiSuccess<{
+  review: ReviewDto;
+}>;
+
 export type OrdersResponse = ApiSuccess<{
   orders: OrderDto[];
   pagination: PaginationData;
