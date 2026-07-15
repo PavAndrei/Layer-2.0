@@ -4,7 +4,8 @@ import {
   ORDER_STATUSES,
   type OrderStatus,
 } from '../../entities/order';
-import { FeedbackMessage, Skeleton } from '../../shared/ui';
+import { useScrollToTopOnChange } from '../../shared/hooks';
+import { FeedbackMessage, Pagination, Skeleton } from '../../shared/ui';
 import {
   OrdersEmptyState,
   OrdersList,
@@ -45,6 +46,16 @@ const getOrderStatusFromSearchParams = (
     : undefined;
 };
 
+const getOrdersPageFromSearchParams = (
+  searchParams: URLSearchParams,
+): number => {
+  const page = Number(searchParams.get('page'));
+
+  return Number.isInteger(page) && page > 0 ? page : 1;
+};
+
+const ORDERS_PAGE_LIMIT = 10;
+
 const placeholderDescriptions: Record<
   Exclude<ProfileSection, 'orders' | 'profile' | 'security'>,
   string
@@ -54,18 +65,42 @@ const placeholderDescriptions: Record<
 };
 
 export const ProfilePage = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const activeSection = getProfileSectionFromSearchParams(searchParams);
   const activeOrderStatus = getOrderStatusFromSearchParams(searchParams);
+  const activeOrdersPage = getOrdersPageFromSearchParams(searchParams);
   const profileQuery = useProfile();
   const emailVerification = useProfileEmailVerification();
   const ordersQuery = useOrders({
     enabled: activeSection === 'orders',
     params: {
-      limit: 10,
+      limit: ORDERS_PAGE_LIMIT,
+      page: activeOrdersPage,
       status: activeOrderStatus,
     },
   });
+  const scrollDependency =
+    activeSection === 'orders'
+      ? `orders:${activeOrderStatus ?? 'all'}:${activeOrdersPage}`
+      : activeSection;
+
+  useScrollToTopOnChange(scrollDependency);
+
+  const handleOrdersPageChange = (page: number) => {
+    const nextSearchParams = new URLSearchParams();
+
+    nextSearchParams.set('section', 'orders');
+
+    if (activeOrderStatus) {
+      nextSearchParams.set('status', activeOrderStatus);
+    }
+
+    if (page > 1) {
+      nextSearchParams.set('page', String(page));
+    }
+
+    setSearchParams(nextSearchParams);
+  };
 
   if (profileQuery.isPending) {
     return (
@@ -128,7 +163,17 @@ export const ProfilePage = () => {
             {!ordersQuery.isLoading &&
               !ordersQuery.error &&
               ordersQuery.orders.length > 0 && (
-                <OrdersList orders={ordersQuery.orders} />
+                <>
+                  <OrdersList orders={ordersQuery.orders} />
+                  {ordersQuery.pagination && (
+                    <Pagination
+                      currentPage={ordersQuery.pagination.page}
+                      limit={ordersQuery.pagination.limit}
+                      total={ordersQuery.pagination.total}
+                      onPageChange={handleOrdersPageChange}
+                    />
+                  )}
+                </>
               )}
           </>
         )}

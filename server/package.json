@@ -8,6 +8,7 @@
     "migrate:product-variants": "tsx src/scripts/remove-legacy-product-fields.ts",
     "migrate:product-slugs": "tsx src/scripts/backfill-product-slugs.ts",
     "seed:database": "tsx src/scripts/seed-database.ts",
+    "seed:test-orders": "tsx src/scripts/seed-test-orders.ts",
     "start": "node dist/server.js"
   },
   "keywords": [],
