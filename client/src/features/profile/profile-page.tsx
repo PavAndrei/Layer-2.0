@@ -1,6 +1,16 @@
 import { useSearchParams } from 'react-router';
 
+import {
+  ORDER_STATUSES,
+  type OrderStatus,
+} from '../../entities/order';
 import { FeedbackMessage, Skeleton } from '../../shared/ui';
+import {
+  OrdersEmptyState,
+  OrdersList,
+  OrdersStatusTabs,
+  useOrders,
+} from '../orders';
 import {
   DEFAULT_PROFILE_SECTION,
   PROFILE_SECTION_LABELS,
@@ -25,11 +35,20 @@ const getProfileSectionFromSearchParams = (
   return isProfileSection(section) ? section : DEFAULT_PROFILE_SECTION;
 };
 
+const getOrderStatusFromSearchParams = (
+  searchParams: URLSearchParams,
+): OrderStatus | undefined => {
+  const status = searchParams.get('status') ?? '';
+
+  return ORDER_STATUSES.some((orderStatus) => orderStatus === status)
+    ? (status as OrderStatus)
+    : undefined;
+};
+
 const placeholderDescriptions: Record<
-  Exclude<ProfileSection, 'profile' | 'security'>,
+  Exclude<ProfileSection, 'orders' | 'profile' | 'security'>,
   string
 > = {
-  orders: 'Your order history will appear here.',
   reviews: 'Your product reviews will appear here.',
   favorites: 'Your saved products will appear here.',
 };
@@ -37,8 +56,16 @@ const placeholderDescriptions: Record<
 export const ProfilePage = () => {
   const [searchParams] = useSearchParams();
   const activeSection = getProfileSectionFromSearchParams(searchParams);
+  const activeOrderStatus = getOrderStatusFromSearchParams(searchParams);
   const profileQuery = useProfile();
   const emailVerification = useProfileEmailVerification();
+  const ordersQuery = useOrders({
+    enabled: activeSection === 'orders',
+    params: {
+      limit: 10,
+      status: activeOrderStatus,
+    },
+  });
 
   if (profileQuery.isPending) {
     return (
@@ -80,6 +107,32 @@ export const ProfilePage = () => {
           </>
         )}
 
+        {activeSection === 'orders' && (
+          <>
+            <ProfileSectionHeader
+              title="Orders"
+              description="Track recent orders and review their current status."
+            />
+            <OrdersStatusTabs activeStatus={activeOrderStatus ?? null} />
+            {ordersQuery.isLoading && <Skeleton className="h-48 w-full" />}
+            {ordersQuery.error && (
+              <FeedbackMessage
+                tone="danger"
+                title="Orders are unavailable"
+                description={ordersQuery.error}
+              />
+            )}
+            {!ordersQuery.isLoading &&
+              !ordersQuery.error &&
+              ordersQuery.orders.length === 0 && <OrdersEmptyState />}
+            {!ordersQuery.isLoading &&
+              !ordersQuery.error &&
+              ordersQuery.orders.length > 0 && (
+                <OrdersList orders={ordersQuery.orders} />
+              )}
+          </>
+        )}
+
         {activeSection === 'security' && (
           <>
             <ProfileSectionHeader
@@ -99,7 +152,9 @@ export const ProfilePage = () => {
           </>
         )}
 
-        {activeSection !== 'profile' && activeSection !== 'security' && (
+        {activeSection !== 'orders' &&
+          activeSection !== 'profile' &&
+          activeSection !== 'security' && (
           <>
             <ProfileSectionHeader
               title={PROFILE_SECTION_LABELS[activeSection]}
@@ -110,7 +165,7 @@ export const ProfilePage = () => {
               description="This account section is prepared and will be connected next."
             />
           </>
-        )}
+          )}
       </ProfileContentLayout>
     </ProfileLayout>
   );
