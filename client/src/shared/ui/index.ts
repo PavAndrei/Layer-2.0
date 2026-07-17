@@ -12,6 +12,7 @@ export { MultiSelectFilter } from './multi-select-filter';
 export { Pagination } from './pagination';
 export { SelectFilter } from './select-filter';
 export { Skeleton } from './skeleton';
+export { StarIcon, STAR_PATH } from './star-icon';
 export { StarRating } from './star-rating';
 export { TextInput } from './text-input';
 export type { BreadcrumbItem } from './breadcrumbs';

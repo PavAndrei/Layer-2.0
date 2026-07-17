@@ -4,6 +4,7 @@ import type { Product } from '../../../entities/product';
 import type {
   CreateProductReviewData,
   ProductReview,
+  ProductReviewStatus,
   ProductReviewsSummary,
 } from '../../../entities/review';
 import type { PaginationData } from '../../../shared/api';
@@ -34,6 +35,8 @@ type CreateProductReviewResponseData = {
 
 type CreateProductReviewResponse =
   ApiResponse<CreateProductReviewResponseData>;
+
+type ProductReviewStatusResponse = ApiResponse<ProductReviewStatus>;
 
 export const getProductByIdentifier = async (
   identifier: string,
@@ -73,4 +76,15 @@ export const createProductReview = async ({
       errorMessage: 'Failed to create review',
     },
   );
+};
+
+export const getProductReviewStatus = async (
+  productId: string,
+  signal?: AbortSignal,
+): Promise<ProductReviewStatusResponse> => {
+  return apiClient.get<ProductReviewStatus>({
+    path: `/products/${productId}/review-status`,
+    signal,
+    errorMessage: 'Failed to load review status',
+  });
 };

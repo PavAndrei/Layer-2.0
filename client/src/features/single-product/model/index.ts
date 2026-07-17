@@ -12,6 +12,7 @@ export {
 export { singleProductQueryKeys } from './single-product-query-keys';
 export { useCreateProductReview } from './use-create-product-review';
 export { useProductReviewForm } from './use-product-review-form';
+export { useProductReviewStatus } from './use-product-review-status';
 export { useProductReviews } from './use-product-reviews';
 export { useProductReviewsAccordion } from './use-product-reviews-accordion';
 export { useSingleProduct } from './use-single-product';

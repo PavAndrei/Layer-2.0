@@ -23,3 +23,8 @@ export type CreateProductReviewData = {
   text: string;
   title: string;
 };
+
+export type ProductReviewStatus = {
+  hasReviewed: boolean;
+  review: ProductReview | null;
+};

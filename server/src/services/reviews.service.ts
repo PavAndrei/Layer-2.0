@@ -5,7 +5,10 @@ import { Order } from '../models/orders.model';
 import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
 import { User } from '../models/users.model';
-import type { CreateProductReviewResponse } from '../types/api';
+import type {
+  CreateProductReviewResponse,
+  ProductReviewStatusResponse,
+} from '../types/api';
 import type { CreateProductReviewBody } from '../validators/reviews.validators';
 import { reviewToDto } from '../utils/review-to-dto';
 
@@ -97,5 +100,39 @@ export const createProductReviewData = async (
 
   return {
     review: reviewToDto(review),
+  };
+};
+
+export const getProductReviewStatusData = async (
+  userId: string,
+  productId: string,
+): Promise<ProductReviewStatusResponse['data']> => {
+  if (!isObjectIdOrHexString(userId) || !isObjectIdOrHexString(productId)) {
+    throw ApiError.BadRequest('Invalid review status data');
+  }
+
+  const userObjectId = new Types.ObjectId(userId);
+  const productObjectId = new Types.ObjectId(productId);
+
+  const [userExists, productExists, review] = await Promise.all([
+    User.exists({ _id: userObjectId }),
+    Product.exists({ _id: productObjectId }),
+    Review.findOne({
+      productId: productObjectId,
+      userId: userObjectId,
+    }),
+  ]);
+
+  if (!userExists) {
+    throw ApiError.Unauthorized('User not found');
+  }
+
+  if (!productExists) {
+    throw ApiError.NotFound('Product not found');
+  }
+
+  return {
+    hasReviewed: Boolean(review),
+    review: review ? reviewToDto(review) : null,
   };
 };

@@ -1,7 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 
-import { Button, FeedbackMessage, TextInput } from '../../../shared/ui';
+import {
+  Button,
+  FeedbackMessage,
+  StarIcon,
+  TextInput,
+} from '../../../shared/ui';
 import type {
   ProductReviewFormErrors,
   ProductReviewFormValues,
@@ -33,6 +38,8 @@ export const ProductReviewForm = ({
   values,
 }: ProductReviewFormProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [hoveredRating, setHoveredRating] = useState<number | null>(null);
+  const previewRating = hoveredRating ?? values.rating;
 
   useEffect(() => {
     const textarea = textareaRef.current;
@@ -84,28 +91,36 @@ export const ProductReviewForm = ({
       <div className="flex flex-col gap-2">
         <span className="block-medium text-typography-heading">Rating</span>
         <div
-          className="grid grid-cols-5 gap-2"
+          className="flex items-center gap-1"
           role="radiogroup"
           aria-label="Review rating"
+          onMouseLeave={() => setHoveredRating(null)}
         >
           {ratingOptions.map((rating) => {
             const isSelected = values.rating === rating;
+            const isFilled = rating <= previewRating;
 
             return (
               <button
                 key={rating}
                 type="button"
-                className={`min-h-10 rounded border block-medium transition-[color,background-color,border-color,transform] duration-150 ease-out active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-black disabled:cursor-not-allowed disabled:opacity-45 ${
+                className={`flex size-10 cursor-pointer items-center justify-center rounded border bg-background-surface transition-[color,background-color,border-color,transform] duration-150 ease-out active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-black disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 ${
                   isSelected
-                    ? 'border-accent-primary bg-accent-primary text-background-surface'
-                    : 'border-border-strong bg-background-surface text-typography-primary hover:bg-background-secondary'
+                    ? 'border-accent-primary'
+                    : 'border-border-strong hover:border-accent-primary hover:bg-background-secondary'
                 }`}
                 role="radio"
                 aria-checked={isSelected}
+                aria-label={`${rating} ${rating === 1 ? 'star' : 'stars'}`}
                 disabled={isSubmitting || isCreated}
                 onClick={() => onUpdateField('rating', rating)}
+                onFocus={() => setHoveredRating(rating)}
+                onMouseEnter={() => setHoveredRating(rating)}
               >
-                {rating}
+                <StarIcon
+                  className="size-5.5 transition-colors"
+                  fillPercent={isFilled ? 100 : 0}
+                />
               </button>
             );
           })}

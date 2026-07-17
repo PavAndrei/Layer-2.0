@@ -3,9 +3,13 @@ import { Request, Response } from 'express';
 import { ApiError } from '../exceptions/api-error';
 import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
-import { createProductReviewData } from '../services/reviews.service';
+import {
+  createProductReviewData,
+  getProductReviewStatusData,
+} from '../services/reviews.service';
 import type {
   CreateProductReviewResponse,
+  ProductReviewStatusResponse,
   ProductReviewsResponse,
 } from '../types/api';
 import { reviewToDto } from '../utils/review-to-dto';
@@ -96,6 +100,23 @@ export const createProductReview = async (
   res.status(201).json({
     success: true,
     message: 'Review created successfully',
+    data,
+  });
+};
+
+export const getProductReviewStatus = async (
+  req: Request,
+  res: Response<ProductReviewStatusResponse>,
+) => {
+  const { productId } = req.validated?.params as ProductReviewsParams;
+  const data = await getProductReviewStatusData(
+    getAuthenticatedUserId(req),
+    productId,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Product review status fetched successfully',
     data,
   });
 };

@@ -46,6 +46,10 @@ export const productReviewsSchema = z.object({
   query: productReviewsQuerySchema,
 });
 
+export const productReviewStatusSchema = z.object({
+  params: productReviewsParamsSchema,
+});
+
 export const createProductReviewSchema = z.object({
   params: productReviewsParamsSchema,
   body: z

@@ -37,6 +37,10 @@ export const useCreateProductReview = ({
       });
 
       queryClient.invalidateQueries({
+        queryKey: reviewQueryKeys.productReviewStatus(productId),
+      });
+
+      queryClient.invalidateQueries({
         queryKey: productIdentifier
           ? singleProductQueryKeys.detail(productIdentifier)
           : singleProductQueryKeys.all,

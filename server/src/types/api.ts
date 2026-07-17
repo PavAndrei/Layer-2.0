@@ -109,6 +109,11 @@ export type CreateProductReviewResponse = ApiSuccess<{
   review: ReviewDto;
 }>;
 
+export type ProductReviewStatusResponse = ApiSuccess<{
+  hasReviewed: boolean;
+  review: ReviewDto | null;
+}>;
+
 export type OrdersResponse = ApiSuccess<{
   orders: OrderDto[];
   pagination: PaginationData;

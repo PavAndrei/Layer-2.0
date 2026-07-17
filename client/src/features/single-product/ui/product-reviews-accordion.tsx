@@ -2,6 +2,7 @@ import { ReviewCard, ReviewListSkeleton } from '../../../entities/review';
 import { Button, FeedbackMessage } from '../../../shared/ui';
 import {
   useProductReviewForm,
+  useProductReviewStatus,
   useProductReviewsAccordion,
 } from '../model';
 import { ProductReviewForm } from './product-review-form';
@@ -45,6 +46,10 @@ export const ProductReviewsAccordion = ({
     onCreated: resetReviews,
     productId,
     productIdentifier,
+  });
+  const reviewStatus = useProductReviewStatus({
+    isEnabled: isAuthenticated && isOpen,
+    productId,
   });
 
   return (
@@ -139,15 +144,43 @@ export const ProductReviewsAccordion = ({
 
             <div className="border-t border-border-soft pt-3">
               {isAuthenticated ? (
-                <ProductReviewForm
-                  error={reviewForm.error}
-                  fieldErrors={reviewForm.fieldErrors}
-                  isCreated={reviewForm.isCreated}
-                  isSubmitting={reviewForm.isSubmitting}
-                  values={reviewForm.values}
-                  onSubmit={reviewForm.handleSubmit}
-                  onUpdateField={reviewForm.updateField}
-                />
+                reviewStatus.isLoading ? (
+                  <p className="block-small text-typography-muted">
+                    Checking review status...
+                  </p>
+                ) : reviewStatus.error ? (
+                  <FeedbackMessage
+                    tone="danger"
+                    title="Could not check review status"
+                    description={reviewStatus.error}
+                    action={
+                      <Button
+                        size="sm"
+                        variant="secondary"
+                        onClick={() => reviewStatus.refetch()}
+                      >
+                        Try again
+                      </Button>
+                    }
+                  />
+                ) : reviewStatus.hasReviewed ? (
+                  <FeedbackMessage
+                    title="You have already reviewed this product"
+                    description="Thanks for sharing your feedback."
+                  />
+                ) : (
+                  <ProductReviewForm
+                    error={reviewForm.error}
+                    fieldErrors={reviewForm.fieldErrors}
+                    isCreated={reviewForm.isCreated}
+                    isSubmitting={
+                      reviewForm.isSubmitting || reviewStatus.isFetching
+                    }
+                    values={reviewForm.values}
+                    onSubmit={reviewForm.handleSubmit}
+                    onUpdateField={reviewForm.updateField}
+                  />
+                )
               ) : (
                 <div className="flex flex-col items-start gap-2">
                   <Button

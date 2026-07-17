@@ -6,6 +6,7 @@ import {
 } from '../controllers/products.controllers';
 import {
   createProductReview,
+  getProductReviewStatus,
   getProductReviews,
 } from '../controllers/reviews.controllers';
 import { authMiddleware } from '../middlewares/auth.middleware';
@@ -17,6 +18,7 @@ import {
 } from '../validators/products.validators';
 import {
   createProductReviewSchema,
+  productReviewStatusSchema,
   productReviewsSchema,
 } from '../validators/reviews.validators';
 
@@ -37,6 +39,12 @@ productsRoute.post(
   authMiddleware,
   validateRequest(createProductReviewSchema),
   catchErrors(createProductReview),
+);
+productsRoute.get(
+  '/:productId/review-status',
+  authMiddleware,
+  validateRequest(productReviewStatusSchema),
+  catchErrors(getProductReviewStatus),
 );
 productsRoute.get(
   '/:identifier',

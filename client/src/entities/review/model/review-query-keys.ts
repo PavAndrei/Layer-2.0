@@ -4,4 +4,7 @@ export const reviewQueryKeys = {
     [...reviewQueryKeys.all, 'product', productId] as const,
   productList: (productId: string, params = '') =>
     [...reviewQueryKeys.product(productId), 'list', params] as const,
+  userScoped: () => [...reviewQueryKeys.all, 'user'] as const,
+  productReviewStatus: (productId: string) =>
+    [...reviewQueryKeys.userScoped(), 'product-review-status', productId] as const,
 };
