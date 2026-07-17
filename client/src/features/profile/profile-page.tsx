@@ -7,6 +7,11 @@ import {
 import { useScrollToTopOnChange } from '../../shared/hooks';
 import { FeedbackMessage, Pagination, Skeleton } from '../../shared/ui';
 import {
+  UserReviewsEmptyState,
+  UserReviewsList,
+  useUserReviews,
+} from '../reviews';
+import {
   OrdersEmptyState,
   OrdersList,
   OrdersStatusTabs,
@@ -46,7 +51,7 @@ const getOrderStatusFromSearchParams = (
     : undefined;
 };
 
-const getOrdersPageFromSearchParams = (
+const getPageFromSearchParams = (
   searchParams: URLSearchParams,
 ): number => {
   const page = Number(searchParams.get('page'));
@@ -55,12 +60,12 @@ const getOrdersPageFromSearchParams = (
 };
 
 const ORDERS_PAGE_LIMIT = 10;
+const REVIEWS_PAGE_LIMIT = 10;
 
 const placeholderDescriptions: Record<
-  Exclude<ProfileSection, 'orders' | 'profile' | 'security'>,
+  Exclude<ProfileSection, 'orders' | 'profile' | 'reviews' | 'security'>,
   string
 > = {
-  reviews: 'Your product reviews will appear here.',
   favorites: 'Your saved products will appear here.',
 };
 
@@ -68,7 +73,8 @@ export const ProfilePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeSection = getProfileSectionFromSearchParams(searchParams);
   const activeOrderStatus = getOrderStatusFromSearchParams(searchParams);
-  const activeOrdersPage = getOrdersPageFromSearchParams(searchParams);
+  const activeOrdersPage = getPageFromSearchParams(searchParams);
+  const activeReviewsPage = getPageFromSearchParams(searchParams);
   const profileQuery = useProfile();
   const emailVerification = useProfileEmailVerification();
   const ordersQuery = useOrders({
@@ -79,9 +85,18 @@ export const ProfilePage = () => {
       status: activeOrderStatus,
     },
   });
+  const reviewsQuery = useUserReviews({
+    enabled: activeSection === 'reviews',
+    params: {
+      limit: REVIEWS_PAGE_LIMIT,
+      page: activeReviewsPage,
+    },
+  });
   const scrollDependency =
     activeSection === 'orders'
       ? `orders:${activeOrderStatus ?? 'all'}:${activeOrdersPage}`
+      : activeSection === 'reviews'
+        ? `reviews:${activeReviewsPage}`
       : activeSection;
 
   useScrollToTopOnChange(scrollDependency);
@@ -94,6 +109,18 @@ export const ProfilePage = () => {
     if (activeOrderStatus) {
       nextSearchParams.set('status', activeOrderStatus);
     }
+
+    if (page > 1) {
+      nextSearchParams.set('page', String(page));
+    }
+
+    setSearchParams(nextSearchParams);
+  };
+
+  const handleReviewsPageChange = (page: number) => {
+    const nextSearchParams = new URLSearchParams();
+
+    nextSearchParams.set('section', 'reviews');
 
     if (page > 1) {
       nextSearchParams.set('page', String(page));
@@ -178,6 +205,41 @@ export const ProfilePage = () => {
           </>
         )}
 
+        {activeSection === 'reviews' && (
+          <>
+            <ProfileSectionHeader
+              title="Reviews"
+              description="Review the product feedback you have shared."
+            />
+            {reviewsQuery.isLoading && <Skeleton className="h-48 w-full" />}
+            {reviewsQuery.error && (
+              <FeedbackMessage
+                tone="danger"
+                title="Reviews are unavailable"
+                description={reviewsQuery.error}
+              />
+            )}
+            {!reviewsQuery.isLoading &&
+              !reviewsQuery.error &&
+              reviewsQuery.reviews.length === 0 && <UserReviewsEmptyState />}
+            {!reviewsQuery.isLoading &&
+              !reviewsQuery.error &&
+              reviewsQuery.reviews.length > 0 && (
+                <>
+                  <UserReviewsList reviews={reviewsQuery.reviews} />
+                  {reviewsQuery.pagination && (
+                    <Pagination
+                      currentPage={reviewsQuery.pagination.page}
+                      limit={reviewsQuery.pagination.limit}
+                      total={reviewsQuery.pagination.total}
+                      onPageChange={handleReviewsPageChange}
+                    />
+                  )}
+                </>
+              )}
+          </>
+        )}
+
         {activeSection === 'security' && (
           <>
             <ProfileSectionHeader
@@ -199,6 +261,7 @@ export const ProfilePage = () => {
 
         {activeSection !== 'orders' &&
           activeSection !== 'profile' &&
+          activeSection !== 'reviews' &&
           activeSection !== 'security' && (
           <>
             <ProfileSectionHeader

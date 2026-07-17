@@ -28,3 +28,14 @@ export type ProductReviewStatus = {
   hasReviewed: boolean;
   review: ProductReview | null;
 };
+
+export type ReviewProduct = {
+  _id: string;
+  img: string;
+  slug: string;
+  title: string;
+};
+
+export type UserReview = ProductReview & {
+  product: ReviewProduct | null;
+};

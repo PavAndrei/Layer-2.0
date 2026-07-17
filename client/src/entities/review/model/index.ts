@@ -4,5 +4,7 @@ export type {
   ProductReview,
   ProductReviewStatus,
   ProductReviewsSummary,
+  ReviewProduct,
   ReviewStatus,
+  UserReview,
 } from './review-types';

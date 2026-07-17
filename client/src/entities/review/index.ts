@@ -4,6 +4,8 @@ export {
   type ProductReview,
   type ProductReviewStatus,
   type ProductReviewsSummary,
+  type ReviewProduct,
   type ReviewStatus,
+  type UserReview,
 } from './model';
 export { ReviewCard, ReviewListSkeleton } from './ui';
