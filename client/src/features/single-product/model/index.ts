@@ -2,6 +2,7 @@ export { getPurchaseState } from './get-purchase-state';
 export type { PurchaseState } from './get-purchase-state';
 export { getProductGalleryImages } from './get-product-gallery-images';
 export { singleProductQueryKeys } from './single-product-query-keys';
+export { useCreateProductReview } from './use-create-product-review';
 export { useProductReviews } from './use-product-reviews';
 export { useProductReviewsAccordion } from './use-product-reviews-accordion';
 export { useSingleProduct } from './use-single-product';

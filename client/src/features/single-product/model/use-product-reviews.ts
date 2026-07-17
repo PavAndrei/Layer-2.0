@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
+import { reviewQueryKeys } from '../../../entities/review';
 import { getProductReviews } from '../api';
-import { singleProductQueryKeys } from './single-product-query-keys';
 
 type UseProductReviewsParams = {
   isEnabled: boolean;
@@ -16,8 +16,15 @@ export const useProductReviews = ({
   page = 1,
   productId,
 }: UseProductReviewsParams) => {
+  const searchParams = new URLSearchParams({
+    limit: String(limit),
+    page: String(page),
+  });
   const reviewsQuery = useQuery({
-    queryKey: singleProductQueryKeys.reviews(productId ?? '', page, limit),
+    queryKey: reviewQueryKeys.productList(
+      productId ?? '',
+      searchParams.toString(),
+    ),
     enabled: Boolean(productId) && isEnabled,
     retry: false,
     queryFn: async ({ signal }) => {

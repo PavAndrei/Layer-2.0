@@ -27,6 +27,19 @@ type ProductReviewsResponseData = {
 
 type ProductReviewsResponse = ApiResponse<ProductReviewsResponseData>;
 
+export type CreateProductReviewBody = {
+  rating: number;
+  text: string;
+  title: string;
+};
+
+type CreateProductReviewResponseData = {
+  review: ProductReview;
+};
+
+type CreateProductReviewResponse =
+  ApiResponse<CreateProductReviewResponseData>;
+
 export const getProductByIdentifier = async (
   identifier: string,
   signal?: AbortSignal,
@@ -49,4 +62,20 @@ export const getProductReviews = async (
     signal,
     errorMessage: 'Failed to load product reviews',
   });
+};
+
+export const createProductReview = async ({
+  productId,
+  review,
+}: {
+  productId: string;
+  review: CreateProductReviewBody;
+}): Promise<CreateProductReviewResponse> => {
+  return apiClient.post<CreateProductReviewResponseData, CreateProductReviewBody>(
+    {
+      path: `/products/${productId}/reviews`,
+      body: review,
+      errorMessage: 'Failed to create review',
+    },
+  );
 };
