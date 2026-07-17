@@ -1,14 +1,26 @@
 import { ReviewCard, ReviewListSkeleton } from '../../../entities/review';
 import { Button, FeedbackMessage } from '../../../shared/ui';
-import { useProductReviewsAccordion } from '../model';
+import {
+  useProductReviewForm,
+  useProductReviewsAccordion,
+} from '../model';
+import { ProductReviewForm } from './product-review-form';
 
 type ProductReviewsAccordionProps = {
+  isAuthenticated: boolean;
+  isAuthPending: boolean;
   productId: string;
+  productIdentifier?: string;
   reviewsCount: number;
+  onSignIn: () => void;
 };
 
 export const ProductReviewsAccordion = ({
+  isAuthenticated,
+  isAuthPending,
+  onSignIn,
   productId,
+  productIdentifier,
   reviewsCount,
 }: ProductReviewsAccordionProps) => {
   const {
@@ -21,12 +33,18 @@ export const ProductReviewsAccordion = ({
     loadedReviews,
     loadMoreReviews,
     refetch,
+    resetReviews,
     reviewsCountLabel,
     toggleReviews,
     totalReviews,
   } = useProductReviewsAccordion({
     productId,
     reviewsCount,
+  });
+  const reviewForm = useProductReviewForm({
+    onCreated: resetReviews,
+    productId,
+    productIdentifier,
   });
 
   return (
@@ -119,13 +137,34 @@ export const ProductReviewsAccordion = ({
               </Button>
             )}
 
-            <div className="flex flex-col items-start gap-2 border-t border-border-soft pt-3">
-              <Button size="sm" variant="ghost" disabled>
-                Sign in to write a review
-              </Button>
-              <p className="block-small text-typography-muted">
-                Review writing will be available after sign in.
-              </p>
+            <div className="border-t border-border-soft pt-3">
+              {isAuthenticated ? (
+                <ProductReviewForm
+                  error={reviewForm.error}
+                  fieldErrors={reviewForm.fieldErrors}
+                  isCreated={reviewForm.isCreated}
+                  isSubmitting={reviewForm.isSubmitting}
+                  values={reviewForm.values}
+                  onSubmit={reviewForm.handleSubmit}
+                  onUpdateField={reviewForm.updateField}
+                />
+              ) : (
+                <div className="flex flex-col items-start gap-2">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    disabled={isAuthPending}
+                    onClick={onSignIn}
+                  >
+                    {isAuthPending
+                      ? 'Checking session...'
+                      : 'Sign in to write a review'}
+                  </Button>
+                  <p className="block-small text-typography-muted">
+                    Review writing is available after sign in.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>

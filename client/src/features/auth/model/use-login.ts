@@ -4,14 +4,14 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useLocation, useNavigate } from 'react-router';
 
 import { login } from '../api';
+import {
+  getZodFieldErrors,
+  type FieldErrors,
+} from '../../../shared/lib';
 import { setAuthenticatedAuthBootstrapQueryData } from './auth-query-cache';
 import type { LoginPayload } from './auth-types';
 import { useAuthStore } from './auth-store';
-import {
-  getZodFieldErrors,
-  loginSchema,
-  type FormErrors,
-} from './auth-validation';
+import { loginSchema } from './auth-validation';
 
 type UseLoginOptions = {
   redirectTo?: string;
@@ -46,7 +46,7 @@ export const useLogin = ({ redirectTo = '/profile' }: UseLoginOptions = {}) => {
   const setSession = useAuthStore((state) => state.setSession);
   const [values, setValues] = useState<LoginPayload>(initialValues);
   const [error, setError] = useState<string | null>(null);
-  const [fieldErrors, setFieldErrors] = useState<FormErrors<LoginPayload>>({});
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors<LoginPayload>>({});
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: (response) => {

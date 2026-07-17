@@ -2,6 +2,7 @@ import { apiClient } from '../../../shared/api';
 import type { ApiResponse } from '../../../shared/api';
 import type { Product } from '../../../entities/product';
 import type {
+  CreateProductReviewData,
   ProductReview,
   ProductReviewsSummary,
 } from '../../../entities/review';
@@ -26,12 +27,6 @@ type ProductReviewsResponseData = {
 };
 
 type ProductReviewsResponse = ApiResponse<ProductReviewsResponseData>;
-
-export type CreateProductReviewBody = {
-  rating: number;
-  text: string;
-  title: string;
-};
 
 type CreateProductReviewResponseData = {
   review: ProductReview;
@@ -69,9 +64,9 @@ export const createProductReview = async ({
   review,
 }: {
   productId: string;
-  review: CreateProductReviewBody;
+  review: CreateProductReviewData;
 }): Promise<CreateProductReviewResponse> => {
-  return apiClient.post<CreateProductReviewResponseData, CreateProductReviewBody>(
+  return apiClient.post<CreateProductReviewResponseData, CreateProductReviewData>(
     {
       path: `/products/${productId}/reviews`,
       body: review,

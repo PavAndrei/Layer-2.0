@@ -1,8 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { reviewQueryKeys } from '../../../entities/review';
+import {
+  reviewQueryKeys,
+  type CreateProductReviewData,
+} from '../../../entities/review';
 import { createProductReview } from '../api';
-import type { CreateProductReviewBody } from '../api';
 import { singleProductQueryKeys } from './single-product-query-keys';
 
 type UseCreateProductReviewOptions = {
@@ -17,7 +19,7 @@ export const useCreateProductReview = ({
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (review: CreateProductReviewBody) => {
+    mutationFn: (review: CreateProductReviewData) => {
       if (!productId) {
         throw new Error('Product id is required');
       }

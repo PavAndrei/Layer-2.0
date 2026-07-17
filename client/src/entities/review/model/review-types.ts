@@ -17,3 +17,9 @@ export type ProductReviewsSummary = {
   count: number;
   averageRating: number;
 };
+
+export type CreateProductReviewData = {
+  rating: number;
+  text: string;
+  title: string;
+};

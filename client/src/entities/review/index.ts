@@ -1,5 +1,6 @@
 export {
   reviewQueryKeys,
+  type CreateProductReviewData,
   type ProductReview,
   type ProductReviewsSummary,
   type ReviewStatus,

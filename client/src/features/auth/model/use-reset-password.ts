@@ -3,9 +3,9 @@ import type { FormEvent } from 'react';
 
 import {
   getZodFieldErrors,
-  passwordResetConfirmSchema,
-  type FormErrors,
-} from './auth-validation';
+  type FieldErrors,
+} from '../../../shared/lib';
+import { passwordResetConfirmSchema } from './auth-validation';
 import type { PasswordResetConfirmFormValues } from './auth-types';
 import { useConfirmPasswordReset } from './use-confirm-password-reset';
 
@@ -19,7 +19,7 @@ export const useResetPassword = (token: string) => {
     useState<PasswordResetConfirmFormValues>(initialValues);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] =
-    useState<FormErrors<PasswordResetConfirmFormValues>>({});
+    useState<FieldErrors<PasswordResetConfirmFormValues>>({});
   const confirmPasswordResetMutation = useConfirmPasswordReset();
   const response = confirmPasswordResetMutation.data;
 

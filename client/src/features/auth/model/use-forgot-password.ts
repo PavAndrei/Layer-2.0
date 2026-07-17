@@ -4,9 +4,9 @@ import type { FormEvent } from 'react';
 import { useCooldown } from '../../../shared/hooks';
 import {
   getZodFieldErrors,
-  passwordResetRequestSchema,
-  type FormErrors,
-} from './auth-validation';
+  type FieldErrors,
+} from '../../../shared/lib';
+import { passwordResetRequestSchema } from './auth-validation';
 import type { PasswordResetRequestFormValues } from './auth-types';
 import { useRequestPasswordReset } from './use-request-password-reset';
 
@@ -21,7 +21,7 @@ export const useForgotPassword = () => {
     useState<PasswordResetRequestFormValues>(initialValues);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] =
-    useState<FormErrors<PasswordResetRequestFormValues>>({});
+    useState<FieldErrors<PasswordResetRequestFormValues>>({});
   const cooldown = useCooldown();
   const requestPasswordResetMutation = useRequestPasswordReset();
   const response = requestPasswordResetMutation.data;

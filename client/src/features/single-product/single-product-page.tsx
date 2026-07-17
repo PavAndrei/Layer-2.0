@@ -35,20 +35,22 @@ export const SingleProductPage = () => {
   const navigate = useNavigate();
   const authStatus = useAuthStatus();
   const isAuthenticated = useIsAuthenticated();
+  const isAuthPending = authStatus === 'idle' || authStatus === 'loading';
+  const redirectToLogin = () => {
+    navigate('/login', {
+      state: {
+        from: location,
+      },
+    });
+  };
   const {
     favoriteProductIds,
     isFavoriteActionPending,
     toggleFavorite,
   } = useFavoriteProductActions({
-    isAccessPending: authStatus === 'idle' || authStatus === 'loading',
+    isAccessPending: isAuthPending,
     isEnabled: isAuthenticated,
-    onAccessDenied: () => {
-      navigate('/login', {
-        state: {
-          from: location,
-        },
-      });
-    },
+    onAccessDenied: redirectToLogin,
   });
 
   const { product, relatedProducts, isLoading, error } =
@@ -126,8 +128,12 @@ export const SingleProductPage = () => {
             <>
               <ProductInfo product={product} />
               <ProductReviewsAccordion
+                isAuthenticated={isAuthenticated}
+                isAuthPending={isAuthPending}
+                productIdentifier={identifier}
                 productId={product._id}
                 reviewsCount={product.reviewsCount}
+                onSignIn={redirectToLogin}
               />
               <ProductVariantSelector
                 colors={colors}

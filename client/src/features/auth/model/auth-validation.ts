@@ -1,9 +1,5 @@
 import { z } from 'zod';
 
-export type FormErrors<FormValues> = Partial<
-  Record<keyof FormValues, string>
->;
-
 export const loginSchema = z.object({
   email: z
     .string()
@@ -44,26 +40,3 @@ export const passwordResetConfirmSchema = z
     message: 'Passwords do not match',
     path: ['confirmPassword'],
   });
-
-export const getZodErrorMessage = (error: z.ZodError) => {
-  return error.issues[0]?.message ?? 'Invalid form data';
-};
-
-export const getZodFieldErrors = <FormValues>(
-  error: z.ZodError,
-): FormErrors<FormValues> => {
-  return error.issues.reduce<FormErrors<FormValues>>((errors, issue) => {
-    const [fieldName] = issue.path;
-
-    if (typeof fieldName !== 'string') return errors;
-
-    const fieldKey = fieldName as keyof FormValues;
-
-    if (errors[fieldKey]) return errors;
-
-    return {
-      ...errors,
-      [fieldKey]: issue.message,
-    };
-  }, {});
-};

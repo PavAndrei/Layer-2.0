@@ -4,14 +4,14 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 
 import { register } from '../api';
+import {
+  getZodFieldErrors,
+  type FieldErrors,
+} from '../../../shared/lib';
 import { setAuthenticatedAuthBootstrapQueryData } from './auth-query-cache';
 import type { RegisterFormValues } from './auth-types';
 import { useAuthStore } from './auth-store';
-import {
-  getZodFieldErrors,
-  registerSchema,
-  type FormErrors,
-} from './auth-validation';
+import { registerSchema } from './auth-validation';
 
 type UseRegisterOptions = {
   redirectTo?: string;
@@ -33,7 +33,7 @@ export const useRegister = ({
   const [values, setValues] = useState<RegisterFormValues>(initialValues);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] =
-    useState<FormErrors<RegisterFormValues>>({});
+    useState<FieldErrors<RegisterFormValues>>({});
   const registerMutation = useMutation({
     mutationFn: register,
     onSuccess: (response) => {

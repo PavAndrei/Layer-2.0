@@ -50,6 +50,11 @@ export const useProductReviewsAccordion = ({
     });
   }, [page, reviews]);
 
+  const resetReviews = () => {
+    setPage(1);
+    setLoadedReviews([]);
+  };
+
   return {
     error,
     hasMoreReviews,
@@ -59,6 +64,7 @@ export const useProductReviewsAccordion = ({
     isOpen,
     loadedReviews,
     refetch,
+    resetReviews,
     reviewsCountLabel: formatReviewsCount(reviewsCount),
     toggleReviews: () => setIsOpen((currentValue) => !currentValue),
     loadMoreReviews: () => setPage((currentPage) => currentPage + 1),
