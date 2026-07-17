@@ -6,17 +6,20 @@ import { Review } from '../models/reviews.model';
 import {
   createProductReviewData,
   getProductReviewStatusData,
+  getUserReviewsData,
 } from '../services/reviews.service';
 import type {
   CreateProductReviewResponse,
   ProductReviewStatusResponse,
   ProductReviewsResponse,
+  UserReviewsResponse,
 } from '../types/api';
 import { reviewToDto } from '../utils/review-to-dto';
 import type {
   CreateProductReviewBody,
   ProductReviewsParams,
   ProductReviewsQuery,
+  UserReviewsQuery,
 } from '../validators/reviews.validators';
 
 const getAuthenticatedUserId = (req: Request) => {
@@ -82,6 +85,22 @@ export const getProductReviews = async (
         totalPages,
       },
     },
+  });
+};
+
+export const getUserReviews = async (
+  req: Request,
+  res: Response<UserReviewsResponse>,
+) => {
+  const data = await getUserReviewsData(
+    getAuthenticatedUserId(req),
+    req.validated?.query as UserReviewsQuery,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'User reviews fetched successfully',
+    data,
   });
 };
 

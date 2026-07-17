@@ -26,6 +26,17 @@ const positiveIntegerParam = (
       return maximum ? Math.min(parsedValue, maximum) : parsedValue;
     });
 
+export const userReviewsQuerySchema = z
+  .object({
+    page: positiveIntegerParam('page', 1),
+    limit: positiveIntegerParam('limit', 10, 50),
+  })
+  .strict();
+
+export const getUserReviewsSchema = z.object({
+  query: userReviewsQuerySchema,
+});
+
 export const productReviewsQuerySchema = z
   .object({
     page: positiveIntegerParam('page', 1),
@@ -75,6 +86,7 @@ export const createProductReviewSchema = z.object({
 
 export type ProductReviewsParams = z.infer<typeof productReviewsParamsSchema>;
 export type ProductReviewsQuery = z.infer<typeof productReviewsQuerySchema>;
+export type UserReviewsQuery = z.infer<typeof userReviewsQuerySchema>;
 export type CreateProductReviewBody = z.infer<
   typeof createProductReviewSchema
 >['body'];

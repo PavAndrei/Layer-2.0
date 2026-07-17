@@ -9,6 +9,7 @@ import checkoutRoutes from './routes/checkout.route';
 import favoritesRoutes from './routes/favorites.route';
 import ordersRoutes from './routes/orders.route';
 import productsRoutes from './routes/products.route';
+import reviewsRoutes from './routes/reviews.route';
 import { errorHandler } from './middlewares/error-handler';
 import connectToDB from './utils/connect-to-database';
 import { CLIENT_ORIGIN, PORT } from './constants/env';
@@ -46,5 +47,6 @@ app.use('/cart', cartRoutes);
 app.use('/checkout', checkoutRoutes);
 app.use('/favorites', favoritesRoutes);
 app.use('/orders', ordersRoutes);
+app.use('/reviews', reviewsRoutes);
 
 app.use(errorHandler);

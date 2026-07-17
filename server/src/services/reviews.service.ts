@@ -8,8 +8,13 @@ import { User } from '../models/users.model';
 import type {
   CreateProductReviewResponse,
   ProductReviewStatusResponse,
+  ReviewProductDto,
+  UserReviewsResponse,
 } from '../types/api';
-import type { CreateProductReviewBody } from '../validators/reviews.validators';
+import type {
+  CreateProductReviewBody,
+  UserReviewsQuery,
+} from '../validators/reviews.validators';
 import { reviewToDto } from '../utils/review-to-dto';
 
 const isDuplicateKeyError = (error: unknown) =>
@@ -39,6 +44,28 @@ const recalculateProductRating = async (productId: Types.ObjectId) => {
     { $set: { rating: Number((summary?.averageRating ?? 0).toFixed(1)) } },
   );
 };
+
+const getSafePagination = (options: UserReviewsQuery) => {
+  const page = Math.max(1, options.page);
+  const limit = Math.min(Math.max(1, options.limit), 50);
+
+  return {
+    page,
+    limit,
+  };
+};
+
+const productToReviewProductDto = (product: {
+  _id: Types.ObjectId;
+  img: string;
+  slug: string;
+  title: string;
+}): ReviewProductDto => ({
+  _id: product._id.toString(),
+  img: product.img,
+  slug: product.slug,
+  title: product.title,
+});
 
 export const createProductReviewData = async (
   userId: string,
@@ -100,6 +127,57 @@ export const createProductReviewData = async (
 
   return {
     review: reviewToDto(review),
+  };
+};
+
+export const getUserReviewsData = async (
+  userId: string,
+  options: UserReviewsQuery,
+): Promise<UserReviewsResponse['data']> => {
+  if (!isObjectIdOrHexString(userId)) {
+    throw ApiError.BadRequest('Invalid user id');
+  }
+
+  const userObjectId = new Types.ObjectId(userId);
+  const userExists = await User.exists({ _id: userObjectId });
+
+  if (!userExists) {
+    throw ApiError.Unauthorized('User not found');
+  }
+
+  const { page, limit } = getSafePagination(options);
+  const filter = {
+    userId: userObjectId,
+  };
+  const total = await Review.countDocuments(filter);
+  const totalPages = Math.ceil(total / limit);
+  const safePage = Math.min(page, totalPages || 1);
+  const reviews = await Review.find(filter)
+    .sort({ createdAt: -1 })
+    .skip((safePage - 1) * limit)
+    .limit(limit);
+  const productIds = reviews.map((review) => review.productId);
+  const products = await Product.find({ _id: { $in: productIds } }).select(
+    '_id img slug title',
+  );
+  const productById = new Map(
+    products.map((product) => [
+      product._id.toString(),
+      productToReviewProductDto(product),
+    ]),
+  );
+
+  return {
+    reviews: reviews.map((review) => ({
+      ...reviewToDto(review),
+      product: productById.get(review.productId.toString()) ?? null,
+    })),
+    pagination: {
+      total,
+      page: safePage,
+      limit,
+      totalPages,
+    },
   };
 };
 

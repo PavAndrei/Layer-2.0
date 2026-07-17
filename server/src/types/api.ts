@@ -58,6 +58,17 @@ export type ReviewSummaryDto = {
   averageRating: number;
 };
 
+export type ReviewProductDto = {
+  _id: string;
+  img: string;
+  slug: string;
+  title: string;
+};
+
+export type UserReviewDto = ReviewDto & {
+  product: ReviewProductDto | null;
+};
+
 export type OrderDto = {
   _id: string;
   contactEmail: string;
@@ -112,6 +123,11 @@ export type CreateProductReviewResponse = ApiSuccess<{
 export type ProductReviewStatusResponse = ApiSuccess<{
   hasReviewed: boolean;
   review: ReviewDto | null;
+}>;
+
+export type UserReviewsResponse = ApiSuccess<{
+  reviews: UserReviewDto[];
+  pagination: PaginationData;
 }>;
 
 export type OrdersResponse = ApiSuccess<{
