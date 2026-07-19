@@ -36,6 +36,14 @@ const getAuthenticatedUserId = (req: Request) => {
   return req.user.userId;
 };
 
+const getAuthenticatedUser = (req: Request) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  return req.user;
+};
+
 export const getProductReviews = async (
   req: Request,
   res: Response<ProductReviewsResponse>,
@@ -170,7 +178,8 @@ export const deleteReview = async (
   res: Response<DeleteReviewResponse>,
 ) => {
   const { reviewId } = req.validated?.params as ReviewParams;
-  const data = await deleteReviewData(getAuthenticatedUserId(req), reviewId);
+  const user = getAuthenticatedUser(req);
+  const data = await deleteReviewData(user.userId, user.role, reviewId);
 
   res.status(200).json({
     success: true,

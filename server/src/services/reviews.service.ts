@@ -18,6 +18,7 @@ import type {
   UpdateReviewBody,
   UserReviewsQuery,
 } from '../validators/reviews.validators';
+import type { UserRole } from '../types/user';
 import { reviewToDto } from '../utils/review-to-dto';
 
 const isDuplicateKeyError = (error: unknown) =>
@@ -258,16 +259,21 @@ export const updateReviewData = async (
 
 export const deleteReviewData = async (
   userId: string,
+  userRole: UserRole,
   reviewId: string,
 ): Promise<DeleteReviewResponse['data']> => {
   if (!isObjectIdOrHexString(userId) || !isObjectIdOrHexString(reviewId)) {
     throw ApiError.BadRequest('Invalid review data');
   }
 
-  const review = await Review.findOne({
-    _id: new Types.ObjectId(reviewId),
-    userId: new Types.ObjectId(userId),
-  });
+  const reviewObjectId = new Types.ObjectId(reviewId);
+  const review =
+    userRole === 'admin'
+      ? await Review.findById(reviewObjectId)
+      : await Review.findOne({
+          _id: reviewObjectId,
+          userId: new Types.ObjectId(userId),
+        });
 
   if (!review) {
     throw ApiError.NotFound('Review not found');
