@@ -5,7 +5,7 @@ import { ReviewDeleteButton, useDeleteReviewAction } from '../reviews';
 
 type UseSingleProductReviewActionsParams = {
   canManageReviews: boolean;
-  onReviewDeleted?: () => void;
+  onReviewDeleted?: (params: { isCurrentUserReview: boolean }) => void;
 };
 
 export const useSingleProductReviewActions = ({
@@ -21,10 +21,18 @@ export const useSingleProductReviewActions = ({
     return canManageReviews || review._id === currentUserReviewId;
   };
 
-  const deleteReview = (review: ProductReview, onDeleted: () => void) => {
+  const deleteReview = ({
+    isCurrentUserReview,
+    onDeleted,
+    review,
+  }: {
+    isCurrentUserReview: boolean;
+    onDeleted: () => void;
+    review: ProductReview;
+  }) => {
     reviewDeleteAction.deleteReview(review._id, {
       onDeleted: () => {
-        onReviewDeleted?.();
+        onReviewDeleted?.({ isCurrentUserReview });
         onDeleted();
       },
     });
@@ -40,18 +48,27 @@ export const useSingleProductReviewActions = ({
       resetReviews: () => void;
     },
   ): ReactNode => {
+    const isCurrentUserReview = review._id === currentUserReviewId;
+
     if (!canDeleteReview(review, currentUserReviewId)) return null;
 
     return (
       <ReviewDeleteButton
         isDeleting={reviewDeleteAction.isDeletingReview(review._id)}
-        onDelete={() => deleteReview(review, resetReviews)}
+        onDelete={() =>
+          deleteReview({
+            isCurrentUserReview,
+            onDeleted: resetReviews,
+            review,
+          })
+        }
       />
     );
   };
 
   return {
     deleteReviewError: reviewDeleteAction.deleteReviewError,
+    deleteReviewDialog: reviewDeleteAction.deleteReviewDialog,
     renderReviewActions,
   };
 };

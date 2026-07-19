@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 
 import type {
@@ -51,12 +51,16 @@ export const useProductReviewForm = ({
   const [error, setError] = useState<string | null>(null);
   const [isCreated, setIsCreated] = useState(false);
 
-  useEffect(() => {
+  const resetForm = useCallback(() => {
     setValues(initialValues);
     setFieldErrors({});
     setError(null);
     setIsCreated(false);
-  }, [productId]);
+  }, []);
+
+  useEffect(() => {
+    resetForm();
+  }, [productId, resetForm]);
 
   const updateField = <Field extends keyof ProductReviewFormValues>(
     field: Field,
@@ -118,6 +122,7 @@ export const useProductReviewForm = ({
     handleSubmit,
     isCreated,
     isSubmitting,
+    resetForm,
     updateField,
     values,
   };

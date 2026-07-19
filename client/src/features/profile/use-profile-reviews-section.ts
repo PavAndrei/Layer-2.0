@@ -34,6 +34,7 @@ export const useProfileReviewsSection = ({
 
   return {
     deleteReviewError: reviewDeleteAction.deleteReviewError,
+    deleteReviewDialog: reviewDeleteAction.deleteReviewDialog,
     deletingReviewId: reviewDeleteAction.deletingReviewId,
     onDeleteReview: handleDeleteReview,
     onPageChange,

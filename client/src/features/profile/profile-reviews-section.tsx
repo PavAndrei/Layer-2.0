@@ -1,4 +1,9 @@
-import { FeedbackMessage, Pagination, Skeleton } from '../../shared/ui';
+import {
+  ConfirmDialog,
+  FeedbackMessage,
+  Pagination,
+  Skeleton,
+} from '../../shared/ui';
 import {
   UserReviewsEmptyState,
   UserReviewsList,
@@ -8,6 +13,7 @@ import type { ProfileReviewsSectionState } from './use-profile-reviews-section';
 
 export const ProfileReviewsSection = ({
   deleteReviewError,
+  deleteReviewDialog,
   deletingReviewId,
   onDeleteReview,
   onPageChange,
@@ -15,6 +21,7 @@ export const ProfileReviewsSection = ({
 }: ProfileReviewsSectionState) => {
   return (
     <>
+      <ConfirmDialog {...deleteReviewDialog} />
       <ProfileSectionHeader
         title="Reviews"
         description="Review the product feedback you have shared."

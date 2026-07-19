@@ -3,6 +3,7 @@ export { Breadcrumbs } from './breadcrumbs';
 export { Button } from './button';
 export { CheckIcon } from './check-icon';
 export { CheckboxFilter } from './checkbox-filter';
+export { ConfirmDialog } from './confirm-dialog';
 export { DualRangeFilter } from './dual-range-filter';
 export { EyeIcon } from './eye-icon';
 export { EyeOffIcon } from './eye-off-icon';

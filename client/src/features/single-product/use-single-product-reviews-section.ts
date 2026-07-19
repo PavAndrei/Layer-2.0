@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 
-import type { ProductReview } from '../../entities/review';
+import {
+  reviewQueryKeys,
+  type ProductReview,
+} from '../../entities/review';
 import {
   useCreateProductReview,
   useProductReviews,
@@ -34,16 +37,6 @@ export const useSingleProductReviewsSection = ({
   const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [loadedReviews, setLoadedReviews] = useState<ProductReview[]>([]);
-  const reviewActions = useSingleProductReviewActions({
-    canManageReviews,
-    onReviewDeleted: () => {
-      queryClient.invalidateQueries({
-        queryKey: productIdentifier
-          ? singleProductQueryKeys.detail(productIdentifier)
-          : singleProductQueryKeys.all,
-      });
-    },
-  });
   const reviewsQuery = useProductReviews({
     isEnabled: isOpen,
     limit: REVIEWS_LIMIT,
@@ -111,9 +104,31 @@ export const useSingleProductReviewsSection = ({
     onCreated: resetReviews,
     productId,
   });
+  const reviewActions = useSingleProductReviewActions({
+    canManageReviews,
+    onReviewDeleted: ({ isCurrentUserReview }) => {
+      if (isCurrentUserReview) {
+        reviewForm.resetForm();
+        queryClient.setQueryData(
+          reviewQueryKeys.productReviewStatus(productId),
+          {
+            hasReviewed: false,
+            review: null,
+          },
+        );
+      }
+
+      queryClient.invalidateQueries({
+        queryKey: productIdentifier
+          ? singleProductQueryKeys.detail(productIdentifier)
+          : singleProductQueryKeys.all,
+      });
+    },
+  });
 
   return {
     deleteReviewError: reviewActions.deleteReviewError,
+    deleteReviewDialog: reviewActions.deleteReviewDialog,
     error: reviewsQuery.error,
     fieldErrors: reviewForm.fieldErrors,
     hasMoreReviews,

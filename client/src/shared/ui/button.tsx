@@ -1,6 +1,7 @@
+import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'icon';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -10,6 +11,8 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
+  danger:
+    'border-accent-secondary bg-accent-secondary text-background-surface hover:border-accent-primary hover:bg-accent-primary',
   primary:
     'border-accent-primary bg-accent-primary text-background-surface hover:border-accent-hover hover:bg-accent-hover',
   secondary:
@@ -24,7 +27,7 @@ const sizeClasses: Record<ButtonSize, string> = {
   md: 'min-h-10 px-4 py-2 block-medium',
 };
 
-export const Button = ({
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   children,
   className = '',
   disabled,
@@ -32,10 +35,11 @@ export const Button = ({
   type = 'button',
   variant = 'secondary',
   ...props
-}: ButtonProps) => {
+}, ref) => {
   return (
     <button
       {...props}
+      ref={ref}
       type={type}
       disabled={disabled}
       className={[
@@ -48,4 +52,6 @@ export const Button = ({
       {children}
     </button>
   );
-};
+});
+
+Button.displayName = 'Button';
