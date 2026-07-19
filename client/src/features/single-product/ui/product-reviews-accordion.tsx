@@ -36,6 +36,7 @@ type ProductReviewsAccordionProps = {
       resetReviews: () => void;
     },
   ) => ReactNode;
+  renderReviewEditForm?: (review: ProductReview) => ReactNode;
   reviewFormError: string | null;
   reviewStatusError: string | null;
   reviewStatusHasReviewed: boolean;
@@ -80,6 +81,7 @@ export const ProductReviewsAccordion = ({
   refetchReviews,
   refetchReviewStatus,
   renderReviewActions,
+  renderReviewEditForm,
   resetReviews,
   reviewFormError,
   reviewStatusError,
@@ -165,6 +167,12 @@ export const ProductReviewsAccordion = ({
                   Showing {loadedReviews.length} of {totalReviews} reviews
                 </p>
                 {loadedReviews.map((review) => {
+                  const editForm = renderReviewEditForm?.(review);
+
+                  if (editForm) {
+                    return <div key={review._id}>{editForm}</div>;
+                  }
+
                   const actionSlot = renderReviewActions?.(review, {
                     currentUserReviewId: reviewStatusReviewId,
                     resetReviews,

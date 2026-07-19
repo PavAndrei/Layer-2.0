@@ -1,6 +1,8 @@
-import type { CreateProductReviewData } from '../../../entities/review';
-import type { FieldErrors } from '../../../shared/lib';
+import type {
+  ReviewFormErrors,
+  ReviewFormValues,
+} from '../../../entities/review';
 
-export type ProductReviewFormValues = CreateProductReviewData;
+export type ProductReviewFormValues = ReviewFormValues;
 
-export type ProductReviewFormErrors = FieldErrors<ProductReviewFormValues>;
+export type ProductReviewFormErrors = ReviewFormErrors;

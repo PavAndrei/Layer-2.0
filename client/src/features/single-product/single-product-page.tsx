@@ -166,6 +166,7 @@ export const SingleProductPage = () => {
                   refetchReviews={reviewsSection.refetchReviews}
                   refetchReviewStatus={reviewsSection.refetchReviewStatus}
                   renderReviewActions={reviewsSection.renderReviewActions}
+                  renderReviewEditForm={reviewsSection.renderReviewEditForm}
                   resetReviews={reviewsSection.resetReviews}
                   reviewFormError={reviewsSection.reviewFormError}
                   reviewStatusError={reviewsSection.reviewStatusError}

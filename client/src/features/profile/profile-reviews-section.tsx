@@ -15,9 +15,15 @@ export const ProfileReviewsSection = ({
   deleteReviewError,
   deleteReviewDialog,
   deletingReviewId,
+  editingReviewId,
+  onCancelEditReview,
   onDeleteReview,
+  onEditReview,
   onPageChange,
+  onUpdateReview,
   reviewsQuery,
+  updateReviewError,
+  updatingReviewId,
 }: ProfileReviewsSectionState) => {
   return (
     <>
@@ -41,6 +47,13 @@ export const ProfileReviewsSection = ({
           description={deleteReviewError}
         />
       )}
+      {updateReviewError && (
+        <FeedbackMessage
+          tone="danger"
+          title="Could not update review"
+          description={updateReviewError}
+        />
+      )}
       {!reviewsQuery.isLoading &&
         !reviewsQuery.error &&
         reviewsQuery.reviews.length === 0 && <UserReviewsEmptyState />}
@@ -50,8 +63,13 @@ export const ProfileReviewsSection = ({
         <>
           <UserReviewsList
             deletingReviewId={deletingReviewId}
+            editingReviewId={editingReviewId}
             reviews={reviewsQuery.reviews}
+            updatingReviewId={updatingReviewId}
+            onCancelEditReview={onCancelEditReview}
             onDeleteReview={onDeleteReview}
+            onEditReview={onEditReview}
+            onUpdateReview={onUpdateReview}
           />
           {reviewsQuery.pagination && (
             <Pagination

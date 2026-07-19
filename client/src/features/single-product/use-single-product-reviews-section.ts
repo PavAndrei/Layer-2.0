@@ -124,6 +124,13 @@ export const useSingleProductReviewsSection = ({
           : singleProductQueryKeys.all,
       });
     },
+    onReviewUpdated: () => {
+      queryClient.invalidateQueries({
+        queryKey: productIdentifier
+          ? singleProductQueryKeys.detail(productIdentifier)
+          : singleProductQueryKeys.all,
+      });
+    },
   });
 
   return {
@@ -145,6 +152,7 @@ export const useSingleProductReviewsSection = ({
     refetchReviewStatus: reviewStatus.refetch,
     refetchReviews: reviewsQuery.refetch,
     renderReviewActions: reviewActions.renderReviewActions,
+    renderReviewEditForm: reviewActions.renderReviewEditForm,
     resetReviews,
     reviewFormError: reviewForm.error,
     reviewStatusError: reviewStatus.error,

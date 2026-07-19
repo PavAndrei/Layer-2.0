@@ -50,6 +50,7 @@ export type ReviewDto = {
   verifiedPurchase: boolean;
   status: ReviewStatus;
   createdAt: string;
+  editedAt: string | null;
   updatedAt: string;
 };
 

@@ -1,24 +1,52 @@
 import { Link } from 'react-router';
 
-import type { UserReview } from '../../../entities/review';
+import type {
+  ReviewFormValues,
+  UserReview,
+} from '../../../entities/review';
 import { formatDisplayDate } from '../../../shared/lib';
-import { StarRating } from '../../../shared/ui';
+import { Button, StarRating } from '../../../shared/ui';
 import { ReviewDeleteButton } from './review-delete-button';
+import { ReviewEditForm } from './review-edit-form';
 
 type UserReviewListItemProps = {
+  isEditing?: boolean;
   isDeleting?: boolean;
+  isUpdating?: boolean;
   review: UserReview;
+  onCancelEdit?: () => void;
   onDelete?: (review: UserReview) => void;
+  onEdit?: (review: UserReview) => void;
+  onUpdate?: (
+    review: UserReview,
+    values: ReviewFormValues,
+  ) => Promise<{ message?: string; success: boolean }>;
 };
 
 export const UserReviewListItem = ({
+  isEditing = false,
   isDeleting = false,
+  isUpdating = false,
+  onCancelEdit,
   onDelete,
+  onEdit,
+  onUpdate,
   review,
 }: UserReviewListItemProps) => {
   const productUrl = review.product
     ? `/products/${review.product.slug}`
     : null;
+
+  if (isEditing && onCancelEdit && onUpdate) {
+    return (
+      <ReviewEditForm
+        isSubmitting={isUpdating}
+        review={review}
+        onCancel={onCancelEdit}
+        onSubmit={(values) => onUpdate(review, values)}
+      />
+    );
+  }
 
   return (
     <article className="flex flex-col gap-4 rounded border border-border-soft bg-background-surface p-4">
@@ -58,6 +86,14 @@ export const UserReviewListItem = ({
             >
               Reviewed on {formatDisplayDate(review.createdAt)}
             </time>
+            {review.editedAt && (
+              <time
+                className="block-small text-typography-muted"
+                dateTime={review.editedAt}
+              >
+                Edited on {formatDisplayDate(review.editedAt)}
+              </time>
+            )}
           </div>
         </div>
 
@@ -80,12 +116,24 @@ export const UserReviewListItem = ({
         </p>
       </div>
 
-      {onDelete && (
-        <div className="flex justify-end border-t border-border-soft pt-3">
-          <ReviewDeleteButton
-            isDeleting={isDeleting}
-            onDelete={() => onDelete(review)}
-          />
+      {(onEdit || onDelete) && (
+        <div className="flex flex-wrap justify-end gap-2 border-t border-border-soft pt-3">
+          {onEdit && (
+            <Button
+              size="sm"
+              variant="ghost"
+              disabled={isDeleting || isUpdating}
+              onClick={() => onEdit(review)}
+            >
+              Edit
+            </Button>
+          )}
+          {onDelete && (
+            <ReviewDeleteButton
+              isDeleting={isDeleting}
+              onDelete={() => onDelete(review)}
+            />
+          )}
         </div>
       )}
     </article>

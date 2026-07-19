@@ -10,6 +10,7 @@ export type ProductReview = {
   verifiedPurchase: boolean;
   status: ReviewStatus;
   createdAt: string;
+  editedAt: string | null;
   updatedAt: string;
 };
 

@@ -249,6 +249,8 @@ export const updateReviewData = async (
     review.text = reviewData.text;
   }
 
+  review.editedAt = new Date();
+
   await review.save();
   await recalculateProductRating(review.productId);
 

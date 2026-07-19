@@ -56,6 +56,11 @@ const reviewSchema = new Schema(
       default: 'approved' satisfies ReviewStatus,
       index: true,
     },
+
+    editedAt: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,

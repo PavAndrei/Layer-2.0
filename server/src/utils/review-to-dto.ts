@@ -11,5 +11,6 @@ export const reviewToDto = (review: ReviewDocument): ReviewDto => ({
   verifiedPurchase: review.verifiedPurchase,
   status: review.status,
   createdAt: review.createdAt.toISOString(),
+  editedAt: review.editedAt?.toISOString() ?? null,
   updatedAt: review.updatedAt.toISOString(),
 });

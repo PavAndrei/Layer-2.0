@@ -1,6 +1,10 @@
+import { useState } from 'react';
+
 import type { UserReview } from '../../entities/review';
+import type { ReviewFormValues } from '../../entities/review';
 import {
   useDeleteReviewAction,
+  useUpdateReviewAction,
   useUserReviews,
 } from '../reviews';
 import {
@@ -19,7 +23,9 @@ export const useProfileReviewsSection = ({
   activeSection,
   onPageChange,
 }: UseProfileReviewsSectionParams) => {
+  const [editingReviewId, setEditingReviewId] = useState<string | null>(null);
   const reviewDeleteAction = useDeleteReviewAction();
+  const reviewUpdateAction = useUpdateReviewAction();
   const reviewsQuery = useUserReviews({
     enabled: activeSection === 'reviews',
     params: {
@@ -32,13 +38,28 @@ export const useProfileReviewsSection = ({
     reviewDeleteAction.deleteReview(review._id);
   };
 
+  const handleUpdateReview = (
+    review: UserReview,
+    values: ReviewFormValues,
+  ) => {
+    return reviewUpdateAction.updateReview(review._id, values, {
+      onUpdated: () => setEditingReviewId(null),
+    });
+  };
+
   return {
     deleteReviewError: reviewDeleteAction.deleteReviewError,
     deleteReviewDialog: reviewDeleteAction.deleteReviewDialog,
     deletingReviewId: reviewDeleteAction.deletingReviewId,
+    editingReviewId,
+    onCancelEditReview: () => setEditingReviewId(null),
     onDeleteReview: handleDeleteReview,
+    onEditReview: (review: UserReview) => setEditingReviewId(review._id),
     onPageChange,
+    onUpdateReview: handleUpdateReview,
     reviewsQuery,
+    updateReviewError: reviewUpdateAction.updateReviewError,
+    updatingReviewId: reviewUpdateAction.updatingReviewId,
   };
 };
 

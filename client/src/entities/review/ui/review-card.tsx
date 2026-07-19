@@ -38,6 +38,14 @@ export const ReviewCard = ({ actionSlot, review }: ReviewCardProps) => {
       <p className="block-micro text-typography-muted">
         Reviewed by {review.authorName}
       </p>
+      {review.editedAt && (
+        <time
+          className="block-micro text-typography-muted"
+          dateTime={review.editedAt}
+        >
+          Edited on {formatDisplayDate(review.editedAt)}
+        </time>
+      )}
       {actionSlot && (
         <div className="flex justify-end border-t border-border-soft pt-3">
           {actionSlot}
