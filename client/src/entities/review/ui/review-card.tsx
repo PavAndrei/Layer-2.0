@@ -1,12 +1,15 @@
+import type { ReactNode } from 'react';
+
 import type { ProductReview } from '../model';
 import { formatDisplayDate } from '../../../shared/lib';
 import { StarRating } from '../../../shared/ui';
 
 type ReviewCardProps = {
+  actionSlot?: ReactNode;
   review: ProductReview;
 };
 
-export const ReviewCard = ({ review }: ReviewCardProps) => {
+export const ReviewCard = ({ actionSlot, review }: ReviewCardProps) => {
   return (
     <article className="flex flex-col gap-2 rounded border border-border-soft bg-background-surface p-3">
       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -35,6 +38,11 @@ export const ReviewCard = ({ review }: ReviewCardProps) => {
       <p className="block-micro text-typography-muted">
         Reviewed by {review.authorName}
       </p>
+      {actionSlot && (
+        <div className="flex justify-end border-t border-border-soft pt-3">
+          {actionSlot}
+        </div>
+      )}
     </article>
   );
 };

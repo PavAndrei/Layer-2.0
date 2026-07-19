@@ -1,64 +1,101 @@
-import { ReviewCard, ReviewListSkeleton } from '../../../entities/review';
-import { Button, FeedbackMessage } from '../../../shared/ui';
+import type { ReactNode } from 'react';
+import type { FormEvent } from 'react';
+
 import {
-  useProductReviewForm,
-  useProductReviewStatus,
-  useProductReviewsAccordion,
+  ReviewCard,
+  ReviewListSkeleton,
+  type ProductReview,
+} from '../../../entities/review';
+import { Button, FeedbackMessage } from '../../../shared/ui';
+import type {
+  ProductReviewFormErrors,
+  ProductReviewFormValues,
 } from '../model';
 import { ProductReviewForm } from './product-review-form';
 
 type ProductReviewsAccordionProps = {
+  deleteReviewError?: string | null;
+  error: string | null;
+  fieldErrors: ProductReviewFormErrors;
+  hasMoreReviews: boolean;
   isAuthenticated: boolean;
   isAuthPending: boolean;
-  productId: string;
-  productIdentifier?: string;
-  reviewsCount: number;
+  isEmpty: boolean;
+  isFetching: boolean;
+  isFormCreated: boolean;
+  isFormSubmitting: boolean;
+  isInitialLoading: boolean;
+  isOpen: boolean;
+  isReviewStatusFetching: boolean;
+  isReviewStatusLoading: boolean;
+  loadedReviews: ProductReview[];
+  renderReviewActions?: (
+    review: ProductReview,
+    context: {
+      currentUserReviewId: string | null;
+      resetReviews: () => void;
+    },
+  ) => ReactNode;
+  reviewFormError: string | null;
+  reviewStatusError: string | null;
+  reviewStatusHasReviewed: boolean;
+  reviewStatusReviewId: string | null;
+  reviewsCountLabel: string;
+  totalReviews: number;
+  values: ProductReviewFormValues;
+  loadMoreReviews: () => void;
+  refetchReviews: () => void;
+  refetchReviewStatus: () => void;
+  resetReviews: () => void;
   onSignIn: () => void;
+  onSubmitReview: (event: FormEvent<HTMLFormElement>) => void;
+  onToggleReviews: () => void;
+  onUpdateReviewField: <Field extends keyof ProductReviewFormValues>(
+    field: Field,
+    value: ProductReviewFormValues[Field],
+  ) => void;
 };
 
 export const ProductReviewsAccordion = ({
+  deleteReviewError = null,
+  error,
+  fieldErrors,
+  hasMoreReviews,
   isAuthenticated,
   isAuthPending,
+  isEmpty,
+  isFetching,
+  isFormCreated,
+  isFormSubmitting,
+  isInitialLoading,
+  isOpen,
+  isReviewStatusFetching,
+  isReviewStatusLoading,
+  loadedReviews,
+  loadMoreReviews,
   onSignIn,
-  productId,
-  productIdentifier,
-  reviewsCount,
+  onSubmitReview,
+  onToggleReviews,
+  onUpdateReviewField,
+  refetchReviews,
+  refetchReviewStatus,
+  renderReviewActions,
+  resetReviews,
+  reviewFormError,
+  reviewStatusError,
+  reviewStatusHasReviewed,
+  reviewStatusReviewId,
+  reviewsCountLabel,
+  totalReviews,
+  values,
 }: ProductReviewsAccordionProps) => {
-  const {
-    error,
-    hasMoreReviews,
-    isEmpty,
-    isFetching,
-    isInitialLoading,
-    isOpen,
-    loadedReviews,
-    loadMoreReviews,
-    refetch,
-    resetReviews,
-    reviewsCountLabel,
-    toggleReviews,
-    totalReviews,
-  } = useProductReviewsAccordion({
-    productId,
-    reviewsCount,
-  });
-  const reviewForm = useProductReviewForm({
-    onCreated: resetReviews,
-    productId,
-    productIdentifier,
-  });
-  const reviewStatus = useProductReviewStatus({
-    isEnabled: isAuthenticated && isOpen,
-    productId,
-  });
-
   return (
     <section className="flex flex-col gap-3 rounded border border-border-soft bg-background-surface p-4">
       <button
         type="button"
         className="flex w-full cursor-pointer items-center justify-between gap-3 text-left"
         aria-expanded={isOpen}
-        onClick={toggleReviews}
+        onClick={onToggleReviews}
       >
         <span className="flex flex-col gap-1">
           <span className="block-title text-typography-heading">Reviews</span>
@@ -99,11 +136,19 @@ export const ProductReviewsAccordion = ({
                   <Button
                     size="sm"
                     variant="secondary"
-                    onClick={() => refetch()}
+                    onClick={refetchReviews}
                   >
                     Try again
                   </Button>
                 }
+              />
+            )}
+
+            {deleteReviewError && (
+              <FeedbackMessage
+                title="Could not delete review"
+                description={deleteReviewError}
+                tone="danger"
               />
             )}
 
@@ -119,9 +164,20 @@ export const ProductReviewsAccordion = ({
                 <p className="block-small text-typography-secondary">
                   Showing {loadedReviews.length} of {totalReviews} reviews
                 </p>
-                {loadedReviews.map((review) => (
-                  <ReviewCard key={review._id} review={review} />
-                ))}
+                {loadedReviews.map((review) => {
+                  const actionSlot = renderReviewActions?.(review, {
+                    currentUserReviewId: reviewStatusReviewId,
+                    resetReviews,
+                  });
+
+                  return (
+                    <ReviewCard
+                      key={review._id}
+                      actionSlot={actionSlot}
+                      review={review}
+                    />
+                  );
+                })}
               </div>
             )}
 
@@ -144,41 +200,41 @@ export const ProductReviewsAccordion = ({
 
             <div className="border-t border-border-soft pt-3">
               {isAuthenticated ? (
-                reviewStatus.isLoading ? (
+                isReviewStatusLoading ? (
                   <p className="block-small text-typography-muted">
                     Checking review status...
                   </p>
-                ) : reviewStatus.error ? (
+                ) : reviewStatusError ? (
                   <FeedbackMessage
                     tone="danger"
                     title="Could not check review status"
-                    description={reviewStatus.error}
+                    description={reviewStatusError}
                     action={
                       <Button
                         size="sm"
                         variant="secondary"
-                        onClick={() => reviewStatus.refetch()}
+                        onClick={refetchReviewStatus}
                       >
                         Try again
                       </Button>
                     }
                   />
-                ) : reviewStatus.hasReviewed ? (
+                ) : reviewStatusHasReviewed ? (
                   <FeedbackMessage
                     title="You have already reviewed this product"
                     description="Thanks for sharing your feedback."
                   />
                 ) : (
                   <ProductReviewForm
-                    error={reviewForm.error}
-                    fieldErrors={reviewForm.fieldErrors}
-                    isCreated={reviewForm.isCreated}
+                    error={reviewFormError}
+                    fieldErrors={fieldErrors}
+                    isCreated={isFormCreated}
                     isSubmitting={
-                      reviewForm.isSubmitting || reviewStatus.isFetching
+                      isFormSubmitting || isReviewStatusFetching
                     }
-                    values={reviewForm.values}
-                    onSubmit={reviewForm.handleSubmit}
-                    onUpdateField={reviewForm.updateField}
+                    values={values}
+                    onSubmit={onSubmitReview}
+                    onUpdateField={onUpdateReviewField}
                   />
                 )
               ) : (

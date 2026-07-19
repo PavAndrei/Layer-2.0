@@ -1,13 +1,6 @@
 import { apiClient } from '../../../shared/api';
 import type { ApiResponse } from '../../../shared/api';
 import type { Product } from '../../../entities/product';
-import type {
-  CreateProductReviewData,
-  ProductReview,
-  ProductReviewStatus,
-  ProductReviewsSummary,
-} from '../../../entities/review';
-import type { PaginationData } from '../../../shared/api';
 
 type ProductResponseData = {
   product: Product;
@@ -15,28 +8,6 @@ type ProductResponseData = {
 };
 
 type ProductResponse = ApiResponse<ProductResponseData>;
-
-type ProductReviewsParams = {
-  page: number;
-  limit: number;
-};
-
-type ProductReviewsResponseData = {
-  reviews: ProductReview[];
-  summary: ProductReviewsSummary;
-  pagination: PaginationData;
-};
-
-type ProductReviewsResponse = ApiResponse<ProductReviewsResponseData>;
-
-type CreateProductReviewResponseData = {
-  review: ProductReview;
-};
-
-type CreateProductReviewResponse =
-  ApiResponse<CreateProductReviewResponseData>;
-
-type ProductReviewStatusResponse = ApiResponse<ProductReviewStatus>;
 
 export const getProductByIdentifier = async (
   identifier: string,
@@ -46,45 +17,5 @@ export const getProductByIdentifier = async (
     path: `/products/${identifier}`,
     signal,
     errorMessage: 'Failed to load product',
-  });
-};
-
-export const getProductReviews = async (
-  productId: string,
-  params: ProductReviewsParams,
-  signal?: AbortSignal,
-): Promise<ProductReviewsResponse> => {
-  return apiClient.get<ProductReviewsResponseData>({
-    path: `/products/${productId}/reviews`,
-    params,
-    signal,
-    errorMessage: 'Failed to load product reviews',
-  });
-};
-
-export const createProductReview = async ({
-  productId,
-  review,
-}: {
-  productId: string;
-  review: CreateProductReviewData;
-}): Promise<CreateProductReviewResponse> => {
-  return apiClient.post<CreateProductReviewResponseData, CreateProductReviewData>(
-    {
-      path: `/products/${productId}/reviews`,
-      body: review,
-      errorMessage: 'Failed to create review',
-    },
-  );
-};
-
-export const getProductReviewStatus = async (
-  productId: string,
-  signal?: AbortSignal,
-): Promise<ProductReviewStatusResponse> => {
-  return apiClient.get<ProductReviewStatus>({
-    path: `/products/${productId}/review-status`,
-    signal,
-    errorMessage: 'Failed to load review status',
   });
 };

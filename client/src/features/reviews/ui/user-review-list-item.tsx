@@ -2,7 +2,8 @@ import { Link } from 'react-router';
 
 import type { UserReview } from '../../../entities/review';
 import { formatDisplayDate } from '../../../shared/lib';
-import { Button, StarRating } from '../../../shared/ui';
+import { StarRating } from '../../../shared/ui';
+import { ReviewDeleteButton } from './review-delete-button';
 
 type UserReviewListItemProps = {
   isDeleting?: boolean;
@@ -81,14 +82,10 @@ export const UserReviewListItem = ({
 
       {onDelete && (
         <div className="flex justify-end border-t border-border-soft pt-3">
-          <Button
-            size="sm"
-            variant="ghost"
-            disabled={isDeleting}
-            onClick={() => onDelete(review)}
-          >
-            {isDeleting ? 'Deleting...' : 'Delete'}
-          </Button>
+          <ReviewDeleteButton
+            isDeleting={isDeleting}
+            onDelete={() => onDelete(review)}
+          />
         </div>
       )}
     </article>

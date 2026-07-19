@@ -1,0 +1,2 @@
+export const PROFILE_ORDERS_PAGE_LIMIT = 10;
+export const PROFILE_REVIEWS_PAGE_LIMIT = 10;

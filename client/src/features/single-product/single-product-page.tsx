@@ -1,6 +1,10 @@
 import { useMemo } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router';
-import { useAuthStatus, useIsAuthenticated } from '../auth';
+import {
+  useAuthStatus,
+  useAuthUser,
+  useIsAuthenticated,
+} from '../auth';
 import {
   FavoriteProductButton,
   useFavoriteProductActions,
@@ -14,6 +18,7 @@ import {
   useSingleProductVariant,
   useSingleProductVariantParams,
 } from './model';
+import { useSingleProductReviewsSection } from './use-single-product-reviews-section';
 import {
   ProductGallery,
   ProductInfo,
@@ -34,6 +39,7 @@ export const SingleProductPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const authStatus = useAuthStatus();
+  const authUser = useAuthUser();
   const isAuthenticated = useIsAuthenticated();
   const isAuthPending = authStatus === 'idle' || authStatus === 'loading';
   const redirectToLogin = () => {
@@ -55,6 +61,13 @@ export const SingleProductPage = () => {
 
   const { product, relatedProducts, isLoading, error } =
     useSingleProduct(identifier);
+  const reviewsSection = useSingleProductReviewsSection({
+    canManageReviews: authUser?.role === 'admin',
+    isAuthenticated,
+    productId: product?._id ?? '',
+    productIdentifier: identifier,
+    reviewsCount: product?.reviewsCount ?? 0,
+  });
   useScrollToTopOnChange(identifier, { skipInitialScroll: false });
   const { breadcrumbs, productLinkState } = useSingleProductNavigation({
     productTitle: product?.title,
@@ -128,12 +141,41 @@ export const SingleProductPage = () => {
             <>
               <ProductInfo product={product} />
               <ProductReviewsAccordion
+                deleteReviewError={reviewsSection.deleteReviewError}
+                error={reviewsSection.error}
+                fieldErrors={reviewsSection.fieldErrors}
+                hasMoreReviews={reviewsSection.hasMoreReviews}
                 isAuthenticated={isAuthenticated}
                 isAuthPending={isAuthPending}
-                productIdentifier={identifier}
-                productId={product._id}
-                reviewsCount={product.reviewsCount}
+                isEmpty={reviewsSection.isEmpty}
+                isFetching={reviewsSection.isFetching}
+                isFormCreated={reviewsSection.isFormCreated}
+                isFormSubmitting={reviewsSection.isFormSubmitting}
+                isInitialLoading={reviewsSection.isInitialLoading}
+                isOpen={reviewsSection.isOpen}
+                isReviewStatusFetching={
+                  reviewsSection.isReviewStatusFetching
+                }
+                isReviewStatusLoading={reviewsSection.isReviewStatusLoading}
+                loadedReviews={reviewsSection.loadedReviews}
+                loadMoreReviews={reviewsSection.loadMoreReviews}
+                refetchReviews={reviewsSection.refetchReviews}
+                refetchReviewStatus={reviewsSection.refetchReviewStatus}
+                renderReviewActions={reviewsSection.renderReviewActions}
+                resetReviews={reviewsSection.resetReviews}
+                reviewFormError={reviewsSection.reviewFormError}
+                reviewStatusError={reviewsSection.reviewStatusError}
+                reviewStatusHasReviewed={
+                  reviewsSection.reviewStatusHasReviewed
+                }
+                reviewStatusReviewId={reviewsSection.reviewStatusReviewId}
+                reviewsCountLabel={reviewsSection.reviewsCountLabel}
+                totalReviews={reviewsSection.totalReviews}
+                values={reviewsSection.values}
                 onSignIn={redirectToLogin}
+                onSubmitReview={reviewsSection.submitReview}
+                onToggleReviews={reviewsSection.toggleReviews}
+                onUpdateReviewField={reviewsSection.updateReviewField}
               />
               <ProductVariantSelector
                 colors={colors}

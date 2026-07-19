@@ -1,145 +1,43 @@
-import { useSearchParams } from 'react-router';
-
+import { FeedbackMessage, Skeleton } from '../../shared/ui';
 import {
-  ORDER_STATUSES,
-  type OrderStatus,
-} from '../../entities/order';
-import { useScrollToTopOnChange } from '../../shared/hooks';
-import { FeedbackMessage, Pagination, Skeleton } from '../../shared/ui';
-import {
-  UserReviewsEmptyState,
-  UserReviewsList,
-  useDeleteUserReview,
-  useUserReviews,
-} from '../reviews';
-import {
-  OrdersEmptyState,
-  OrdersList,
-  OrdersStatusTabs,
-  useOrders,
-} from '../orders';
-import {
-  DEFAULT_PROFILE_SECTION,
-  PROFILE_SECTION_LABELS,
-  isProfileSection,
   useProfile,
+  useProfilePageState,
 } from './model';
-import type { ProfileSection } from './model';
 import {
   ProfileContentLayout,
-  ProfileDetails,
-  ProfileEmailVerification,
   ProfileLayout,
-  ProfileSectionHeader,
 } from './ui';
+import { ProfileDetailsSection } from './profile-details-section';
 import { useProfileEmailVerification } from './use-profile-email-verification';
-
-const getProfileSectionFromSearchParams = (
-  searchParams: URLSearchParams,
-): ProfileSection => {
-  const section = searchParams.get('section') ?? '';
-
-  return isProfileSection(section) ? section : DEFAULT_PROFILE_SECTION;
-};
-
-const getOrderStatusFromSearchParams = (
-  searchParams: URLSearchParams,
-): OrderStatus | undefined => {
-  const status = searchParams.get('status') ?? '';
-
-  return ORDER_STATUSES.some((orderStatus) => orderStatus === status)
-    ? (status as OrderStatus)
-    : undefined;
-};
-
-const getPageFromSearchParams = (
-  searchParams: URLSearchParams,
-): number => {
-  const page = Number(searchParams.get('page'));
-
-  return Number.isInteger(page) && page > 0 ? page : 1;
-};
-
-const ORDERS_PAGE_LIMIT = 10;
-const REVIEWS_PAGE_LIMIT = 10;
-
-const placeholderDescriptions: Record<
-  Exclude<ProfileSection, 'orders' | 'profile' | 'reviews' | 'security'>,
-  string
-> = {
-  favorites: 'Your saved products will appear here.',
-};
+import { useProfileOrdersSection } from './use-profile-orders-section';
+import { useProfileReviewsSection } from './use-profile-reviews-section';
+import { ProfileOrdersSection } from './profile-orders-section';
+import { ProfilePlaceholderSection } from './profile-placeholder-section';
+import { ProfileReviewsSection } from './profile-reviews-section';
+import { ProfileSecuritySection } from './profile-security-section';
 
 export const ProfilePage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const activeSection = getProfileSectionFromSearchParams(searchParams);
-  const activeOrderStatus = getOrderStatusFromSearchParams(searchParams);
-  const activeOrdersPage = getPageFromSearchParams(searchParams);
-  const activeReviewsPage = getPageFromSearchParams(searchParams);
+  const {
+    activeOrderStatus,
+    activeOrdersPage,
+    activeReviewsPage,
+    activeSection,
+    handleOrdersPageChange,
+    handleReviewsPageChange,
+  } = useProfilePageState();
   const profileQuery = useProfile();
   const emailVerification = useProfileEmailVerification();
-  const deleteReviewMutation = useDeleteUserReview();
-  const ordersQuery = useOrders({
-    enabled: activeSection === 'orders',
-    params: {
-      limit: ORDERS_PAGE_LIMIT,
-      page: activeOrdersPage,
-      status: activeOrderStatus,
-    },
+  const ordersSection = useProfileOrdersSection({
+    activeOrderStatus,
+    activeOrdersPage,
+    activeSection,
+    onPageChange: handleOrdersPageChange,
   });
-  const reviewsQuery = useUserReviews({
-    enabled: activeSection === 'reviews',
-    params: {
-      limit: REVIEWS_PAGE_LIMIT,
-      page: activeReviewsPage,
-    },
+  const reviewsSection = useProfileReviewsSection({
+    activeReviewsPage,
+    activeSection,
+    onPageChange: handleReviewsPageChange,
   });
-  const scrollDependency =
-    activeSection === 'orders'
-      ? `orders:${activeOrderStatus ?? 'all'}:${activeOrdersPage}`
-      : activeSection === 'reviews'
-        ? `reviews:${activeReviewsPage}`
-      : activeSection;
-
-  useScrollToTopOnChange(scrollDependency);
-
-  const handleOrdersPageChange = (page: number) => {
-    const nextSearchParams = new URLSearchParams();
-
-    nextSearchParams.set('section', 'orders');
-
-    if (activeOrderStatus) {
-      nextSearchParams.set('status', activeOrderStatus);
-    }
-
-    if (page > 1) {
-      nextSearchParams.set('page', String(page));
-    }
-
-    setSearchParams(nextSearchParams);
-  };
-
-  const handleReviewsPageChange = (page: number) => {
-    const nextSearchParams = new URLSearchParams();
-
-    nextSearchParams.set('section', 'reviews');
-
-    if (page > 1) {
-      nextSearchParams.set('page', String(page));
-    }
-
-    setSearchParams(nextSearchParams);
-  };
-
-  const handleDeleteReview = (review: { _id: string }) => {
-    const isConfirmed = window.confirm(
-      'Delete this review? This action cannot be undone.',
-    );
-
-    if (!isConfirmed || deleteReviewMutation.isPending) return;
-
-    deleteReviewMutation.mutate(review._id);
-  };
 
   if (profileQuery.isPending) {
     return (
@@ -172,146 +70,29 @@ export const ProfilePage = () => {
     <ProfileLayout>
       <ProfileContentLayout activeSection={activeSection}>
         {activeSection === 'profile' && (
-          <>
-            <ProfileSectionHeader
-              title="Profile"
-              description="Review your account details."
-            />
-            <ProfileDetails user={profileQuery.data.data.user} />
-          </>
+          <ProfileDetailsSection user={profileQuery.data.data.user} />
         )}
 
         {activeSection === 'orders' && (
-          <>
-            <ProfileSectionHeader
-              title="Orders"
-              description="Track recent orders and review their current status."
-            />
-            <OrdersStatusTabs activeStatus={activeOrderStatus ?? null} />
-            {ordersQuery.isLoading && <Skeleton className="h-48 w-full" />}
-            {ordersQuery.error && (
-              <FeedbackMessage
-                tone="danger"
-                title="Orders are unavailable"
-                description={ordersQuery.error}
-              />
-            )}
-            {!ordersQuery.isLoading &&
-              !ordersQuery.error &&
-              ordersQuery.orders.length === 0 && <OrdersEmptyState />}
-            {!ordersQuery.isLoading &&
-              !ordersQuery.error &&
-              ordersQuery.orders.length > 0 && (
-                <>
-                  <OrdersList orders={ordersQuery.orders} />
-                  {ordersQuery.pagination && (
-                    <Pagination
-                      currentPage={ordersQuery.pagination.page}
-                      limit={ordersQuery.pagination.limit}
-                      total={ordersQuery.pagination.total}
-                      onPageChange={handleOrdersPageChange}
-                    />
-                  )}
-                </>
-              )}
-          </>
+          <ProfileOrdersSection {...ordersSection} />
         )}
 
         {activeSection === 'reviews' && (
-          <>
-            <ProfileSectionHeader
-              title="Reviews"
-              description="Review the product feedback you have shared."
-            />
-            {reviewsQuery.isLoading && <Skeleton className="h-48 w-full" />}
-            {reviewsQuery.error && (
-              <FeedbackMessage
-                tone="danger"
-                title="Reviews are unavailable"
-                description={reviewsQuery.error}
-              />
-            )}
-            {deleteReviewMutation.data &&
-              !deleteReviewMutation.data.success && (
-                <FeedbackMessage
-                  tone="danger"
-                  title="Could not delete review"
-                  description={deleteReviewMutation.data.message}
-                />
-              )}
-            {deleteReviewMutation.error && (
-              <FeedbackMessage
-                tone="danger"
-                title="Could not delete review"
-                description={
-                  deleteReviewMutation.error instanceof Error
-                    ? deleteReviewMutation.error.message
-                    : 'Failed to delete review'
-                }
-              />
-            )}
-            {!reviewsQuery.isLoading &&
-              !reviewsQuery.error &&
-              reviewsQuery.reviews.length === 0 && <UserReviewsEmptyState />}
-            {!reviewsQuery.isLoading &&
-              !reviewsQuery.error &&
-              reviewsQuery.reviews.length > 0 && (
-                <>
-                  <UserReviewsList
-                    deletingReviewId={
-                      deleteReviewMutation.isPending
-                        ? deleteReviewMutation.variables
-                        : null
-                    }
-                    reviews={reviewsQuery.reviews}
-                    onDeleteReview={handleDeleteReview}
-                  />
-                  {reviewsQuery.pagination && (
-                    <Pagination
-                      currentPage={reviewsQuery.pagination.page}
-                      limit={reviewsQuery.pagination.limit}
-                      total={reviewsQuery.pagination.total}
-                      onPageChange={handleReviewsPageChange}
-                    />
-                  )}
-                </>
-              )}
-          </>
+          <ProfileReviewsSection {...reviewsSection} />
         )}
 
         {activeSection === 'security' && (
-          <>
-            <ProfileSectionHeader
-              title="Security"
-              description="Manage account verification and security settings."
-            />
-            <ProfileEmailVerification
-              error={emailVerification.error}
-              isEmailVerified={profileQuery.data.data.user.isEmailVerified}
-              isPending={emailVerification.isPending}
-              isSuccess={emailVerification.isSuccess}
-              resendAvailableInSeconds={
-                emailVerification.resendAvailableInSeconds
-              }
-              onRequest={emailVerification.requestEmailVerification}
-            />
-          </>
+          <ProfileSecuritySection
+            emailVerification={emailVerification}
+            isEmailVerified={profileQuery.data.data.user.isEmailVerified}
+          />
         )}
 
         {activeSection !== 'orders' &&
           activeSection !== 'profile' &&
           activeSection !== 'reviews' &&
           activeSection !== 'security' && (
-          <>
-            <ProfileSectionHeader
-              title={PROFILE_SECTION_LABELS[activeSection]}
-              description={placeholderDescriptions[activeSection]}
-            />
-            <FeedbackMessage
-              title={`${PROFILE_SECTION_LABELS[activeSection]} coming soon`}
-              description="This account section is prepared and will be connected next."
-            />
-          </>
+          <ProfilePlaceholderSection activeSection={activeSection} />
           )}
       </ProfileContentLayout>
     </ProfileLayout>

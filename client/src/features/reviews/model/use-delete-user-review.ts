@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { reviewQueryKeys } from '../../../entities/review';
 import { deleteUserReview } from '../api';
 
-export const useDeleteUserReview = () => {
+export const useDeleteReview = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -22,3 +22,5 @@ export const useDeleteUserReview = () => {
     },
   });
 };
+
+export const useDeleteUserReview = useDeleteReview;

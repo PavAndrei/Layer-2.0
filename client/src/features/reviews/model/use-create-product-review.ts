@@ -5,16 +5,13 @@ import {
   type CreateProductReviewData,
 } from '../../../entities/review';
 import { createProductReview } from '../api';
-import { singleProductQueryKeys } from './single-product-query-keys';
 
 type UseCreateProductReviewOptions = {
   productId?: string;
-  productIdentifier?: string;
 };
 
 export const useCreateProductReview = ({
   productId,
-  productIdentifier,
 }: UseCreateProductReviewOptions = {}) => {
   const queryClient = useQueryClient();
 
@@ -38,12 +35,6 @@ export const useCreateProductReview = ({
 
       queryClient.invalidateQueries({
         queryKey: reviewQueryKeys.userScoped(),
-      });
-
-      queryClient.invalidateQueries({
-        queryKey: productIdentifier
-          ? singleProductQueryKeys.detail(productIdentifier)
-          : singleProductQueryKeys.all,
       });
     },
   });

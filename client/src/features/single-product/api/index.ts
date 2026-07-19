@@ -1,6 +1,1 @@
-export {
-  createProductReview,
-  getProductByIdentifier,
-  getProductReviewStatus,
-  getProductReviews,
-} from './single-product-api';
+export { getProductByIdentifier } from './single-product-api';

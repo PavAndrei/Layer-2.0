@@ -9,12 +9,19 @@ import {
   getProductReviewFieldErrors,
   productReviewSchema,
 } from './review-validation';
-import { useCreateProductReview } from './use-create-product-review';
+
+type ProductReviewSubmitResult = {
+  message?: string;
+  success: boolean;
+};
 
 type UseProductReviewFormOptions = {
+  isSubmitting: boolean;
+  onCreateReview: (
+    review: ProductReviewFormValues,
+  ) => Promise<ProductReviewSubmitResult>;
   onCreated?: () => void;
   productId: string;
-  productIdentifier?: string;
 };
 
 const initialValues: ProductReviewFormValues = {
@@ -32,14 +39,11 @@ const getCreateReviewErrorMessage = (message: string) => {
 };
 
 export const useProductReviewForm = ({
+  isSubmitting,
+  onCreateReview,
   onCreated,
   productId,
-  productIdentifier,
 }: UseProductReviewFormOptions) => {
-  const createReviewMutation = useCreateProductReview({
-    productId,
-    productIdentifier,
-  });
   const [values, setValues] =
     useState<ProductReviewFormValues>(initialValues);
   const [fieldErrors, setFieldErrors] =
@@ -69,10 +73,10 @@ export const useProductReviewForm = ({
     setError(null);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (createReviewMutation.isPending || isCreated) return;
+    if (isSubmitting || isCreated) return;
 
     setError(null);
     setFieldErrors({});
@@ -84,25 +88,28 @@ export const useProductReviewForm = ({
       return;
     }
 
-    createReviewMutation.mutate(validationResult.data, {
-      onSuccess: (response) => {
-        if (!response.success) {
-          setError(getCreateReviewErrorMessage(response.message));
-          return;
-        }
+    try {
+      const response = await onCreateReview(validationResult.data);
 
-        setIsCreated(true);
-        setValues(initialValues);
-        onCreated?.();
-      },
-      onError: (error) => {
+      if (!response.success) {
         setError(
-          error instanceof Error
-            ? error.message
-            : 'Failed to create review',
+          getCreateReviewErrorMessage(
+            response.message ?? 'Failed to create review',
+          ),
         );
-      },
-    });
+        return;
+      }
+
+      setIsCreated(true);
+      setValues(initialValues);
+      onCreated?.();
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? error.message
+          : 'Failed to create review',
+      );
+    }
   };
 
   return {
@@ -110,7 +117,7 @@ export const useProductReviewForm = ({
     fieldErrors,
     handleSubmit,
     isCreated,
-    isSubmitting: createReviewMutation.isPending,
+    isSubmitting,
     updateField,
     values,
   };

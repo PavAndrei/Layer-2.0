@@ -3,22 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import { reviewQueryKeys } from '../../../entities/review';
 import { getUserReviews } from '../api';
 import type { UserReviewsParams } from '../api';
+import { toReviewsSearchParams } from './review-search-params';
 
 const USER_REVIEWS_STALE_TIME_MS = 1000 * 60;
-
-const toUserReviewsSearchParams = (params: UserReviewsParams) => {
-  const searchParams = new URLSearchParams();
-
-  if (params.page !== undefined) {
-    searchParams.set('page', String(params.page));
-  }
-
-  if (params.limit !== undefined) {
-    searchParams.set('limit', String(params.limit));
-  }
-
-  return searchParams;
-};
 
 type UseUserReviewsOptions = {
   enabled?: boolean;
@@ -29,7 +16,7 @@ export const useUserReviews = ({
   enabled = true,
   params = {},
 }: UseUserReviewsOptions = {}) => {
-  const searchParams = toUserReviewsSearchParams(params);
+  const searchParams = toReviewsSearchParams(params);
   const query = useQuery({
     queryKey: reviewQueryKeys.userList(searchParams.toString()),
     queryFn: ({ signal }) => getUserReviews(params, signal),
