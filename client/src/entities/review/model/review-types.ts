@@ -24,6 +24,8 @@ export type CreateProductReviewData = {
   title: string;
 };
 
+export type UpdateReviewData = Partial<CreateProductReviewData>;
+
 export type ProductReviewStatus = {
   hasReviewed: boolean;
   review: ProductReview | null;

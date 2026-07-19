@@ -24,6 +24,14 @@ type ApiClientPostOptions<Body> = {
   skipAuthRefresh?: boolean;
 };
 
+type ApiClientPatchOptions<Body> = {
+  path: string;
+  body?: Body;
+  signal?: AbortSignal;
+  errorMessage?: string;
+  skipAuthRefresh?: boolean;
+};
+
 type ApiClientDeleteOptions = {
   path: string;
   signal?: AbortSignal;
@@ -159,6 +167,22 @@ export const apiClient = {
     return requestWithAuthRefresh(
       () =>
         apiInstance.post<ApiResponse<Data>>(path, body, {
+          signal,
+        }),
+      errorMessage,
+      skipAuthRefresh,
+    );
+  },
+  patch: async <Data, Body = unknown>({
+    path,
+    body,
+    signal,
+    errorMessage = 'Request failed',
+    skipAuthRefresh,
+  }: ApiClientPatchOptions<Body>): Promise<ApiResponse<Data>> => {
+    return requestWithAuthRefresh(
+      () =>
+        apiInstance.patch<ApiResponse<Data>>(path, body, {
           signal,
         }),
       errorMessage,

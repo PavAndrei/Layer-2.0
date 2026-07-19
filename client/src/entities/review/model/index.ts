@@ -6,5 +6,6 @@ export type {
   ProductReviewsSummary,
   ReviewProduct,
   ReviewStatus,
+  UpdateReviewData,
   UserReview,
 } from './review-types';

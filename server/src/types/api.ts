@@ -120,6 +120,15 @@ export type CreateProductReviewResponse = ApiSuccess<{
   review: ReviewDto;
 }>;
 
+export type UpdateReviewResponse = ApiSuccess<{
+  review: ReviewDto;
+}>;
+
+export type DeleteReviewResponse = ApiSuccess<{
+  productId: string;
+  reviewId: string;
+}>;
+
 export type ProductReviewStatusResponse = ApiSuccess<{
   hasReviewed: boolean;
   review: ReviewDto | null;

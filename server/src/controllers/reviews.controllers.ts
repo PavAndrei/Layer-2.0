@@ -5,13 +5,17 @@ import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
 import {
   createProductReviewData,
+  deleteReviewData,
   getProductReviewStatusData,
   getUserReviewsData,
+  updateReviewData,
 } from '../services/reviews.service';
 import type {
   CreateProductReviewResponse,
+  DeleteReviewResponse,
   ProductReviewStatusResponse,
   ProductReviewsResponse,
+  UpdateReviewResponse,
   UserReviewsResponse,
 } from '../types/api';
 import { reviewToDto } from '../utils/review-to-dto';
@@ -19,6 +23,8 @@ import type {
   CreateProductReviewBody,
   ProductReviewsParams,
   ProductReviewsQuery,
+  ReviewParams,
+  UpdateReviewBody,
   UserReviewsQuery,
 } from '../validators/reviews.validators';
 
@@ -136,6 +142,39 @@ export const getProductReviewStatus = async (
   res.status(200).json({
     success: true,
     message: 'Product review status fetched successfully',
+    data,
+  });
+};
+
+export const updateReview = async (
+  req: Request,
+  res: Response<UpdateReviewResponse>,
+) => {
+  const { reviewId } = req.validated?.params as ReviewParams;
+  const reviewData = req.validated?.body as UpdateReviewBody;
+  const data = await updateReviewData(
+    getAuthenticatedUserId(req),
+    reviewId,
+    reviewData,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Review updated successfully',
+    data,
+  });
+};
+
+export const deleteReview = async (
+  req: Request,
+  res: Response<DeleteReviewResponse>,
+) => {
+  const { reviewId } = req.validated?.params as ReviewParams;
+  const data = await deleteReviewData(getAuthenticatedUserId(req), reviewId);
+
+  res.status(200).json({
+    success: true,
+    message: 'Review deleted successfully',
     data,
   });
 };

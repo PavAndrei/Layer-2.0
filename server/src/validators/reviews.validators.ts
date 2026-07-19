@@ -14,7 +14,11 @@ const positiveIntegerParam = (
 
       const parsedValue = Number(value);
 
-      if (!Number.isInteger(parsedValue) || parsedValue < 1) {
+      if (
+        !Number.isInteger(parsedValue) ||
+        parsedValue < 1 ||
+        (maximum !== undefined && parsedValue > maximum)
+      ) {
         ctx.addIssue({
           code: 'custom',
           message: `Invalid ${name}`,
@@ -23,7 +27,7 @@ const positiveIntegerParam = (
         return z.NEVER;
       }
 
-      return maximum ? Math.min(parsedValue, maximum) : parsedValue;
+      return parsedValue;
     });
 
 export const userReviewsQuerySchema = z
@@ -84,9 +88,54 @@ export const createProductReviewSchema = z.object({
     .strict(),
 });
 
+export const reviewParamsSchema = z
+  .object({
+    reviewId: z
+      .string()
+      .refine(isObjectIdOrHexString, 'Invalid review id'),
+  })
+  .strict();
+
+export const updateReviewBodySchema = z
+  .object({
+    rating: z
+      .number()
+      .int('Rating must be an integer')
+      .min(1, 'Rating must be at least 1')
+      .max(5, 'Rating must be at most 5')
+      .optional(),
+    title: z
+      .string()
+      .trim()
+      .min(1, 'Title is required')
+      .max(120, 'Title is too long')
+      .optional(),
+    text: z
+      .string()
+      .trim()
+      .min(1, 'Review text is required')
+      .max(2000, 'Review text is too long')
+      .optional(),
+  })
+  .strict()
+  .refine((body) => Object.keys(body).length > 0, {
+    message: 'Review update must contain at least one field',
+  });
+
+export const updateReviewSchema = z.object({
+  params: reviewParamsSchema,
+  body: updateReviewBodySchema,
+});
+
+export const deleteReviewSchema = z.object({
+  params: reviewParamsSchema,
+});
+
+export type ReviewParams = z.infer<typeof reviewParamsSchema>;
 export type ProductReviewsParams = z.infer<typeof productReviewsParamsSchema>;
 export type ProductReviewsQuery = z.infer<typeof productReviewsQuerySchema>;
 export type UserReviewsQuery = z.infer<typeof userReviewsQuerySchema>;
 export type CreateProductReviewBody = z.infer<
   typeof createProductReviewSchema
 >['body'];
+export type UpdateReviewBody = z.infer<typeof updateReviewBodySchema>;

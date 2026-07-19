@@ -9,6 +9,7 @@ import { FeedbackMessage, Pagination, Skeleton } from '../../shared/ui';
 import {
   UserReviewsEmptyState,
   UserReviewsList,
+  useDeleteUserReview,
   useUserReviews,
 } from '../reviews';
 import {
@@ -77,6 +78,7 @@ export const ProfilePage = () => {
   const activeReviewsPage = getPageFromSearchParams(searchParams);
   const profileQuery = useProfile();
   const emailVerification = useProfileEmailVerification();
+  const deleteReviewMutation = useDeleteUserReview();
   const ordersQuery = useOrders({
     enabled: activeSection === 'orders',
     params: {
@@ -127,6 +129,16 @@ export const ProfilePage = () => {
     }
 
     setSearchParams(nextSearchParams);
+  };
+
+  const handleDeleteReview = (review: { _id: string }) => {
+    const isConfirmed = window.confirm(
+      'Delete this review? This action cannot be undone.',
+    );
+
+    if (!isConfirmed || deleteReviewMutation.isPending) return;
+
+    deleteReviewMutation.mutate(review._id);
   };
 
   if (profileQuery.isPending) {
@@ -219,6 +231,25 @@ export const ProfilePage = () => {
                 description={reviewsQuery.error}
               />
             )}
+            {deleteReviewMutation.data &&
+              !deleteReviewMutation.data.success && (
+                <FeedbackMessage
+                  tone="danger"
+                  title="Could not delete review"
+                  description={deleteReviewMutation.data.message}
+                />
+              )}
+            {deleteReviewMutation.error && (
+              <FeedbackMessage
+                tone="danger"
+                title="Could not delete review"
+                description={
+                  deleteReviewMutation.error instanceof Error
+                    ? deleteReviewMutation.error.message
+                    : 'Failed to delete review'
+                }
+              />
+            )}
             {!reviewsQuery.isLoading &&
               !reviewsQuery.error &&
               reviewsQuery.reviews.length === 0 && <UserReviewsEmptyState />}
@@ -226,7 +257,15 @@ export const ProfilePage = () => {
               !reviewsQuery.error &&
               reviewsQuery.reviews.length > 0 && (
                 <>
-                  <UserReviewsList reviews={reviewsQuery.reviews} />
+                  <UserReviewsList
+                    deletingReviewId={
+                      deleteReviewMutation.isPending
+                        ? deleteReviewMutation.variables
+                        : null
+                    }
+                    reviews={reviewsQuery.reviews}
+                    onDeleteReview={handleDeleteReview}
+                  />
                   {reviewsQuery.pagination && (
                     <Pagination
                       currentPage={reviewsQuery.pagination.page}

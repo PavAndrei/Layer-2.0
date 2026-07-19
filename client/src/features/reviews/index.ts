@@ -1,4 +1,8 @@
-export { useUserReviews } from './model';
+export {
+  useDeleteUserReview,
+  useUpdateUserReview,
+  useUserReviews,
+} from './model';
 export {
   UserReviewListItem,
   UserReviewsEmptyState,

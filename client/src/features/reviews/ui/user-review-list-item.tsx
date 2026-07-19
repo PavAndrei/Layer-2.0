@@ -2,13 +2,19 @@ import { Link } from 'react-router';
 
 import type { UserReview } from '../../../entities/review';
 import { formatDisplayDate } from '../../../shared/lib';
-import { StarRating } from '../../../shared/ui';
+import { Button, StarRating } from '../../../shared/ui';
 
 type UserReviewListItemProps = {
+  isDeleting?: boolean;
   review: UserReview;
+  onDelete?: (review: UserReview) => void;
 };
 
-export const UserReviewListItem = ({ review }: UserReviewListItemProps) => {
+export const UserReviewListItem = ({
+  isDeleting = false,
+  onDelete,
+  review,
+}: UserReviewListItemProps) => {
   const productUrl = review.product
     ? `/products/${review.product.slug}`
     : null;
@@ -72,6 +78,19 @@ export const UserReviewListItem = ({ review }: UserReviewListItemProps) => {
           {review.text}
         </p>
       </div>
+
+      {onDelete && (
+        <div className="flex justify-end border-t border-border-soft pt-3">
+          <Button
+            size="sm"
+            variant="ghost"
+            disabled={isDeleting}
+            onClick={() => onDelete(review)}
+          >
+            {isDeleting ? 'Deleting...' : 'Delete'}
+          </Button>
+        </div>
+      )}
     </article>
   );
 };

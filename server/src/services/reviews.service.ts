@@ -7,12 +7,15 @@ import { Review } from '../models/reviews.model';
 import { User } from '../models/users.model';
 import type {
   CreateProductReviewResponse,
+  DeleteReviewResponse,
   ProductReviewStatusResponse,
   ReviewProductDto,
+  UpdateReviewResponse,
   UserReviewsResponse,
 } from '../types/api';
 import type {
   CreateProductReviewBody,
+  UpdateReviewBody,
   UserReviewsQuery,
 } from '../validators/reviews.validators';
 import { reviewToDto } from '../utils/review-to-dto';
@@ -212,5 +215,71 @@ export const getProductReviewStatusData = async (
   return {
     hasReviewed: Boolean(review),
     review: review ? reviewToDto(review) : null,
+  };
+};
+
+export const updateReviewData = async (
+  userId: string,
+  reviewId: string,
+  reviewData: UpdateReviewBody,
+): Promise<UpdateReviewResponse['data']> => {
+  if (!isObjectIdOrHexString(userId) || !isObjectIdOrHexString(reviewId)) {
+    throw ApiError.BadRequest('Invalid review data');
+  }
+
+  const review = await Review.findOne({
+    _id: new Types.ObjectId(reviewId),
+    userId: new Types.ObjectId(userId),
+  });
+
+  if (!review) {
+    throw ApiError.NotFound('Review not found');
+  }
+
+  if (reviewData.rating !== undefined) {
+    review.rating = reviewData.rating;
+  }
+
+  if (reviewData.title !== undefined) {
+    review.title = reviewData.title;
+  }
+
+  if (reviewData.text !== undefined) {
+    review.text = reviewData.text;
+  }
+
+  await review.save();
+  await recalculateProductRating(review.productId);
+
+  return {
+    review: reviewToDto(review),
+  };
+};
+
+export const deleteReviewData = async (
+  userId: string,
+  reviewId: string,
+): Promise<DeleteReviewResponse['data']> => {
+  if (!isObjectIdOrHexString(userId) || !isObjectIdOrHexString(reviewId)) {
+    throw ApiError.BadRequest('Invalid review data');
+  }
+
+  const review = await Review.findOne({
+    _id: new Types.ObjectId(reviewId),
+    userId: new Types.ObjectId(userId),
+  });
+
+  if (!review) {
+    throw ApiError.NotFound('Review not found');
+  }
+
+  const productId = review.productId;
+
+  await review.deleteOne();
+  await recalculateProductRating(productId);
+
+  return {
+    productId: productId.toString(),
+    reviewId,
   };
 };
