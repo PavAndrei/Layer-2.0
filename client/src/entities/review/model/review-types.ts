@@ -1,4 +1,6 @@
-export type ReviewStatus = 'approved' | 'pending' | 'rejected';
+export const REVIEW_STATUSES = ['approved', 'pending', 'rejected'] as const;
+
+export type ReviewStatus = (typeof REVIEW_STATUSES)[number];
 
 export type ProductReview = {
   _id: string;
@@ -41,4 +43,21 @@ export type ReviewProduct = {
 
 export type UserReview = ProductReview & {
   product: ReviewProduct | null;
+};
+
+export type AdminReview = ProductReview & {
+  authorEmail?: string;
+  moderationReason?: string;
+  moderatedAt: string | null;
+  moderatedBy?: string;
+  moderatedByEmail?: string;
+  moderatedByName?: string;
+  product: ReviewProduct | null;
+};
+
+export type AdminReviewListItem = AdminReview;
+
+export type UpdateAdminReviewData = {
+  moderationReason?: string;
+  status?: ReviewStatus;
 };

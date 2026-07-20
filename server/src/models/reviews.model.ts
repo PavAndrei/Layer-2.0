@@ -61,6 +61,22 @@ const reviewSchema = new Schema(
       type: Date,
       default: null,
     },
+
+    moderationReason: {
+      type: String,
+      trim: true,
+      maxlength: 1000,
+    },
+
+    moderatedAt: {
+      type: Date,
+      default: null,
+    },
+
+    moderatedBy: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
   },
   {
     timestamps: true,
@@ -68,6 +84,8 @@ const reviewSchema = new Schema(
 );
 
 reviewSchema.index({ productId: 1, status: 1, createdAt: -1 });
+reviewSchema.index({ status: 1, rating: 1, createdAt: -1 });
+reviewSchema.index({ moderatedBy: 1, moderatedAt: -1 });
 reviewSchema.index(
   { productId: 1, userId: 1 },
   {

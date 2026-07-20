@@ -15,10 +15,7 @@ import {
   AdminOrderManagementForm,
   AdminOrderStatusHistoryCard,
 } from './ui';
-import {
-  useAdminOrder,
-  useAdminOrderManagementForm,
-} from './model';
+import { useAdminOrder, useAdminOrderManagementForm } from './model';
 
 const getAdminOrderBreadcrumbs = (orderNumber?: string) => [
   { label: 'Home', to: '/' },

@@ -9,6 +9,8 @@ export type {
   ReviewFormValues,
 } from './review-form-types';
 export type {
+  AdminReview,
+  AdminReviewListItem,
   CreateProductReviewData,
   ProductReview,
   ProductReviewStatus,
@@ -16,5 +18,7 @@ export type {
   ReviewProduct,
   ReviewStatus,
   UpdateReviewData,
+  UpdateAdminReviewData,
   UserReview,
 } from './review-types';
+export { REVIEW_STATUSES } from './review-types';

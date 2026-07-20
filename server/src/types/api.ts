@@ -72,6 +72,18 @@ export type UserReviewDto = ReviewDto & {
   product: ReviewProductDto | null;
 };
 
+export type AdminReviewDto = ReviewDto & {
+  authorEmail?: string;
+  moderationReason?: string;
+  moderatedAt: string | null;
+  moderatedBy?: string;
+  moderatedByEmail?: string;
+  moderatedByName?: string;
+  product: ReviewProductDto | null;
+};
+
+export type AdminReviewListItemDto = AdminReviewDto;
+
 export type OrderDto = {
   _id: string;
   contactEmail: string;
@@ -143,6 +155,24 @@ export type AdminOrdersResponse = ApiSuccess<{
 
 export type AdminOrderResponse = ApiSuccess<{
   order: AdminOrderDto;
+}>;
+
+export type AdminReviewsResponse = ApiSuccess<{
+  reviews: AdminReviewListItemDto[];
+  pagination: PaginationData;
+}>;
+
+export type AdminReviewResponse = ApiSuccess<{
+  review: AdminReviewDto;
+}>;
+
+export type UpdateAdminReviewResponse = ApiSuccess<{
+  review: AdminReviewDto;
+}>;
+
+export type DeleteAdminReviewResponse = ApiSuccess<{
+  productId: string;
+  reviewId: string;
 }>;
 
 export type ProductsResponse = ApiSuccess<{

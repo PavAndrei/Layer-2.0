@@ -2,16 +2,31 @@ import type { Request, Response } from 'express';
 
 import { ApiError } from '../exceptions/api-error';
 import {
+  deleteAdminReviewData,
+  getAdminReviewData,
+  getAdminReviewsData,
+  updateAdminReviewData,
+} from '../services/admin-reviews.service';
+import {
   getAdminOrderData,
   getAdminOrdersData,
   updateAdminOrderData,
 } from '../services/admin-orders.service';
 import type {
+  AdminReviewResponse,
+  AdminReviewsResponse,
   AdminMeResponse,
   AdminOrderResponse,
   AdminOrdersResponse,
+  DeleteAdminReviewResponse,
+  UpdateAdminReviewResponse,
 } from '../types/api';
 import { userToDto } from '../utils/user-to-dto';
+import type {
+  AdminReviewParams,
+  AdminReviewsQuery,
+  UpdateAdminReviewBody,
+} from '../validators/admin-reviews.validators';
 import type {
   AdminOrderParams,
   AdminOrdersQuery,
@@ -46,6 +61,72 @@ export const getAdminOrders = async (
   res.status(200).json({
     success: true,
     message: 'Admin orders fetched successfully',
+    data,
+  });
+};
+
+export const getAdminReviews = async (
+  req: Request,
+  res: Response<AdminReviewsResponse>,
+) => {
+  const data = await getAdminReviewsData(
+    req.validated?.query as AdminReviewsQuery,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin reviews fetched successfully',
+    data,
+  });
+};
+
+export const getAdminReview = async (
+  req: Request,
+  res: Response<AdminReviewResponse>,
+) => {
+  const { reviewId } = req.validated?.params as AdminReviewParams;
+  const data = await getAdminReviewData(reviewId);
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin review fetched successfully',
+    data,
+  });
+};
+
+export const updateAdminReview = async (
+  req: Request,
+  res: Response<UpdateAdminReviewResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { reviewId } = req.validated?.params as AdminReviewParams;
+  const body = req.validated?.body as UpdateAdminReviewBody;
+  const data = await updateAdminReviewData({
+    adminUserId: req.user.userId,
+    reviewId,
+    update: body,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin review updated successfully',
+    data,
+  });
+};
+
+export const deleteAdminReview = async (
+  req: Request,
+  res: Response<DeleteAdminReviewResponse>,
+) => {
+  const { reviewId } = req.validated?.params as AdminReviewParams;
+  const data = await deleteAdminReviewData(reviewId);
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin review deleted successfully',
     data,
   });
 };

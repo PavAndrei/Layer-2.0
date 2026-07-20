@@ -1,10 +1,14 @@
 import { Router } from 'express';
 
 import {
+  deleteAdminReview,
   getAdminOrder,
   getAdminMe,
   getAdminOrders,
+  getAdminReview,
+  getAdminReviews,
   updateAdminOrder,
+  updateAdminReview,
 } from '../controllers/admin.controllers';
 import {
   authMiddleware,
@@ -13,6 +17,12 @@ import {
 } from '../middlewares/auth.middleware';
 import { validateRequest } from '../middlewares/validate-request';
 import { catchErrors } from '../utils/catch-errors';
+import {
+  adminReviewParamsSchema,
+  deleteAdminReviewSchema,
+  getAdminReviewsSchema,
+  updateAdminReviewSchema,
+} from '../validators/admin-reviews.validators';
 import {
   adminOrderParamsSchema,
   getAdminOrdersSchema,
@@ -42,6 +52,26 @@ adminRoute.patch(
   '/orders/:orderId',
   validateRequest(updateAdminOrderSchema),
   catchErrors(updateAdminOrder),
+);
+adminRoute.get(
+  '/reviews',
+  validateRequest(getAdminReviewsSchema),
+  catchErrors(getAdminReviews),
+);
+adminRoute.get(
+  '/reviews/:reviewId',
+  validateRequest(adminReviewParamsSchema),
+  catchErrors(getAdminReview),
+);
+adminRoute.patch(
+  '/reviews/:reviewId',
+  validateRequest(updateAdminReviewSchema),
+  catchErrors(updateAdminReview),
+);
+adminRoute.delete(
+  '/reviews/:reviewId',
+  validateRequest(deleteAdminReviewSchema),
+  catchErrors(deleteAdminReview),
 );
 
 export default adminRoute;
