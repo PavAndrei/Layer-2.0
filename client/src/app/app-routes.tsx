@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router';
 
+import { AdminPage, AdminRoute } from '../features/admin';
 import {
   ForgotPasswordPage,
   GuestRoute,
@@ -83,6 +84,16 @@ export const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <ProfilePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminRoute>
+              <AdminPage />
+            </AdminRoute>
           </ProtectedRoute>
         }
       />
