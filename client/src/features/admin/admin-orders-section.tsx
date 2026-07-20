@@ -1,14 +1,14 @@
 import {
+  AdminOrdersFiltersForm,
   AdminOrdersList,
-  useAdminOrders,
 } from '../admin-orders';
 import {
   FeedbackMessage,
+  Pagination,
   SectionHeader,
   Skeleton,
 } from '../../shared/ui';
-
-const ADMIN_ORDERS_PAGE_LIMIT = 12;
+import type { AdminOrdersSectionState } from './use-admin-orders-section';
 
 const AdminOrdersSkeleton = () => (
   <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
@@ -18,12 +18,14 @@ const AdminOrdersSkeleton = () => (
   </div>
 );
 
-export const AdminOrdersSection = () => {
-  const ordersQuery = useAdminOrders({
-    params: {
-      limit: ADMIN_ORDERS_PAGE_LIMIT,
-    },
-  });
+export const AdminOrdersSection = ({
+  filters,
+  onPageChange,
+  ordersQuery,
+}: AdminOrdersSectionState) => {
+  const isWaitingForInitialOrders =
+    ordersQuery.orders.length === 0 &&
+    (ordersQuery.isLoading || filters.isDebouncing);
 
   return (
     <section className="flex flex-col gap-4">
@@ -32,9 +34,19 @@ export const AdminOrdersSection = () => {
         description="Review customer orders, payment state, and fulfillment progress."
       />
 
-      {ordersQuery.isLoading && <AdminOrdersSkeleton />}
+      <AdminOrdersFiltersForm
+        paymentStatus={filters.paymentStatus}
+        search={filters.search}
+        status={filters.status}
+        onPaymentStatusChange={filters.handlePaymentStatusChange}
+        onReset={filters.resetFilters}
+        onSearchChange={filters.handleSearchChange}
+        onStatusChange={filters.handleStatusChange}
+      />
 
-      {!ordersQuery.isLoading && ordersQuery.error && (
+      {isWaitingForInitialOrders && <AdminOrdersSkeleton />}
+
+      {!isWaitingForInitialOrders && ordersQuery.error && (
         <FeedbackMessage
           tone="danger"
           title="Orders are unavailable"
@@ -42,7 +54,7 @@ export const AdminOrdersSection = () => {
         />
       )}
 
-      {!ordersQuery.isLoading &&
+      {!isWaitingForInitialOrders &&
         !ordersQuery.error &&
         ordersQuery.orders.length === 0 && (
         <FeedbackMessage
@@ -51,10 +63,20 @@ export const AdminOrdersSection = () => {
         />
         )}
 
-      {!ordersQuery.isLoading &&
+      {!isWaitingForInitialOrders &&
         !ordersQuery.error &&
         ordersQuery.orders.length > 0 && (
-        <AdminOrdersList orders={ordersQuery.orders} />
+        <>
+          <AdminOrdersList orders={ordersQuery.orders} />
+          {ordersQuery.pagination && (
+            <Pagination
+              currentPage={ordersQuery.pagination.page}
+              limit={ordersQuery.pagination.limit}
+              total={ordersQuery.pagination.total}
+              onPageChange={onPageChange}
+            />
+          )}
+        </>
         )}
     </section>
   );

@@ -23,6 +23,7 @@ export const useAdminOrders = ({
     queryKey: adminOrdersQueryKeys.list(searchParams.toString()),
     queryFn: ({ signal }) => getAdminOrders(params, signal),
     enabled,
+    placeholderData: (previousData) => previousData,
     retry: false,
     staleTime: ADMIN_ORDERS_STALE_TIME_MS,
   });
@@ -40,7 +41,8 @@ export const useAdminOrders = ({
     error: responseError ?? queryError,
     isFetching: query.isFetching,
     isLoading: query.isLoading,
-    orders: enabled && response?.success ? response.data.orders : [],
+    isPlaceholderData: query.isPlaceholderData,
+    orders: response?.success ? response.data.orders : [],
     pagination: response?.success ? response.data.pagination : null,
     refetch: query.refetch,
   };

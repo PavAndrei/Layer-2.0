@@ -2,6 +2,10 @@ import type {
   OrderPaymentStatus,
   OrderStatus,
 } from '../../../entities/order';
+import {
+  ADMIN_ORDER_PAYMENT_STATUS_LABELS,
+  ADMIN_ORDER_STATUS_LABELS,
+} from '../model';
 
 type AdminOrderStatusBadgeProps = {
   status: OrderStatus;
@@ -9,14 +13,6 @@ type AdminOrderStatusBadgeProps = {
 
 type AdminOrderPaymentStatusBadgeProps = {
   status: OrderPaymentStatus;
-};
-
-const orderStatusLabels: Record<OrderStatus, string> = {
-  cancelled: 'Cancelled',
-  completed: 'Completed',
-  paid: 'Paid',
-  pending: 'Pending',
-  processing: 'Processing',
 };
 
 const orderStatusClasses: Record<OrderStatus, string> = {
@@ -29,13 +25,6 @@ const orderStatusClasses: Record<OrderStatus, string> = {
     'border-border-strong bg-background-secondary text-typography-primary',
   processing:
     'border-accent-primary/30 bg-background-secondary text-accent-primary',
-};
-
-const paymentStatusLabels: Record<OrderPaymentStatus, string> = {
-  failed: 'Payment failed',
-  paid: 'Paid',
-  pending: 'Payment pending',
-  refunded: 'Refunded',
 };
 
 const paymentStatusClasses: Record<OrderPaymentStatus, string> = {
@@ -53,8 +42,8 @@ export const AdminOrderStatusBadge = ({
 }: AdminOrderStatusBadgeProps) => (
   <span
     className={`inline-flex min-h-8 w-fit items-center rounded border px-3 py-1 block-small ${orderStatusClasses[status]}`}
-  >
-    {orderStatusLabels[status]}
+>
+    {ADMIN_ORDER_STATUS_LABELS[status]}
   </span>
 );
 
@@ -63,7 +52,7 @@ export const AdminOrderPaymentStatusBadge = ({
 }: AdminOrderPaymentStatusBadgeProps) => (
   <span
     className={`inline-flex min-h-8 w-fit items-center rounded border px-3 py-1 block-small ${paymentStatusClasses[status]}`}
-  >
-    {paymentStatusLabels[status]}
+>
+    {ADMIN_ORDER_PAYMENT_STATUS_LABELS[status]}
   </span>
 );
