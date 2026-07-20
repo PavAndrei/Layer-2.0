@@ -1,12 +1,15 @@
-import { FeedbackMessage, Skeleton } from '../../shared/ui';
 import {
+  FeedbackMessage,
+  SectionedPageHeader,
+  SectionedPageLayout,
+  SideNavigation,
+  Skeleton,
+} from '../../shared/ui';
+import {
+  PROFILE_NAV_ITEMS,
   useProfile,
   useProfilePageState,
 } from './model';
-import {
-  ProfileContentLayout,
-  ProfileLayout,
-} from './ui';
 import { ProfileDetailsSection } from './profile-details-section';
 import { useProfileEmailVerification } from './use-profile-email-verification';
 import { useProfileOrdersSection } from './use-profile-orders-section';
@@ -14,6 +17,14 @@ import { useProfileReviewsSection } from './use-profile-reviews-section';
 import { ProfileOrdersSection } from './profile-orders-section';
 import { ProfileReviewsSection } from './profile-reviews-section';
 import { ProfileSecuritySection } from './profile-security-section';
+
+const PROFILE_BREADCRUMBS = [
+  { label: 'Home', to: '/' },
+  { label: 'Profile' },
+];
+
+const PROFILE_PAGE_TITLE = 'Profile';
+const PROFILE_PAGE_DESCRIPTION = 'Manage your Layer account details.';
 
 export const ProfilePage = () => {
   const {
@@ -37,57 +48,64 @@ export const ProfilePage = () => {
     activeSection,
     onPageChange: handleReviewsPageChange,
   });
+  const profileSidebar = (
+    <SideNavigation
+      activeItemId={activeSection}
+      ariaLabel="Account sections"
+      items={PROFILE_NAV_ITEMS}
+    />
+  );
+  const profileHeader = (
+    <SectionedPageHeader
+      breadcrumbs={PROFILE_BREADCRUMBS}
+      title={PROFILE_PAGE_TITLE}
+      description={PROFILE_PAGE_DESCRIPTION}
+    />
+  );
 
   if (profileQuery.isPending) {
     return (
-      <ProfileLayout>
-        <ProfileContentLayout activeSection={activeSection}>
-          <Skeleton className="h-48 w-full" />
-        </ProfileContentLayout>
-      </ProfileLayout>
+      <SectionedPageLayout header={profileHeader} sidebar={profileSidebar}>
+        <Skeleton className="h-48 w-full" />
+      </SectionedPageLayout>
     );
   }
 
   if (profileQuery.isError || !profileQuery.data?.success) {
     return (
-      <ProfileLayout>
-        <ProfileContentLayout activeSection={activeSection}>
-          <FeedbackMessage
-            tone="danger"
-            title="Profile is unavailable"
-            description={
-              profileQuery.data?.message ??
-              'Refresh the page or sign in again.'
-            }
-          />
-        </ProfileContentLayout>
-      </ProfileLayout>
+      <SectionedPageLayout header={profileHeader} sidebar={profileSidebar}>
+        <FeedbackMessage
+          tone="danger"
+          title="Profile is unavailable"
+          description={
+            profileQuery.data?.message ??
+            'Refresh the page or sign in again.'
+          }
+        />
+      </SectionedPageLayout>
     );
   }
 
   return (
-    <ProfileLayout>
-      <ProfileContentLayout activeSection={activeSection}>
-        {activeSection === 'profile' && (
-          <ProfileDetailsSection user={profileQuery.data.data.user} />
-        )}
+    <SectionedPageLayout header={profileHeader} sidebar={profileSidebar}>
+      {activeSection === 'profile' && (
+        <ProfileDetailsSection user={profileQuery.data.data.user} />
+      )}
 
-        {activeSection === 'orders' && (
-          <ProfileOrdersSection {...ordersSection} />
-        )}
+      {activeSection === 'orders' && (
+        <ProfileOrdersSection {...ordersSection} />
+      )}
 
-        {activeSection === 'reviews' && (
-          <ProfileReviewsSection {...reviewsSection} />
-        )}
+      {activeSection === 'reviews' && (
+        <ProfileReviewsSection {...reviewsSection} />
+      )}
 
-        {activeSection === 'security' && (
-          <ProfileSecuritySection
-            emailVerification={emailVerification}
-            isEmailVerified={profileQuery.data.data.user.isEmailVerified}
-          />
-        )}
-
-      </ProfileContentLayout>
-    </ProfileLayout>
+      {activeSection === 'security' && (
+        <ProfileSecuritySection
+          emailVerification={emailVerification}
+          isEmailVerified={profileQuery.data.data.user.isEmailVerified}
+        />
+      )}
+    </SectionedPageLayout>
   );
 };

@@ -2,13 +2,13 @@ import {
   ConfirmDialog,
   FeedbackMessage,
   Pagination,
+  SectionHeader,
   Skeleton,
 } from '../../shared/ui';
 import {
   UserReviewsEmptyState,
   UserReviewsList,
 } from '../reviews';
-import { ProfileSectionHeader } from './ui';
 import type { ProfileReviewsSectionState } from './use-profile-reviews-section';
 
 export const ProfileReviewsSection = ({
@@ -28,7 +28,7 @@ export const ProfileReviewsSection = ({
   return (
     <>
       <ConfirmDialog {...deleteReviewDialog} />
-      <ProfileSectionHeader
+      <SectionHeader
         title="Reviews"
         description="Review the product feedback you have shared."
       />

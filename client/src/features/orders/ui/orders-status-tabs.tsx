@@ -28,7 +28,7 @@ const getStatusTabClassName = (isActive: boolean) =>
 export const OrdersStatusTabs = ({
   activeStatus,
 }: OrdersStatusTabsProps) => (
-  <div className="flex gap-2 overflow-x-auto" role="tablist">
+  <div className="flex gap-2 overflow-x-auto pb-1.5" role="tablist">
     <Link
       to="/profile?section=orders"
       className={getStatusTabClassName(activeStatus === null)}

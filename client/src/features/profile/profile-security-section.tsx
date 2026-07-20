@@ -1,4 +1,5 @@
-import { ProfileEmailVerification, ProfileSectionHeader } from './ui';
+import { SectionHeader } from '../../shared/ui';
+import { ProfileEmailVerification } from './ui';
 
 type ProfileSecuritySectionProps = {
   emailVerification: {
@@ -17,7 +18,7 @@ export const ProfileSecuritySection = ({
 }: ProfileSecuritySectionProps) => {
   return (
     <>
-      <ProfileSectionHeader
+      <SectionHeader
         title="Security"
         description="Manage account verification and security settings."
       />

@@ -1,5 +1,6 @@
 import type { User } from '../../entities/user';
-import { ProfileDetails, ProfileSectionHeader } from './ui';
+import { SectionHeader } from '../../shared/ui';
+import { ProfileDetails } from './ui';
 
 type ProfileDetailsSectionProps = {
   user: User;
@@ -10,7 +11,7 @@ export const ProfileDetailsSection = ({
 }: ProfileDetailsSectionProps) => {
   return (
     <>
-      <ProfileSectionHeader
+      <SectionHeader
         title="Profile"
         description="Review your account details."
       />

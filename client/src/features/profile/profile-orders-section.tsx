@@ -1,10 +1,14 @@
-import { Pagination, Skeleton, FeedbackMessage } from '../../shared/ui';
+import {
+  FeedbackMessage,
+  Pagination,
+  SectionHeader,
+  Skeleton,
+} from '../../shared/ui';
 import {
   OrdersEmptyState,
   OrdersList,
   OrdersStatusTabs,
 } from '../orders';
-import { ProfileSectionHeader } from './ui';
 import type { ProfileOrdersSectionState } from './use-profile-orders-section';
 
 export const ProfileOrdersSection = ({
@@ -14,7 +18,7 @@ export const ProfileOrdersSection = ({
 }: ProfileOrdersSectionState) => {
   return (
     <>
-      <ProfileSectionHeader
+      <SectionHeader
         title="Orders"
         description="Track recent orders and review their current status."
       />

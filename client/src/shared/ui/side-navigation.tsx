@@ -18,9 +18,9 @@ export const SideNavigation = ({
   items,
 }: SideNavigationProps) => {
   return (
-    <aside className="flex h-fit flex-col gap-2 rounded border border-border-soft bg-background-surface p-2 lg:sticky lg:top-4">
-      <nav aria-label={ariaLabel}>
-        <ul className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible">
+    <aside className="flex h-fit min-w-0 flex-col gap-2 rounded border border-border-soft bg-background-surface p-2 lg:sticky lg:top-4">
+      <nav className="min-w-0" aria-label={ariaLabel}>
+        <ul className="flex min-w-0 gap-2 overflow-x-auto pb-1.5 lg:flex-col lg:overflow-visible lg:pb-0">
           {items.map((item) => {
             const isActive = item.id === activeItemId;
 
@@ -30,7 +30,7 @@ export const SideNavigation = ({
                   to={item.to}
                   aria-current={isActive ? 'page' : undefined}
                   className={[
-                    'flex min-h-10 w-full items-center rounded px-3 py-2 text-left block-medium transition-colors',
+                    'flex min-h-10 w-full items-center rounded px-3 py-2 text-left block-medium whitespace-nowrap transition-colors lg:whitespace-normal',
                     isActive
                       ? 'bg-accent-primary text-background-surface'
                       : 'text-typography-secondary hover:bg-background-secondary hover:text-typography-primary',

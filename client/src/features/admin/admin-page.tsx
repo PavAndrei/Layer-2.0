@@ -1,24 +1,54 @@
 import {
+  SectionHeader,
+  SectionedPageHeader,
+  SectionedPageLayout,
+  SideNavigation,
+} from '../../shared/ui';
+import {
+  ADMIN_NAV_ITEMS,
   ADMIN_SECTION_LABELS,
   useAdminPageState,
 } from './model';
-import { AdminLayout } from './ui';
+import { AdminOrdersSection } from './admin-orders-section';
+
+const ADMIN_BREADCRUMBS = [
+  { label: 'Home', to: '/' },
+  { label: 'Admin' },
+];
+
+const ADMIN_PAGE_TITLE = 'Admin';
+const ADMIN_PAGE_DESCRIPTION =
+  'Manage store content, orders, reviews, and customers.';
 
 export const AdminPage = () => {
   const { activeSection } = useAdminPageState();
+  const adminSidebar = (
+    <SideNavigation
+      activeItemId={activeSection}
+      ariaLabel="Admin sections"
+      items={ADMIN_NAV_ITEMS}
+    />
+  );
+  const adminHeader = (
+    <SectionedPageHeader
+      breadcrumbs={ADMIN_BREADCRUMBS}
+      title={ADMIN_PAGE_TITLE}
+      description={ADMIN_PAGE_DESCRIPTION}
+    />
+  );
 
   return (
-    <AdminLayout activeSection={activeSection}>
-      <section className="rounded border border-border-soft bg-background-surface p-4">
-        <div className="flex flex-col gap-1">
-          <h2 className="block-title text-typography-heading">
-            {ADMIN_SECTION_LABELS[activeSection]}
-          </h2>
-          <p className="block-small text-typography-secondary">
-            This admin section is prepared and will be connected next.
-          </p>
-        </div>
-      </section>
-    </AdminLayout>
+    <SectionedPageLayout header={adminHeader} sidebar={adminSidebar}>
+      {activeSection === 'orders' ? (
+        <AdminOrdersSection />
+      ) : (
+        <section className="rounded border border-border-soft bg-background-surface p-4">
+          <SectionHeader
+            title={ADMIN_SECTION_LABELS[activeSection]}
+            description="This admin section is prepared and will be connected next."
+          />
+        </section>
+      )}
+    </SectionedPageLayout>
   );
 };
