@@ -1,12 +1,17 @@
 import { Router } from 'express';
 
-import { getAdminMe } from '../controllers/admin.controllers';
+import {
+  getAdminMe,
+  getAdminOrders,
+} from '../controllers/admin.controllers';
 import {
   authMiddleware,
   requireAdmin,
   requireUser,
 } from '../middlewares/auth.middleware';
+import { validateRequest } from '../middlewares/validate-request';
 import { catchErrors } from '../utils/catch-errors';
+import { getAdminOrdersSchema } from '../validators/admin-orders.validators';
 
 const adminRoute = Router();
 
@@ -17,5 +22,10 @@ adminRoute.use((req, res, next) => {
 adminRoute.use(requireAdmin);
 
 adminRoute.get('/me', catchErrors(getAdminMe));
+adminRoute.get(
+  '/orders',
+  validateRequest(getAdminOrdersSchema),
+  catchErrors(getAdminOrders),
+);
 
 export default adminRoute;
