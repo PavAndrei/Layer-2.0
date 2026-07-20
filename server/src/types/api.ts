@@ -225,6 +225,10 @@ export type CurrentUserResponse = ApiSuccess<{
   user: UserDto;
 }>;
 
+export type AdminMeResponse = ApiSuccess<{
+  user: UserDto;
+}>;
+
 export type EmailVerificationResponse = ApiSuccess<{
   user: UserDto;
 }>;

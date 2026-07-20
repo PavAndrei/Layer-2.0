@@ -72,3 +72,5 @@ export const requireRole =
 
     next();
   };
+
+export const requireAdmin = requireRole('admin');

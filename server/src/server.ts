@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
+import adminRoutes from './routes/admin.route';
 import authRoutes from './routes/auth.route';
 import cartRoutes from './routes/cart.route';
 import checkoutRoutes from './routes/checkout.route';
@@ -43,6 +44,7 @@ app.get('/', (_, res) => {
 
 app.use('/products', productsRoutes);
 app.use('/auth', authRoutes);
+app.use('/admin', adminRoutes);
 app.use('/cart', cartRoutes);
 app.use('/checkout', checkoutRoutes);
 app.use('/favorites', favoritesRoutes);
