@@ -1,4 +1,5 @@
 import type {
+  AdminOrder,
   AdminOrderListItem,
   OrderPaymentStatus,
   OrderStatus,
@@ -8,6 +9,9 @@ import type {
   ApiResponse,
   PaginationData,
 } from '../../../shared/api';
+import type {
+  UpdateAdminOrderPayload,
+} from '../model';
 
 export type AdminOrdersParams = {
   limit?: number;
@@ -22,6 +26,15 @@ export type AdminOrdersResponseData = {
   pagination: PaginationData;
 };
 
+export type AdminOrderResponseData = {
+  order: AdminOrder;
+};
+
+export type UpdateAdminOrderParams = {
+  orderId: string;
+  payload: UpdateAdminOrderPayload;
+};
+
 export const getAdminOrders = async (
   params: AdminOrdersParams = {},
   signal?: AbortSignal,
@@ -31,5 +44,29 @@ export const getAdminOrders = async (
     params,
     signal,
     errorMessage: 'Failed to load admin orders',
+  });
+};
+
+export const getAdminOrder = async (
+  orderId: string,
+  signal?: AbortSignal,
+): Promise<ApiResponse<AdminOrderResponseData>> => {
+  return apiClient.get<AdminOrderResponseData>({
+    path: `/admin/orders/${orderId}`,
+    signal,
+    errorMessage: 'Failed to load admin order',
+  });
+};
+
+export const updateAdminOrder = async ({
+  orderId,
+  payload,
+}: UpdateAdminOrderParams): Promise<
+  ApiResponse<AdminOrderResponseData>
+> => {
+  return apiClient.patch<AdminOrderResponseData, UpdateAdminOrderPayload>({
+    path: `/admin/orders/${orderId}`,
+    body: payload,
+    errorMessage: 'Failed to update admin order',
   });
 };

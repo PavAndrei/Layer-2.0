@@ -19,12 +19,15 @@ export type AdminOrderStatusFilterOption =
 export type AdminOrderPaymentStatusFilterOption =
   SelectFilterOption<AdminOrderPaymentStatusFilterValue>;
 
-export const ADMIN_ORDER_STATUS_FILTER_OPTIONS: readonly AdminOrderStatusFilterOption[] = [
-  { label: 'All statuses', value: '' },
-  ...ORDER_STATUSES.map((status) => ({
+export const ADMIN_ORDER_STATUS_OPTIONS: readonly SelectFilterOption<OrderStatus>[] =
+  ORDER_STATUSES.map((status) => ({
     label: ADMIN_ORDER_STATUS_LABELS[status],
     value: status,
-  })),
+  }));
+
+export const ADMIN_ORDER_STATUS_FILTER_OPTIONS: readonly AdminOrderStatusFilterOption[] = [
+  { label: 'All statuses', value: '' },
+  ...ADMIN_ORDER_STATUS_OPTIONS,
 ];
 
 export const ADMIN_ORDER_PAYMENT_STATUS_FILTER_OPTIONS: readonly AdminOrderPaymentStatusFilterOption[] = [

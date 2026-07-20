@@ -1,13 +1,22 @@
 import type { Request, Response } from 'express';
 
 import { ApiError } from '../exceptions/api-error';
-import { getAdminOrdersData } from '../services/admin-orders.service';
+import {
+  getAdminOrderData,
+  getAdminOrdersData,
+  updateAdminOrderData,
+} from '../services/admin-orders.service';
 import type {
   AdminMeResponse,
+  AdminOrderResponse,
   AdminOrdersResponse,
 } from '../types/api';
 import { userToDto } from '../utils/user-to-dto';
-import type { AdminOrdersQuery } from '../validators/admin-orders.validators';
+import type {
+  AdminOrderParams,
+  AdminOrdersQuery,
+  UpdateAdminOrderBody,
+} from '../validators/admin-orders.validators';
 
 export const getAdminMe = async (
   req: Request,
@@ -37,6 +46,43 @@ export const getAdminOrders = async (
   res.status(200).json({
     success: true,
     message: 'Admin orders fetched successfully',
+    data,
+  });
+};
+
+export const getAdminOrder = async (
+  req: Request,
+  res: Response<AdminOrderResponse>,
+) => {
+  const { orderId } = req.validated?.params as AdminOrderParams;
+  const data = await getAdminOrderData(orderId);
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin order fetched successfully',
+    data,
+  });
+};
+
+export const updateAdminOrder = async (
+  req: Request,
+  res: Response<AdminOrderResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { orderId } = req.validated?.params as AdminOrderParams;
+  const body = req.validated?.body as UpdateAdminOrderBody;
+  const data = await updateAdminOrderData({
+    adminUserId: req.user.userId,
+    orderId,
+    update: body,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin order updated successfully',
     data,
   });
 };

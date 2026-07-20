@@ -73,3 +73,64 @@ export const adminOrderParamsSchema = z.object({
     })
     .strict(),
 });
+
+const clearableTextField = ({
+  fieldName,
+  max,
+}: {
+  fieldName: string;
+  max: number;
+}) =>
+  z
+    .string()
+    .trim()
+    .max(max, `${fieldName} is too long`)
+    .transform((value) => (value ? value : undefined));
+
+const hasOwnField = <Field extends string>(
+  value: Record<string, unknown>,
+  field: Field,
+) => Object.prototype.hasOwnProperty.call(value, field);
+
+export const updateAdminOrderBodySchema = z
+  .object({
+    status: z.enum(ORDER_STATUSES).optional(),
+    statusNote: clearableTextField({
+      fieldName: 'Status note',
+      max: 1000,
+    }).optional(),
+    trackingNumber: clearableTextField({
+      fieldName: 'Tracking number',
+      max: 120,
+    }).optional(),
+    adminNote: clearableTextField({
+      fieldName: 'Admin note',
+      max: 5000,
+    }).optional(),
+  })
+  .strict()
+  .refine(
+    (body) =>
+      hasOwnField(body, 'status') ||
+      hasOwnField(body, 'trackingNumber') ||
+      hasOwnField(body, 'adminNote'),
+    {
+      message: 'Order update must contain at least one field',
+    },
+  )
+  .refine(
+    (body) => !hasOwnField(body, 'statusNote') || hasOwnField(body, 'status'),
+    {
+      message: 'Status note requires status update',
+    },
+  );
+
+export const updateAdminOrderSchema = z.object({
+  params: adminOrderParamsSchema.shape.params,
+  body: updateAdminOrderBodySchema,
+});
+
+export type AdminOrderParams = z.infer<
+  typeof adminOrderParamsSchema
+>['params'];
+export type UpdateAdminOrderBody = z.infer<typeof updateAdminOrderBodySchema>;
