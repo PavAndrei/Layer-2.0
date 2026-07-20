@@ -1,4 +1,5 @@
 export { reviewQueryKeys } from './review-query-keys';
+export { REVIEW_TEXT_MAX_LENGTH } from './review-form-constraints';
 export {
   getReviewFieldErrors,
   reviewSchema,

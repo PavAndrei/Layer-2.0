@@ -5,6 +5,7 @@ import type {
   ReviewFormErrors,
   ReviewFormValues,
 } from './review-form-types';
+import { REVIEW_TEXT_MAX_LENGTH } from './review-form-constraints';
 
 export const reviewSchema = z.object({
   rating: z
@@ -21,7 +22,7 @@ export const reviewSchema = z.object({
     .string()
     .trim()
     .min(1, 'Review text is required')
-    .max(2000, 'Review text is too long'),
+    .max(REVIEW_TEXT_MAX_LENGTH, 'Review text is too long'),
 });
 
 export const getReviewFieldErrors = (

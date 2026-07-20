@@ -11,6 +11,7 @@ export {
   type UpdateReviewData,
   type UserReview,
   getReviewFieldErrors,
+  REVIEW_TEXT_MAX_LENGTH,
   reviewSchema,
 } from './model';
-export { ReviewCard, ReviewListSkeleton } from './ui';
+export { ReviewCard, ReviewForm, ReviewListSkeleton } from './ui';
