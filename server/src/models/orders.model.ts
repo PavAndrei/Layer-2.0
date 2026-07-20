@@ -6,10 +6,13 @@ import {
 } from 'mongoose';
 
 import {
+  ORDER_PAYMENT_STATUSES,
   ORDER_STATUSES,
   type OrderItemSnapshot,
+  type OrderPaymentStatus,
   type OrderShippingAddress,
   type OrderStatus,
+  type OrderStatusHistoryItem,
 } from '../types/order';
 import { PRODUCT_SIZES } from '../types/product-variant';
 
@@ -149,6 +152,36 @@ const orderShippingAddressSchema = new Schema<OrderShippingAddress>(
   },
 );
 
+const orderStatusHistoryItemSchema = new Schema<OrderStatusHistoryItem>(
+  {
+    status: {
+      type: String,
+      enum: ORDER_STATUSES,
+      required: true,
+    },
+
+    changedAt: {
+      type: Date,
+      required: true,
+      default: Date.now,
+    },
+
+    changedBy: {
+      type: String,
+      trim: true,
+    },
+
+    note: {
+      type: String,
+      trim: true,
+      maxlength: 1000,
+    },
+  },
+  {
+    _id: false,
+  },
+);
+
 const orderSchema = new Schema(
   {
     userId: {
@@ -162,6 +195,14 @@ const orderSchema = new Schema(
       type: String,
       enum: ORDER_STATUSES,
       default: 'pending' satisfies OrderStatus,
+      required: true,
+      index: true,
+    },
+
+    paymentStatus: {
+      type: String,
+      enum: ORDER_PAYMENT_STATUSES,
+      default: 'pending' satisfies OrderPaymentStatus,
       required: true,
       index: true,
     },
@@ -206,14 +247,42 @@ const orderSchema = new Schema(
       required: true,
       min: 0,
     },
+
+    trackingNumber: {
+      type: String,
+      trim: true,
+      maxlength: 120,
+    },
+
+    adminNote: {
+      type: String,
+      trim: true,
+      maxlength: 5000,
+    },
+
+    statusHistory: {
+      type: [orderStatusHistoryItemSchema],
+      default: [],
+    },
   },
   {
     timestamps: true,
   },
 );
 
+orderSchema.pre('validate', function () {
+  if (this.statusHistory.length === 0) {
+    this.statusHistory.push({
+      status: this.status,
+      changedAt: this.createdAt ?? new Date(),
+    });
+  }
+});
+
 orderSchema.index({ userId: 1, createdAt: -1 });
 orderSchema.index({ userId: 1, status: 1, createdAt: -1 });
+orderSchema.index({ status: 1, paymentStatus: 1, createdAt: -1 });
+orderSchema.index({ contactEmail: 1, createdAt: -1 });
 
 export type OrderData = InferSchemaType<typeof orderSchema>;
 export type OrderDocument = HydratedDocument<OrderData>;

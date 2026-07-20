@@ -8,6 +8,23 @@ export const ORDER_STATUSES = [
 
 export type OrderStatus = (typeof ORDER_STATUSES)[number];
 
+export const ORDER_PAYMENT_STATUSES = [
+  'pending',
+  'paid',
+  'failed',
+  'refunded',
+] as const;
+
+export type OrderPaymentStatus =
+  (typeof ORDER_PAYMENT_STATUSES)[number];
+
+export type OrderStatusHistoryItem = {
+  changedAt: string;
+  changedBy?: string;
+  note?: string;
+  status: OrderStatus;
+};
+
 export const ORDER_ITEM_SIZES = [
   'XS',
   'S',
@@ -52,10 +69,34 @@ export type Order = {
   createdAt: string;
   discountTotal: number;
   items: OrderItemSnapshot[];
+  paymentStatus: OrderPaymentStatus;
   shippingAddress: OrderShippingAddress;
   status: OrderStatus;
   subtotal: number;
+  trackingNumber?: string;
   total: number;
   updatedAt: string;
   userId: string;
+};
+
+export type AdminOrderListItem = {
+  _id: string;
+  contactEmail: string;
+  createdAt: string;
+  customerName: string;
+  itemsCount: number;
+  orderNumber: string;
+  paymentStatus: OrderPaymentStatus;
+  status: OrderStatus;
+  total: number;
+  trackingNumber?: string;
+  updatedAt: string;
+};
+
+export type AdminOrder = Order & {
+  adminNote?: string;
+  customerName: string;
+  itemsCount: number;
+  orderNumber: string;
+  statusHistory: OrderStatusHistoryItem[];
 };

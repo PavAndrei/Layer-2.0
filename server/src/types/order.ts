@@ -10,6 +10,23 @@ export const ORDER_STATUSES = [
 
 export type OrderStatus = (typeof ORDER_STATUSES)[number];
 
+export const ORDER_PAYMENT_STATUSES = [
+  'pending',
+  'paid',
+  'failed',
+  'refunded',
+] as const;
+
+export type OrderPaymentStatus =
+  (typeof ORDER_PAYMENT_STATUSES)[number];
+
+export type OrderStatusHistoryItem = {
+  changedAt: Date;
+  changedBy?: string;
+  note?: string;
+  status: OrderStatus;
+};
+
 export type OrderItemSnapshot = {
   compareAtPrice?: number;
   color: string;

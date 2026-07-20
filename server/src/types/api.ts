@@ -3,8 +3,10 @@ import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
 import type {
   OrderItemSnapshot,
+  OrderPaymentStatus,
   OrderShippingAddress,
   OrderStatus,
+  OrderStatusHistoryItem,
 } from './order';
 import type { ReviewStatus } from './review';
 import type { UserAuthProvider, UserRole } from './user';
@@ -76,12 +78,43 @@ export type OrderDto = {
   createdAt: string;
   discountTotal: number;
   items: OrderItemSnapshot[];
+  paymentStatus: OrderPaymentStatus;
   shippingAddress: OrderShippingAddress;
   status: OrderStatus;
   subtotal: number;
+  trackingNumber?: string;
   total: number;
   updatedAt: string;
   userId: string;
+};
+
+export type OrderStatusHistoryDto = Omit<
+  OrderStatusHistoryItem,
+  'changedAt'
+> & {
+  changedAt: string;
+};
+
+export type AdminOrderListItemDto = {
+  _id: string;
+  contactEmail: string;
+  createdAt: string;
+  customerName: string;
+  itemsCount: number;
+  orderNumber: string;
+  paymentStatus: OrderPaymentStatus;
+  status: OrderStatus;
+  total: number;
+  trackingNumber?: string;
+  updatedAt: string;
+};
+
+export type AdminOrderDto = OrderDto & {
+  adminNote?: string;
+  customerName: string;
+  itemsCount: number;
+  orderNumber: string;
+  statusHistory: OrderStatusHistoryDto[];
 };
 
 export type UserDto = {
@@ -100,6 +133,15 @@ export type PaginationData = {
   limit: number;
   totalPages: number;
 };
+
+export type AdminOrdersResponse = ApiSuccess<{
+  orders: AdminOrderListItemDto[];
+  pagination: PaginationData;
+}>;
+
+export type AdminOrderResponse = ApiSuccess<{
+  order: AdminOrderDto;
+}>;
 
 export type ProductsResponse = ApiSuccess<{
   products: ProductDto[];

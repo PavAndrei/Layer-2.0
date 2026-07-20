@@ -7,6 +7,7 @@ import { Product } from '../models/products.model';
 import { User } from '../models/users.model';
 import type {
   OrderItemSnapshot,
+  OrderPaymentStatus,
   OrderShippingAddress,
   OrderStatus,
 } from '../types/order';
@@ -21,6 +22,18 @@ const ORDER_STATUS_SEQUENCE: OrderStatus[] = [
   'completed',
   'cancelled',
 ];
+
+const getPaymentStatus = (status: OrderStatus): OrderPaymentStatus => {
+  if (
+    status === 'paid' ||
+    status === 'processing' ||
+    status === 'completed'
+  ) {
+    return 'paid';
+  }
+
+  return 'pending';
+};
 
 const shippingAddress: OrderShippingAddress = {
   firstName: 'Test',
@@ -132,8 +145,15 @@ const seedTestOrders = async () => {
       createdAt,
       discountTotal: totals.discountTotal,
       items,
+      paymentStatus: getPaymentStatus(status),
       shippingAddress,
       status,
+      statusHistory: [
+        {
+          changedAt: createdAt,
+          status,
+        },
+      ],
       subtotal: totals.subtotal,
       total: totals.total,
       updatedAt: createdAt,
