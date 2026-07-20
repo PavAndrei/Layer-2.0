@@ -1,8 +1,7 @@
 import { Link } from 'react-router';
 
 import {
-  PROFILE_SECTION_LABELS,
-  PROFILE_SECTIONS,
+  PROFILE_NAV_ITEMS,
   type ProfileSection,
 } from '../model';
 
@@ -17,13 +16,13 @@ export const ProfileSidebar = ({
     <aside className="flex h-fit flex-col gap-2 rounded border border-border-soft bg-background-surface p-2 lg:sticky lg:top-4">
       <nav aria-label="Account sections">
         <ul className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible">
-          {PROFILE_SECTIONS.map((section) => {
-            const isActive = section === activeSection;
+          {PROFILE_NAV_ITEMS.map((item) => {
+            const isActive = item.id === activeSection;
 
             return (
-              <li key={section} className="shrink-0 lg:shrink">
+              <li key={item.id} className="shrink-0 lg:shrink">
                 <Link
-                  to={`/profile?section=${section}`}
+                  to={item.to}
                   aria-current={isActive ? 'page' : undefined}
                   className={[
                     'flex min-h-10 w-full items-center rounded px-3 py-2 text-left block-medium transition-colors',
@@ -32,7 +31,7 @@ export const ProfileSidebar = ({
                       : 'text-typography-secondary hover:bg-background-secondary hover:text-typography-primary',
                   ].join(' ')}
                 >
-                  {PROFILE_SECTION_LABELS[section]}
+                  {item.label}
                 </Link>
               </li>
             );

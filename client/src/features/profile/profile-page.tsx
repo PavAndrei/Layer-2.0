@@ -12,7 +12,6 @@ import { useProfileEmailVerification } from './use-profile-email-verification';
 import { useProfileOrdersSection } from './use-profile-orders-section';
 import { useProfileReviewsSection } from './use-profile-reviews-section';
 import { ProfileOrdersSection } from './profile-orders-section';
-import { ProfilePlaceholderSection } from './profile-placeholder-section';
 import { ProfileReviewsSection } from './profile-reviews-section';
 import { ProfileSecuritySection } from './profile-security-section';
 
@@ -88,12 +87,6 @@ export const ProfilePage = () => {
           />
         )}
 
-        {activeSection !== 'orders' &&
-          activeSection !== 'profile' &&
-          activeSection !== 'reviews' &&
-          activeSection !== 'security' && (
-          <ProfilePlaceholderSection activeSection={activeSection} />
-          )}
       </ProfileContentLayout>
     </ProfileLayout>
   );
