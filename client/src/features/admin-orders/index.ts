@@ -41,6 +41,7 @@ export {
   AdminOrderManagementForm,
   AdminOrderPaymentStatusBadge,
   AdminOrderStatusHistoryCard,
+  AdminOrderStatusHistoryItem,
   AdminOrdersFiltersForm,
   AdminOrdersList,
   AdminOrderStatusBadge,

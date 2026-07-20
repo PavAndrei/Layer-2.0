@@ -9,7 +9,9 @@ import {
   type OrderData,
   type OrderDocument,
 } from '../models/orders.model';
+import { User } from '../models/users.model';
 import type {
+  AdminOrderDto,
   AdminOrderResponse,
   AdminOrdersResponse,
 } from '../types/api';
@@ -133,10 +135,8 @@ const findAdminOrderById = async (orderId: string) => {
 };
 
 const toAdminOrderResponseData = (
-  order: OrderDocument,
-): AdminOrderResponse['data'] => ({
-  order: orderToAdminDto(order),
-});
+  order: AdminOrderDto,
+): AdminOrderResponse['data'] => ({ order });
 
 const hasOwnField = <Field extends string>(
   value: Record<string, unknown>,
@@ -147,8 +147,69 @@ export const getAdminOrderData = async (
   orderId: string,
 ): Promise<AdminOrderResponse['data']> => {
   const order = await findAdminOrderById(orderId);
+  const orderDto = await orderToAdminDtoWithStatusActors(order);
 
-  return toAdminOrderResponseData(order);
+  return toAdminOrderResponseData(orderDto);
+};
+
+const getStatusHistoryActorIds = (order: AdminOrderDto) => {
+  return Array.from(
+    new Set(
+      order.statusHistory.flatMap((item) => {
+        const { changedBy } = item;
+
+        if (!changedBy) return [];
+        if (!Types.ObjectId.isValid(changedBy) || changedBy.length !== 24) {
+          return [];
+        }
+
+        return [changedBy];
+      }),
+    ),
+  );
+};
+
+const orderToAdminDtoWithStatusActors = async (
+  order: OrderDocument,
+): Promise<AdminOrderDto> => {
+  const orderDto = orderToAdminDto(order);
+  const actorIds = getStatusHistoryActorIds(orderDto);
+
+  if (actorIds.length === 0) {
+    return orderDto;
+  }
+
+  const users = await User.find({
+    _id: {
+      $in: actorIds,
+    },
+  }).select('email name');
+  const usersById = new Map(
+    users.map((user) => [
+      user._id.toString(),
+      {
+        email: user.email,
+        name: user.name,
+      },
+    ]),
+  );
+
+  return {
+    ...orderDto,
+    statusHistory: orderDto.statusHistory.map((item) => {
+      if (!item.changedBy) return item;
+
+      const actor = usersById.get(item.changedBy);
+
+      if (!actor) return item;
+
+      return {
+        ...item,
+        changedByEmail: actor.email,
+        changedByName: actor.name,
+      };
+    }),
+  };
 };
 
 type UpdateAdminOrderDataParams = {
@@ -184,5 +245,7 @@ export const updateAdminOrderData = async ({
 
   await order.save();
 
-  return toAdminOrderResponseData(order);
+  const orderDto = await orderToAdminDtoWithStatusActors(order);
+
+  return toAdminOrderResponseData(orderDto);
 };

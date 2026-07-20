@@ -21,6 +21,8 @@ export type OrderPaymentStatus =
 export type OrderStatusHistoryItem = {
   changedAt: string;
   changedBy?: string;
+  changedByEmail?: string;
+  changedByName?: string;
   note?: string;
   status: OrderStatus;
 };

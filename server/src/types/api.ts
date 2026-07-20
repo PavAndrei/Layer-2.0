@@ -93,6 +93,8 @@ export type OrderStatusHistoryDto = Omit<
   'changedAt'
 > & {
   changedAt: string;
+  changedByEmail?: string;
+  changedByName?: string;
 };
 
 export type AdminOrderListItemDto = {

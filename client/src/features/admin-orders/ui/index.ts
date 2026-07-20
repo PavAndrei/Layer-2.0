@@ -9,5 +9,6 @@ export { AdminOrderListItem } from './admin-order-list-item';
 export { AdminOrderManagementCard } from './admin-order-management-card';
 export { AdminOrderManagementForm } from './admin-order-management-form';
 export { AdminOrderStatusHistoryCard } from './admin-order-status-history-card';
+export { AdminOrderStatusHistoryItem } from './admin-order-status-history-item';
 export { AdminOrdersFiltersForm } from './admin-orders-filters-form';
 export { AdminOrdersList } from './admin-orders-list';
