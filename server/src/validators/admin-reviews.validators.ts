@@ -145,6 +145,7 @@ export const adminReviewsQuerySchema = z
     status: z.enum(REVIEW_STATUSES).optional(),
     rating: optionalRatingParam(),
     productId: optionalObjectIdParam('product id'),
+    userId: optionalObjectIdParam('user id'),
     verifiedPurchase: optionalBooleanParam('verified purchase'),
     dateFrom: optionalDateParam('date from'),
     dateTo: optionalDateParam('date to'),

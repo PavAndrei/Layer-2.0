@@ -73,6 +73,7 @@ export type UserReviewDto = ReviewDto & {
 };
 
 export type AdminReviewDto = ReviewDto & {
+  authorId?: string;
   authorEmail?: string;
   moderationReason?: string;
   moderatedAt: string | null;
@@ -157,9 +158,30 @@ export type AdminUserStatsDto = {
   totalSpent: number;
 };
 
+export type AdminUserRecentOrderDto = {
+  _id: string;
+  createdAt: string;
+  orderNumber: string;
+  paymentStatus: OrderPaymentStatus;
+  status: OrderStatus;
+  total: number;
+};
+
+export type AdminUserRecentReviewDto = {
+  _id: string;
+  createdAt: string;
+  product: ReviewProductDto | null;
+  rating: number;
+  status: ReviewStatus;
+  text: string;
+  title: string;
+};
+
 export type AdminUserDto = UserDto & {
   createdAt: string;
   lastLoginAt: string | null;
+  recentOrders: AdminUserRecentOrderDto[];
+  recentReviews: AdminUserRecentReviewDto[];
   stats: AdminUserStatsDto;
   status: UserStatus;
   updatedAt: string;

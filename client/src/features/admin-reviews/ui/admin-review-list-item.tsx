@@ -100,9 +100,18 @@ export const AdminReviewListItem = ({
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="flex min-w-0 flex-col gap-1">
             <span className="block-small text-typography-muted">Customer</span>
-            <span className="truncate block-medium text-typography-primary">
-              {review.authorName}
-            </span>
+            {review.authorId ? (
+              <Link
+                to={`/admin/users/${review.authorId}`}
+                className="truncate block-medium text-typography-primary transition-colors hover:text-typography-heading hover:underline"
+              >
+                {review.authorName}
+              </Link>
+            ) : (
+              <span className="truncate block-medium text-typography-primary">
+                {review.authorName}
+              </span>
+            )}
             {review.authorEmail && (
               <span className="truncate block-small text-typography-secondary">
                 {review.authorEmail}

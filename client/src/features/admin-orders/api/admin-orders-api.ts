@@ -19,6 +19,7 @@ export type AdminOrdersParams = {
   paymentStatus?: OrderPaymentStatus;
   search?: string;
   status?: OrderStatus;
+  userId?: string;
 };
 
 export type AdminOrdersResponseData = {

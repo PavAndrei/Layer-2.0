@@ -32,6 +32,7 @@ export const useAdminReviewsSection = ({
       page: debouncedFilters.page,
       rating: debouncedFilters.rating || undefined,
       search: debouncedFilters.search || undefined,
+      userId: debouncedFilters.userId || undefined,
       verifiedPurchase:
         debouncedFilters.verifiedPurchase === ''
           ? undefined

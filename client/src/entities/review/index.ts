@@ -2,6 +2,7 @@ export {
   reviewQueryKeys,
   type AdminReview,
   type AdminReviewListItem,
+  type AdminUserRecentReview,
   type CreateProductReviewData,
   type ProductReview,
   type ProductReviewStatus,

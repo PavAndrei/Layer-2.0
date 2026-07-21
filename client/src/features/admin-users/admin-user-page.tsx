@@ -7,6 +7,8 @@ import { useAdminUser } from './model';
 import {
   AdminUserInfoCard,
   AdminUserPageHeader,
+  AdminUserRecentOrdersCard,
+  AdminUserRecentReviewsCard,
   AdminUserStatsGrid,
 } from './ui';
 
@@ -21,6 +23,8 @@ const AdminUserPageSkeleton = () => (
         <Skeleton className="h-28 w-full" />
         <Skeleton className="h-28 w-full" />
       </div>
+      <Skeleton className="h-80 w-full" />
+      <Skeleton className="h-80 w-full" />
     </div>
   </>
 );
@@ -29,6 +33,14 @@ const AdminUserLoadedContent = ({ user }: { user: AdminUser }) => (
   <div className="flex flex-col gap-6">
     <AdminUserInfoCard user={user} />
     <AdminUserStatsGrid stats={user.stats} />
+    <AdminUserRecentOrdersCard
+      orders={user.recentOrders}
+      userId={user._id}
+    />
+    <AdminUserRecentReviewsCard
+      reviews={user.recentReviews}
+      userId={user._id}
+    />
   </div>
 );
 

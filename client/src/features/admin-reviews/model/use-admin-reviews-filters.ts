@@ -13,6 +13,7 @@ export type AdminReviewsFilters = {
   page: number;
   rating: number | '';
   search: string;
+  userId: string;
   verifiedPurchase: true | '';
 };
 
@@ -21,6 +22,7 @@ type AdminReviewsUrlState = AdminReviewsFilters & {
 };
 
 export type AdminReviewsFiltersState = AdminReviewsFilters & {
+  clearUserFilter: () => void;
   debouncedFilters: AdminReviewsFilters;
   handlePageChange: (page: number) => void;
   handleRatingChange: (rating: AdminReviewsFilters['rating']) => void;
@@ -37,8 +39,11 @@ export const initialAdminReviewsFilters: AdminReviewsFilters = {
   page: 1,
   rating: '',
   search: '',
+  userId: '',
   verifiedPurchase: '',
 };
+
+const OBJECT_ID_PATTERN = /^[a-f\d]{24}$/i;
 
 const initialAdminReviewsUrlState: AdminReviewsUrlState = {
   ...initialAdminReviewsFilters,
@@ -48,6 +53,21 @@ const initialAdminReviewsUrlState: AdminReviewsUrlState = {
 const ADMIN_REVIEWS_FILTERS_URL_SCHEMA = {
   section: stringParam({ name: 'section' }),
   search: stringParam({ name: 'search' }),
+  userId: customParam<string>({
+    parse: (searchParams) => {
+      const userId = searchParams.get('userId') ?? '';
+
+      return OBJECT_ID_PATTERN.test(userId) ? userId : '';
+    },
+    serialize: (searchParams, value) => {
+      if (!value) {
+        searchParams.delete('userId');
+        return;
+      }
+
+      searchParams.set('userId', value);
+    },
+  }),
   rating: customParam<AdminReviewsFilters['rating']>({
     parse: (searchParams) => {
       const rating = Number(searchParams.get('rating'));
@@ -91,11 +111,13 @@ const toFilters = ({
   page,
   rating,
   search,
+  userId,
   verifiedPurchase,
 }: AdminReviewsUrlState): AdminReviewsFilters => ({
   page,
   rating,
   search,
+  userId,
   verifiedPurchase,
 });
 
@@ -176,6 +198,14 @@ export const useAdminReviewsFilters = (): AdminReviewsFiltersState => {
     [setFilters],
   );
 
+  const clearUserFilter = useCallback(() => {
+    setFilters((prev) => ({
+      ...prev,
+      page: 1,
+      userId: '',
+    }));
+  }, [setFilters]);
+
   const syncPage = useCallback(
     (page: number) => {
       setFilters((prev) => ({
@@ -189,6 +219,7 @@ export const useAdminReviewsFilters = (): AdminReviewsFiltersState => {
   return useMemo(
     () => ({
       ...filters,
+      clearUserFilter,
       debouncedFilters,
       handlePageChange,
       handleRatingChange: (rating: AdminReviewsFilters['rating']) =>
@@ -203,6 +234,7 @@ export const useAdminReviewsFilters = (): AdminReviewsFiltersState => {
       syncPage,
     }),
     [
+      clearUserFilter,
       debouncedFilters,
       filters,
       handlePageChange,

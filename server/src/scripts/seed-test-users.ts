@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { MONGO_URI } from '../constants/env';
 import { Order } from '../models/orders.model';
 import { Product } from '../models/products.model';
+import { Review } from '../models/reviews.model';
 import { User } from '../models/users.model';
 import type {
   OrderItemSnapshot,
@@ -11,6 +12,7 @@ import type {
   OrderShippingAddress,
   OrderStatus,
 } from '../types/order';
+import type { ReviewStatus } from '../types/review';
 import type { UserAuthProvider, UserRole } from '../types/user';
 import { hashPassword } from '../utils/password';
 
@@ -29,6 +31,16 @@ type TestUserSeed = {
   paidOrdersCount: number;
   role: UserRole;
   totalMultiplier: number;
+};
+
+type TestReviewSeed = {
+  edited?: boolean;
+  productOffset: number;
+  rating: number;
+  status: ReviewStatus;
+  text: string;
+  title: string;
+  verifiedPurchase: boolean;
 };
 
 const TEST_USERS: TestUserSeed[] = [
@@ -195,6 +207,20 @@ const PAYMENT_STATUS_SEQUENCE: OrderPaymentStatus[] = [
   'refunded',
 ];
 
+const LONG_REVIEW_TEXT =
+  'I spent a full week wearing and washing this item before leaving a review. The fabric kept its structure, the seams stayed neat, and the fit remained comfortable through long days. It feels polished enough for going out, but still easy enough for everyday rotation. The only thing I would watch is sizing if someone wants a very relaxed fit.';
+
+const REVIEW_TEXTS = [
+  'Clean fit, comfortable fabric, and easy to style with the rest of my wardrobe.',
+  'The quality feels reliable and the color looks close to the product photos.',
+  LONG_REVIEW_TEXT,
+  'Good everyday piece. I would buy another color if it comes back in stock.',
+  'The item arrived well packed, but the fit was a little different from what I expected.',
+  'Soft material and solid shape after washing. This one feels like a keeper.',
+  'I like the look, but the sizing guidance could be clearer for this product.',
+  'Great value for the price and the details feel better than expected.',
+];
+
 const roundMoney = (value: number) => Math.round(value * 100) / 100;
 
 const getPaymentStatus = (
@@ -285,6 +311,61 @@ const getOrderItems = (
   });
 };
 
+const getReviewSeedsForUser = (
+  user: TestUserSeed,
+  userIndex: number,
+  productsCount: number,
+): TestReviewSeed[] => {
+  if (productsCount === 0 || user.email.startsWith('ethan.')) {
+    return [];
+  }
+
+  const requestedCount =
+    user.ordersCount >= 8
+      ? 6
+      : user.ordersCount >= 4
+        ? 4
+        : user.ordersCount >= 2
+          ? 2
+          : user.ordersCount === 1
+            ? 1
+            : 0;
+  const count = Math.min(requestedCount, productsCount);
+
+  return Array.from({ length: count }, (_, reviewIndex) => {
+    const isPending = reviewIndex === 1 && userIndex % 3 === 0;
+    const isRejected = reviewIndex === 2 && userIndex % 4 === 0;
+    const status: ReviewStatus = isRejected
+      ? 'rejected'
+      : isPending
+        ? 'pending'
+        : 'approved';
+    const rating = Math.max(
+      1,
+      Math.min(5, 5 - ((userIndex + reviewIndex) % 5)),
+    );
+
+    return {
+      edited: reviewIndex === 3,
+      productOffset: (userIndex + reviewIndex) % productsCount,
+      rating,
+      status,
+      text: REVIEW_TEXTS[
+        (userIndex + reviewIndex) % REVIEW_TEXTS.length
+      ] ?? REVIEW_TEXTS[0],
+      title:
+        status === 'rejected'
+          ? 'Needs moderation attention'
+          : status === 'pending'
+            ? 'Waiting for approval'
+            : rating >= 4
+              ? 'Very happy with this item'
+              : 'Mixed experience',
+      verifiedPurchase: reviewIndex < user.paidOrdersCount,
+    };
+  });
+};
+
 const seedTestUsers = async () => {
   await mongoose.connect(MONGO_URI);
 
@@ -298,6 +379,11 @@ const seedTestUsers = async () => {
 
   if (existingTestUserIds.length > 0) {
     await Order.deleteMany({
+      userId: {
+        $in: existingTestUserIds,
+      },
+    });
+    await Review.deleteMany({
       userId: {
         $in: existingTestUserIds,
       },
@@ -391,8 +477,62 @@ const seedTestUsers = async () => {
     await Order.insertMany(orders);
   }
 
+  const adminUser = users.find((user) => user.role === 'admin');
+  const reviews = users.flatMap((user, userIndex) => {
+    const seed = TEST_USERS[userIndex];
+
+    if (!seed) return [];
+
+    return getReviewSeedsForUser(seed, userIndex, products.length).map(
+      (reviewSeed, reviewIndex) => {
+        const product = products[reviewSeed.productOffset];
+
+        if (!product) {
+          throw new Error('Review seed product was not found.');
+        }
+
+        const createdAt = new Date(
+          Date.now() -
+            (userIndex * 5 + reviewIndex) * 24 * 60 * 60 * 1000 -
+            2 * 60 * 60 * 1000,
+        );
+        const editedAt = reviewSeed.edited
+          ? new Date(createdAt.getTime() + 36 * 60 * 60 * 1000)
+          : null;
+        const moderatedAt =
+          reviewSeed.status === 'approved'
+            ? null
+            : new Date(createdAt.getTime() + 12 * 60 * 60 * 1000);
+
+        return {
+          authorName: user.name,
+          createdAt,
+          editedAt,
+          moderationReason:
+            reviewSeed.status === 'rejected'
+              ? 'Seeded hidden review for moderation scenarios.'
+              : undefined,
+          moderatedAt,
+          moderatedBy: moderatedAt ? adminUser?._id : undefined,
+          productId: product._id,
+          rating: reviewSeed.rating,
+          status: reviewSeed.status,
+          text: reviewSeed.text,
+          title: reviewSeed.title,
+          updatedAt: editedAt ?? moderatedAt ?? createdAt,
+          userId: user._id,
+          verifiedPurchase: reviewSeed.verifiedPurchase,
+        };
+      },
+    );
+  });
+
+  if (reviews.length > 0) {
+    await Review.insertMany(reviews);
+  }
+
   console.log(
-    `Seeded ${users.length} admin test users and ${orders.length} orders. Products were not modified. Test password: ${TEST_USERS_PASSWORD}`,
+    `Seeded ${users.length} admin test users, ${orders.length} orders, and ${reviews.length} reviews. Products were not modified. Test password: ${TEST_USERS_PASSWORD}`,
   );
 };
 

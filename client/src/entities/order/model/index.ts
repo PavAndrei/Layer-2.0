@@ -7,6 +7,7 @@ export {
 export type {
   AdminOrder,
   AdminOrderListItem,
+  AdminUserRecentOrder,
   Order,
   OrderItemSize,
   OrderItemSnapshot,

@@ -1,3 +1,6 @@
+import { useMemo } from 'react';
+
+import { useScrollToTopOnChange } from '../../shared/hooks';
 import {
   SectionHeader,
   SectionedPageHeader,
@@ -30,6 +33,75 @@ export const AdminPage = () => {
   const adminOrdersSection = useAdminOrdersSection({ activeSection });
   const adminReviewsSection = useAdminReviewsSection({ activeSection });
   const adminUsersSection = useAdminUsersSection({ activeSection });
+  const scrollDependency = useMemo(() => {
+    if (activeSection === 'orders') {
+      const {
+        page,
+        paymentStatus,
+        search,
+        status,
+        userId,
+      } = adminOrdersSection.filters.debouncedFilters;
+
+      return [
+        activeSection,
+        page,
+        paymentStatus,
+        search,
+        status,
+        userId,
+      ].join(':');
+    }
+
+    if (activeSection === 'reviews') {
+      const {
+        page,
+        rating,
+        search,
+        userId,
+        verifiedPurchase,
+      } = adminReviewsSection.filters.debouncedFilters;
+
+      return [
+        activeSection,
+        page,
+        rating,
+        search,
+        userId,
+        verifiedPurchase,
+      ].join(':');
+    }
+
+    if (activeSection === 'users') {
+      const {
+        isEmailVerified,
+        page,
+        provider,
+        role,
+        search,
+        sort,
+        status,
+      } = adminUsersSection.filters.debouncedFilters;
+
+      return [
+        activeSection,
+        isEmailVerified,
+        page,
+        provider,
+        role,
+        search,
+        sort,
+        status,
+      ].join(':');
+    }
+
+    return activeSection;
+  }, [
+    activeSection,
+    adminOrdersSection.filters.debouncedFilters,
+    adminReviewsSection.filters.debouncedFilters,
+    adminUsersSection.filters.debouncedFilters,
+  ]);
   const adminSidebar = (
     <SideNavigation
       activeItemId={activeSection}
@@ -44,6 +116,11 @@ export const AdminPage = () => {
       description={ADMIN_PAGE_DESCRIPTION}
     />
   );
+
+  useScrollToTopOnChange(scrollDependency, {
+    behavior: 'auto',
+    skipInitialScroll: false,
+  });
 
   return (
     <SectionedPageLayout header={adminHeader} sidebar={adminSidebar}>

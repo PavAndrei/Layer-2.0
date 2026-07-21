@@ -93,6 +93,10 @@ const getAdminOrdersFilter = (
     filter.paymentStatus = query.paymentStatus;
   }
 
+  if (query.userId) {
+    filter.userId = new Types.ObjectId(query.userId);
+  }
+
   if (query.search) {
     Object.assign(filter, getSearchFilter(query.search));
   }

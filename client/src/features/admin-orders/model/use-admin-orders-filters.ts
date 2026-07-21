@@ -20,6 +20,7 @@ export type AdminOrdersFilters = {
   paymentStatus: OrderPaymentStatus | '';
   search: string;
   status: OrderStatus | '';
+  userId: string;
 };
 
 type AdminOrdersUrlState = AdminOrdersFilters & {
@@ -27,6 +28,7 @@ type AdminOrdersUrlState = AdminOrdersFilters & {
 };
 
 export type AdminOrdersFiltersState = AdminOrdersFilters & {
+  clearUserFilter: () => void;
   debouncedFilters: AdminOrdersFilters;
   handlePageChange: (page: number) => void;
   handlePaymentStatusChange: (status: AdminOrdersFilters['paymentStatus']) => void;
@@ -42,7 +44,10 @@ export const initialAdminOrdersFilters: AdminOrdersFilters = {
   paymentStatus: '',
   search: '',
   status: '',
+  userId: '',
 };
+
+const OBJECT_ID_PATTERN = /^[a-f\d]{24}$/i;
 
 const initialAdminOrdersUrlState: AdminOrdersUrlState = {
   ...initialAdminOrdersFilters,
@@ -52,6 +57,21 @@ const initialAdminOrdersUrlState: AdminOrdersUrlState = {
 const ADMIN_ORDERS_FILTERS_URL_SCHEMA = {
   section: stringParam({ name: 'section' }),
   search: stringParam({ name: 'search' }),
+  userId: customParam<string>({
+    parse: (searchParams) => {
+      const userId = searchParams.get('userId') ?? '';
+
+      return OBJECT_ID_PATTERN.test(userId) ? userId : '';
+    },
+    serialize: (searchParams, value) => {
+      if (!value) {
+        searchParams.delete('userId');
+        return;
+      }
+
+      searchParams.set('userId', value);
+    },
+  }),
   status: customParam<AdminOrdersFilters['status']>({
     parse: (searchParams) => {
       const status = searchParams.get('status');
@@ -98,11 +118,13 @@ const toFilters = ({
   paymentStatus,
   search,
   status,
+  userId,
 }: AdminOrdersUrlState): AdminOrdersFilters => ({
   page,
   paymentStatus,
   search,
   status,
+  userId,
 });
 
 export const useAdminOrdersFilters = (): AdminOrdersFiltersState => {
@@ -188,6 +210,14 @@ export const useAdminOrdersFilters = (): AdminOrdersFiltersState => {
     [setFilters],
   );
 
+  const clearUserFilter = useCallback(() => {
+    setFilters((prev) => ({
+      ...prev,
+      page: 1,
+      userId: '',
+    }));
+  }, [setFilters]);
+
   const handlePageChange = useCallback(
     (page: number) => {
       setFilters(
@@ -214,6 +244,7 @@ export const useAdminOrdersFilters = (): AdminOrdersFiltersState => {
   return useMemo(
     () => ({
       ...filters,
+      clearUserFilter,
       debouncedFilters,
       handlePageChange,
       handlePaymentStatusChange,
@@ -224,6 +255,7 @@ export const useAdminOrdersFilters = (): AdminOrdersFiltersState => {
       syncPage,
     }),
     [
+      clearUserFilter,
       debouncedFilters,
       filters,
       handlePageChange,

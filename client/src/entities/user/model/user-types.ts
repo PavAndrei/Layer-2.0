@@ -1,3 +1,6 @@
+import type { AdminUserRecentOrder } from '../../order';
+import type { AdminUserRecentReview } from '../../review';
+
 export const USER_AUTH_PROVIDERS = ['password', 'google'] as const;
 export const USER_ROLES = ['customer', 'admin'] as const;
 export const USER_STATUSES = ['active', 'blocked'] as const;
@@ -35,6 +38,8 @@ export type AdminUserStats = {
 export type AdminUser = User & {
   createdAt: string;
   lastLoginAt: string | null;
+  recentOrders: AdminUserRecentOrder[];
+  recentReviews: AdminUserRecentReview[];
   stats: AdminUserStats;
   status: UserStatus;
   updatedAt: string;

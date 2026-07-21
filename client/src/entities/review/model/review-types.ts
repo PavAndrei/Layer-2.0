@@ -46,6 +46,7 @@ export type UserReview = ProductReview & {
 };
 
 export type AdminReview = ProductReview & {
+  authorId?: string;
   authorEmail?: string;
   moderationReason?: string;
   moderatedAt: string | null;
@@ -56,6 +57,16 @@ export type AdminReview = ProductReview & {
 };
 
 export type AdminReviewListItem = AdminReview;
+
+export type AdminUserRecentReview = {
+  _id: string;
+  createdAt: string;
+  product: ReviewProduct | null;
+  rating: number;
+  status: ReviewStatus;
+  text: string;
+  title: string;
+};
 
 export type UpdateAdminReviewData = {
   moderationReason?: string;

@@ -95,6 +95,15 @@ export type AdminOrderListItem = {
   updatedAt: string;
 };
 
+export type AdminUserRecentOrder = {
+  _id: string;
+  createdAt: string;
+  orderNumber: string;
+  paymentStatus: OrderPaymentStatus;
+  status: OrderStatus;
+  total: number;
+};
+
 export type AdminOrder = Order & {
   adminNote?: string;
   customerName: string;

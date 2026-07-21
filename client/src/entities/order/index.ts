@@ -5,6 +5,7 @@ export {
   orderQueryKeys,
   type AdminOrder,
   type AdminOrderListItem,
+  type AdminUserRecentOrder,
   type Order,
   type OrderItemSize,
   type OrderItemSnapshot,

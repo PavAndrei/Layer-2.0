@@ -46,11 +46,23 @@ const optionalSearchParam = () =>
       'Search is too long',
     );
 
+const optionalObjectIdParam = (name: string) =>
+  z
+    .string()
+    .optional()
+    .transform((value) => value?.trim())
+    .transform((value) => (value ? value : undefined))
+    .refine(
+      (value) => value === undefined || isObjectIdOrHexString(value),
+      `Invalid ${name}`,
+    );
+
 export const adminOrdersQuerySchema = z
   .object({
     page: positiveIntegerParam('page', 1),
     limit: positiveIntegerParam('limit', 12, 50),
     search: optionalSearchParam(),
+    userId: optionalObjectIdParam('user id'),
     status: z.enum(ORDER_STATUSES).optional(),
     paymentStatus: z.enum(ORDER_PAYMENT_STATUSES).optional(),
   })

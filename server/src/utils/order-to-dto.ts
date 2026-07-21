@@ -2,6 +2,7 @@ import type { OrderDocument } from '../models/orders.model';
 import type {
   AdminOrderDto,
   AdminOrderListItemDto,
+  AdminUserRecentOrderDto,
   OrderDto,
   OrderStatusHistoryDto,
 } from '../types/api';
@@ -120,6 +121,17 @@ export const orderToAdminListItemDto = (
   total: order.total,
   trackingNumber: optionalString(order.trackingNumber),
   updatedAt: order.updatedAt.toISOString(),
+});
+
+export const orderToAdminUserRecentOrderDto = (
+  order: OrderDocument,
+): AdminUserRecentOrderDto => ({
+  _id: order._id.toString(),
+  createdAt: order.createdAt.toISOString(),
+  orderNumber: getOrderNumber(order._id.toString()),
+  paymentStatus: getPaymentStatus(order),
+  status: order.status,
+  total: order.total,
 });
 
 export const orderToAdminDto = (

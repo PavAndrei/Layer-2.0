@@ -8,6 +8,7 @@ import {
   SectionHeader,
   Skeleton,
 } from '../../shared/ui';
+import { AdminUserFilterChip } from './ui';
 import type { AdminOrdersSectionState } from './use-admin-orders-section';
 
 const AdminOrdersSkeleton = () => (
@@ -43,6 +44,13 @@ export const AdminOrdersSection = ({
         onSearchChange={filters.handleSearchChange}
         onStatusChange={filters.handleStatusChange}
       />
+
+      {filters.userId && (
+        <AdminUserFilterChip
+          userId={filters.userId}
+          onClear={filters.clearUserFilter}
+        />
+      )}
 
       {isWaitingForInitialOrders && <AdminOrdersSkeleton />}
 

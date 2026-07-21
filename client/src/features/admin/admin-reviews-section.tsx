@@ -10,6 +10,7 @@ import {
   SectionHeader,
   Skeleton,
 } from '../../shared/ui';
+import { AdminUserFilterChip } from './ui';
 import type { AdminReviewsSectionState } from './use-admin-reviews-section';
 
 const AdminReviewsSkeleton = () => (
@@ -49,6 +50,13 @@ export const AdminReviewsSection = ({
         onSearchChange={filters.handleSearchChange}
         onVerifiedPurchaseChange={filters.handleVerifiedPurchaseChange}
       />
+
+      {filters.userId && (
+        <AdminUserFilterChip
+          userId={filters.userId}
+          onClear={filters.clearUserFilter}
+        />
+      )}
 
       {isWaitingForInitialReviews && <AdminReviewsSkeleton />}
 

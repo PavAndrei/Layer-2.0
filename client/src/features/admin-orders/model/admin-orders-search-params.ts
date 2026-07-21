@@ -25,5 +25,9 @@ export const toAdminOrdersSearchParams = (
     searchParams.set('paymentStatus', params.paymentStatus);
   }
 
+  if (params.userId) {
+    searchParams.set('userId', params.userId);
+  }
+
   return searchParams;
 };

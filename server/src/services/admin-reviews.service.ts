@@ -17,21 +17,14 @@ import type {
   AdminReviewResponse,
   AdminReviewsResponse,
   DeleteAdminReviewResponse,
-  ReviewProductDto,
   UpdateAdminReviewResponse,
 } from '../types/api';
 import type {
   AdminReviewsQuery,
   UpdateAdminReviewBody,
 } from '../validators/admin-reviews.validators';
+import { reviewProductToDto } from '../utils/review-product-to-dto';
 import { reviewToDto } from '../utils/review-to-dto';
-
-type ReviewProductSource = {
-  _id: Types.ObjectId;
-  img: string;
-  slug: string;
-  title: string;
-};
 
 type ReviewUserSource = {
   _id: Types.ObjectId;
@@ -57,15 +50,6 @@ const getSafePagination = (query: AdminReviewsQuery) => {
     limit,
   };
 };
-
-const productToReviewProductDto = (
-  product: ReviewProductSource,
-): ReviewProductDto => ({
-  _id: product._id.toString(),
-  img: product.img,
-  slug: product.slug,
-  title: product.title,
-});
 
 const recalculateProductRating = async (productId: Types.ObjectId) => {
   const [summary] = await Review.aggregate<{ averageRating: number }>([
@@ -105,6 +89,10 @@ const getAdminReviewsFilter = (
 
   if (query.productId) {
     filter.productId = new Types.ObjectId(query.productId);
+  }
+
+  if (query.userId) {
+    filter.userId = new Types.ObjectId(query.userId);
   }
 
   if (query.verifiedPurchase !== undefined) {
@@ -181,7 +169,7 @@ const getReviewRelatedData = async (reviews: ReviewDocument[]) => {
     productsById: new Map(
       products.map((product) => [
         product._id.toString(),
-        productToReviewProductDto(product),
+        reviewProductToDto(product),
       ]),
     ),
     usersById: new Map(
@@ -219,6 +207,7 @@ const reviewToAdminDto = (
 
   return {
     ...reviewDto,
+    authorId: review.userId?.toString(),
     authorEmail: user?.email,
     moderationReason: review.moderationReason ?? undefined,
     moderatedAt: review.moderatedAt?.toISOString() ?? null,

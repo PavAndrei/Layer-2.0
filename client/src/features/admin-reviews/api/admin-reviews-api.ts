@@ -19,6 +19,7 @@ export type AdminReviewsParams = {
   rating?: number;
   search?: string;
   status?: ReviewStatus;
+  userId?: string;
   verifiedPurchase?: boolean;
 };
 

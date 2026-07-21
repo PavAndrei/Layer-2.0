@@ -3,6 +3,7 @@ import { PipelineStage, QueryFilter, Types } from 'mongoose';
 import { ApiError } from '../exceptions/api-error';
 import { AuthSession } from '../models/auth-sessions.model';
 import { Order } from '../models/orders.model';
+import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
 import {
   User,
@@ -12,10 +13,15 @@ import {
 import type {
   AdminUserDto,
   AdminUserListItemDto,
+  AdminUserRecentOrderDto,
+  AdminUserRecentReviewDto,
   AdminUserResponse,
   AdminUsersResponse,
+  ReviewProductDto,
 } from '../types/api';
 import type { UserAuthProvider } from '../types/user';
+import { orderToAdminUserRecentOrderDto } from '../utils/order-to-dto';
+import { reviewProductToDto } from '../utils/review-product-to-dto';
 import type { AdminUsersQuery } from '../validators/admin-users.validators';
 
 type AdminUserAggregateResult = {
@@ -38,6 +44,9 @@ type OrderStatsAggregateResult = {
   lastOrderAt: Date | null;
   totalSpent: number;
 };
+
+const RECENT_USER_ORDERS_LIMIT = 5;
+const RECENT_USER_REVIEWS_LIMIT = 5;
 
 const escapeRegExp = (value: string) => {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -162,6 +171,52 @@ const adminUserToListItemDto = (
   };
 };
 
+const getAdminUserRecentOrders = async (
+  userId: Types.ObjectId,
+): Promise<AdminUserRecentOrderDto[]> => {
+  const orders = await Order.find({
+    userId,
+  })
+    .sort({ createdAt: -1 })
+    .limit(RECENT_USER_ORDERS_LIMIT)
+    .select('createdAt paymentStatus status total');
+
+  return orders.map(orderToAdminUserRecentOrderDto);
+};
+
+const getAdminUserRecentReviews = async (
+  userId: Types.ObjectId,
+): Promise<AdminUserRecentReviewDto[]> => {
+  const reviews = await Review.find({
+    userId,
+  })
+    .sort({ createdAt: -1 })
+    .limit(RECENT_USER_REVIEWS_LIMIT)
+    .select('createdAt productId rating status text title');
+  const productIds = reviews.map((review) => review.productId);
+  const products = await Product.find({
+    _id: {
+      $in: productIds,
+    },
+  }).select('_id img slug title');
+  const productsById = new Map<string, ReviewProductDto>(
+    products.map((product) => [
+      product._id.toString(),
+      reviewProductToDto(product),
+    ]),
+  );
+
+  return reviews.map((review) => ({
+    _id: review._id.toString(),
+    createdAt: review.createdAt.toISOString(),
+    product: productsById.get(review.productId.toString()) ?? null,
+    rating: review.rating,
+    status: review.status,
+    text: review.text,
+    title: review.title,
+  }));
+};
+
 const getAdminUserStats = async (userId: Types.ObjectId) => {
   const now = new Date();
   const [activeSessionsCount, lastSession, reviewsCount, orderStats] =
@@ -227,7 +282,12 @@ const adminUserToDto = async (
   user: UserDocument,
 ): Promise<AdminUserDto> => {
   const isBlocked = Boolean(user.isBlocked);
-  const { lastLoginAt, stats } = await getAdminUserStats(user._id);
+  const [{ lastLoginAt, stats }, recentOrders, recentReviews] =
+    await Promise.all([
+    getAdminUserStats(user._id),
+    getAdminUserRecentOrders(user._id),
+    getAdminUserRecentReviews(user._id),
+  ]);
 
   return {
     _id: user._id.toString(),
@@ -239,6 +299,8 @@ const adminUserToDto = async (
     isEmailVerified: user.isEmailVerified,
     lastLoginAt,
     name: user.name,
+    recentOrders,
+    recentReviews,
     role: user.role,
     stats,
     status: getUserStatus(isBlocked),

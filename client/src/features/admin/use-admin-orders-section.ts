@@ -31,6 +31,7 @@ export const useAdminOrdersSection = ({
       paymentStatus: debouncedFilters.paymentStatus || undefined,
       search: debouncedFilters.search || undefined,
       status: debouncedFilters.status || undefined,
+      userId: debouncedFilters.userId || undefined,
     }),
     [debouncedFilters],
   );

@@ -11,6 +11,7 @@ export type {
 export type {
   AdminReview,
   AdminReviewListItem,
+  AdminUserRecentReview,
   CreateProductReviewData,
   ProductReview,
   ProductReviewStatus,
