@@ -1,4 +1,5 @@
 import {
+  ADMIN_REVIEW_MODERATION_ACTIONS,
   AdminReviewsFiltersForm,
   AdminReviewsList,
 } from '../admin-reviews';
@@ -28,6 +29,9 @@ export const AdminReviewsSection = ({
   const isWaitingForInitialReviews =
     reviewsQuery.reviews.length === 0 &&
     (reviewsQuery.isLoading || filters.isDebouncing);
+  const moderationActionConfig = moderationAction.action
+    ? ADMIN_REVIEW_MODERATION_ACTIONS[moderationAction.action.type]
+    : null;
 
   return (
     <section className="flex flex-col gap-4">
@@ -69,8 +73,10 @@ export const AdminReviewsSection = ({
         reviewsQuery.reviews.length > 0 && (
           <>
             <AdminReviewsList
+              pendingActionType={moderationAction.pendingActionType}
               pendingReviewId={moderationAction.pendingReviewId}
               reviews={reviewsQuery.reviews}
+              onApproveReview={moderationAction.openApproveDialog}
               onHideReview={moderationAction.openHideDialog}
               onRestoreReview={moderationAction.openRestoreDialog}
             />
@@ -86,37 +92,16 @@ export const AdminReviewsSection = ({
           </>
         )}
 
-      {moderationAction.error && (
-        <FeedbackMessage
-          tone="danger"
-          title="Review action failed"
-          description={moderationAction.error}
-        />
-      )}
-
       <ConfirmDialog
-        confirmLabel={
-          moderationAction.action?.type === 'restore' ? 'Restore' : 'Hide'
-        }
-        confirmingLabel={
-          moderationAction.action?.type === 'restore'
-            ? 'Restoring...'
-            : 'Hiding...'
-        }
+        confirmLabel={moderationActionConfig?.confirmLabel}
+        confirmingLabel={moderationActionConfig?.confirmingLabel}
         description={
-          moderationAction.error ??
-          (moderationAction.action?.type === 'restore'
-            ? 'This review will become visible again on the product page.'
-            : 'This review will be hidden from the product page.')
+          moderationAction.error ?? moderationActionConfig?.description
         }
         isConfirming={moderationAction.isPending}
         isOpen={Boolean(moderationAction.action)}
-        title={
-          moderationAction.action?.type === 'restore'
-            ? 'Restore review?'
-            : 'Hide review?'
-        }
-        tone={moderationAction.action?.type === 'hide' ? 'danger' : 'neutral'}
+        title={moderationActionConfig?.title ?? 'Review action'}
+        tone={moderationActionConfig?.tone ?? 'neutral'}
         onCancel={moderationAction.closeDialog}
         onConfirm={moderationAction.confirmAction}
       />

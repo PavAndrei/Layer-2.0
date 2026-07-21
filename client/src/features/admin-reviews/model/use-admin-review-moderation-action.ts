@@ -1,34 +1,26 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import type { AdminReviewListItem } from '../../../entities/review';
+import {
+  ADMIN_REVIEW_MODERATION_ACTIONS,
+  type AdminReviewModerationActionType,
+} from './admin-review-moderation-actions';
 import { useUpdateAdminReview } from './use-update-admin-review';
-
-type AdminReviewModerationActionType = 'hide' | 'restore';
 
 type AdminReviewModerationAction = {
   review: AdminReviewListItem;
   type: AdminReviewModerationActionType;
 };
 
-const getModerationPayload = ({
-  type,
-}: AdminReviewModerationAction) => {
-  if (type === 'hide') {
-    return {
-      status: 'rejected' as const,
-    };
-  }
-
-  return {
-    moderationReason: '',
-    status: 'approved' as const,
-  };
-};
-
 export const useAdminReviewModerationAction = () => {
   const [action, setAction] =
     useState<AdminReviewModerationAction | null>(null);
   const updateAdminReviewMutation = useUpdateAdminReview();
+
+  const openApproveDialog = useCallback((review: AdminReviewListItem) => {
+    updateAdminReviewMutation.reset();
+    setAction({ review, type: 'approve' });
+  }, [updateAdminReviewMutation]);
 
   const openHideDialog = useCallback((review: AdminReviewListItem) => {
     updateAdminReviewMutation.reset();
@@ -52,7 +44,7 @@ export const useAdminReviewModerationAction = () => {
 
     updateAdminReviewMutation.mutate(
       {
-        payload: getModerationPayload(action),
+        payload: ADMIN_REVIEW_MODERATION_ACTIONS[action.type].payload,
         reviewId: action.review._id,
       },
       {
@@ -79,8 +71,12 @@ export const useAdminReviewModerationAction = () => {
       confirmAction,
       error,
       isPending: updateAdminReviewMutation.isPending,
+      openApproveDialog,
       openHideDialog,
       openRestoreDialog,
+      pendingActionType: updateAdminReviewMutation.isPending
+        ? action?.type ?? null
+        : null,
       pendingReviewId: updateAdminReviewMutation.isPending
         ? action?.review._id ?? null
         : null,
@@ -91,6 +87,7 @@ export const useAdminReviewModerationAction = () => {
       confirmAction,
       error,
       openHideDialog,
+      openApproveDialog,
       openRestoreDialog,
       updateAdminReviewMutation.isPending,
     ],

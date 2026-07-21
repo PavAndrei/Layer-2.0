@@ -3,20 +3,28 @@ import { Link } from 'react-router';
 import type { AdminReviewListItem as AdminReviewListItemData } from '../../../entities/review';
 import { formatDisplayDate } from '../../../shared/lib';
 import { Button, StarRating } from '../../../shared/ui';
+import {
+  ADMIN_REVIEW_MODERATION_ACTIONS,
+  type AdminReviewModerationActionType,
+} from '../model';
 import { AdminReviewExpandableText } from './admin-review-expandable-text';
 import { AdminReviewStatusBadge } from './admin-review-status-badge';
 
 type AdminReviewListItemProps = {
   isActionPending?: boolean;
+  pendingActionType?: AdminReviewModerationActionType | null;
   review: AdminReviewListItemData;
+  onApproveReview?: (review: AdminReviewListItemData) => void;
   onHideReview?: (review: AdminReviewListItemData) => void;
   onRestoreReview?: (review: AdminReviewListItemData) => void;
 };
 
 export const AdminReviewListItem = ({
   isActionPending = false,
+  onApproveReview,
   onHideReview,
   onRestoreReview,
+  pendingActionType = null,
   review,
 }: AdminReviewListItemProps) => {
   const editedLabel = review.editedAt
@@ -24,9 +32,19 @@ export const AdminReviewListItem = ({
     : null;
   const product = review.product;
   const productTitle = product?.title ?? 'Product removed';
+  const isPending = review.status === 'pending';
   const isHidden = review.status === 'rejected';
   const canShowAction =
-    (isHidden && onRestoreReview) || (!isHidden && onHideReview);
+    (isPending && (onApproveReview || onHideReview)) ||
+    (isHidden && onRestoreReview) ||
+    (!isPending && !isHidden && onHideReview);
+  const getActionLabel = (actionType: AdminReviewModerationActionType) => {
+    const config = ADMIN_REVIEW_MODERATION_ACTIONS[actionType];
+
+    return isActionPending && pendingActionType === actionType
+      ? config.listPendingLabel
+      : config.listLabel;
+  };
 
   return (
     <article className="flex min-h-full flex-col gap-4 rounded border border-border-soft bg-background-surface p-4">
@@ -130,26 +148,37 @@ export const AdminReviewListItem = ({
       )}
 
       {canShowAction && (
-        <div className="flex justify-end border-t border-border-soft pt-3">
-          {isHidden ? (
+        <div className="flex flex-wrap justify-end gap-2 border-t border-border-soft pt-3">
+          {isPending && onApproveReview && (
+            <Button
+              disabled={isActionPending}
+              size="sm"
+              variant="primary"
+              onClick={() => onApproveReview(review)}
+            >
+              {getActionLabel('approve')}
+            </Button>
+          )}
+
+          {isHidden && onRestoreReview ? (
             <Button
               disabled={isActionPending}
               size="sm"
               variant="secondary"
               onClick={() => onRestoreReview?.(review)}
             >
-              {isActionPending ? 'Restoring...' : 'Restore'}
+              {getActionLabel('restore')}
             </Button>
-          ) : (
+          ) : onHideReview ? (
             <Button
               disabled={isActionPending}
               size="sm"
               variant="danger"
               onClick={() => onHideReview?.(review)}
             >
-              {isActionPending ? 'Hiding...' : 'Hide'}
+              {getActionLabel('hide')}
             </Button>
-          )}
+          ) : null}
         </div>
       )}
     </article>

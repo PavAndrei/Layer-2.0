@@ -2,6 +2,13 @@ export {
   updateAdminReviewSchema,
 } from './admin-review-validation';
 export {
+  ADMIN_REVIEW_MODERATION_ACTIONS,
+} from './admin-review-moderation-actions';
+export type {
+  AdminReviewModerationActionConfig,
+  AdminReviewModerationActionType,
+} from './admin-review-moderation-actions';
+export {
   ADMIN_REVIEW_RATING_FILTER_OPTIONS,
 } from './admin-reviews-filter-options';
 export type {

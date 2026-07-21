@@ -6,6 +6,7 @@ export type {
   UpdateAdminReviewParams,
 } from './api';
 export {
+  ADMIN_REVIEW_MODERATION_ACTIONS,
   adminReviewsQueryKeys,
   initialAdminReviewsFilters,
   toAdminReviewsSearchParams,
@@ -18,7 +19,9 @@ export {
   useUpdateAdminReview,
 } from './model';
 export type {
+  AdminReviewModerationActionConfig,
   AdminReviewModerationActionState,
+  AdminReviewModerationActionType,
   AdminReviewsFilters,
   AdminReviewsFiltersState,
   UpdateAdminReviewPayload,
