@@ -11,8 +11,10 @@ import {
 } from './model';
 import { AdminOrdersSection } from './admin-orders-section';
 import { AdminReviewsSection } from './admin-reviews-section';
+import { AdminUsersSection } from './admin-users-section';
 import { useAdminOrdersSection } from './use-admin-orders-section';
 import { useAdminReviewsSection } from './use-admin-reviews-section';
+import { useAdminUsersSection } from './use-admin-users-section';
 
 const ADMIN_BREADCRUMBS = [
   { label: 'Home', to: '/' },
@@ -27,6 +29,7 @@ export const AdminPage = () => {
   const { activeSection } = useAdminPageState();
   const adminOrdersSection = useAdminOrdersSection({ activeSection });
   const adminReviewsSection = useAdminReviewsSection({ activeSection });
+  const adminUsersSection = useAdminUsersSection({ activeSection });
   const adminSidebar = (
     <SideNavigation
       activeItemId={activeSection}
@@ -48,6 +51,8 @@ export const AdminPage = () => {
         <AdminOrdersSection {...adminOrdersSection} />
       ) : activeSection === 'reviews' ? (
         <AdminReviewsSection {...adminReviewsSection} />
+      ) : activeSection === 'users' ? (
+        <AdminUsersSection {...adminUsersSection} />
       ) : (
         <section className="rounded border border-border-soft bg-background-surface p-4">
           <SectionHeader

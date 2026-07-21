@@ -1,2 +1,13 @@
 export { userQueryKeys } from './user-query-keys';
-export type { User, UserRole } from './user-types';
+export {
+  USER_AUTH_PROVIDERS,
+  USER_ROLES,
+  USER_STATUSES,
+} from './user-types';
+export type {
+  AdminUserListItem,
+  User,
+  UserAuthProvider,
+  UserRole,
+  UserStatus,
+} from './user-types';
