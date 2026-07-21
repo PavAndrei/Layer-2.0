@@ -1,4 +1,5 @@
 export type {
+  AdminUserResponseData,
   AdminUserSortOption,
   AdminUsersParams,
   AdminUsersResponseData,
@@ -13,6 +14,7 @@ export {
   adminUsersQueryKeys,
   initialAdminUsersFilters,
   toAdminUsersSearchParams,
+  useAdminUser,
   useAdminUsers,
   useAdminUsersFilters,
 } from './model';
@@ -29,10 +31,15 @@ export type {
   AdminUserVerificationFilterOption,
   AdminUserVerificationFilterValue,
 } from './model';
+export { AdminUserPage } from './admin-user-page';
 export {
+  AdminUserInfoCard,
   AdminUserListItem,
+  AdminUserPageHeader,
   AdminUserProviderBadges,
   AdminUserRoleBadge,
+  AdminUserStatCard,
+  AdminUserStatsGrid,
   AdminUsersFiltersForm,
   AdminUsersList,
   AdminUserStatusBadge,

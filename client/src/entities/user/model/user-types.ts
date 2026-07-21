@@ -24,3 +24,18 @@ export type AdminUserListItem = User & {
   totalSpent: number;
   updatedAt: string;
 };
+
+export type AdminUserStats = {
+  activeSessionsCount: number;
+  lastOrderAt: string | null;
+  reviewsCount: number;
+  totalSpent: number;
+};
+
+export type AdminUser = User & {
+  createdAt: string;
+  lastLoginAt: string | null;
+  stats: AdminUserStats;
+  status: UserStatus;
+  updatedAt: string;
+};

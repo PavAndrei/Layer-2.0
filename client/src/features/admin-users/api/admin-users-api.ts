@@ -1,4 +1,5 @@
 import type {
+  AdminUser,
   AdminUserListItem,
   UserAuthProvider,
   UserRole,
@@ -32,6 +33,10 @@ export type AdminUsersResponseData = {
   users: AdminUserListItem[];
 };
 
+export type AdminUserResponseData = {
+  user: AdminUser;
+};
+
 export const getAdminUsers = async (
   params: AdminUsersParams = {},
   signal?: AbortSignal,
@@ -41,5 +46,16 @@ export const getAdminUsers = async (
     params,
     signal,
     errorMessage: 'Failed to load admin users',
+  });
+};
+
+export const getAdminUser = async (
+  userId: string,
+  signal?: AbortSignal,
+): Promise<ApiResponse<AdminUserResponseData>> => {
+  return apiClient.get<AdminUserResponseData>({
+    path: `/admin/users/${userId}`,
+    signal,
+    errorMessage: 'Failed to load admin user',
   });
 };

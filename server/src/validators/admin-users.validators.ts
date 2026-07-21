@@ -1,3 +1,4 @@
+import { isObjectIdOrHexString } from 'mongoose';
 import { z } from 'zod';
 
 import {
@@ -89,5 +90,16 @@ export const getAdminUsersSchema = z.object({
   query: adminUsersQuerySchema,
 });
 
+export const adminUserParamsSchema = z.object({
+  params: z
+    .object({
+      userId: z
+        .string()
+        .refine(isObjectIdOrHexString, 'Invalid user id'),
+    })
+    .strict(),
+});
+
 export type AdminUsersQuery = z.infer<typeof adminUsersQuerySchema>;
 export type AdminUserSortOption = (typeof ADMIN_USER_SORT_OPTIONS)[number];
+export type AdminUserParams = z.infer<typeof adminUserParamsSchema>['params'];

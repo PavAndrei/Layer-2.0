@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router';
 
 import { AdminPage, AdminRoute } from '../features/admin';
 import { AdminOrderPage } from '../features/admin-orders';
+import { AdminUserPage } from '../features/admin-users';
 import {
   ForgotPasswordPage,
   GuestRoute,
@@ -104,6 +105,16 @@ export const AppRoutes = () => {
           <ProtectedRoute>
             <AdminRoute>
               <AdminOrderPage />
+            </AdminRoute>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/users/:userId"
+        element={
+          <ProtectedRoute>
+            <AdminRoute>
+              <AdminUserPage />
             </AdminRoute>
           </ProtectedRoute>
         }

@@ -1,8 +1,20 @@
 import { PipelineStage, QueryFilter, Types } from 'mongoose';
 
+import { ApiError } from '../exceptions/api-error';
+import { AuthSession } from '../models/auth-sessions.model';
 import { Order } from '../models/orders.model';
-import { User, type UserData } from '../models/users.model';
-import type { AdminUserListItemDto, AdminUsersResponse } from '../types/api';
+import { Review } from '../models/reviews.model';
+import {
+  User,
+  type UserData,
+  type UserDocument,
+} from '../models/users.model';
+import type {
+  AdminUserDto,
+  AdminUserListItemDto,
+  AdminUserResponse,
+  AdminUsersResponse,
+} from '../types/api';
 import type { UserAuthProvider } from '../types/user';
 import type { AdminUsersQuery } from '../validators/admin-users.validators';
 
@@ -19,6 +31,12 @@ type AdminUserAggregateResult = {
   role: AdminUserListItemDto['role'];
   totalSpent?: number;
   updatedAt: Date;
+};
+
+type OrderStatsAggregateResult = {
+  _id: null;
+  lastOrderAt: Date | null;
+  totalSpent: number;
 };
 
 const escapeRegExp = (value: string) => {
@@ -119,6 +137,9 @@ const getUserAuthProviders = (
   return ['password'];
 };
 
+const getUserStatus = (isBlocked: boolean) =>
+  isBlocked ? 'blocked' : 'active';
+
 const adminUserToListItemDto = (
   user: AdminUserAggregateResult,
 ): AdminUserListItemDto => {
@@ -127,7 +148,7 @@ const adminUserToListItemDto = (
   return {
     _id: user._id.toString(),
     authProviders: getUserAuthProviders(user.authProviders),
-    avatarUrl: user.avatarUrl,
+    avatarUrl: user.avatarUrl ?? undefined,
     createdAt: user.createdAt.toISOString(),
     email: user.email,
     isBlocked,
@@ -135,8 +156,92 @@ const adminUserToListItemDto = (
     name: user.name,
     ordersCount: user.ordersCount ?? 0,
     role: user.role,
-    status: isBlocked ? 'blocked' : 'active',
+    status: getUserStatus(isBlocked),
     totalSpent: Number((user.totalSpent ?? 0).toFixed(2)),
+    updatedAt: user.updatedAt.toISOString(),
+  };
+};
+
+const getAdminUserStats = async (userId: Types.ObjectId) => {
+  const now = new Date();
+  const [activeSessionsCount, lastSession, reviewsCount, orderStats] =
+    await Promise.all([
+      AuthSession.countDocuments({
+        userId,
+        revokedAt: {
+          $exists: false,
+        },
+        expiresAt: {
+          $gt: now,
+        },
+      }),
+      AuthSession.findOne({
+        userId,
+      })
+        .sort({ createdAt: -1 })
+        .select('createdAt'),
+      Review.countDocuments({
+        userId,
+      }),
+      Order.aggregate<OrderStatsAggregateResult>([
+        {
+          $match: {
+            userId,
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            lastOrderAt: {
+              $max: '$createdAt',
+            },
+            totalSpent: {
+              $sum: {
+                $cond: [
+                  {
+                    $eq: ['$paymentStatus', 'paid'],
+                  },
+                  '$total',
+                  0,
+                ],
+              },
+            },
+          },
+        },
+      ]),
+    ]);
+  const summary = orderStats[0];
+
+  return {
+    lastLoginAt: lastSession?.createdAt.toISOString() ?? null,
+    stats: {
+      activeSessionsCount,
+      lastOrderAt: summary?.lastOrderAt?.toISOString() ?? null,
+      reviewsCount,
+      totalSpent: Number((summary?.totalSpent ?? 0).toFixed(2)),
+    },
+  };
+};
+
+const adminUserToDto = async (
+  user: UserDocument,
+): Promise<AdminUserDto> => {
+  const isBlocked = Boolean(user.isBlocked);
+  const { lastLoginAt, stats } = await getAdminUserStats(user._id);
+
+  return {
+    _id: user._id.toString(),
+    authProviders: getUserAuthProviders(user.authProviders),
+    avatarUrl: user.avatarUrl ?? undefined,
+    createdAt: user.createdAt.toISOString(),
+    email: user.email,
+    isBlocked,
+    isEmailVerified: user.isEmailVerified,
+    lastLoginAt,
+    name: user.name,
+    role: user.role,
+    stats,
+    status: getUserStatus(isBlocked),
     updatedAt: user.updatedAt.toISOString(),
   };
 };
@@ -237,5 +342,19 @@ export const getAdminUsersData = async (
       limit,
       totalPages,
     },
+  };
+};
+
+export const getAdminUserData = async (
+  userId: string,
+): Promise<AdminUserResponse['data']> => {
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw ApiError.NotFound('User not found');
+  }
+
+  return {
+    user: await adminUserToDto(user),
   };
 };

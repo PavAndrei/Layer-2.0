@@ -150,6 +150,21 @@ export type AdminUserListItemDto = UserDto & {
   updatedAt: string;
 };
 
+export type AdminUserStatsDto = {
+  activeSessionsCount: number;
+  lastOrderAt: string | null;
+  reviewsCount: number;
+  totalSpent: number;
+};
+
+export type AdminUserDto = UserDto & {
+  createdAt: string;
+  lastLoginAt: string | null;
+  stats: AdminUserStatsDto;
+  status: UserStatus;
+  updatedAt: string;
+};
+
 export type PaginationData = {
   total: number;
   page: number;
@@ -174,6 +189,10 @@ export type AdminReviewsResponse = ApiSuccess<{
 export type AdminUsersResponse = ApiSuccess<{
   users: AdminUserListItemDto[];
   pagination: PaginationData;
+}>;
+
+export type AdminUserResponse = ApiSuccess<{
+  user: AdminUserDto;
 }>;
 
 export type AdminReviewResponse = ApiSuccess<{

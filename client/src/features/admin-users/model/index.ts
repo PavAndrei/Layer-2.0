@@ -22,6 +22,7 @@ export type {
 } from './admin-users-filter-options';
 export { adminUsersQueryKeys } from './admin-users-query-keys';
 export { toAdminUsersSearchParams } from './admin-users-search-params';
+export { useAdminUser } from './use-admin-user';
 export { useAdminUsers } from './use-admin-users';
 export {
   initialAdminUsersFilters,

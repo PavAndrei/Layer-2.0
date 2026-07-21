@@ -7,6 +7,7 @@ import {
   getAdminOrders,
   getAdminReview,
   getAdminReviews,
+  getAdminUser,
   getAdminUsers,
   updateAdminOrder,
   updateAdminReview,
@@ -29,7 +30,10 @@ import {
   getAdminOrdersSchema,
   updateAdminOrderSchema,
 } from '../validators/admin-orders.validators';
-import { getAdminUsersSchema } from '../validators/admin-users.validators';
+import {
+  adminUserParamsSchema,
+  getAdminUsersSchema,
+} from '../validators/admin-users.validators';
 
 const adminRoute = Router();
 
@@ -64,6 +68,11 @@ adminRoute.get(
   '/users',
   validateRequest(getAdminUsersSchema),
   catchErrors(getAdminUsers),
+);
+adminRoute.get(
+  '/users/:userId',
+  validateRequest(adminUserParamsSchema),
+  catchErrors(getAdminUser),
 );
 adminRoute.get(
   '/reviews/:reviewId',

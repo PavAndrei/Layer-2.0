@@ -1,5 +1,6 @@
-export { getAdminUsers } from './admin-users-api';
+export { getAdminUser, getAdminUsers } from './admin-users-api';
 export type {
+  AdminUserResponseData,
   AdminUserSortOption,
   AdminUsersParams,
   AdminUsersResponseData,

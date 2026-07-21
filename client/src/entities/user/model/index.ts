@@ -5,7 +5,9 @@ export {
   USER_STATUSES,
 } from './user-types';
 export type {
+  AdminUser,
   AdminUserListItem,
+  AdminUserStats,
   User,
   UserAuthProvider,
   UserRole,
