@@ -12,12 +12,14 @@ import {
   getAdminOrdersData,
   updateAdminOrderData,
 } from '../services/admin-orders.service';
+import { getAdminUsersData } from '../services/admin-users.service';
 import type {
   AdminReviewResponse,
   AdminReviewsResponse,
   AdminMeResponse,
   AdminOrderResponse,
   AdminOrdersResponse,
+  AdminUsersResponse,
   DeleteAdminReviewResponse,
   UpdateAdminReviewResponse,
 } from '../types/api';
@@ -32,6 +34,7 @@ import type {
   AdminOrdersQuery,
   UpdateAdminOrderBody,
 } from '../validators/admin-orders.validators';
+import type { AdminUsersQuery } from '../validators/admin-users.validators';
 
 export const getAdminMe = async (
   req: Request,
@@ -76,6 +79,21 @@ export const getAdminReviews = async (
   res.status(200).json({
     success: true,
     message: 'Admin reviews fetched successfully',
+    data,
+  });
+};
+
+export const getAdminUsers = async (
+  req: Request,
+  res: Response<AdminUsersResponse>,
+) => {
+  const data = await getAdminUsersData(
+    req.validated?.query as AdminUsersQuery,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin users fetched successfully',
     data,
   });
 };

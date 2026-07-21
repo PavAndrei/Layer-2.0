@@ -18,4 +18,5 @@ export const userToDto = (user: UserDocument): UserDto => ({
   name: user.name,
   role: user.role,
   isEmailVerified: user.isEmailVerified,
+  isBlocked: user.isBlocked,
 });

@@ -65,6 +65,13 @@ const userSchema = new Schema(
     isEmailVerified: {
       type: Boolean,
       default: false,
+      index: true,
+    },
+
+    isBlocked: {
+      type: Boolean,
+      default: false,
+      index: true,
     },
   },
   {

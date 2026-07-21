@@ -7,6 +7,7 @@ import {
   getAdminOrders,
   getAdminReview,
   getAdminReviews,
+  getAdminUsers,
   updateAdminOrder,
   updateAdminReview,
 } from '../controllers/admin.controllers';
@@ -28,6 +29,7 @@ import {
   getAdminOrdersSchema,
   updateAdminOrderSchema,
 } from '../validators/admin-orders.validators';
+import { getAdminUsersSchema } from '../validators/admin-users.validators';
 
 const adminRoute = Router();
 
@@ -57,6 +59,11 @@ adminRoute.get(
   '/reviews',
   validateRequest(getAdminReviewsSchema),
   catchErrors(getAdminReviews),
+);
+adminRoute.get(
+  '/users',
+  validateRequest(getAdminUsersSchema),
+  catchErrors(getAdminUsers),
 );
 adminRoute.get(
   '/reviews/:reviewId',

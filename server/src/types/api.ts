@@ -9,7 +9,7 @@ import type {
   OrderStatusHistoryItem,
 } from './order';
 import type { ReviewStatus } from './review';
-import type { UserAuthProvider, UserRole } from './user';
+import type { UserAuthProvider, UserRole, UserStatus } from './user';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -139,6 +139,15 @@ export type UserDto = {
   name: string;
   role: UserRole;
   isEmailVerified: boolean;
+  isBlocked: boolean;
+};
+
+export type AdminUserListItemDto = UserDto & {
+  createdAt: string;
+  ordersCount: number;
+  status: UserStatus;
+  totalSpent: number;
+  updatedAt: string;
 };
 
 export type PaginationData = {
@@ -159,6 +168,11 @@ export type AdminOrderResponse = ApiSuccess<{
 
 export type AdminReviewsResponse = ApiSuccess<{
   reviews: AdminReviewListItemDto[];
+  pagination: PaginationData;
+}>;
+
+export type AdminUsersResponse = ApiSuccess<{
+  users: AdminUserListItemDto[];
   pagination: PaginationData;
 }>;
 
