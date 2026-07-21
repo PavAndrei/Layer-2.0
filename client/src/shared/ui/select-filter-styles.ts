@@ -18,7 +18,7 @@ const selectColors = {
 };
 
 export const getSelectStyles = <
-  Option extends SelectFilterOption,
+  Option extends SelectFilterOption<string | number>,
   IsMulti extends boolean,
 >(): StylesConfig<Option, IsMulti, GroupBase<Option>> => ({
   control: (base, state) => ({

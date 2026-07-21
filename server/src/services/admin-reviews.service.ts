@@ -39,6 +39,10 @@ type ReviewUserSource = {
   name: string;
 };
 
+const escapeRegExp = (value: string) => {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
 const hasOwnField = <Field extends string>(
   value: Record<string, unknown>,
   field: Field,
@@ -87,6 +91,7 @@ const recalculateProductRating = async (productId: Types.ObjectId) => {
 
 const getAdminReviewsFilter = (
   query: AdminReviewsQuery,
+  searchFilter?: QueryFilter<ReviewData>,
 ): QueryFilter<ReviewData> => {
   const filter: QueryFilter<ReviewData> = {};
 
@@ -113,7 +118,49 @@ const getAdminReviewsFilter = (
     };
   }
 
+  if (searchFilter) {
+    Object.assign(filter, searchFilter);
+  }
+
   return filter;
+};
+
+const getAdminReviewsSearchFilter = async (
+  search: string | undefined,
+): Promise<QueryFilter<ReviewData> | undefined> => {
+  if (!search) return undefined;
+
+  const escapedSearch = escapeRegExp(search);
+  const searchExpression = {
+    $regex: escapedSearch,
+    $options: 'i',
+  };
+
+  const [products, users] = await Promise.all([
+    Product.find({
+      $or: [
+        { title: searchExpression },
+        { slug: searchExpression },
+      ],
+    }).select('_id'),
+    User.find({
+      $or: [
+        { email: searchExpression },
+        { name: searchExpression },
+      ],
+    }).select('_id'),
+  ]);
+
+  const productIds = products.map((product) => product._id);
+  const userIds = users.map((user) => user._id);
+
+  return {
+    $or: [
+      { authorName: searchExpression },
+      ...(productIds.length > 0 ? [{ productId: { $in: productIds } }] : []),
+      ...(userIds.length > 0 ? [{ userId: { $in: userIds } }] : []),
+    ],
+  };
 };
 
 const getReviewRelatedData = async (reviews: ReviewDocument[]) => {
@@ -200,7 +247,8 @@ export const getAdminReviewsData = async (
   query: AdminReviewsQuery,
 ): Promise<AdminReviewsResponse['data']> => {
   const { page, limit } = getSafePagination(query);
-  const filter = getAdminReviewsFilter(query);
+  const searchFilter = await getAdminReviewsSearchFilter(query.search);
+  const filter = getAdminReviewsFilter(query, searchFilter);
   const total = await Review.countDocuments(filter);
   const totalPages = Math.ceil(total / limit);
   const safePage = Math.min(page, totalPages || 1);

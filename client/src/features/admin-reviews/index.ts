@@ -23,6 +23,7 @@ export type {
 } from './model';
 export {
   AdminReviewListItem,
+  AdminReviewsFiltersForm,
   AdminReviewsList,
   AdminReviewStatusBadge,
 } from './ui';

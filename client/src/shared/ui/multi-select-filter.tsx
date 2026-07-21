@@ -3,12 +3,12 @@ import type { MultiValue } from 'react-select';
 
 import { getSelectStyles, getSelectTheme } from './select-filter-styles';
 
-export type SelectFilterOption<Value extends string = string> = {
+export type SelectFilterOption<Value extends string | number = string> = {
   label: string;
   value: Value;
 };
 
-type MultiSelectFilterProps<Option extends SelectFilterOption> = {
+type MultiSelectFilterProps<Option extends SelectFilterOption<string | number>> = {
   id: string;
   label: string;
   options: readonly Option[];
@@ -16,7 +16,7 @@ type MultiSelectFilterProps<Option extends SelectFilterOption> = {
   onChange: (value: Option[]) => void;
 };
 
-export const MultiSelectFilter = <Option extends SelectFilterOption>({
+export const MultiSelectFilter = <Option extends SelectFilterOption<string | number>>({
   id,
   label,
   options,

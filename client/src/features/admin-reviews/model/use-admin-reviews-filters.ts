@@ -1,9 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import {
-  REVIEW_STATUSES,
-  type ReviewStatus,
-} from '../../../entities/review';
+import { useDebouncedValue } from '../../../shared/hooks';
 import {
   customParam,
   numberParam,
@@ -13,13 +10,10 @@ import {
 } from '../../../shared/model';
 
 export type AdminReviewsFilters = {
-  dateFrom: string;
-  dateTo: string;
   page: number;
-  productId: string;
   rating: number | '';
-  status: ReviewStatus | '';
-  verifiedPurchase: boolean | '';
+  search: string;
+  verifiedPurchase: true | '';
 };
 
 type AdminReviewsUrlState = AdminReviewsFilters & {
@@ -28,12 +22,9 @@ type AdminReviewsUrlState = AdminReviewsFilters & {
 
 export type AdminReviewsFiltersState = AdminReviewsFilters & {
   debouncedFilters: AdminReviewsFilters;
-  handleDateFromChange: (dateFrom: string) => void;
-  handleDateToChange: (dateTo: string) => void;
   handlePageChange: (page: number) => void;
-  handleProductIdChange: (productId: string) => void;
   handleRatingChange: (rating: AdminReviewsFilters['rating']) => void;
-  handleStatusChange: (status: AdminReviewsFilters['status']) => void;
+  handleSearchChange: (search: string) => void;
   handleVerifiedPurchaseChange: (
     verifiedPurchase: AdminReviewsFilters['verifiedPurchase'],
   ) => void;
@@ -43,12 +34,9 @@ export type AdminReviewsFiltersState = AdminReviewsFilters & {
 };
 
 export const initialAdminReviewsFilters: AdminReviewsFilters = {
-  dateFrom: '',
-  dateTo: '',
   page: 1,
-  productId: '',
   rating: '',
-  status: '',
+  search: '',
   verifiedPurchase: '',
 };
 
@@ -59,22 +47,7 @@ const initialAdminReviewsUrlState: AdminReviewsUrlState = {
 
 const ADMIN_REVIEWS_FILTERS_URL_SCHEMA = {
   section: stringParam({ name: 'section' }),
-  status: customParam<AdminReviewsFilters['status']>({
-    parse: (searchParams) => {
-      const status = searchParams.get('status');
-
-      return REVIEW_STATUSES.find((reviewStatus) => reviewStatus === status) ??
-        '';
-    },
-    serialize: (searchParams, value) => {
-      if (!value) {
-        searchParams.delete('status');
-        return;
-      }
-
-      searchParams.set('status', value);
-    },
-  }),
+  search: stringParam({ name: 'search' }),
   rating: customParam<AdminReviewsFilters['rating']>({
     parse: (searchParams) => {
       const rating = Number(searchParams.get('rating'));
@@ -92,28 +65,21 @@ const ADMIN_REVIEWS_FILTERS_URL_SCHEMA = {
       searchParams.set('rating', String(value));
     },
   }),
-  productId: stringParam({ name: 'productId' }),
   verifiedPurchase: customParam<AdminReviewsFilters['verifiedPurchase']>({
     parse: (searchParams) => {
       const verifiedPurchase = searchParams.get('verifiedPurchase');
 
-      if (verifiedPurchase !== 'true' && verifiedPurchase !== 'false') {
-        return '';
-      }
-
-      return verifiedPurchase === 'true';
+      return verifiedPurchase === 'true' ? true : '';
     },
     serialize: (searchParams, value) => {
-      if (value === '') {
+      if (value !== true) {
         searchParams.delete('verifiedPurchase');
         return;
       }
 
-      searchParams.set('verifiedPurchase', String(value));
+      searchParams.set('verifiedPurchase', 'true');
     },
   }),
-  dateFrom: stringParam({ name: 'dateFrom' }),
-  dateTo: stringParam({ name: 'dateTo' }),
   page: numberParam({
     name: 'page',
     defaultValue: initialAdminReviewsFilters.page,
@@ -122,20 +88,14 @@ const ADMIN_REVIEWS_FILTERS_URL_SCHEMA = {
 };
 
 const toFilters = ({
-  dateFrom,
-  dateTo,
   page,
-  productId,
   rating,
-  status,
+  search,
   verifiedPurchase,
 }: AdminReviewsUrlState): AdminReviewsFilters => ({
-  dateFrom,
-  dateTo,
   page,
-  productId,
   rating,
-  status,
+  search,
   verifiedPurchase,
 });
 
@@ -166,6 +126,18 @@ export const useAdminReviewsFilters = (): AdminReviewsFiltersState => {
     },
     [setUrlState],
   );
+
+  const debouncedSearch = useDebouncedValue(filters.search, 400);
+
+  const debouncedFilters = useMemo<AdminReviewsFilters>(
+    () => ({
+      ...filters,
+      search: debouncedSearch,
+    }),
+    [debouncedSearch, filters],
+  );
+
+  const isDebouncing = filters.search !== debouncedSearch;
 
   const resetFilters = useCallback(() => {
     setUrlState(
@@ -217,25 +189,27 @@ export const useAdminReviewsFilters = (): AdminReviewsFiltersState => {
   return useMemo(
     () => ({
       ...filters,
-      debouncedFilters: filters,
-      handleDateFromChange: (dateFrom: string) =>
-        updateFilter('dateFrom', dateFrom),
-      handleDateToChange: (dateTo: string) =>
-        updateFilter('dateTo', dateTo),
+      debouncedFilters,
       handlePageChange,
-      handleProductIdChange: (productId: string) =>
-        updateFilter('productId', productId),
       handleRatingChange: (rating: AdminReviewsFilters['rating']) =>
         updateFilter('rating', rating),
-      handleStatusChange: (status: AdminReviewsFilters['status']) =>
-        updateFilter('status', status),
+      handleSearchChange: (search: string) =>
+        updateFilter('search', search),
       handleVerifiedPurchaseChange: (
         verifiedPurchase: AdminReviewsFilters['verifiedPurchase'],
       ) => updateFilter('verifiedPurchase', verifiedPurchase),
-      isDebouncing: false,
+      isDebouncing,
       resetFilters,
       syncPage,
     }),
-    [filters, handlePageChange, resetFilters, syncPage, updateFilter],
+    [
+      debouncedFilters,
+      filters,
+      handlePageChange,
+      isDebouncing,
+      resetFilters,
+      syncPage,
+      updateFilter,
+    ],
   );
 };

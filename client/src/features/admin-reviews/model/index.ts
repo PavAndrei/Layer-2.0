@@ -1,6 +1,13 @@
 export {
   updateAdminReviewSchema,
 } from './admin-review-validation';
+export {
+  ADMIN_REVIEW_RATING_FILTER_OPTIONS,
+} from './admin-reviews-filter-options';
+export type {
+  AdminReviewRatingFilterOption,
+  AdminReviewRatingFilterValue,
+} from './admin-reviews-filter-options';
 export type {
   UpdateAdminReviewPayload,
 } from './admin-review-validation';

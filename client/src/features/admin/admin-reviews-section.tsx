@@ -1,4 +1,7 @@
-import { AdminReviewsList } from '../admin-reviews';
+import {
+  AdminReviewsFiltersForm,
+  AdminReviewsList,
+} from '../admin-reviews';
 import {
   FeedbackMessage,
   Pagination,
@@ -29,6 +32,16 @@ export const AdminReviewsSection = ({
       <SectionHeader
         title="Reviews"
         description="Review customer feedback, product context, and moderation status."
+      />
+
+      <AdminReviewsFiltersForm
+        rating={filters.rating}
+        search={filters.search}
+        verifiedPurchase={filters.verifiedPurchase}
+        onRatingChange={filters.handleRatingChange}
+        onReset={filters.resetFilters}
+        onSearchChange={filters.handleSearchChange}
+        onVerifiedPurchaseChange={filters.handleVerifiedPurchaseChange}
       />
 
       {isWaitingForInitialReviews && <AdminReviewsSkeleton />}

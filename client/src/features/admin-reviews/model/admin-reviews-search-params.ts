@@ -13,6 +13,10 @@ export const toAdminReviewsSearchParams = (
     searchParams.set('limit', String(params.limit));
   }
 
+  if (params.search) {
+    searchParams.set('search', params.search);
+  }
+
   if (params.status) {
     searchParams.set('status', params.status);
   }

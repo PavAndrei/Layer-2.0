@@ -68,6 +68,17 @@ const optionalRatingParam = () =>
       return parsedValue;
     });
 
+const optionalSearchParam = () =>
+  z
+    .string()
+    .optional()
+    .transform((value) => value?.trim())
+    .transform((value) => (value ? value : undefined))
+    .refine(
+      (value) => value === undefined || value.length <= 120,
+      'Search is too long',
+    );
+
 const optionalBooleanParam = (name: string) =>
   z
     .string()
@@ -130,6 +141,7 @@ export const adminReviewsQuerySchema = z
   .object({
     page: positiveIntegerParam('page', 1),
     limit: positiveIntegerParam('limit', 12, 50),
+    search: optionalSearchParam(),
     status: z.enum(REVIEW_STATUSES).optional(),
     rating: optionalRatingParam(),
     productId: optionalObjectIdParam('product id'),

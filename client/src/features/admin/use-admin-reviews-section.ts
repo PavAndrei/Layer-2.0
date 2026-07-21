@@ -26,13 +26,10 @@ export const useAdminReviewsSection = ({
 
   const params = useMemo(
     () => ({
-      dateFrom: debouncedFilters.dateFrom || undefined,
-      dateTo: debouncedFilters.dateTo || undefined,
       limit: ADMIN_REVIEWS_PAGE_LIMIT,
       page: debouncedFilters.page,
-      productId: debouncedFilters.productId || undefined,
       rating: debouncedFilters.rating || undefined,
-      status: debouncedFilters.status || undefined,
+      search: debouncedFilters.search || undefined,
       verifiedPurchase:
         debouncedFilters.verifiedPurchase === ''
           ? undefined
