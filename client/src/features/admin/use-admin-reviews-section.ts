@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 
 import {
+  useAdminReviewModerationAction,
   useAdminReviews,
   useAdminReviewsFilters,
 } from '../admin-reviews';
@@ -16,6 +17,7 @@ export const useAdminReviewsSection = ({
   activeSection,
 }: UseAdminReviewsSectionParams) => {
   const filters = useAdminReviewsFilters();
+  const moderationAction = useAdminReviewModerationAction();
   const {
     debouncedFilters,
     handlePageChange,
@@ -65,6 +67,7 @@ export const useAdminReviewsSection = ({
 
   return {
     filters,
+    moderationAction,
     onPageChange: handlePageChange,
     reviewsQuery,
   };

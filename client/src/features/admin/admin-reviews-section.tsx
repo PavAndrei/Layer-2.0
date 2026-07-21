@@ -4,6 +4,7 @@ import {
 } from '../admin-reviews';
 import {
   FeedbackMessage,
+  ConfirmDialog,
   Pagination,
   SectionHeader,
   Skeleton,
@@ -20,6 +21,7 @@ const AdminReviewsSkeleton = () => (
 
 export const AdminReviewsSection = ({
   filters,
+  moderationAction,
   onPageChange,
   reviewsQuery,
 }: AdminReviewsSectionState) => {
@@ -66,7 +68,12 @@ export const AdminReviewsSection = ({
         !reviewsQuery.error &&
         reviewsQuery.reviews.length > 0 && (
           <>
-            <AdminReviewsList reviews={reviewsQuery.reviews} />
+            <AdminReviewsList
+              pendingReviewId={moderationAction.pendingReviewId}
+              reviews={reviewsQuery.reviews}
+              onHideReview={moderationAction.openHideDialog}
+              onRestoreReview={moderationAction.openRestoreDialog}
+            />
 
             {reviewsQuery.pagination && (
               <Pagination
@@ -78,6 +85,41 @@ export const AdminReviewsSection = ({
             )}
           </>
         )}
+
+      {moderationAction.error && (
+        <FeedbackMessage
+          tone="danger"
+          title="Review action failed"
+          description={moderationAction.error}
+        />
+      )}
+
+      <ConfirmDialog
+        confirmLabel={
+          moderationAction.action?.type === 'restore' ? 'Restore' : 'Hide'
+        }
+        confirmingLabel={
+          moderationAction.action?.type === 'restore'
+            ? 'Restoring...'
+            : 'Hiding...'
+        }
+        description={
+          moderationAction.error ??
+          (moderationAction.action?.type === 'restore'
+            ? 'This review will become visible again on the product page.'
+            : 'This review will be hidden from the product page.')
+        }
+        isConfirming={moderationAction.isPending}
+        isOpen={Boolean(moderationAction.action)}
+        title={
+          moderationAction.action?.type === 'restore'
+            ? 'Restore review?'
+            : 'Hide review?'
+        }
+        tone={moderationAction.action?.type === 'hide' ? 'danger' : 'neutral'}
+        onCancel={moderationAction.closeDialog}
+        onConfirm={moderationAction.confirmAction}
+      />
     </section>
   );
 };

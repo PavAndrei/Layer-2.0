@@ -13,6 +13,8 @@ export type {
 } from './admin-review-validation';
 export { adminReviewsQueryKeys } from './admin-reviews-query-keys';
 export { toAdminReviewsSearchParams } from './admin-reviews-search-params';
+export { useAdminReviewModerationAction } from './use-admin-review-moderation-action';
+export type { AdminReviewModerationActionState } from './use-admin-review-moderation-action';
 export { useAdminReview } from './use-admin-review';
 export { useAdminReviews } from './use-admin-reviews';
 export {

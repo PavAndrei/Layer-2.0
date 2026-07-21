@@ -98,5 +98,155 @@
     "verifiedPurchase": true,
     "status": "approved",
     "createdAt": "2026-03-11T18:10:00.000Z"
+  },
+  {
+    "productTitle": "Washed Zip Hoodie",
+    "authorName": "Lina G.",
+    "rating": 5,
+    "title": "Exactly the washed look I wanted",
+    "text": "This hoodie has the kind of faded finish that usually takes months to get naturally, but it still feels fresh and well made. I like that the zipper sits flat, the pockets do not flare out, and the ribbing keeps the shape together. It has been easy to wear over a tank, under a coat, or just on its own for a late walk, so it has become one of the pieces I reach for most often.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-04-02T09:35:00.000Z"
+  },
+  {
+    "productTitle": "Washed Zip Hoodie",
+    "authorName": "Ben A.",
+    "rating": 3,
+    "title": "Good but more relaxed than expected",
+    "text": "The material feels nice and the wash is consistent, but the fit is roomier than I expected from the photos. It still works well for layering.",
+    "verifiedPurchase": false,
+    "status": "approved",
+    "createdAt": "2026-04-10T17:20:00.000Z"
+  },
+  {
+    "productTitle": "Utility Heavyweight Box Tee",
+    "authorName": "Grace N.",
+    "rating": 5,
+    "title": "Heavyweight without feeling stiff",
+    "text": "I was looking for a tee that could hold a boxy silhouette without feeling like cardboard, and this is a good balance. The shoulders sit cleanly, the sleeves have enough width, and the fabric feels dense in a premium way. After washing it twice, the shape stayed close to the original fit, which is usually where cheaper heavyweight tees start to twist or shrink unevenly.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-04-12T12:00:00.000Z"
+  },
+  {
+    "productTitle": "Utility Heavyweight Box Tee",
+    "authorName": "Davit K.",
+    "rating": 4,
+    "title": "Clean shape",
+    "text": "The boxy cut is clean and looks intentional. I would like one more neutral color, but the fit itself is excellent.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-04-22T15:45:00.000Z"
+  },
+  {
+    "productTitle": "Utility Heavyweight Box Tee",
+    "authorName": "Mila F.",
+    "rating": 2,
+    "title": "Too wide for me",
+    "text": "The quality is fine, but the proportions were not right for my frame. The body is intentionally wide, so check the measurements before ordering.",
+    "verifiedPurchase": true,
+    "status": "pending",
+    "createdAt": "2026-05-01T11:25:00.000Z"
+  },
+  {
+    "productTitle": "City Graphic T-Shirt",
+    "authorName": "Iris W.",
+    "rating": 5,
+    "title": "Graphic still looks crisp",
+    "text": "I have washed this several times and the print still looks sharp. The fabric is light enough for warm days but not thin or see-through.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-04-03T10:10:00.000Z"
+  },
+  {
+    "productTitle": "City Graphic T-Shirt",
+    "authorName": "Theo J.",
+    "rating": 4,
+    "title": "Easy weekend tee",
+    "text": "The tee feels relaxed and the graphic is not too loud. I wear it with denim, shorts, and under an open shirt.",
+    "verifiedPurchase": false,
+    "status": "approved",
+    "createdAt": "2026-04-19T20:15:00.000Z"
+  },
+  {
+    "productTitle": "Core Oversized Hoodie",
+    "authorName": "Sofia C.",
+    "rating": 5,
+    "title": "Warm, clean and surprisingly versatile",
+    "text": "I bought this hoodie expecting it to be a simple casual piece, but it works in more outfits than I thought. The fabric has a substantial hand feel, the hood has enough structure to sit neatly, and the oversized body does not collapse after wearing it for a few hours. I have used it for travel, morning errands, and even layered under a long coat, and it still looks clean rather than overly sporty. The inside stays soft, the black has not faded in a strange way, and the seams feel sturdy.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-05-06T08:50:00.000Z"
+  },
+  {
+    "productTitle": "Core Oversized Hoodie",
+    "authorName": "Marcus B.",
+    "rating": 4,
+    "title": "Great fabric, slightly long",
+    "text": "The fabric and construction are great. The body runs a little long on me, but the oversized profile still looks intentional.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-05-11T13:05:00.000Z"
+  },
+  {
+    "productTitle": "Core Oversized Hoodie",
+    "authorName": "Anya E.",
+    "rating": 1,
+    "title": "Not for me",
+    "text": "The hoodie felt too oversized for my taste and I did not like how the hood sat on my shoulders. The material is good, but the fit was not what I wanted.",
+    "verifiedPurchase": false,
+    "status": "rejected",
+    "createdAt": "2026-05-15T16:30:00.000Z"
+  },
+  {
+    "productTitle": "Washed Zip Hoodie",
+    "authorName": "Noah P.",
+    "rating": 4,
+    "title": "Solid travel layer",
+    "text": "This has been useful on flights because it is easy to take on and off, and the zipper feels smoother than expected. The washed color also hides small marks better than a flat black hoodie.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-05-18T07:40:00.000Z"
+  },
+  {
+    "productTitle": "Washed Zip Hoodie",
+    "authorName": "Eva R.",
+    "rating": 5,
+    "title": "Long review for checking the admin card",
+    "text": "I am leaving a longer review because the details actually matter with this piece. The zipper is easy to use with one hand, the fabric has a dry washed finish that looks more expensive than a standard fleece, and the pockets are placed in a way that feels natural when walking. I also appreciate that the hood is not oversized to the point of pulling the garment backward. The fit is relaxed but tidy, and it has enough room to layer a heavyweight tee underneath without bunching at the sleeves. If you are testing the admin review card, this text should be long enough to trigger the expandable preview and make the read full review interaction visible.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-05-24T18:55:00.000Z"
+  },
+  {
+    "productTitle": "Utility Heavyweight Box Tee",
+    "authorName": "Leo S.",
+    "rating": 3,
+    "title": "Good base, thick collar",
+    "text": "The body fit is great, but the collar is thicker than I usually prefer. It gives the shirt structure, though, so this is more preference than a real issue.",
+    "verifiedPurchase": false,
+    "status": "approved",
+    "createdAt": "2026-05-27T09:10:00.000Z"
+  },
+  {
+    "productTitle": "City Graphic T-Shirt",
+    "authorName": "Marta Q.",
+    "rating": 4,
+    "title": "Nice print placement",
+    "text": "The print placement is the best part. It sits high enough to show under an overshirt and does not feel too centered or heavy.",
+    "verifiedPurchase": true,
+    "status": "pending",
+    "createdAt": "2026-06-02T14:05:00.000Z"
+  },
+  {
+    "productTitle": "City Graphic T-Shirt",
+    "authorName": "Ivan L.",
+    "rating": 5,
+    "title": "Detailed review for layout testing",
+    "text": "The shirt is comfortable, but what I like most is how simple it is to style. The graphic gives enough detail to make a plain outfit feel finished, while the fabric still behaves like a dependable everyday tee. I wore it through a warm afternoon, then under a lightweight jacket in the evening, and it did not feel clammy or stretched out at the neckline. The print has a slightly matte finish that looks better in person than in the product photo. This longer paragraph should also help test the collapsed text state in the admin reviews grid, especially when several cards have different text lengths.",
+    "verifiedPurchase": true,
+    "status": "approved",
+    "createdAt": "2026-06-08T12:35:00.000Z"
   }
 ]

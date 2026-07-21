@@ -11,12 +11,14 @@ export {
   toAdminReviewsSearchParams,
   updateAdminReviewSchema,
   useAdminReview,
+  useAdminReviewModerationAction,
   useAdminReviews,
   useAdminReviewsFilters,
   useDeleteAdminReview,
   useUpdateAdminReview,
 } from './model';
 export type {
+  AdminReviewModerationActionState,
   AdminReviewsFilters,
   AdminReviewsFiltersState,
   UpdateAdminReviewPayload,

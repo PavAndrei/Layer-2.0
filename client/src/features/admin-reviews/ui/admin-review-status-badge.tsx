@@ -7,7 +7,7 @@ type AdminReviewStatusBadgeProps = {
 const reviewStatusLabels: Record<ReviewStatus, string> = {
   approved: 'Approved',
   pending: 'Pending',
-  rejected: 'Rejected',
+  rejected: 'Hidden',
 };
 
 const reviewStatusClasses: Record<ReviewStatus, string> = {
