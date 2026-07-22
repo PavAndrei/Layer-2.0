@@ -1,6 +1,7 @@
 import type {
   AdminStoreSettingsResponse,
   StoreGeneralSettingsDto,
+  StoreOrderSettingsDto,
   StoreShippingSettingsDto,
 } from '../types/api';
 import { ApiError } from '../exceptions/api-error';
@@ -8,11 +9,13 @@ import { createAuditLog } from './audit-logs.service';
 import {
   getStoreSettingsDocument,
   storeGeneralSettingsToDto,
+  storeOrderSettingsToDto,
   storeShippingSettingsToDto,
   storeSettingsToDto,
 } from './store-settings.service';
 import type {
   UpdateAdminGeneralSettingsBody,
+  UpdateAdminOrderSettingsBody,
   UpdateAdminShippingSettingsBody,
 } from '../validators/admin-settings.validators';
 
@@ -61,6 +64,18 @@ const getChangedShippingSettingsFields = (
   return fields.filter((field) => previous[field] !== next[field]);
 };
 
+const getChangedOrderSettingsFields = (
+  previous: StoreOrderSettingsDto,
+  next: StoreOrderSettingsDto,
+) => {
+  const fields: Array<keyof StoreOrderSettingsDto> = [
+    'ordersEnabled',
+    'requireVerifiedEmailForCheckout',
+  ];
+
+  return fields.filter((field) => previous[field] !== next[field]);
+};
+
 const getNextShippingSettings = (
   previous: StoreShippingSettingsDto,
   update: UpdateAdminShippingSettingsBody,
@@ -95,6 +110,27 @@ const getNextShippingSettings = (
 
   if (update.standardShippingPrice !== undefined) {
     next.standardShippingPrice = update.standardShippingPrice;
+  }
+
+  return next;
+};
+
+const getNextOrderSettings = (
+  previous: StoreOrderSettingsDto,
+  update: UpdateAdminOrderSettingsBody,
+): StoreOrderSettingsDto => {
+  const next = {
+    ...previous,
+  };
+
+  if (Object.hasOwn(update, 'ordersEnabled')) {
+    next.ordersEnabled = Boolean(update.ordersEnabled);
+  }
+
+  if (Object.hasOwn(update, 'requireVerifiedEmailForCheckout')) {
+    next.requireVerifiedEmailForCheckout = Boolean(
+      update.requireVerifiedEmailForCheckout,
+    );
   }
 
   return next;
@@ -220,6 +256,49 @@ export const updateAdminShippingSettingsData = async ({
     metadata: {
       changedFields,
       section: 'shipping',
+    },
+  });
+
+  return {
+    settings: storeSettingsToDto(settings),
+  };
+};
+
+export const updateAdminOrderSettingsData = async ({
+  adminUserId,
+  update,
+}: {
+  adminUserId: string;
+  update: UpdateAdminOrderSettingsBody;
+}): Promise<AdminStoreSettingsResponse['data']> => {
+  const settings = await getStoreSettingsDocument();
+  const previousOrderSettings = storeOrderSettingsToDto(settings);
+  const nextOrderSettings = getNextOrderSettings(
+    previousOrderSettings,
+    update,
+  );
+  const changedFields = getChangedOrderSettingsFields(
+    previousOrderSettings,
+    nextOrderSettings,
+  );
+
+  if (changedFields.length === 0) {
+    return {
+      settings: storeSettingsToDto(settings),
+    };
+  }
+
+  settings.set('orders', nextOrderSettings);
+
+  await settings.save();
+  await createAuditLog({
+    action: 'settings.orders_updated',
+    actorId: adminUserId,
+    entityId: settings._id,
+    entityType: 'settings',
+    metadata: {
+      changedFields,
+      section: 'orders',
     },
   });
 

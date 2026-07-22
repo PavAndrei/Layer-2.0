@@ -12,6 +12,7 @@ import {
 import type {
   OrderResponse,
   OrdersResponse,
+  StoreShippingSettingsDto,
 } from '../types/api';
 import type {
   OrderItemSnapshot,
@@ -92,12 +93,13 @@ const getOrderTotals = ({
   };
 };
 
-const getOrderShippingSnapshot = async (items: OrderItemSnapshot[]) => {
+const getOrderShippingSnapshotFromSettings = (
+  items: OrderItemSnapshot[],
+  shippingSettings: StoreShippingSettingsDto,
+) => {
   const merchandiseTotal = roundMoney(
     items.reduce((sum, item) => sum + item.price * item.quantity, 0),
   );
-  const settings = await getStoreSettingsDocument();
-  const shippingSettings = storeShippingSettingsToDto(settings);
   const shippingTotal = calculateShippingTotal({
     merchandiseTotal,
     shippingSettings,
@@ -107,6 +109,13 @@ const getOrderShippingSnapshot = async (items: OrderItemSnapshot[]) => {
     shippingSettings,
     shippingTotal,
   });
+};
+
+const getOrderShippingSnapshot = async (items: OrderItemSnapshot[]) => {
+  const settings = await getStoreSettingsDocument();
+  const shippingSettings = storeShippingSettingsToDto(settings);
+
+  return getOrderShippingSnapshotFromSettings(items, shippingSettings);
 };
 
 export const getOrdersData = async (
@@ -167,6 +176,9 @@ export const getOrderByIdData = async (
 export const createOrderData = async (
   userId: string,
   input: CreateOrderInput,
+  options: {
+    shippingSettings?: StoreShippingSettingsDto;
+  } = {},
 ): Promise<OrderResponse['data']> => {
   validateObjectId(userId, 'Invalid user id');
 
@@ -174,7 +186,12 @@ export const createOrderData = async (
     throw ApiError.BadRequest('Order must contain at least one item');
   }
 
-  const shippingSnapshot = await getOrderShippingSnapshot(input.items);
+  const shippingSnapshot = options.shippingSettings
+    ? getOrderShippingSnapshotFromSettings(
+      input.items,
+      options.shippingSettings,
+    )
+    : await getOrderShippingSnapshot(input.items);
   const totals = getOrderTotals({
     items: input.items,
     shippingSnapshot,

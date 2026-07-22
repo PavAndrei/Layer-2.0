@@ -98,6 +98,20 @@ const storeSettingsSchema = new Schema(
         default: 10,
       },
     },
+
+    orders: {
+      ordersEnabled: {
+        type: Boolean,
+        required: true,
+        default: true,
+      },
+
+      requireVerifiedEmailForCheckout: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
+    },
   },
   {
     timestamps: true,

@@ -6,7 +6,7 @@ import type { OrderResponse } from '../types/api';
 import type { CheckoutBody } from '../validators/checkout.validators';
 
 const getAuthenticatedUserId = (req: Request) => {
-  if (!req.user) {
+  if (!req.user || !req.currentUser) {
     throw ApiError.Unauthorized();
   }
 
@@ -20,6 +20,9 @@ export const checkout = async (
   const data = await checkoutData(
     getAuthenticatedUserId(req),
     req.body as CheckoutBody,
+    {
+      isEmailVerified: Boolean(req.currentUser?.isEmailVerified),
+    },
   );
 
   res.status(201).json({

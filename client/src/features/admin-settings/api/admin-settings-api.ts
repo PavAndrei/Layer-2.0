@@ -3,6 +3,7 @@ import { apiClient } from '../../../shared/api';
 import type { ApiResponse } from '../../../shared/api';
 import type {
   UpdateAdminGeneralSettingsPayload,
+  UpdateAdminOrderSettingsPayload,
   UpdateAdminShippingSettingsPayload,
 } from '../model';
 
@@ -43,5 +44,18 @@ export const updateAdminShippingSettings = async (
     path: '/admin/settings/shipping',
     body: payload,
     errorMessage: 'Failed to update shipping settings',
+  });
+};
+
+export const updateAdminOrderSettings = async (
+  payload: UpdateAdminOrderSettingsPayload,
+): Promise<ApiResponse<AdminStoreSettingsResponseData>> => {
+  return apiClient.patch<
+    AdminStoreSettingsResponseData,
+    UpdateAdminOrderSettingsPayload
+  >({
+    path: '/admin/settings/orders',
+    body: payload,
+    errorMessage: 'Failed to update order settings',
   });
 };

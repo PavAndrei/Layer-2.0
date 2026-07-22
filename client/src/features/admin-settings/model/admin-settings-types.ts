@@ -1,5 +1,6 @@
 import type {
   StoreGeneralSettings,
+  StoreOrderSettings,
   StoreShippingSettings,
 } from '../../../entities/store-settings';
 
@@ -8,6 +9,8 @@ export type UpdateAdminGeneralSettingsPayload =
 
 export type UpdateAdminShippingSettingsPayload =
   Partial<StoreShippingSettings>;
+
+export type UpdateAdminOrderSettingsPayload = Partial<StoreOrderSettings>;
 
 export type AdminGeneralSettingsFormValues = {
   address: string;
@@ -24,4 +27,9 @@ export type AdminShippingSettingsFormValues = {
   shippingNotice: string;
   shippingRegion: StoreShippingSettings['shippingRegion'];
   standardShippingPrice: string;
+};
+
+export type AdminOrderSettingsFormValues = {
+  ordersEnabled: boolean;
+  requireVerifiedEmailForCheckout: boolean;
 };

@@ -8,6 +8,7 @@ export {
 } from './model';
 export type {
   StoreGeneralSettings,
+  StoreOrderSettings,
   StoreShippingRegion,
   StoreShippingSettings,
   StoreSettings,

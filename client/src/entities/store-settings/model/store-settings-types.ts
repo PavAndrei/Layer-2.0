@@ -23,10 +23,16 @@ export type StoreShippingSettings = {
   standardShippingPrice: number;
 };
 
+export type StoreOrderSettings = {
+  ordersEnabled: boolean;
+  requireVerifiedEmailForCheckout: boolean;
+};
+
 export type StoreSettings = {
   _id: string;
   createdAt: string;
   general: StoreGeneralSettings;
+  orders: StoreOrderSettings;
   shipping: StoreShippingSettings;
   updatedAt: string;
 };

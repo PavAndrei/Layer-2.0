@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   DEFAULT_ADMIN_SETTINGS_SECTION,
   useAdminGeneralSettingsForm,
+  useAdminOrderSettingsForm,
   useAdminShippingSettingsForm,
   useAdminStoreSettings,
   type AdminSettingsSection,
@@ -22,6 +23,9 @@ export const useAdminSettingsSection = ({
   const generalForm = useAdminGeneralSettingsForm(
     settingsQuery.settings?.general,
   );
+  const orderForm = useAdminOrderSettingsForm(
+    settingsQuery.settings?.orders,
+  );
   const shippingForm = useAdminShippingSettingsForm(
     settingsQuery.settings?.shipping,
   );
@@ -30,6 +34,7 @@ export const useAdminSettingsSection = ({
     activeSettingsSection,
     generalForm,
     onSettingsSectionChange: setActiveSettingsSection,
+    orderForm,
     settingsQuery,
     shippingForm,
   };

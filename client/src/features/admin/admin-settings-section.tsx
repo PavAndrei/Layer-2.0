@@ -1,6 +1,7 @@
 import {
   ADMIN_SETTINGS_SECTION_LABELS,
   AdminGeneralSettingsForm,
+  AdminOrderSettingsForm,
   AdminShippingSettingsForm,
   AdminSettingsPlaceholderPanel,
   AdminSettingsTabs,
@@ -23,6 +24,7 @@ export const AdminSettingsSection = ({
   activeSettingsSection,
   generalForm,
   onSettingsSectionChange,
+  orderForm,
   settingsQuery,
   shippingForm,
 }: AdminSettingsSectionState) => {
@@ -88,7 +90,24 @@ export const AdminSettingsSection = ({
 
       {!isWaitingForInitialSettings &&
         !settingsQuery.error &&
+        settings &&
+        activeSettingsSection === 'orders' && (
+          <AdminOrderSettingsForm
+            error={orderForm.error}
+            hasChanges={orderForm.hasChanges}
+            isSubmitting={orderForm.isSubmitting}
+            successMessage={orderForm.successMessage}
+            values={orderForm.values}
+            onReset={orderForm.resetForm}
+            onSubmit={orderForm.submitForm}
+            onValueChange={orderForm.updateField}
+          />
+        )}
+
+      {!isWaitingForInitialSettings &&
+        !settingsQuery.error &&
         activeSettingsSection !== 'general' &&
+        activeSettingsSection !== 'orders' &&
         activeSettingsSection !== 'shipping' && (
           <AdminSettingsPlaceholderPanel
             title={ADMIN_SETTINGS_SECTION_LABELS[activeSettingsSection]}

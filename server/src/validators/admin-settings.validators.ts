@@ -159,9 +159,31 @@ export const updateAdminShippingSettingsSchema = z.object({
   body: updateAdminShippingSettingsBodySchema,
 });
 
+export const updateAdminOrderSettingsBodySchema = z
+  .object({
+    ordersEnabled: z.boolean().optional(),
+    requireVerifiedEmailForCheckout: z.boolean().optional(),
+  })
+  .strict()
+  .refine(
+    (body) =>
+      Object.hasOwn(body, 'ordersEnabled') ||
+      Object.hasOwn(body, 'requireVerifiedEmailForCheckout'),
+    {
+      message: 'Order settings update must contain at least one field',
+    },
+  );
+
+export const updateAdminOrderSettingsSchema = z.object({
+  body: updateAdminOrderSettingsBodySchema,
+});
+
 export type UpdateAdminGeneralSettingsBody = z.infer<
   typeof updateAdminGeneralSettingsBodySchema
 >;
 export type UpdateAdminShippingSettingsBody = z.infer<
   typeof updateAdminShippingSettingsBodySchema
+>;
+export type UpdateAdminOrderSettingsBody = z.infer<
+  typeof updateAdminOrderSettingsBodySchema
 >;

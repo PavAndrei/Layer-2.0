@@ -11,20 +11,25 @@ export {
   DEFAULT_ADMIN_SETTINGS_SECTION,
   syncAdminStoreSettingsQueries,
   useAdminGeneralSettingsForm,
+  useAdminOrderSettingsForm,
   useAdminShippingSettingsForm,
   useAdminStoreSettings,
   useUpdateAdminGeneralSettings,
+  useUpdateAdminOrderSettings,
   useUpdateAdminShippingSettings,
 } from './model';
 export type {
   AdminGeneralSettingsFormValues,
+  AdminOrderSettingsFormValues,
   AdminShippingSettingsFormValues,
   AdminSettingsSection,
   UpdateAdminGeneralSettingsPayload,
+  UpdateAdminOrderSettingsPayload,
   UpdateAdminShippingSettingsPayload,
 } from './model';
 export {
   AdminGeneralSettingsForm,
+  AdminOrderSettingsForm,
   AdminShippingSettingsForm,
   AdminSettingsPlaceholderPanel,
   AdminSettingsTabs,

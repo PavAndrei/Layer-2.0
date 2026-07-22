@@ -242,10 +242,16 @@ export type StoreShippingSettingsDto = {
   standardShippingPrice: number;
 };
 
+export type StoreOrderSettingsDto = {
+  ordersEnabled: boolean;
+  requireVerifiedEmailForCheckout: boolean;
+};
+
 export type StoreSettingsDto = {
   _id: string;
   createdAt: string;
   general: StoreGeneralSettingsDto;
+  orders: StoreOrderSettingsDto;
   shipping: StoreShippingSettingsDto;
   updatedAt: string;
 };

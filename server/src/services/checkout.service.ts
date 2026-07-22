@@ -10,11 +10,20 @@ import type {
 import type { OrderItemSnapshot } from '../types/order';
 import type { CheckoutBody } from '../validators/checkout.validators';
 import { validateCartData } from './cart.service';
+import {
+  getStoreSettingsDocument,
+  storeOrderSettingsToDto,
+  storeShippingSettingsToDto,
+} from './store-settings.service';
 
 type StockItem = Pick<
   OrderItemSnapshot,
   'productId' | 'quantity' | 'variantId'
 >;
+
+type CheckoutUserContext = {
+  isEmailVerified: boolean;
+};
 
 const restoreProductStock = async (items: StockItem[]) => {
   await Promise.all(
@@ -91,7 +100,25 @@ const getOrderItemsFromCart = (
 export const checkoutData = async (
   userId: string,
   body: CheckoutBody,
+  user: CheckoutUserContext,
 ): Promise<OrderResponse['data']> => {
+  const settings = await getStoreSettingsDocument();
+  const orderSettings = storeOrderSettingsToDto(settings);
+  const shippingSettings = storeShippingSettingsToDto(settings);
+
+  if (!orderSettings.ordersEnabled) {
+    throw ApiError.Forbidden('Checkout is currently unavailable');
+  }
+
+  if (
+    orderSettings.requireVerifiedEmailForCheckout &&
+    !user.isEmailVerified
+  ) {
+    throw ApiError.Forbidden(
+      'Email verification is required before checkout',
+    );
+  }
+
   const cart = await validateCartData({
     items: body.items,
   });
@@ -104,11 +131,17 @@ export const checkoutData = async (
   const decrementedItems = await decrementProductStock(orderItems);
 
   try {
-    return await createOrderData(userId, {
-      contactEmail: body.contactEmail,
-      items: orderItems,
-      shippingAddress: body.shippingAddress,
-    });
+    return await createOrderData(
+      userId,
+      {
+        contactEmail: body.contactEmail,
+        items: orderItems,
+        shippingAddress: body.shippingAddress,
+      },
+      {
+        shippingSettings,
+      },
+    );
   } catch (error) {
     await restoreProductStock(decrementedItems);
 

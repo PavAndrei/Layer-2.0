@@ -5,6 +5,7 @@ import {
 } from '../types/store-settings';
 import type {
   StoreGeneralSettingsDto,
+  StoreOrderSettingsDto,
   StoreShippingSettingsDto,
   StoreSettingsDto,
   StoreSettingsResponse,
@@ -23,6 +24,11 @@ const DEFAULT_SHIPPING_SETTINGS: StoreShippingSettingsDto = {
   shippingNotice: 'Orders are processed within 1-2 business days.',
   shippingRegion: 'domestic',
   standardShippingPrice: 10,
+};
+
+const DEFAULT_ORDER_SETTINGS: StoreOrderSettingsDto = {
+  ordersEnabled: true,
+  requireVerifiedEmailForCheckout: false,
 };
 
 export const getStoreSettingsDocument =
@@ -89,12 +95,27 @@ export const storeShippingSettingsToDto = (
   };
 };
 
+export const storeOrderSettingsToDto = (
+  settings: StoreSettingsDocument,
+): StoreOrderSettingsDto => {
+  const orders = settings.orders;
+
+  return {
+    ordersEnabled:
+      orders?.ordersEnabled ?? DEFAULT_ORDER_SETTINGS.ordersEnabled,
+    requireVerifiedEmailForCheckout:
+      orders?.requireVerifiedEmailForCheckout ??
+      DEFAULT_ORDER_SETTINGS.requireVerifiedEmailForCheckout,
+  };
+};
+
 export const storeSettingsToDto = (
   settings: StoreSettingsDocument,
 ): StoreSettingsDto => ({
   _id: settings._id.toString(),
   createdAt: settings.createdAt.toISOString(),
   general: storeGeneralSettingsToDto(settings),
+  orders: storeOrderSettingsToDto(settings),
   shipping: storeShippingSettingsToDto(settings),
   updatedAt: settings.updatedAt.toISOString(),
 });
