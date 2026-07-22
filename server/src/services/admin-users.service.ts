@@ -22,6 +22,7 @@ import type {
 import type { UserAuthProvider } from '../types/user';
 import { orderToAdminUserRecentOrderDto } from '../utils/order-to-dto';
 import { reviewProductToDto } from '../utils/review-product-to-dto';
+import { createAuditLog } from './audit-logs.service';
 import type {
   AdminUsersQuery,
   UpdateAdminUserBody,
@@ -462,6 +463,8 @@ export const updateAdminUserData = async ({
   const shouldRevokeSessions =
     update.isBlocked === true ||
     (update.role !== undefined && update.role !== user.role);
+  const previousIsBlocked = Boolean(user.isBlocked);
+  const previousRole = user.role;
 
   if (Object.hasOwn(update, 'isBlocked')) {
     user.isBlocked = Boolean(update.isBlocked);
@@ -475,6 +478,45 @@ export const updateAdminUserData = async ({
 
   if (shouldRevokeSessions) {
     await revokeActiveAuthSessionsForUser(user._id);
+  }
+
+  const auditLogs = [];
+
+  if (
+    Object.hasOwn(update, 'isBlocked') &&
+    previousIsBlocked !== Boolean(user.isBlocked)
+  ) {
+    auditLogs.push(
+      createAuditLog({
+        action: user.isBlocked ? 'user.blocked' : 'user.unblocked',
+        actorId: adminUserId,
+        entityId: user._id,
+        entityType: 'user',
+        metadata: {
+          isBlocked: user.isBlocked,
+          previousIsBlocked,
+        },
+      }),
+    );
+  }
+
+  if (update.role !== undefined && previousRole !== user.role) {
+    auditLogs.push(
+      createAuditLog({
+        action: 'user.role_changed',
+        actorId: adminUserId,
+        entityId: user._id,
+        entityType: 'user',
+        metadata: {
+          previousRole,
+          role: user.role,
+        },
+      }),
+    );
+  }
+
+  if (auditLogs.length > 0) {
+    await Promise.all(auditLogs);
   }
 
   return {
@@ -500,6 +542,15 @@ export const revokeAdminUserSessionsData = async ({
   }
 
   await revokeActiveAuthSessionsForUser(user._id);
+  await createAuditLog({
+    action: 'user.sessions_revoked',
+    actorId: adminUserId,
+    entityId: user._id,
+    entityType: 'user',
+    metadata: {
+      source: 'admin-user-page',
+    },
+  });
 
   return {
     user: await adminUserToDto(user),

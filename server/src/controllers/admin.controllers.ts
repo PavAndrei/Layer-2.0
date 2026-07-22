@@ -207,8 +207,15 @@ export const deleteAdminReview = async (
   req: Request,
   res: Response<DeleteAdminReviewResponse>,
 ) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
   const { reviewId } = req.validated?.params as AdminReviewParams;
-  const data = await deleteAdminReviewData(reviewId);
+  const data = await deleteAdminReviewData({
+    adminUserId: req.user.userId,
+    reviewId,
+  });
 
   res.status(200).json({
     success: true,

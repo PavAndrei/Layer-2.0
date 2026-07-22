@@ -23,6 +23,7 @@ import type {
   AdminReviewsQuery,
   UpdateAdminReviewBody,
 } from '../validators/admin-reviews.validators';
+import { createAuditLog } from './audit-logs.service';
 import { reviewProductToDto } from '../utils/review-product-to-dto';
 import { reviewToDto } from '../utils/review-to-dto';
 
@@ -218,6 +219,23 @@ const reviewToAdminDto = (
   };
 };
 
+const getReviewStatusAuditAction = (
+  previousStatus: ReviewDocument['status'],
+  nextStatus: ReviewDocument['status'],
+) => {
+  if (nextStatus === 'approved') {
+    return previousStatus === 'rejected'
+      ? 'review.restored'
+      : 'review.approved';
+  }
+
+  if (nextStatus === 'rejected') {
+    return 'review.hidden';
+  }
+
+  return null;
+};
+
 const findAdminReviewById = async (reviewId: string) => {
   if (!isObjectIdOrHexString(reviewId)) {
     throw ApiError.BadRequest('Invalid review id');
@@ -280,6 +298,7 @@ export const updateAdminReviewData = async ({
 }): Promise<UpdateAdminReviewResponse['data']> => {
   const review = await findAdminReviewById(reviewId);
   const previousStatus = review.status;
+  const previousModerationReason = review.moderationReason;
 
   if (update.status !== undefined) {
     review.status = update.status;
@@ -298,6 +317,51 @@ export const updateAdminReviewData = async ({
     await recalculateProductRating(review.productId);
   }
 
+  const auditLogs = [];
+  const statusAuditAction = getReviewStatusAuditAction(
+    previousStatus,
+    review.status,
+  );
+
+  if (statusAuditAction) {
+    auditLogs.push(
+      createAuditLog({
+        action: statusAuditAction,
+        actorId: adminUserId,
+        entityId: review._id,
+        entityType: 'review',
+        metadata: {
+          previousStatus,
+          productId: review.productId.toString(),
+          status: review.status,
+        },
+      }),
+    );
+  }
+
+  if (
+    hasOwnField(update, 'moderationReason') &&
+    previousModerationReason !== review.moderationReason
+  ) {
+    auditLogs.push(
+      createAuditLog({
+        action: 'review.moderation_reason_changed',
+        actorId: adminUserId,
+        entityId: review._id,
+        entityType: 'review',
+        metadata: {
+          hasModerationReason: Boolean(review.moderationReason),
+          hadModerationReason: Boolean(previousModerationReason),
+          productId: review.productId.toString(),
+        },
+      }),
+    );
+  }
+
+  if (auditLogs.length > 0) {
+    await Promise.all(auditLogs);
+  }
+
   const relatedData = await getReviewRelatedData([review]);
 
   return {
@@ -305,12 +369,26 @@ export const updateAdminReviewData = async ({
   };
 };
 
-export const deleteAdminReviewData = async (
-  reviewId: string,
-): Promise<DeleteAdminReviewResponse['data']> => {
+export const deleteAdminReviewData = async ({
+  adminUserId,
+  reviewId,
+}: {
+  adminUserId: string;
+  reviewId: string;
+}): Promise<DeleteAdminReviewResponse['data']> => {
   const review = await findAdminReviewById(reviewId);
   const productId = review.productId;
 
+  await createAuditLog({
+    action: 'review.deleted',
+    actorId: adminUserId,
+    entityId: review._id,
+    entityType: 'review',
+    metadata: {
+      productId: productId.toString(),
+      status: review.status,
+    },
+  });
   await review.deleteOne();
   await recalculateProductRating(productId);
 

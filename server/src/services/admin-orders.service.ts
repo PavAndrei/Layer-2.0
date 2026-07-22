@@ -23,6 +23,7 @@ import type {
   AdminOrdersQuery,
   UpdateAdminOrderBody,
 } from '../validators/admin-orders.validators';
+import { createAuditLog } from './audit-logs.service';
 
 const HEX_PATTERN = /^[a-f\d]+$/i;
 
@@ -228,6 +229,9 @@ export const updateAdminOrderData = async ({
   update,
 }: UpdateAdminOrderDataParams): Promise<AdminOrderResponse['data']> => {
   const order = await findAdminOrderById(orderId);
+  const previousStatus = order.status;
+  const previousTrackingNumber = order.trackingNumber;
+  const previousAdminNote = order.adminNote;
 
   if (update.status && order.status !== update.status) {
     order.status = update.status;
@@ -248,6 +252,61 @@ export const updateAdminOrderData = async ({
   }
 
   await order.save();
+
+  const auditLogs = [];
+
+  if (update.status && previousStatus !== order.status) {
+    auditLogs.push(
+      createAuditLog({
+        action: 'order.status_changed',
+        actorId: adminUserId,
+        entityId: order._id,
+        entityType: 'order',
+        metadata: {
+          note: update.statusNote,
+          previousStatus,
+          status: order.status,
+        },
+      }),
+    );
+  }
+
+  if (
+    hasOwnField(update, 'trackingNumber') &&
+    previousTrackingNumber !== order.trackingNumber
+  ) {
+    auditLogs.push(
+      createAuditLog({
+        action: 'order.tracking_number_changed',
+        actorId: adminUserId,
+        entityId: order._id,
+        entityType: 'order',
+        metadata: {
+          previousTrackingNumber,
+          trackingNumber: order.trackingNumber,
+        },
+      }),
+    );
+  }
+
+  if (hasOwnField(update, 'adminNote') && previousAdminNote !== order.adminNote) {
+    auditLogs.push(
+      createAuditLog({
+        action: 'order.admin_note_changed',
+        actorId: adminUserId,
+        entityId: order._id,
+        entityType: 'order',
+        metadata: {
+          hasAdminNote: Boolean(order.adminNote),
+          hadAdminNote: Boolean(previousAdminNote),
+        },
+      }),
+    );
+  }
+
+  if (auditLogs.length > 0) {
+    await Promise.all(auditLogs);
+  }
 
   const orderDto = await orderToAdminDtoWithStatusActors(order);
 
