@@ -1,7 +1,10 @@
 import type { StoreSettings } from '../../../entities/store-settings';
 import { apiClient } from '../../../shared/api';
 import type { ApiResponse } from '../../../shared/api';
-import type { UpdateAdminGeneralSettingsPayload } from '../model';
+import type {
+  UpdateAdminGeneralSettingsPayload,
+  UpdateAdminShippingSettingsPayload,
+} from '../model';
 
 export type AdminStoreSettingsResponseData = {
   settings: StoreSettings;
@@ -27,5 +30,18 @@ export const updateAdminGeneralSettings = async (
     path: '/admin/settings/general',
     body: payload,
     errorMessage: 'Failed to update general settings',
+  });
+};
+
+export const updateAdminShippingSettings = async (
+  payload: UpdateAdminShippingSettingsPayload,
+): Promise<ApiResponse<AdminStoreSettingsResponseData>> => {
+  return apiClient.patch<
+    AdminStoreSettingsResponseData,
+    UpdateAdminShippingSettingsPayload
+  >({
+    path: '/admin/settings/shipping',
+    body: payload,
+    errorMessage: 'Failed to update shipping settings',
   });
 };

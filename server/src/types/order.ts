@@ -1,4 +1,5 @@
 import type { ProductSize } from './product-variant';
+import type { StoreShippingRegion } from './store-settings';
 
 export const ORDER_STATUSES = [
   'pending',
@@ -51,4 +52,15 @@ export type OrderShippingAddress = {
   phone?: string;
   postalCode: string;
   region?: string;
+};
+
+export type OrderShippingSnapshot = {
+  estimatedDeliveryDaysMax: number;
+  estimatedDeliveryDaysMin: number;
+  freeShippingEnabled: boolean;
+  freeShippingThreshold: number | null;
+  shippingNotice?: string;
+  shippingPrice: number;
+  shippingRegion: StoreShippingRegion;
+  standardShippingPrice: number;
 };

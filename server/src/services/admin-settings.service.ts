@@ -1,15 +1,19 @@
 import type {
   AdminStoreSettingsResponse,
   StoreGeneralSettingsDto,
+  StoreShippingSettingsDto,
 } from '../types/api';
+import { ApiError } from '../exceptions/api-error';
 import { createAuditLog } from './audit-logs.service';
 import {
   getStoreSettingsDocument,
   storeGeneralSettingsToDto,
+  storeShippingSettingsToDto,
   storeSettingsToDto,
 } from './store-settings.service';
 import type {
   UpdateAdminGeneralSettingsBody,
+  UpdateAdminShippingSettingsBody,
 } from '../validators/admin-settings.validators';
 
 const normalizeGeneralSettingsUpdate = (
@@ -38,6 +42,84 @@ const getChangedGeneralSettingsFields = (
   ];
 
   return fields.filter((field) => previous[field] !== next[field]);
+};
+
+const getChangedShippingSettingsFields = (
+  previous: StoreShippingSettingsDto,
+  next: StoreShippingSettingsDto,
+) => {
+  const fields: Array<keyof StoreShippingSettingsDto> = [
+    'estimatedDeliveryDaysMax',
+    'estimatedDeliveryDaysMin',
+    'freeShippingEnabled',
+    'freeShippingThreshold',
+    'shippingNotice',
+    'shippingRegion',
+    'standardShippingPrice',
+  ];
+
+  return fields.filter((field) => previous[field] !== next[field]);
+};
+
+const getNextShippingSettings = (
+  previous: StoreShippingSettingsDto,
+  update: UpdateAdminShippingSettingsBody,
+): StoreShippingSettingsDto => {
+  const next = {
+    ...previous,
+  };
+
+  if (update.estimatedDeliveryDaysMax !== undefined) {
+    next.estimatedDeliveryDaysMax = update.estimatedDeliveryDaysMax;
+  }
+
+  if (update.estimatedDeliveryDaysMin !== undefined) {
+    next.estimatedDeliveryDaysMin = update.estimatedDeliveryDaysMin;
+  }
+
+  if (Object.hasOwn(update, 'freeShippingEnabled')) {
+    next.freeShippingEnabled = Boolean(update.freeShippingEnabled);
+  }
+
+  if (update.freeShippingThreshold !== undefined) {
+    next.freeShippingThreshold = update.freeShippingThreshold;
+  }
+
+  if (Object.hasOwn(update, 'shippingNotice')) {
+    next.shippingNotice = update.shippingNotice;
+  }
+
+  if (update.shippingRegion !== undefined) {
+    next.shippingRegion = update.shippingRegion;
+  }
+
+  if (update.standardShippingPrice !== undefined) {
+    next.standardShippingPrice = update.standardShippingPrice;
+  }
+
+  return next;
+};
+
+const assertValidShippingSettings = (
+  shipping: StoreShippingSettingsDto,
+) => {
+  if (
+    shipping.estimatedDeliveryDaysMax <
+    shipping.estimatedDeliveryDaysMin
+  ) {
+    throw ApiError.BadRequest(
+      'Estimated delivery max days must be greater than or equal to min days',
+    );
+  }
+
+  if (
+    shipping.freeShippingEnabled &&
+    shipping.freeShippingThreshold === null
+  ) {
+    throw ApiError.BadRequest(
+      'Free shipping threshold is required when free shipping is enabled',
+    );
+  }
 };
 
 export const updateAdminGeneralSettingsData = async ({
@@ -92,6 +174,52 @@ export const updateAdminGeneralSettingsData = async ({
     metadata: {
       changedFields,
       section: 'general',
+    },
+  });
+
+  return {
+    settings: storeSettingsToDto(settings),
+  };
+};
+
+export const updateAdminShippingSettingsData = async ({
+  adminUserId,
+  update,
+}: {
+  adminUserId: string;
+  update: UpdateAdminShippingSettingsBody;
+}): Promise<AdminStoreSettingsResponse['data']> => {
+  const settings = await getStoreSettingsDocument();
+  const previousShippingSettings = storeShippingSettingsToDto(settings);
+  const nextShippingSettings = getNextShippingSettings(
+    previousShippingSettings,
+    update,
+  );
+
+  assertValidShippingSettings(nextShippingSettings);
+
+  const changedFields = getChangedShippingSettingsFields(
+    previousShippingSettings,
+    nextShippingSettings,
+  );
+
+  if (changedFields.length === 0) {
+    return {
+      settings: storeSettingsToDto(settings),
+    };
+  }
+
+  settings.set('shipping', nextShippingSettings);
+
+  await settings.save();
+  await createAuditLog({
+    action: 'settings.shipping_updated',
+    actorId: adminUserId,
+    entityId: settings._id,
+    entityType: 'settings',
+    metadata: {
+      changedFields,
+      section: 'shipping',
     },
   });
 

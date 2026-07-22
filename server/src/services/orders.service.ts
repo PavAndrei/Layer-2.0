@@ -16,9 +16,18 @@ import type {
 import type {
   OrderItemSnapshot,
   OrderShippingAddress,
+  OrderShippingSnapshot,
   OrderStatus,
 } from '../types/order';
 import { orderToDto } from '../utils/order-to-dto';
+import {
+  createOrderShippingSnapshot,
+  calculateShippingTotal,
+} from './shipping.service';
+import {
+  getStoreSettingsDocument,
+  storeShippingSettingsToDto,
+} from './store-settings.service';
 
 export type GetOrdersOptions = {
   limit?: number;
@@ -54,7 +63,13 @@ const getSafePagination = (options: GetOrdersOptions) => {
 
 const roundMoney = (value: number) => Math.round(value * 100) / 100;
 
-const getOrderTotals = (items: OrderItemSnapshot[]) => {
+const getOrderTotals = ({
+  items,
+  shippingSnapshot,
+}: {
+  items: OrderItemSnapshot[];
+  shippingSnapshot: OrderShippingSnapshot;
+}) => {
   const subtotal = items.reduce(
     (total, item) =>
       total +
@@ -67,12 +82,31 @@ const getOrderTotals = (items: OrderItemSnapshot[]) => {
     0,
   );
   const discountTotal = subtotal - total;
+  const shippingTotal = shippingSnapshot.shippingPrice;
 
   return {
     subtotal: roundMoney(subtotal),
     discountTotal: roundMoney(discountTotal),
-    total: roundMoney(total),
+    shippingTotal: roundMoney(shippingTotal),
+    total: roundMoney(total + shippingTotal),
   };
+};
+
+const getOrderShippingSnapshot = async (items: OrderItemSnapshot[]) => {
+  const merchandiseTotal = roundMoney(
+    items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+  );
+  const settings = await getStoreSettingsDocument();
+  const shippingSettings = storeShippingSettingsToDto(settings);
+  const shippingTotal = calculateShippingTotal({
+    merchandiseTotal,
+    shippingSettings,
+  });
+
+  return createOrderShippingSnapshot({
+    shippingSettings,
+    shippingTotal,
+  });
 };
 
 export const getOrdersData = async (
@@ -140,12 +174,17 @@ export const createOrderData = async (
     throw ApiError.BadRequest('Order must contain at least one item');
   }
 
-  const totals = getOrderTotals(input.items);
+  const shippingSnapshot = await getOrderShippingSnapshot(input.items);
+  const totals = getOrderTotals({
+    items: input.items,
+    shippingSnapshot,
+  });
   const order = await Order.create({
     userId: new Types.ObjectId(userId),
     status: 'pending',
     items: input.items,
     shippingAddress: input.shippingAddress,
+    shippingSnapshot,
     contactEmail: input.contactEmail,
     ...totals,
   });

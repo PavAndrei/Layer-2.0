@@ -12,8 +12,10 @@ export const CheckoutPage = () => {
     fieldErrors,
     handleSubmit,
     isEmpty,
+    isShippingLoading,
     isSubmitting,
     items,
+    shippingError,
     totals,
     updateContactEmail,
     updateShippingAddress,
@@ -43,7 +45,12 @@ export const CheckoutPage = () => {
           onShippingAddressChange={updateShippingAddress}
           onSubmit={handleSubmit}
         />
-        <CheckoutOrderSummary items={items} totals={totals} />
+        <CheckoutOrderSummary
+          isShippingLoading={isShippingLoading}
+          items={items}
+          shippingError={shippingError}
+          totals={totals}
+        />
       </div>
     </main>
   );

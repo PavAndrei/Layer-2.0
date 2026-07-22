@@ -1,3 +1,5 @@
+import type { StoreShippingRegion } from '../../store-settings';
+
 export const ORDER_STATUSES = [
   'pending',
   'paid',
@@ -65,6 +67,17 @@ export type OrderShippingAddress = {
   region?: string;
 };
 
+export type OrderShippingSnapshot = {
+  estimatedDeliveryDaysMax: number;
+  estimatedDeliveryDaysMin: number;
+  freeShippingEnabled: boolean;
+  freeShippingThreshold: number | null;
+  shippingNotice?: string;
+  shippingPrice: number;
+  shippingRegion: StoreShippingRegion;
+  standardShippingPrice: number;
+};
+
 export type Order = {
   _id: string;
   contactEmail: string;
@@ -73,6 +86,8 @@ export type Order = {
   items: OrderItemSnapshot[];
   paymentStatus: OrderPaymentStatus;
   shippingAddress: OrderShippingAddress;
+  shippingSnapshot?: OrderShippingSnapshot;
+  shippingTotal: number;
   status: OrderStatus;
   subtotal: number;
   trackingNumber?: string;
@@ -86,9 +101,11 @@ export type AdminOrderListItem = {
   contactEmail: string;
   createdAt: string;
   customerName: string;
+  hasShippingSnapshot: boolean;
   itemsCount: number;
   orderNumber: string;
   paymentStatus: OrderPaymentStatus;
+  shippingTotal: number;
   status: OrderStatus;
   total: number;
   trackingNumber?: string;
@@ -98,8 +115,10 @@ export type AdminOrderListItem = {
 export type AdminUserRecentOrder = {
   _id: string;
   createdAt: string;
+  hasShippingSnapshot: boolean;
   orderNumber: string;
   paymentStatus: OrderPaymentStatus;
+  shippingTotal: number;
   status: OrderStatus;
   total: number;
 };

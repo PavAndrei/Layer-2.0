@@ -13,6 +13,7 @@ import {
   getAdminUsers,
   revokeAdminUserSessions,
   updateAdminGeneralSettings,
+  updateAdminShippingSettings,
   updateAdminOrder,
   updateAdminUser,
   updateAdminReview,
@@ -43,6 +44,7 @@ import {
 import { getAdminDashboardSchema } from '../validators/admin-dashboard.validators';
 import {
   updateAdminGeneralSettingsSchema,
+  updateAdminShippingSettingsSchema,
 } from '../validators/admin-settings.validators';
 
 const adminRoute = Router();
@@ -64,6 +66,11 @@ adminRoute.patch(
   '/settings/general',
   validateRequest(updateAdminGeneralSettingsSchema),
   catchErrors(updateAdminGeneralSettings),
+);
+adminRoute.patch(
+  '/settings/shipping',
+  validateRequest(updateAdminShippingSettingsSchema),
+  catchErrors(updateAdminShippingSettings),
 );
 adminRoute.get(
   '/orders',

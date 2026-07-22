@@ -137,7 +137,7 @@ const getAdminUserRecentOrders = async (
   })
     .sort({ createdAt: -1 })
     .limit(RECENT_USER_ORDERS_LIMIT)
-    .select('createdAt paymentStatus status total');
+    .select('createdAt paymentStatus shippingSnapshot shippingTotal status total');
 
   return orders.map(orderToAdminUserRecentOrderDto);
 };

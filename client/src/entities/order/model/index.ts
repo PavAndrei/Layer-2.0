@@ -1,5 +1,9 @@
 export { orderQueryKeys } from './order-query-keys';
 export {
+  getOrderShippingLabel,
+  hasCapturedShipping,
+} from './order-shipping';
+export {
   ORDER_ITEM_SIZES,
   ORDER_PAYMENT_STATUSES,
   ORDER_STATUSES,
@@ -13,6 +17,7 @@ export type {
   OrderItemSnapshot,
   OrderPaymentStatus,
   OrderShippingAddress,
+  OrderShippingSnapshot,
   OrderStatus,
   OrderStatusHistoryItem,
 } from './order-types';

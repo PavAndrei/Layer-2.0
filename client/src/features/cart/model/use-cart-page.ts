@@ -6,6 +6,13 @@ import {
   useState,
 } from 'react';
 
+import {
+  calculateShippingTotal,
+  useStoreSettings,
+} from '../../../entities/store-settings';
+import type {
+  StoreShippingSettings,
+} from '../../../entities/store-settings';
 import { useScrollToTopOnChange } from '../../../shared/hooks';
 import { getCartItemKey, getCartTotals } from './cart-helpers';
 import { selectCartItems } from './cart-selectors';
@@ -18,9 +25,35 @@ type CartValidationNotice = {
   updatedItemsCount: number;
 };
 
+const toOrderTotals = (
+  totals: ReturnType<typeof getCartTotals>,
+  shippingSettings?: StoreShippingSettings | null,
+) => {
+  const shippingTotal = shippingSettings
+    ? calculateShippingTotal({
+      merchandiseTotal: totals.subtotal,
+      shippingSettings,
+    })
+    : 0;
+
+  return {
+    estimatedDeliveryDaysMax: shippingSettings?.estimatedDeliveryDaysMax,
+    estimatedDeliveryDaysMin: shippingSettings?.estimatedDeliveryDaysMin,
+    shippingNotice: shippingSettings?.shippingNotice,
+    shippingTotal,
+    total: totals.subtotal + shippingTotal,
+  };
+};
+
 export const useCartPage = () => {
   const items = useCartStore(selectCartItems);
   const totals = useMemo(() => getCartTotals(items), [items]);
+  const storeSettingsQuery = useStoreSettings();
+  const shippingSettings = storeSettingsQuery.settings?.shipping ?? null;
+  const orderTotals = useMemo(
+    () => toOrderTotals(totals, shippingSettings),
+    [shippingSettings, totals],
+  );
   const [cartValidationNotice, setCartValidationNotice] =
     useState<CartValidationNotice | null>(null);
   const [cartValidationError, setCartValidationError] =
@@ -125,9 +158,12 @@ export const useCartPage = () => {
     increaseItemQuantity,
     isCartValidating,
     isEmpty: items.length === 0,
+    isShippingLoading: storeSettingsQuery.isLoading,
     items,
+    orderTotals,
     removeItem,
     retryCartValidation: validateCurrentCart,
+    shippingError: storeSettingsQuery.error,
     totals,
   };
 };

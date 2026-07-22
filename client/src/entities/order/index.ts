@@ -2,6 +2,8 @@ export {
   ORDER_ITEM_SIZES,
   ORDER_PAYMENT_STATUSES,
   ORDER_STATUSES,
+  getOrderShippingLabel,
+  hasCapturedShipping,
   orderQueryKeys,
   type AdminOrder,
   type AdminOrderListItem,
@@ -11,6 +13,7 @@ export {
   type OrderItemSnapshot,
   type OrderPaymentStatus,
   type OrderShippingAddress,
+  type OrderShippingSnapshot,
   type OrderStatus,
   type OrderStatusHistoryItem,
 } from './model';

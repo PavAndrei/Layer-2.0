@@ -1,9 +1,10 @@
 import { Link } from 'react-router';
 
-import type {
-  AdminOrderListItem,
-  OrderPaymentStatus,
-  OrderStatus,
+import {
+  getOrderShippingLabel,
+  type AdminOrderListItem,
+  type OrderPaymentStatus,
+  type OrderStatus,
 } from '../../../entities/order';
 import { formatProductPrice } from '../../../entities/product';
 import { formatDisplayDate } from '../../../shared/lib';
@@ -64,6 +65,10 @@ export const AdminDashboardRecentOrders = ({
             <div className="flex shrink-0 flex-col gap-1 sm:items-end">
               <span className="block-medium text-typography-heading">
                 {formatProductPrice(order.total)}
+              </span>
+              <span className="block-small text-typography-muted">
+                Shipping{' '}
+                {getOrderShippingLabel(order, formatProductPrice)}
               </span>
               <span className="block-small text-typography-secondary">
                 {ORDER_STATUS_LABELS[order.status]} ·{' '}

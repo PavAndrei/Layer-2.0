@@ -6,10 +6,20 @@ import { Order } from '../models/orders.model';
 import { Product } from '../models/products.model';
 import { Review } from '../models/reviews.model';
 import { User } from '../models/users.model';
+import {
+  calculateShippingTotal,
+  createOrderShippingSnapshot,
+} from '../services/shipping.service';
+import {
+  getStoreSettingsDocument,
+  storeShippingSettingsToDto,
+} from '../services/store-settings.service';
+import type { StoreShippingSettingsDto } from '../types/api';
 import type {
   OrderItemSnapshot,
   OrderPaymentStatus,
   OrderShippingAddress,
+  OrderShippingSnapshot,
   OrderStatus,
 } from '../types/order';
 import type { ReviewStatus } from '../types/review';
@@ -248,7 +258,10 @@ const getShippingAddress = (user: TestUserSeed): OrderShippingAddress => {
   };
 };
 
-const getOrderTotals = (items: OrderItemSnapshot[]) => {
+const getOrderTotals = (
+  items: OrderItemSnapshot[],
+  shippingSnapshot: OrderShippingSnapshot,
+) => {
   const subtotal = items.reduce(
     (total, item) =>
       total +
@@ -260,12 +273,32 @@ const getOrderTotals = (items: OrderItemSnapshot[]) => {
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
+  const shippingTotal = shippingSnapshot.shippingPrice;
 
   return {
     discountTotal: roundMoney(subtotal - total),
+    shippingTotal: roundMoney(shippingTotal),
     subtotal: roundMoney(subtotal),
-    total: roundMoney(total),
+    total: roundMoney(total + shippingTotal),
   };
+};
+
+const getOrderShippingSnapshot = (
+  items: OrderItemSnapshot[],
+  shippingSettings: StoreShippingSettingsDto,
+) => {
+  const merchandiseTotal = roundMoney(
+    items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+  );
+  const shippingTotal = calculateShippingTotal({
+    merchandiseTotal,
+    shippingSettings,
+  });
+
+  return createOrderShippingSnapshot({
+    shippingSettings,
+    shippingTotal,
+  });
 };
 
 const getOrderItems = (
@@ -401,6 +434,8 @@ const seedTestUsers = async () => {
     throw new Error('No products found. Run seed:database first.');
   }
 
+  const settings = await getStoreSettingsDocument();
+  const shippingSettings = storeShippingSettingsToDto(settings);
   const passwordHash = await hashPassword(TEST_USERS_PASSWORD);
   const users = await User.insertMany(
     TEST_USERS.map((user, index) => {
@@ -437,7 +472,11 @@ const seedTestUsers = async () => {
         userIndex + orderIndex,
         seed.totalMultiplier,
       );
-      const totals = getOrderTotals(items);
+      const shippingSnapshot = getOrderShippingSnapshot(
+        items,
+        shippingSettings,
+      );
+      const totals = getOrderTotals(items, shippingSnapshot);
       const paymentStatus = getPaymentStatus(
         orderIndex,
         seed.paidOrdersCount,
@@ -458,6 +497,8 @@ const seedTestUsers = async () => {
         items,
         paymentStatus,
         shippingAddress: getShippingAddress(seed),
+        shippingSnapshot,
+        shippingTotal: totals.shippingTotal,
         status,
         statusHistory: [
           {

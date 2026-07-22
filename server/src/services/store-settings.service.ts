@@ -5,6 +5,7 @@ import {
 } from '../types/store-settings';
 import type {
   StoreGeneralSettingsDto,
+  StoreShippingSettingsDto,
   StoreSettingsDto,
   StoreSettingsResponse,
 } from '../types/api';
@@ -12,6 +13,16 @@ import type {
 const DEFAULT_GENERAL_SETTINGS: StoreGeneralSettingsDto = {
   storeName: 'Layer',
   supportEmail: 'support@layer.test',
+};
+
+const DEFAULT_SHIPPING_SETTINGS: StoreShippingSettingsDto = {
+  estimatedDeliveryDaysMax: 7,
+  estimatedDeliveryDaysMin: 3,
+  freeShippingEnabled: true,
+  freeShippingThreshold: 150,
+  shippingNotice: 'Orders are processed within 1-2 business days.',
+  shippingRegion: 'domestic',
+  standardShippingPrice: 10,
 };
 
 export const getStoreSettingsDocument =
@@ -49,12 +60,42 @@ export const storeGeneralSettingsToDto = (
   };
 };
 
+export const storeShippingSettingsToDto = (
+  settings: StoreSettingsDocument,
+): StoreShippingSettingsDto => {
+  const shipping = settings.shipping;
+
+  return {
+    estimatedDeliveryDaysMax:
+      shipping?.estimatedDeliveryDaysMax ??
+      DEFAULT_SHIPPING_SETTINGS.estimatedDeliveryDaysMax,
+    estimatedDeliveryDaysMin:
+      shipping?.estimatedDeliveryDaysMin ??
+      DEFAULT_SHIPPING_SETTINGS.estimatedDeliveryDaysMin,
+    freeShippingEnabled:
+      shipping?.freeShippingEnabled ??
+      DEFAULT_SHIPPING_SETTINGS.freeShippingEnabled,
+    freeShippingThreshold:
+      shipping?.freeShippingThreshold ??
+      DEFAULT_SHIPPING_SETTINGS.freeShippingThreshold,
+    shippingNotice:
+      shipping?.shippingNotice ??
+      DEFAULT_SHIPPING_SETTINGS.shippingNotice,
+    shippingRegion:
+      shipping?.shippingRegion ?? DEFAULT_SHIPPING_SETTINGS.shippingRegion,
+    standardShippingPrice:
+      shipping?.standardShippingPrice ??
+      DEFAULT_SHIPPING_SETTINGS.standardShippingPrice,
+  };
+};
+
 export const storeSettingsToDto = (
   settings: StoreSettingsDocument,
 ): StoreSettingsDto => ({
   _id: settings._id.toString(),
   createdAt: settings.createdAt.toISOString(),
   general: storeGeneralSettingsToDto(settings),
+  shipping: storeShippingSettingsToDto(settings),
   updatedAt: settings.updatedAt.toISOString(),
 });
 

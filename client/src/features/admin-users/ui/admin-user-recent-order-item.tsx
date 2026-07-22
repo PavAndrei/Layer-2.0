@@ -1,9 +1,10 @@
 import { Link } from 'react-router';
 
-import type {
-  AdminUserRecentOrder,
-  OrderPaymentStatus,
-  OrderStatus,
+import {
+  getOrderShippingLabel,
+  type AdminUserRecentOrder,
+  type OrderPaymentStatus,
+  type OrderStatus,
 } from '../../../entities/order';
 import { formatProductPrice } from '../../../entities/product';
 import { formatDisplayDate } from '../../../shared/lib';
@@ -102,6 +103,10 @@ export const AdminUserRecentOrderItem = ({
       <span className="block-small text-typography-secondary">Total</span>
       <span className="block-medium text-typography-heading">
         {formatProductPrice(order.total)}
+      </span>
+      <span className="block-small text-typography-muted">
+        Shipping{' '}
+        {getOrderShippingLabel(order, formatProductPrice)}
       </span>
     </div>
 

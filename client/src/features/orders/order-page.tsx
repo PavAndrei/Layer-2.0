@@ -71,6 +71,8 @@ export const OrderPage = () => {
         </div>
         <OrderSummary
           discountTotal={order.discountTotal}
+          shippingSnapshot={order.shippingSnapshot}
+          shippingTotal={order.shippingTotal}
           subtotal={order.subtotal}
           total={order.total}
         />

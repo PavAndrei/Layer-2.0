@@ -21,6 +21,7 @@ import {
 import { getAdminDashboardData } from '../services/admin-dashboard.service';
 import {
   updateAdminGeneralSettingsData,
+  updateAdminShippingSettingsData,
 } from '../services/admin-settings.service';
 import { getStoreSettingsData } from '../services/store-settings.service';
 import type {
@@ -57,6 +58,7 @@ import type {
 } from '../validators/admin-users.validators';
 import type {
   UpdateAdminGeneralSettingsBody,
+  UpdateAdminShippingSettingsBody,
 } from '../validators/admin-settings.validators';
 
 export const getAdminMe = async (
@@ -121,6 +123,27 @@ export const updateAdminGeneralSettings = async (
   res.status(200).json({
     success: true,
     message: 'Admin general settings updated successfully',
+    data,
+  });
+};
+
+export const updateAdminShippingSettings = async (
+  req: Request,
+  res: Response<AdminStoreSettingsResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const body = req.validated?.body as UpdateAdminShippingSettingsBody;
+  const data = await updateAdminShippingSettingsData({
+    adminUserId: req.user.userId,
+    update: body,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin shipping settings updated successfully',
     data,
   });
 };

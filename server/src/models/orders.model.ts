@@ -11,9 +11,11 @@ import {
   type OrderItemSnapshot,
   type OrderPaymentStatus,
   type OrderShippingAddress,
+  type OrderShippingSnapshot,
   type OrderStatus,
   type OrderStatusHistoryItem,
 } from '../types/order';
+import { STORE_SHIPPING_REGIONS } from '../types/store-settings';
 import { PRODUCT_SIZES } from '../types/product-variant';
 
 const orderItemSchema = new Schema<OrderItemSnapshot>(
@@ -152,6 +154,60 @@ const orderShippingAddressSchema = new Schema<OrderShippingAddress>(
   },
 );
 
+const orderShippingSnapshotSchema = new Schema<OrderShippingSnapshot>(
+  {
+    estimatedDeliveryDaysMax: {
+      type: Number,
+      required: true,
+      min: 1,
+    },
+
+    estimatedDeliveryDaysMin: {
+      type: Number,
+      required: true,
+      min: 1,
+    },
+
+    freeShippingEnabled: {
+      type: Boolean,
+      required: true,
+    },
+
+    freeShippingThreshold: {
+      type: Number,
+      min: 0,
+      default: null,
+    },
+
+    shippingNotice: {
+      type: String,
+      trim: true,
+      maxlength: 300,
+    },
+
+    shippingPrice: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+
+    shippingRegion: {
+      type: String,
+      enum: STORE_SHIPPING_REGIONS,
+      required: true,
+    },
+
+    standardShippingPrice: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+  },
+  {
+    _id: false,
+  },
+);
+
 const orderStatusHistoryItemSchema = new Schema<OrderStatusHistoryItem>(
   {
     status: {
@@ -221,6 +277,10 @@ const orderSchema = new Schema(
       required: true,
     },
 
+    shippingSnapshot: {
+      type: orderShippingSnapshotSchema,
+    },
+
     contactEmail: {
       type: String,
       required: true,
@@ -236,6 +296,13 @@ const orderSchema = new Schema(
     },
 
     discountTotal: {
+      type: Number,
+      required: true,
+      default: 0,
+      min: 0,
+    },
+
+    shippingTotal: {
       type: Number,
       required: true,
       default: 0,

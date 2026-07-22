@@ -15,10 +15,12 @@ import {
 import { AdminDashboardSection } from './admin-dashboard-section';
 import { AdminOrdersSection } from './admin-orders-section';
 import { AdminReviewsSection } from './admin-reviews-section';
+import { AdminSettingsSection } from './admin-settings-section';
 import { AdminUsersSection } from './admin-users-section';
 import { useAdminDashboardSection } from './use-admin-dashboard-section';
 import { useAdminOrdersSection } from './use-admin-orders-section';
 import { useAdminReviewsSection } from './use-admin-reviews-section';
+import { useAdminSettingsSection } from './use-admin-settings-section';
 import { useAdminUsersSection } from './use-admin-users-section';
 
 const ADMIN_BREADCRUMBS = [
@@ -35,6 +37,7 @@ export const AdminPage = () => {
   const adminDashboardSection = useAdminDashboardSection({ activeSection });
   const adminOrdersSection = useAdminOrdersSection({ activeSection });
   const adminReviewsSection = useAdminReviewsSection({ activeSection });
+  const adminSettingsSection = useAdminSettingsSection({ activeSection });
   const adminUsersSection = useAdminUsersSection({ activeSection });
   const scrollDependency = useMemo(() => {
     if (activeSection === 'orders') {
@@ -105,12 +108,20 @@ export const AdminPage = () => {
       ].join(':');
     }
 
+    if (activeSection === 'settings') {
+      return [
+        activeSection,
+        adminSettingsSection.activeSettingsSection,
+      ].join(':');
+    }
+
     return activeSection;
   }, [
     activeSection,
     adminDashboardSection.periodState.period,
     adminOrdersSection.filters.debouncedFilters,
     adminReviewsSection.filters.debouncedFilters,
+    adminSettingsSection.activeSettingsSection,
     adminUsersSection.filters.debouncedFilters,
   ]);
   const adminSidebar = (
@@ -141,6 +152,8 @@ export const AdminPage = () => {
         <AdminDashboardSection {...adminDashboardSection} />
       ) : activeSection === 'reviews' ? (
         <AdminReviewsSection {...adminReviewsSection} />
+      ) : activeSection === 'settings' ? (
+        <AdminSettingsSection {...adminSettingsSection} />
       ) : activeSection === 'users' ? (
         <AdminUsersSection {...adminUsersSection} />
       ) : (

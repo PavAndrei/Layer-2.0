@@ -1,6 +1,7 @@
 export {
   getAdminStoreSettings,
   updateAdminGeneralSettings,
+  updateAdminShippingSettings,
 } from './admin-settings-api';
 export type {
   AdminStoreSettingsResponseData,

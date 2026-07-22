@@ -5,7 +5,9 @@ import type {
 } from '../model';
 
 type CheckoutOrderSummaryProps = {
+  isShippingLoading?: boolean;
   items: CheckoutSummaryItem[];
+  shippingError?: string | null;
   totals: CheckoutSummaryTotals;
 };
 
@@ -13,9 +15,15 @@ const getSummaryItemKey = (item: CheckoutSummaryItem) =>
   `${item.productId}:${item.variantId}`;
 
 export const CheckoutOrderSummary = ({
+  isShippingLoading = false,
   items,
+  shippingError = null,
   totals,
-}: CheckoutOrderSummaryProps) => (
+}: CheckoutOrderSummaryProps) => {
+  const totalLabel =
+    isShippingLoading || shippingError ? 'Estimated total' : 'Total';
+
+  return (
   <aside className="order-1 flex h-fit flex-col gap-4 rounded border border-border-soft bg-background-surface p-4 lg:sticky lg:top-4 lg:order-2">
     <h2 className="block-title text-typography-heading">Order summary</h2>
 
@@ -52,6 +60,14 @@ export const CheckoutOrderSummary = ({
           {totals.itemsCount}
         </span>
       </div>
+      <div className="flex items-center justify-between gap-4">
+        <span className="block-medium text-typography-secondary">
+          Subtotal
+        </span>
+        <span className="block-medium text-typography-heading">
+          {formatProductPrice(totals.subtotal)}
+        </span>
+      </div>
       {totals.discountTotal > 0 && (
         <div className="flex items-center justify-between gap-4">
           <span className="block-medium text-typography-secondary">
@@ -62,12 +78,48 @@ export const CheckoutOrderSummary = ({
           </span>
         </div>
       )}
+      <div className="flex items-center justify-between gap-4">
+        <span className="block-medium text-typography-secondary">
+          Shipping
+        </span>
+        <span className="block-medium text-typography-heading">
+          {isShippingLoading
+            ? 'Calculating...'
+            : shippingError
+              ? 'Confirmed on submit'
+              : totals.shippingTotal === 0
+                ? 'Free'
+                : formatProductPrice(totals.shippingTotal)}
+        </span>
+      </div>
+      {!shippingError &&
+        totals.estimatedDeliveryDaysMin &&
+        totals.estimatedDeliveryDaysMax && (
+          <p className="block-small text-typography-muted">
+            Estimated delivery: {totals.estimatedDeliveryDaysMin}-
+            {totals.estimatedDeliveryDaysMax} business days
+          </p>
+        )}
+      {!shippingError && totals.shippingNotice && (
+        <p className="block-small text-typography-muted">
+          {totals.shippingNotice}
+        </p>
+      )}
+      {shippingError && (
+        <p className="block-small text-typography-muted">
+          Shipping settings are unavailable. The server will calculate final
+          shipping when you place the order.
+        </p>
+      )}
       <div className="flex items-center justify-between gap-4 border-t border-border-soft pt-3">
-        <span className="block-title text-typography-heading">Total</span>
         <span className="block-title text-typography-heading">
-          {formatProductPrice(totals.subtotal)}
+          {totalLabel}
+        </span>
+        <span className="block-title text-typography-heading">
+          {formatProductPrice(totals.total)}
         </span>
       </div>
     </div>
   </aside>
-);
+  );
+};

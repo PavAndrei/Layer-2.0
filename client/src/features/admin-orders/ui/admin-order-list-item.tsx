@@ -1,6 +1,9 @@
 import { Link } from 'react-router';
 
-import type { AdminOrderListItem as AdminOrderListItemData } from '../../../entities/order';
+import {
+  getOrderShippingLabel,
+  type AdminOrderListItem as AdminOrderListItemData,
+} from '../../../entities/order';
 import { formatProductPrice } from '../../../entities/product';
 import { formatDisplayDate } from '../../../shared/lib';
 import {
@@ -16,6 +19,7 @@ export const AdminOrderListItem = ({
   order,
 }: AdminOrderListItemProps) => {
   const hasTrackingNumber = Boolean(order.trackingNumber);
+  const shippingLabel = getOrderShippingLabel(order, formatProductPrice);
 
   return (
     <Link
@@ -47,11 +51,19 @@ export const AdminOrderListItem = ({
           </span>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-3">
           <div className="flex flex-col gap-1">
             <span className="block-small text-typography-muted">Items</span>
             <span className="block-medium text-typography-primary">
               {order.itemsCount}
+            </span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="block-small text-typography-muted">
+              Shipping
+            </span>
+            <span className="block-medium text-typography-primary">
+              {shippingLabel}
             </span>
           </div>
           <div className="flex flex-col gap-1">

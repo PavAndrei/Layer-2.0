@@ -5,10 +5,20 @@ import { MONGO_URI } from '../constants/env';
 import { Order } from '../models/orders.model';
 import { Product } from '../models/products.model';
 import { User } from '../models/users.model';
+import {
+  calculateShippingTotal,
+  createOrderShippingSnapshot,
+} from '../services/shipping.service';
+import {
+  getStoreSettingsDocument,
+  storeShippingSettingsToDto,
+} from '../services/store-settings.service';
+import type { StoreShippingSettingsDto } from '../types/api';
 import type {
   OrderItemSnapshot,
   OrderPaymentStatus,
   OrderShippingAddress,
+  OrderShippingSnapshot,
   OrderStatus,
 } from '../types/order';
 
@@ -47,7 +57,10 @@ const shippingAddress: OrderShippingAddress = {
 
 const roundMoney = (value: number) => Math.round(value * 100) / 100;
 
-const getOrderTotals = (items: OrderItemSnapshot[]) => {
+const getOrderTotals = (
+  items: OrderItemSnapshot[],
+  shippingSnapshot: OrderShippingSnapshot,
+) => {
   const subtotal = items.reduce(
     (total, item) =>
       total +
@@ -60,12 +73,32 @@ const getOrderTotals = (items: OrderItemSnapshot[]) => {
     0,
   );
   const discountTotal = subtotal - total;
+  const shippingTotal = shippingSnapshot.shippingPrice;
 
   return {
     discountTotal: roundMoney(discountTotal),
+    shippingTotal: roundMoney(shippingTotal),
     subtotal: roundMoney(subtotal),
-    total: roundMoney(total),
+    total: roundMoney(total + shippingTotal),
   };
+};
+
+const getOrderShippingSnapshot = (
+  items: OrderItemSnapshot[],
+  shippingSettings: StoreShippingSettingsDto,
+) => {
+  const merchandiseTotal = roundMoney(
+    items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+  );
+  const shippingTotal = calculateShippingTotal({
+    merchandiseTotal,
+    shippingSettings,
+  });
+
+  return createOrderShippingSnapshot({
+    shippingSettings,
+    shippingTotal,
+  });
 };
 
 const getUser = async () => {
@@ -131,11 +164,17 @@ const seedTestOrders = async () => {
   await mongoose.connect(MONGO_URI);
 
   const user = await getUser();
+  const settings = await getStoreSettingsDocument();
+  const shippingSettings = storeShippingSettingsToDto(settings);
   const orders = [];
 
   for (let index = 0; index < TEST_ORDERS_COUNT; index += 1) {
     const items = await getOrderItems(index);
-    const totals = getOrderTotals(items);
+    const shippingSnapshot = getOrderShippingSnapshot(
+      items,
+      shippingSettings,
+    );
+    const totals = getOrderTotals(items, shippingSnapshot);
     const status =
       ORDER_STATUS_SEQUENCE[index % ORDER_STATUS_SEQUENCE.length];
     const createdAt = new Date(Date.now() - index * 24 * 60 * 60 * 1000);
@@ -147,6 +186,8 @@ const seedTestOrders = async () => {
       items,
       paymentStatus: getPaymentStatus(status),
       shippingAddress,
+      shippingSnapshot,
+      shippingTotal: totals.shippingTotal,
       status,
       statusHistory: [
         {

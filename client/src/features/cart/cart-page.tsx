@@ -47,9 +47,12 @@ export const CartPage = () => {
     increaseItemQuantity,
     isCartValidating,
     isEmpty,
+    isShippingLoading,
     items,
+    orderTotals,
     removeItem,
     retryCartValidation,
+    shippingError,
     totals,
   } = useCartPage();
 
@@ -98,7 +101,15 @@ export const CartPage = () => {
   return (
     <CartLayout
       itemsCount={totals.itemsCount}
-      summary={<CartSummary totals={totals} onClearCart={clearCart} />}
+      summary={(
+        <CartSummary
+          isShippingLoading={isShippingLoading}
+          orderTotals={orderTotals}
+          shippingError={shippingError}
+          totals={totals}
+          onClearCart={clearCart}
+        />
+      )}
     >
       <div className="flex flex-col gap-3">
         {isCartValidating && (

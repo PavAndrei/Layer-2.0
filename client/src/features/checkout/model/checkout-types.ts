@@ -25,6 +25,11 @@ export type CheckoutSummaryItem = {
 
 export type CheckoutSummaryTotals = {
   discountTotal: number;
+  estimatedDeliveryDaysMax?: number;
+  estimatedDeliveryDaysMin?: number;
   itemsCount: number;
+  shippingNotice?: string;
+  shippingTotal: number;
   subtotal: number;
+  total: number;
 };

@@ -3,6 +3,13 @@ import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router';
 
 import {
+  calculateShippingTotal,
+  useStoreSettings,
+} from '../../entities/store-settings';
+import type {
+  StoreShippingSettings,
+} from '../../entities/store-settings';
+import {
   getCartTotals,
   selectCartItems,
   useCartStore,
@@ -61,11 +68,26 @@ const toSummaryItems = (items: ReturnType<typeof selectCartItems>) =>
 
 const toSummaryTotals = (
   totals: ReturnType<typeof getCartTotals>,
-): CheckoutSummaryTotals => ({
-  discountTotal: totals.discountTotal,
-  itemsCount: totals.itemsCount,
-  subtotal: totals.subtotal,
-});
+  shippingSettings?: StoreShippingSettings | null,
+): CheckoutSummaryTotals => {
+  const shippingTotal = shippingSettings
+    ? calculateShippingTotal({
+      merchandiseTotal: totals.subtotal,
+      shippingSettings,
+    })
+    : 0;
+
+  return {
+    estimatedDeliveryDaysMax: shippingSettings?.estimatedDeliveryDaysMax,
+    estimatedDeliveryDaysMin: shippingSettings?.estimatedDeliveryDaysMin,
+    discountTotal: totals.discountTotal,
+    itemsCount: totals.itemsCount,
+    shippingNotice: shippingSettings?.shippingNotice,
+    shippingTotal,
+    subtotal: totals.compareAtSubtotal,
+    total: totals.subtotal + shippingTotal,
+  };
+};
 
 export const useCheckoutPage = () => {
   const navigate = useNavigate();
@@ -73,7 +95,12 @@ export const useCheckoutPage = () => {
   const clearCart = useCartStore((state) => state.clearCart);
   const cartTotals = useMemo(() => getCartTotals(cartItems), [cartItems]);
   const items = useMemo(() => toSummaryItems(cartItems), [cartItems]);
-  const totals = useMemo(() => toSummaryTotals(cartTotals), [cartTotals]);
+  const storeSettingsQuery = useStoreSettings();
+  const shippingSettings = storeSettingsQuery.settings?.shipping ?? null;
+  const totals = useMemo(
+    () => toSummaryTotals(cartTotals, shippingSettings),
+    [cartTotals, shippingSettings],
+  );
   const profileQuery = useProfile();
   const profileResponse = profileQuery.data;
   const checkoutMutation = useCheckout();
@@ -173,8 +200,10 @@ export const useCheckoutPage = () => {
     fieldErrors,
     handleSubmit,
     isEmpty: cartItems.length === 0,
+    isShippingLoading: storeSettingsQuery.isLoading,
     isSubmitting: checkoutMutation.isPending,
     items,
+    shippingError: storeSettingsQuery.error,
     totals,
     updateContactEmail,
     updateShippingAddress,

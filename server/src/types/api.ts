@@ -2,10 +2,12 @@ import type { ProductSize, ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
 import type { AdminDashboardPeriod } from './admin-dashboard';
+import type { StoreShippingRegion } from './store-settings';
 import type {
   OrderItemSnapshot,
   OrderPaymentStatus,
   OrderShippingAddress,
+  OrderShippingSnapshot,
   OrderStatus,
   OrderStatusHistoryItem,
 } from './order';
@@ -94,6 +96,8 @@ export type OrderDto = {
   items: OrderItemSnapshot[];
   paymentStatus: OrderPaymentStatus;
   shippingAddress: OrderShippingAddress;
+  shippingSnapshot?: OrderShippingSnapshot;
+  shippingTotal: number;
   status: OrderStatus;
   subtotal: number;
   trackingNumber?: string;
@@ -116,9 +120,11 @@ export type AdminOrderListItemDto = {
   contactEmail: string;
   createdAt: string;
   customerName: string;
+  hasShippingSnapshot: boolean;
   itemsCount: number;
   orderNumber: string;
   paymentStatus: OrderPaymentStatus;
+  shippingTotal: number;
   status: OrderStatus;
   total: number;
   trackingNumber?: string;
@@ -163,8 +169,10 @@ export type AdminUserStatsDto = {
 export type AdminUserRecentOrderDto = {
   _id: string;
   createdAt: string;
+  hasShippingSnapshot: boolean;
   orderNumber: string;
   paymentStatus: OrderPaymentStatus;
+  shippingTotal: number;
   status: OrderStatus;
   total: number;
 };
@@ -224,10 +232,21 @@ export type StoreGeneralSettingsDto = {
   supportPhone?: string;
 };
 
+export type StoreShippingSettingsDto = {
+  estimatedDeliveryDaysMax: number;
+  estimatedDeliveryDaysMin: number;
+  freeShippingEnabled: boolean;
+  freeShippingThreshold: number | null;
+  shippingNotice?: string;
+  shippingRegion: StoreShippingRegion;
+  standardShippingPrice: number;
+};
+
 export type StoreSettingsDto = {
   _id: string;
   createdAt: string;
   general: StoreGeneralSettingsDto;
+  shipping: StoreShippingSettingsDto;
   updatedAt: string;
 };
 

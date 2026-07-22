@@ -69,6 +69,10 @@ const orderStatusHistoryToDto = (
   }));
 };
 
+const getShippingTotal = (order: OrderDocument) => {
+  return order.shippingSnapshot?.shippingPrice ?? order.shippingTotal ?? 0;
+};
+
 export const orderToDto = (order: OrderDocument): OrderDto => ({
   _id: order._id.toString(),
   userId: order.userId.toString(),
@@ -101,6 +105,21 @@ export const orderToDto = (order: OrderDocument): OrderDto => ({
   contactEmail: order.contactEmail,
   subtotal: order.subtotal,
   discountTotal: order.discountTotal,
+  shippingSnapshot: order.shippingSnapshot
+    ? {
+      estimatedDeliveryDaysMax:
+        order.shippingSnapshot.estimatedDeliveryDaysMax,
+      estimatedDeliveryDaysMin:
+        order.shippingSnapshot.estimatedDeliveryDaysMin,
+      freeShippingEnabled: order.shippingSnapshot.freeShippingEnabled,
+      freeShippingThreshold: order.shippingSnapshot.freeShippingThreshold,
+      shippingNotice: order.shippingSnapshot.shippingNotice,
+      shippingPrice: order.shippingSnapshot.shippingPrice,
+      shippingRegion: order.shippingSnapshot.shippingRegion,
+      standardShippingPrice: order.shippingSnapshot.standardShippingPrice,
+    }
+    : undefined,
+  shippingTotal: getShippingTotal(order),
   total: order.total,
   trackingNumber: optionalString(order.trackingNumber),
   createdAt: order.createdAt.toISOString(),
@@ -114,9 +133,11 @@ export const orderToAdminListItemDto = (
   contactEmail: order.contactEmail,
   createdAt: order.createdAt.toISOString(),
   customerName: getCustomerName(order),
+  hasShippingSnapshot: Boolean(order.shippingSnapshot),
   itemsCount: getItemsCount(order),
   orderNumber: getOrderNumber(order._id.toString()),
   paymentStatus: getPaymentStatus(order),
+  shippingTotal: getShippingTotal(order),
   status: order.status,
   total: order.total,
   trackingNumber: optionalString(order.trackingNumber),
@@ -128,8 +149,10 @@ export const orderToAdminUserRecentOrderDto = (
 ): AdminUserRecentOrderDto => ({
   _id: order._id.toString(),
   createdAt: order.createdAt.toISOString(),
+  hasShippingSnapshot: Boolean(order.shippingSnapshot),
   orderNumber: getOrderNumber(order._id.toString()),
   paymentStatus: getPaymentStatus(order),
+  shippingTotal: getShippingTotal(order),
   status: order.status,
   total: order.total,
 });

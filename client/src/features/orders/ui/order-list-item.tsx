@@ -1,7 +1,10 @@
 import { Link } from 'react-router';
 
 import { formatProductPrice } from '../../../entities/product';
-import type { Order } from '../../../entities/order';
+import {
+  getOrderShippingLabel,
+  type Order,
+} from '../../../entities/order';
 import { formatDisplayDate } from '../../../shared/lib';
 import { OrderStatusBadge } from './order-status-badge';
 
@@ -28,6 +31,7 @@ export const OrderListItem = ({ order }: OrderListItemProps) => {
     0,
   );
   const shippingLocation = getShippingLocation(order);
+  const shippingLabel = getOrderShippingLabel(order, formatProductPrice);
 
   return (
     <Link
@@ -80,6 +84,9 @@ export const OrderListItem = ({ order }: OrderListItemProps) => {
         <div className="flex shrink-0 flex-col gap-1 sm:items-end">
           <span className="block-title text-typography-heading">
             {formatProductPrice(order.total)}
+          </span>
+          <span className="block-small text-typography-secondary">
+            Shipping {shippingLabel}
           </span>
           <span className="block-small text-accent-primary">
             View details
