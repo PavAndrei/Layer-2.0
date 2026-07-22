@@ -100,6 +100,25 @@ export const adminUserParamsSchema = z.object({
     .strict(),
 });
 
+export const updateAdminUserBodySchema = z
+  .object({
+    isBlocked: z.boolean().optional(),
+    role: z.enum(USER_ROLES).optional(),
+  })
+  .strict()
+  .refine(
+    (body) => Object.hasOwn(body, 'isBlocked') || Object.hasOwn(body, 'role'),
+    {
+    message: 'User update must contain at least one field',
+    },
+  );
+
+export const updateAdminUserSchema = z.object({
+  params: adminUserParamsSchema.shape.params,
+  body: updateAdminUserBodySchema,
+});
+
 export type AdminUsersQuery = z.infer<typeof adminUsersQuerySchema>;
 export type AdminUserSortOption = (typeof ADMIN_USER_SORT_OPTIONS)[number];
 export type AdminUserParams = z.infer<typeof adminUserParamsSchema>['params'];
+export type UpdateAdminUserBody = z.infer<typeof updateAdminUserBodySchema>;

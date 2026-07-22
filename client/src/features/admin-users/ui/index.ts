@@ -6,6 +6,7 @@ export {
 } from './admin-user-badges';
 export { AdminUserInfoCard } from './admin-user-info-card';
 export { AdminUserListItem } from './admin-user-list-item';
+export { AdminUserManagementCard } from './admin-user-management-card';
 export { AdminUserPageHeader } from './admin-user-page-header';
 export { AdminUserRecentOrderItem } from './admin-user-recent-order-item';
 export { AdminUserRecentOrdersCard } from './admin-user-recent-orders-card';

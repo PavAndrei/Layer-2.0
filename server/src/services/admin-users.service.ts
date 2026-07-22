@@ -22,7 +22,10 @@ import type {
 import type { UserAuthProvider } from '../types/user';
 import { orderToAdminUserRecentOrderDto } from '../utils/order-to-dto';
 import { reviewProductToDto } from '../utils/review-product-to-dto';
-import type { AdminUsersQuery } from '../validators/admin-users.validators';
+import type {
+  AdminUsersQuery,
+  UpdateAdminUserBody,
+} from '../validators/admin-users.validators';
 
 type AdminUserAggregateResult = {
   _id: Types.ObjectId;
@@ -415,6 +418,88 @@ export const getAdminUserData = async (
   if (!user) {
     throw ApiError.NotFound('User not found');
   }
+
+  return {
+    user: await adminUserToDto(user),
+  };
+};
+
+const revokeActiveAuthSessionsForUser = async (userId: Types.ObjectId) => {
+  await AuthSession.updateMany(
+    {
+      userId,
+      revokedAt: { $exists: false },
+    },
+    {
+      revokedAt: new Date(),
+    },
+  );
+};
+
+export const updateAdminUserData = async ({
+  adminUserId,
+  update,
+  userId,
+}: {
+  adminUserId: string;
+  update: UpdateAdminUserBody;
+  userId: string;
+}): Promise<AdminUserResponse['data']> => {
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw ApiError.NotFound('User not found');
+  }
+
+  if (update.isBlocked === true && adminUserId === user._id.toString()) {
+    throw ApiError.BadRequest('Admin cannot block their own account');
+  }
+
+  if (update.role !== undefined && adminUserId === user._id.toString()) {
+    throw ApiError.BadRequest('Admin cannot change their own role');
+  }
+
+  const shouldRevokeSessions =
+    update.isBlocked === true ||
+    (update.role !== undefined && update.role !== user.role);
+
+  if (Object.hasOwn(update, 'isBlocked')) {
+    user.isBlocked = Boolean(update.isBlocked);
+  }
+
+  if (update.role !== undefined) {
+    user.role = update.role;
+  }
+
+  await user.save();
+
+  if (shouldRevokeSessions) {
+    await revokeActiveAuthSessionsForUser(user._id);
+  }
+
+  return {
+    user: await adminUserToDto(user),
+  };
+};
+
+export const revokeAdminUserSessionsData = async ({
+  adminUserId,
+  userId,
+}: {
+  adminUserId: string;
+  userId: string;
+}): Promise<AdminUserResponse['data']> => {
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw ApiError.NotFound('User not found');
+  }
+
+  if (adminUserId === user._id.toString()) {
+    throw ApiError.BadRequest('Admin cannot revoke their own sessions');
+  }
+
+  await revokeActiveAuthSessionsForUser(user._id);
 
   return {
     user: await adminUserToDto(user),

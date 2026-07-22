@@ -16,7 +16,7 @@ const getAccessTokenFromHeader = (authorization?: string): string | null => {
   return token || null;
 };
 
-export const authMiddleware: RequestHandler = (req, _res, next) => {
+export const authMiddleware: RequestHandler = async (req, _res, next) => {
   const accessToken = getAccessTokenFromHeader(req.get('authorization'));
 
   if (!accessToken) {
@@ -33,6 +33,18 @@ export const authMiddleware: RequestHandler = (req, _res, next) => {
 
     req.user = payload;
 
+    const user = await User.findById(payload.userId);
+
+    if (!user) {
+      return next(ApiError.Unauthorized('User not found'));
+    }
+
+    if (user.isBlocked) {
+      return next(ApiError.Forbidden('User account is blocked'));
+    }
+
+    req.currentUser = user;
+
     next();
   } catch {
     next(ApiError.Unauthorized('Invalid access token'));
@@ -40,17 +52,9 @@ export const authMiddleware: RequestHandler = (req, _res, next) => {
 };
 
 export const requireUser: RequestHandler = async (req, _res, next) => {
-  if (!req.user) {
+  if (!req.user || !req.currentUser) {
     return next(ApiError.Unauthorized());
   }
-
-  const user = await User.findById(req.user.userId);
-
-  if (!user) {
-    return next(ApiError.Unauthorized('User not found'));
-  }
-
-  req.currentUser = user;
 
   next();
 };

@@ -15,6 +15,8 @@ import {
 import {
   getAdminUserData,
   getAdminUsersData,
+  revokeAdminUserSessionsData,
+  updateAdminUserData,
 } from '../services/admin-users.service';
 import type {
   AdminReviewResponse,
@@ -41,6 +43,7 @@ import type {
 import type {
   AdminUserParams,
   AdminUsersQuery,
+  UpdateAdminUserBody,
 } from '../validators/admin-users.validators';
 
 export const getAdminMe = async (
@@ -115,6 +118,50 @@ export const getAdminUser = async (
   res.status(200).json({
     success: true,
     message: 'Admin user fetched successfully',
+    data,
+  });
+};
+
+export const updateAdminUser = async (
+  req: Request,
+  res: Response<AdminUserResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { userId } = req.validated?.params as AdminUserParams;
+  const body = req.validated?.body as UpdateAdminUserBody;
+  const data = await updateAdminUserData({
+    adminUserId: req.user.userId,
+    update: body,
+    userId,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin user updated successfully',
+    data,
+  });
+};
+
+export const revokeAdminUserSessions = async (
+  req: Request,
+  res: Response<AdminUserResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { userId } = req.validated?.params as AdminUserParams;
+  const data = await revokeAdminUserSessionsData({
+    adminUserId: req.user.userId,
+    userId,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin user sessions revoked successfully',
     data,
   });
 };

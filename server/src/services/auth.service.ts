@@ -160,6 +160,10 @@ const createAuthResult = async (
   user: UserDocument,
   context: AuthContext,
 ): Promise<AuthResult> => {
+  if (user.isBlocked) {
+    throw ApiError.Forbidden('User account is blocked');
+  }
+
   const { accessToken, refreshToken } = await createAuthSession(user, context);
 
   return {
@@ -358,6 +362,10 @@ export const getCurrentUser = async (userId: string): Promise<UserDto> => {
     throw ApiError.Unauthorized('User not found');
   }
 
+  if (user.isBlocked) {
+    throw ApiError.Forbidden('User account is blocked');
+  }
+
   return userToDto(user);
 };
 
@@ -369,6 +377,10 @@ export const requestEmailVerification = async (
 
   if (!user) {
     throw ApiError.Unauthorized('User not found');
+  }
+
+  if (user.isBlocked) {
+    throw ApiError.Forbidden('User account is blocked');
   }
 
   if (!user.isEmailVerified) {

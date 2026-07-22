@@ -37,6 +37,20 @@ export type AdminUserResponseData = {
   user: AdminUser;
 };
 
+export type UpdateAdminUserPayload = {
+  isBlocked?: boolean;
+  role?: UserRole;
+};
+
+export type UpdateAdminUserParams = {
+  payload: UpdateAdminUserPayload;
+  userId: string;
+};
+
+export type RevokeAdminUserSessionsParams = {
+  userId: string;
+};
+
 export const getAdminUsers = async (
   params: AdminUsersParams = {},
   signal?: AbortSignal,
@@ -57,5 +71,27 @@ export const getAdminUser = async (
     path: `/admin/users/${userId}`,
     signal,
     errorMessage: 'Failed to load admin user',
+  });
+};
+
+export const updateAdminUser = async ({
+  payload,
+  userId,
+}: UpdateAdminUserParams): Promise<ApiResponse<AdminUserResponseData>> => {
+  return apiClient.patch<AdminUserResponseData, UpdateAdminUserPayload>({
+    path: `/admin/users/${userId}`,
+    body: payload,
+    errorMessage: 'Failed to update admin user',
+  });
+};
+
+export const revokeAdminUserSessions = async ({
+  userId,
+}: RevokeAdminUserSessionsParams): Promise<
+  ApiResponse<AdminUserResponseData>
+> => {
+  return apiClient.post<AdminUserResponseData>({
+    path: `/admin/users/${userId}/sessions/revoke`,
+    errorMessage: 'Failed to revoke admin user sessions',
   });
 };

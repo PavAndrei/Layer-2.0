@@ -22,8 +22,10 @@ export type {
 } from './admin-users-filter-options';
 export { adminUsersQueryKeys } from './admin-users-query-keys';
 export { toAdminUsersSearchParams } from './admin-users-search-params';
+export { useRevokeAdminUserSessions } from './use-revoke-admin-user-sessions';
 export { useAdminUser } from './use-admin-user';
 export { useAdminUsers } from './use-admin-users';
+export { useUpdateAdminUser } from './use-update-admin-user';
 export {
   initialAdminUsersFilters,
   useAdminUsersFilters,

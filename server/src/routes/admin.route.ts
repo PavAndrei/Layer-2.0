@@ -9,7 +9,9 @@ import {
   getAdminReviews,
   getAdminUser,
   getAdminUsers,
+  revokeAdminUserSessions,
   updateAdminOrder,
+  updateAdminUser,
   updateAdminReview,
 } from '../controllers/admin.controllers';
 import {
@@ -33,6 +35,7 @@ import {
 import {
   adminUserParamsSchema,
   getAdminUsersSchema,
+  updateAdminUserSchema,
 } from '../validators/admin-users.validators';
 
 const adminRoute = Router();
@@ -73,6 +76,16 @@ adminRoute.get(
   '/users/:userId',
   validateRequest(adminUserParamsSchema),
   catchErrors(getAdminUser),
+);
+adminRoute.patch(
+  '/users/:userId',
+  validateRequest(updateAdminUserSchema),
+  catchErrors(updateAdminUser),
+);
+adminRoute.post(
+  '/users/:userId/sessions/revoke',
+  validateRequest(adminUserParamsSchema),
+  catchErrors(revokeAdminUserSessions),
 );
 adminRoute.get(
   '/reviews/:reviewId',

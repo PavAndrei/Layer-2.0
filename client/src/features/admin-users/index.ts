@@ -3,6 +3,9 @@ export type {
   AdminUserSortOption,
   AdminUsersParams,
   AdminUsersResponseData,
+  RevokeAdminUserSessionsParams,
+  UpdateAdminUserParams,
+  UpdateAdminUserPayload,
 } from './api';
 export {
   ADMIN_USER_PROVIDER_FILTER_OPTIONS,
@@ -14,9 +17,11 @@ export {
   adminUsersQueryKeys,
   initialAdminUsersFilters,
   toAdminUsersSearchParams,
+  useRevokeAdminUserSessions,
   useAdminUser,
   useAdminUsers,
   useAdminUsersFilters,
+  useUpdateAdminUser,
 } from './model';
 export type {
   AdminUserProviderFilterOption,
@@ -35,6 +40,7 @@ export { AdminUserPage } from './admin-user-page';
 export {
   AdminUserInfoCard,
   AdminUserListItem,
+  AdminUserManagementCard,
   AdminUserPageHeader,
   AdminUserProviderBadges,
   AdminUserRecentOrderItem,
