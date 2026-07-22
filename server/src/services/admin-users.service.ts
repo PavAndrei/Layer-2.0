@@ -30,6 +30,7 @@ import type {
 
 type AdminUserAggregateResult = {
   _id: Types.ObjectId;
+  adminNote?: string;
   authProviders?: UserAuthProvider[];
   avatarUrl?: string;
   createdAt: Date;
@@ -160,6 +161,7 @@ const adminUserToListItemDto = (
 
   return {
     _id: user._id.toString(),
+    adminNote: user.adminNote ?? undefined,
     authProviders: getUserAuthProviders(user.authProviders),
     avatarUrl: user.avatarUrl ?? undefined,
     createdAt: user.createdAt.toISOString(),
@@ -295,6 +297,7 @@ const adminUserToDto = async (
 
   return {
     _id: user._id.toString(),
+    adminNote: user.adminNote ?? undefined,
     authProviders: getUserAuthProviders(user.authProviders),
     avatarUrl: user.avatarUrl ?? undefined,
     createdAt: user.createdAt.toISOString(),
@@ -464,7 +467,12 @@ export const updateAdminUserData = async ({
     update.isBlocked === true ||
     (update.role !== undefined && update.role !== user.role);
   const previousIsBlocked = Boolean(user.isBlocked);
+  const previousAdminNote = user.adminNote;
   const previousRole = user.role;
+
+  if (Object.hasOwn(update, 'adminNote')) {
+    user.adminNote = update.adminNote;
+  }
 
   if (Object.hasOwn(update, 'isBlocked')) {
     user.isBlocked = Boolean(update.isBlocked);
@@ -510,6 +518,24 @@ export const updateAdminUserData = async ({
         metadata: {
           previousRole,
           role: user.role,
+        },
+      }),
+    );
+  }
+
+  if (
+    Object.hasOwn(update, 'adminNote') &&
+    previousAdminNote !== user.adminNote
+  ) {
+    auditLogs.push(
+      createAuditLog({
+        action: 'user.admin_note_changed',
+        actorId: adminUserId,
+        entityId: user._id,
+        entityType: 'user',
+        metadata: {
+          hasAdminNote: Boolean(user.adminNote),
+          hadAdminNote: Boolean(previousAdminNote),
         },
       }),
     );

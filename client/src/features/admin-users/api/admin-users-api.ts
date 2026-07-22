@@ -38,6 +38,7 @@ export type AdminUserResponseData = {
 };
 
 export type UpdateAdminUserPayload = {
+  adminNote?: string;
   isBlocked?: boolean;
   role?: UserRole;
 };

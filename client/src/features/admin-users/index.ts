@@ -41,6 +41,7 @@ export {
   AdminUserInfoCard,
   AdminUserListItem,
   AdminUserManagementCard,
+  AdminUserNoteCard,
   AdminUserPageHeader,
   AdminUserProviderBadges,
   AdminUserRecentOrderItem,

@@ -11,6 +11,7 @@ export const AUDIT_LOG_ACTIONS = [
   'review.hidden',
   'review.moderation_reason_changed',
   'review.restored',
+  'user.admin_note_changed',
   'user.blocked',
   'user.role_changed',
   'user.sessions_revoked',

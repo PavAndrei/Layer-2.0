@@ -21,6 +21,7 @@ export type User = {
 };
 
 export type AdminUserListItem = User & {
+  adminNote?: string;
   createdAt: string;
   ordersCount: number;
   status: UserStatus;
@@ -36,6 +37,7 @@ export type AdminUserStats = {
 };
 
 export type AdminUser = User & {
+  adminNote?: string;
   createdAt: string;
   lastLoginAt: string | null;
   recentOrders: AdminUserRecentOrder[];

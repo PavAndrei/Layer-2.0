@@ -73,6 +73,19 @@ const optionalBooleanParam = (name: string) =>
       return value === 'true';
     });
 
+const clearableTextField = ({
+  fieldName,
+  max,
+}: {
+  fieldName: string;
+  max: number;
+}) =>
+  z
+    .string()
+    .trim()
+    .max(max, `${fieldName} is too long`)
+    .transform((value) => (value ? value : undefined));
+
 export const adminUsersQuerySchema = z
   .object({
     page: positiveIntegerParam('page', 1),
@@ -102,12 +115,19 @@ export const adminUserParamsSchema = z.object({
 
 export const updateAdminUserBodySchema = z
   .object({
+    adminNote: clearableTextField({
+      fieldName: 'Admin note',
+      max: 500,
+    }).optional(),
     isBlocked: z.boolean().optional(),
     role: z.enum(USER_ROLES).optional(),
   })
   .strict()
   .refine(
-    (body) => Object.hasOwn(body, 'isBlocked') || Object.hasOwn(body, 'role'),
+    (body) =>
+      Object.hasOwn(body, 'adminNote') ||
+      Object.hasOwn(body, 'isBlocked') ||
+      Object.hasOwn(body, 'role'),
     {
     message: 'User update must contain at least one field',
     },

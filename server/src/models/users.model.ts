@@ -73,6 +73,12 @@ const userSchema = new Schema(
       default: false,
       index: true,
     },
+
+    adminNote: {
+      type: String,
+      trim: true,
+      maxlength: 500,
+    },
   },
   {
     timestamps: true,

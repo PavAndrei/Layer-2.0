@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 
 import type { AdminUser, UserRole } from '../../entities/user';
@@ -17,6 +17,7 @@ import {
 import {
   AdminUserInfoCard,
   AdminUserManagementCard,
+  AdminUserNoteCard,
   AdminUserPageHeader,
   AdminUserRecentOrdersCard,
   AdminUserRecentReviewsCard,
@@ -153,6 +154,7 @@ export const AdminUserPage = () => {
   const [statusAction, setStatusAction] =
     useState<AdminUserStatusAction | null>(null);
   const [roleAction, setRoleAction] = useState<UserRole | null>(null);
+  const [adminNote, setAdminNote] = useState('');
   const [sessionAction, setSessionAction] =
     useState<AdminUserSessionAction | null>(null);
   const statusActionConfig = getUserStatusActionConfig(statusAction, user);
@@ -236,6 +238,20 @@ export const AdminUserPage = () => {
       },
     );
   };
+  const handleSubmitAdminNote = () => {
+    if (!user) return;
+
+    updateUserMutation.mutate({
+      payload: {
+        adminNote,
+      },
+      userId: user._id,
+    });
+  };
+
+  useEffect(() => {
+    setAdminNote(user?.adminNote ?? '');
+  }, [user?._id, user?.adminNote]);
 
   useScrollToTopOnChange(userId, {
     behavior: 'auto',
@@ -273,6 +289,12 @@ export const AdminUserPage = () => {
         <div className="flex flex-col gap-6">
           <AdminUserInfoCard user={user} />
           <AdminUserStatsGrid stats={user.stats} />
+          <AdminUserNoteCard
+            isSubmitting={updateUserMutation.isPending}
+            value={adminNote}
+            onSubmit={handleSubmitAdminNote}
+            onValueChange={setAdminNote}
+          />
           <AdminUserManagementCard
             isActionPending={isActionPending}
             user={user}

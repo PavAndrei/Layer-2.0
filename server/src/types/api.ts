@@ -144,6 +144,7 @@ export type UserDto = {
 };
 
 export type AdminUserListItemDto = UserDto & {
+  adminNote?: string;
   createdAt: string;
   ordersCount: number;
   status: UserStatus;
@@ -178,6 +179,7 @@ export type AdminUserRecentReviewDto = {
 };
 
 export type AdminUserDto = UserDto & {
+  adminNote?: string;
   createdAt: string;
   lastLoginAt: string | null;
   recentOrders: AdminUserRecentOrderDto[];
