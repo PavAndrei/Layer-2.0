@@ -2,7 +2,6 @@ export const ADMIN_SETTINGS_SECTIONS = [
   'general',
   'shipping',
   'orders',
-  'inventory',
   'storefront',
 ] as const;
 
@@ -17,7 +16,6 @@ export const ADMIN_SETTINGS_SECTION_LABELS: Record<
   string
 > = {
   general: 'General',
-  inventory: 'Inventory',
   orders: 'Orders',
   shipping: 'Shipping',
   storefront: 'Storefront',
