@@ -1,6 +1,7 @@
 import type { ProductSize, ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
+import type { AdminDashboardPeriod } from './admin-dashboard';
 import type {
   OrderItemSnapshot,
   OrderPaymentStatus,
@@ -189,6 +190,33 @@ export type AdminUserDto = UserDto & {
   updatedAt: string;
 };
 
+export type AdminDashboardSummaryDto = {
+  averageOrderValue: number;
+  newCustomers: number;
+  orders: number;
+  revenue: number;
+};
+
+export type AdminDashboardRevenuePointDto = {
+  date: string;
+  revenue: number;
+};
+
+export type AdminDashboardOrderStatusItemDto = {
+  count: number;
+  status: OrderStatus;
+};
+
+export type AdminDashboardDto = {
+  orderStatusDistribution: AdminDashboardOrderStatusItemDto[];
+  period: AdminDashboardPeriod;
+  recentOrders: AdminOrderListItemDto[];
+  recentReviews: AdminReviewListItemDto[];
+  recentUsers: AdminUserListItemDto[];
+  revenueSeries: AdminDashboardRevenuePointDto[];
+  summary: AdminDashboardSummaryDto;
+};
+
 export type PaginationData = {
   total: number;
   page: number;
@@ -217,6 +245,10 @@ export type AdminUsersResponse = ApiSuccess<{
 
 export type AdminUserResponse = ApiSuccess<{
   user: AdminUserDto;
+}>;
+
+export type AdminDashboardResponse = ApiSuccess<{
+  dashboard: AdminDashboardDto;
 }>;
 
 export type AdminReviewResponse = ApiSuccess<{

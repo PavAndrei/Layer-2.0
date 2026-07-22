@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import {
   deleteAdminReview,
+  getAdminDashboard,
   getAdminOrder,
   getAdminMe,
   getAdminOrders,
@@ -37,6 +38,7 @@ import {
   getAdminUsersSchema,
   updateAdminUserSchema,
 } from '../validators/admin-users.validators';
+import { getAdminDashboardSchema } from '../validators/admin-dashboard.validators';
 
 const adminRoute = Router();
 
@@ -47,6 +49,11 @@ adminRoute.use((req, res, next) => {
 adminRoute.use(requireAdmin);
 
 adminRoute.get('/me', catchErrors(getAdminMe));
+adminRoute.get(
+  '/dashboard',
+  validateRequest(getAdminDashboardSchema),
+  catchErrors(getAdminDashboard),
+);
 adminRoute.get(
   '/orders',
   validateRequest(getAdminOrdersSchema),

@@ -18,7 +18,9 @@ import {
   revokeAdminUserSessionsData,
   updateAdminUserData,
 } from '../services/admin-users.service';
+import { getAdminDashboardData } from '../services/admin-dashboard.service';
 import type {
+  AdminDashboardResponse,
   AdminReviewResponse,
   AdminReviewsResponse,
   AdminMeResponse,
@@ -29,6 +31,9 @@ import type {
   DeleteAdminReviewResponse,
   UpdateAdminReviewResponse,
 } from '../types/api';
+import type {
+  AdminDashboardQuery,
+} from '../validators/admin-dashboard.validators';
 import { userToDto } from '../utils/user-to-dto';
 import type {
   AdminReviewParams,
@@ -60,6 +65,21 @@ export const getAdminMe = async (
     data: {
       user: userToDto(req.currentUser),
     },
+  });
+};
+
+export const getAdminDashboard = async (
+  req: Request,
+  res: Response<AdminDashboardResponse>,
+) => {
+  const data = await getAdminDashboardData(
+    req.validated?.query as AdminDashboardQuery,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin dashboard fetched successfully',
+    data,
   });
 };
 

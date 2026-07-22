@@ -12,14 +12,18 @@ import {
 } from '../models/users.model';
 import type {
   AdminUserDto,
-  AdminUserListItemDto,
   AdminUserRecentOrderDto,
   AdminUserRecentReviewDto,
   AdminUserResponse,
   AdminUsersResponse,
   ReviewProductDto,
 } from '../types/api';
-import type { UserAuthProvider } from '../types/user';
+import {
+  adminUserToListItemDto,
+  getAdminUserAuthProviders,
+  getAdminUserStatus,
+  type AdminUserListItemSource,
+} from '../utils/admin-user-to-dto';
 import { orderToAdminUserRecentOrderDto } from '../utils/order-to-dto';
 import { reviewProductToDto } from '../utils/review-product-to-dto';
 import { createAuditLog } from './audit-logs.service';
@@ -27,22 +31,6 @@ import type {
   AdminUsersQuery,
   UpdateAdminUserBody,
 } from '../validators/admin-users.validators';
-
-type AdminUserAggregateResult = {
-  _id: Types.ObjectId;
-  adminNote?: string;
-  authProviders?: UserAuthProvider[];
-  avatarUrl?: string;
-  createdAt: Date;
-  email: string;
-  isBlocked?: boolean;
-  isEmailVerified: boolean;
-  name: string;
-  ordersCount?: number;
-  role: AdminUserListItemDto['role'];
-  totalSpent?: number;
-  updatedAt: Date;
-};
 
 type OrderStatsAggregateResult = {
   _id: null;
@@ -138,42 +126,6 @@ const getAdminUsersSort = (
   return {
     createdAt: -1,
     _id: -1,
-  };
-};
-
-const getUserAuthProviders = (
-  providers: UserAuthProvider[] | undefined,
-): UserAuthProvider[] => {
-  if (providers?.length) {
-    return providers;
-  }
-
-  return ['password'];
-};
-
-const getUserStatus = (isBlocked: boolean) =>
-  isBlocked ? 'blocked' : 'active';
-
-const adminUserToListItemDto = (
-  user: AdminUserAggregateResult,
-): AdminUserListItemDto => {
-  const isBlocked = Boolean(user.isBlocked);
-
-  return {
-    _id: user._id.toString(),
-    adminNote: user.adminNote ?? undefined,
-    authProviders: getUserAuthProviders(user.authProviders),
-    avatarUrl: user.avatarUrl ?? undefined,
-    createdAt: user.createdAt.toISOString(),
-    email: user.email,
-    isBlocked,
-    isEmailVerified: user.isEmailVerified,
-    name: user.name,
-    ordersCount: user.ordersCount ?? 0,
-    role: user.role,
-    status: getUserStatus(isBlocked),
-    totalSpent: Number((user.totalSpent ?? 0).toFixed(2)),
-    updatedAt: user.updatedAt.toISOString(),
   };
 };
 
@@ -298,7 +250,7 @@ const adminUserToDto = async (
   return {
     _id: user._id.toString(),
     adminNote: user.adminNote ?? undefined,
-    authProviders: getUserAuthProviders(user.authProviders),
+    authProviders: getAdminUserAuthProviders(user.authProviders),
     avatarUrl: user.avatarUrl ?? undefined,
     createdAt: user.createdAt.toISOString(),
     email: user.email,
@@ -310,7 +262,7 @@ const adminUserToDto = async (
     recentReviews,
     role: user.role,
     stats,
-    status: getUserStatus(isBlocked),
+    status: getAdminUserStatus(isBlocked),
     updatedAt: user.updatedAt.toISOString(),
   };
 };
@@ -323,7 +275,7 @@ export const getAdminUsersData = async (
   const total = await User.countDocuments(filter);
   const totalPages = Math.ceil(total / limit);
   const safePage = Math.min(page, totalPages || 1);
-  const users = await User.aggregate<AdminUserAggregateResult>([
+  const users = await User.aggregate<AdminUserListItemSource>([
     {
       $match: filter,
     },
