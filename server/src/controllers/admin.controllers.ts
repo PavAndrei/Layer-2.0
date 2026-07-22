@@ -19,6 +19,10 @@ import {
   updateAdminUserData,
 } from '../services/admin-users.service';
 import { getAdminDashboardData } from '../services/admin-dashboard.service';
+import {
+  updateAdminGeneralSettingsData,
+} from '../services/admin-settings.service';
+import { getStoreSettingsData } from '../services/store-settings.service';
 import type {
   AdminDashboardResponse,
   AdminReviewResponse,
@@ -26,6 +30,7 @@ import type {
   AdminMeResponse,
   AdminOrderResponse,
   AdminOrdersResponse,
+  AdminStoreSettingsResponse,
   AdminUserResponse,
   AdminUsersResponse,
   DeleteAdminReviewResponse,
@@ -50,6 +55,9 @@ import type {
   AdminUsersQuery,
   UpdateAdminUserBody,
 } from '../validators/admin-users.validators';
+import type {
+  UpdateAdminGeneralSettingsBody,
+} from '../validators/admin-settings.validators';
 
 export const getAdminMe = async (
   req: Request,
@@ -79,6 +87,40 @@ export const getAdminDashboard = async (
   res.status(200).json({
     success: true,
     message: 'Admin dashboard fetched successfully',
+    data,
+  });
+};
+
+export const getAdminStoreSettings = async (
+  _req: Request,
+  res: Response<AdminStoreSettingsResponse>,
+) => {
+  const data = await getStoreSettingsData();
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin store settings fetched successfully',
+    data,
+  });
+};
+
+export const updateAdminGeneralSettings = async (
+  req: Request,
+  res: Response<AdminStoreSettingsResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const body = req.validated?.body as UpdateAdminGeneralSettingsBody;
+  const data = await updateAdminGeneralSettingsData({
+    adminUserId: req.user.userId,
+    update: body,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin general settings updated successfully',
     data,
   });
 };

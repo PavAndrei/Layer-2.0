@@ -6,11 +6,13 @@ import {
   getAdminOrder,
   getAdminMe,
   getAdminOrders,
+  getAdminStoreSettings,
   getAdminReview,
   getAdminReviews,
   getAdminUser,
   getAdminUsers,
   revokeAdminUserSessions,
+  updateAdminGeneralSettings,
   updateAdminOrder,
   updateAdminUser,
   updateAdminReview,
@@ -39,6 +41,9 @@ import {
   updateAdminUserSchema,
 } from '../validators/admin-users.validators';
 import { getAdminDashboardSchema } from '../validators/admin-dashboard.validators';
+import {
+  updateAdminGeneralSettingsSchema,
+} from '../validators/admin-settings.validators';
 
 const adminRoute = Router();
 
@@ -53,6 +58,12 @@ adminRoute.get(
   '/dashboard',
   validateRequest(getAdminDashboardSchema),
   catchErrors(getAdminDashboard),
+);
+adminRoute.get('/settings', catchErrors(getAdminStoreSettings));
+adminRoute.patch(
+  '/settings/general',
+  validateRequest(updateAdminGeneralSettingsSchema),
+  catchErrors(updateAdminGeneralSettings),
 );
 adminRoute.get(
   '/orders',

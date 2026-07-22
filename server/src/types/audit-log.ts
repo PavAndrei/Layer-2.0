@@ -1,4 +1,9 @@
-export const AUDIT_LOG_ENTITY_TYPES = ['order', 'review', 'user'] as const;
+export const AUDIT_LOG_ENTITY_TYPES = [
+  'order',
+  'review',
+  'settings',
+  'user',
+] as const;
 
 export type AuditLogEntityType = (typeof AUDIT_LOG_ENTITY_TYPES)[number];
 
@@ -11,6 +16,7 @@ export const AUDIT_LOG_ACTIONS = [
   'review.hidden',
   'review.moderation_reason_changed',
   'review.restored',
+  'settings.general_updated',
   'user.admin_note_changed',
   'user.blocked',
   'user.role_changed',

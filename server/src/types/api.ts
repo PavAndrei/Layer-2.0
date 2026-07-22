@@ -217,6 +217,22 @@ export type AdminDashboardDto = {
   summary: AdminDashboardSummaryDto;
 };
 
+export type StoreGeneralSettingsDto = {
+  address?: string;
+  storeName: string;
+  supportEmail: string;
+  supportPhone?: string;
+};
+
+export type StoreSettingsDto = {
+  _id: string;
+  createdAt: string;
+  general: StoreGeneralSettingsDto;
+  updatedAt: string;
+};
+
+export type AdminStoreSettingsDto = StoreSettingsDto;
+
 export type PaginationData = {
   total: number;
   page: number;
@@ -249,6 +265,14 @@ export type AdminUserResponse = ApiSuccess<{
 
 export type AdminDashboardResponse = ApiSuccess<{
   dashboard: AdminDashboardDto;
+}>;
+
+export type AdminStoreSettingsResponse = ApiSuccess<{
+  settings: AdminStoreSettingsDto;
+}>;
+
+export type StoreSettingsResponse = ApiSuccess<{
+  settings: StoreSettingsDto;
 }>;
 
 export type AdminReviewResponse = ApiSuccess<{
