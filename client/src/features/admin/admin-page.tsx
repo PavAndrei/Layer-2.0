@@ -12,9 +12,11 @@ import {
   ADMIN_SECTION_LABELS,
   useAdminPageState,
 } from './model';
+import { AdminDashboardSection } from './admin-dashboard-section';
 import { AdminOrdersSection } from './admin-orders-section';
 import { AdminReviewsSection } from './admin-reviews-section';
 import { AdminUsersSection } from './admin-users-section';
+import { useAdminDashboardSection } from './use-admin-dashboard-section';
 import { useAdminOrdersSection } from './use-admin-orders-section';
 import { useAdminReviewsSection } from './use-admin-reviews-section';
 import { useAdminUsersSection } from './use-admin-users-section';
@@ -30,6 +32,7 @@ const ADMIN_PAGE_DESCRIPTION =
 
 export const AdminPage = () => {
   const { activeSection } = useAdminPageState();
+  const adminDashboardSection = useAdminDashboardSection({ activeSection });
   const adminOrdersSection = useAdminOrdersSection({ activeSection });
   const adminReviewsSection = useAdminReviewsSection({ activeSection });
   const adminUsersSection = useAdminUsersSection({ activeSection });
@@ -95,9 +98,17 @@ export const AdminPage = () => {
       ].join(':');
     }
 
+    if (activeSection === 'dashboard') {
+      return [
+        activeSection,
+        adminDashboardSection.periodState.period,
+      ].join(':');
+    }
+
     return activeSection;
   }, [
     activeSection,
+    adminDashboardSection.periodState.period,
     adminOrdersSection.filters.debouncedFilters,
     adminReviewsSection.filters.debouncedFilters,
     adminUsersSection.filters.debouncedFilters,
@@ -126,6 +137,8 @@ export const AdminPage = () => {
     <SectionedPageLayout header={adminHeader} sidebar={adminSidebar}>
       {activeSection === 'orders' ? (
         <AdminOrdersSection {...adminOrdersSection} />
+      ) : activeSection === 'dashboard' ? (
+        <AdminDashboardSection {...adminDashboardSection} />
       ) : activeSection === 'reviews' ? (
         <AdminReviewsSection {...adminReviewsSection} />
       ) : activeSection === 'users' ? (
