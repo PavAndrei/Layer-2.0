@@ -31,7 +31,6 @@ export type {
   AdminOrderStatusFilterValue,
   UpdateAdminOrderPayload,
 } from './model';
-export { AdminOrderPage } from './admin-order-page';
 export {
   AdminOrderCustomerCard,
   AdminOrderDetailSummary,

@@ -36,7 +36,6 @@ export type {
   AdminUserVerificationFilterOption,
   AdminUserVerificationFilterValue,
 } from './model';
-export { AdminUserPage } from './admin-user-page';
 export {
   AdminUserInfoCard,
   AdminUserListItem,

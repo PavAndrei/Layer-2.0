@@ -1,5 +1,5 @@
-export { FavoritesPage } from './favorites-page';
 export {
+  FAVORITES_PAGE_CONTENT,
   favoritesQueryKeys,
   useFavoriteProductsCount,
   useFavoriteProductActions,

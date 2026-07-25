@@ -20,9 +20,9 @@ const publicApiImportRestrictions = [
       'Use the folder public api instead, for example "./ui" or "../model".',
   },
   {
-    regex: '^(\\.\\.?/)+features/[^/]+/(?![^/]+-page$).+',
+    regex: '^(\\.\\.?/)+features/[^/]+/.+',
     message:
-      'Import feature internals through the feature public api or import page files only.',
+      'Import feature internals through the feature public api.',
   },
   {
     regex: '^(\\.\\.?/)+entities/[^/]+/(?!index$).+',
@@ -40,10 +40,22 @@ const featuresImportRestriction = {
   message: 'Lower layers must not import from the features layer.',
 }
 
+const pagesImportRestriction = {
+  regex: '^(\\.\\.?/)+pages(/.*)?$',
+  message: 'Lower layers must not import from the pages layer.',
+}
+
 const featureSiblingImportRestriction = {
   regex: '^\\.\\./\\.\\./[^./][^/]*(/.*)?$',
   message:
     'Feature model/ui/api code must not import other features. Compose features in page files instead.',
+}
+
+const featureRootSiblingImportRestriction = {
+  regex:
+    '^\\.\\./(?!api$|api/|helpers$|helpers/|model$|model/|ui$|ui/)[^./][^/]*(/.*)?$',
+  message:
+    'Features must not import sibling features. Compose features in page files instead.',
 }
 
 const entitiesImportRestriction = {
@@ -79,12 +91,28 @@ export default tseslint.config(
     },
   },
   {
-    files: ['src/features/**/*.{ts,tsx}'],
+    files: ['src/pages/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': [
         'error',
         {
           patterns: [...publicApiImportRestrictions, appImportRestriction],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/features/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...publicApiImportRestrictions,
+            appImportRestriction,
+            pagesImportRestriction,
+            featureRootSiblingImportRestriction,
+          ],
         },
       ],
     },
@@ -102,6 +130,8 @@ export default tseslint.config(
           patterns: [
             ...publicApiImportRestrictions,
             appImportRestriction,
+            pagesImportRestriction,
+            featureRootSiblingImportRestriction,
             featureSiblingImportRestriction,
           ],
         },
@@ -117,6 +147,7 @@ export default tseslint.config(
           patterns: [
             ...publicApiImportRestrictions,
             appImportRestriction,
+            pagesImportRestriction,
             featuresImportRestriction,
           ],
         },
@@ -132,6 +163,7 @@ export default tseslint.config(
           patterns: [
             ...publicApiImportRestrictions,
             appImportRestriction,
+            pagesImportRestriction,
             featuresImportRestriction,
             entitiesImportRestriction,
           ],

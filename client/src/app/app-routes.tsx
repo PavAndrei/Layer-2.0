@@ -1,23 +1,23 @@
 import { Route, Routes } from 'react-router';
 
-import { AdminPage, AdminRoute } from '../features/admin';
-import { AdminOrderPage } from '../features/admin-orders';
-import { AdminUserPage } from '../features/admin-users';
+import { AdminRoute } from '../features/admin';
+import { AdminPage } from '../pages/admin';
+import { AdminOrderPage } from '../pages/admin-orders';
+import { AdminUserPage } from '../pages/admin-users';
 import {
   ForgotPasswordPage,
-  GuestRoute,
   LoginPage,
-  ProtectedRoute,
   RegisterPage,
   ResetPasswordPage,
   VerifyEmailPage,
-} from '../features/auth';
-import { CartPage } from '../features/cart';
-import { CheckoutPage } from '../features/checkout';
-import { FavoritesPage } from '../features/favorites';
-import { HomePage } from '../features/home';
-import { OrderPage } from '../features/orders';
-import { ProfilePage } from '../features/profile';
+} from '../pages/auth';
+import { GuestRoute, ProtectedRoute } from '../features/auth';
+import { CartPage } from '../pages/cart';
+import { CheckoutPage } from '../pages/checkout';
+import { FavoritesPage } from '../pages/favorites';
+import { HomePage } from '../pages/home';
+import { OrderPage } from '../pages/orders';
+import { ProfilePage } from '../pages/profile';
 import {
   CatalogPage,
   MenPage,
@@ -25,8 +25,8 @@ import {
   SalesPage,
   UnisexPage,
   WomenPage,
-} from '../features/products-list';
-import { SingleProductPage } from '../features/single-product';
+} from '../pages/products-list';
+import { SingleProductPage } from '../pages/single-product';
 
 export const AppRoutes = () => {
   return (

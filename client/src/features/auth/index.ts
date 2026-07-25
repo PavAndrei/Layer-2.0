@@ -1,4 +1,6 @@
 export {
+  LOGIN_BENEFITS,
+  REGISTER_BENEFITS,
   useAuthBootstrap,
   useAuthStatus,
   useAuthUser,
@@ -11,9 +13,12 @@ export {
   useRequestPasswordReset,
   useResetPassword,
 } from './model';
-export { GuestRoute, ProtectedRoute } from './ui';
-export { ForgotPasswordPage } from './forgot-password-page';
-export { LoginPage } from './login-page';
-export { RegisterPage } from './register-page';
-export { ResetPasswordPage } from './reset-password-page';
-export { VerifyEmailPage } from './verify-email-page';
+export {
+  AuthLayout,
+  ForgotPasswordForm,
+  GuestRoute,
+  LoginForm,
+  ProtectedRoute,
+  RegisterForm,
+  ResetPasswordForm,
+} from './ui';

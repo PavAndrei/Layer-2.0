@@ -5,8 +5,4 @@ export type {
   CheckoutSummaryItem,
   CheckoutSummaryTotals,
 } from './checkout-types';
-export {
-  checkoutSchema,
-  getCheckoutFieldErrors,
-} from './checkout-validation';
-export { useCheckout } from './use-checkout';
+export { useCheckoutForm } from './use-checkout-form';

@@ -3,7 +3,13 @@ export {
   getCartTotals,
   selectCartItems,
   useCartItemsCount,
+  useCartPage,
   useCartStore,
   useProductVariantCart,
 } from './model';
-export { CartPage } from './cart-page';
+export {
+  CartEmptyState,
+  CartItemRow,
+  CartLayout,
+  CartSummary,
+} from './ui';
