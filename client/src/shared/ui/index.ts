@@ -8,6 +8,7 @@ export { DualRangeFilter } from './dual-range-filter';
 export { EyeIcon } from './eye-icon';
 export { EyeOffIcon } from './eye-off-icon';
 export { FeedbackMessage } from './feedback-message';
+export { FileUploadField } from './file-upload-field';
 export { MobileFullscreenDrawer } from './mobile-fullscreen-drawer';
 export { MultiSelectFilter } from './multi-select-filter';
 export { Pagination } from './pagination';

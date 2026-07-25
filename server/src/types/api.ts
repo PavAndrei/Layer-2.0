@@ -13,6 +13,7 @@ import type {
 } from './order';
 import type { ReviewStatus } from './review';
 import type { UserAuthProvider, UserRole, UserStatus } from './user';
+import type { ImageKitUploadAuth, ImageKitUploadTarget } from './media';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -448,3 +449,9 @@ export type EmailVerificationResponse = ApiSuccess<{
 export type PasswordResetResponse = ApiSuccess<null>;
 
 export type LogoutResponse = ApiSuccess<null>;
+
+export type ImageKitUploadAuthResponse = ApiSuccess<{
+  auth: ImageKitUploadAuth;
+  upload: ImageKitUploadTarget;
+  urlEndpoint: string;
+}>;
