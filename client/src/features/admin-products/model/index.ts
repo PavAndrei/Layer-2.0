@@ -29,8 +29,31 @@ export type {
   AdminProductStockFilterOption,
   AdminProductStockFilterValue,
 } from './admin-products-filter-options';
+export type {
+  AdminProductFormErrors,
+  AdminProductFormValues,
+  AdminProductImageFormErrors,
+  AdminProductImageFormValues,
+  AdminProductVariantFormErrors,
+  AdminProductVariantFormValues,
+} from './admin-product-form-types';
+export {
+  adminProductFormSchema,
+  getAdminProductFormErrors,
+  toCreateAdminProductPayload,
+} from './admin-product-validation';
+export type {
+  AdminProductFormParsedValues,
+} from './admin-product-validation';
 export { adminProductsQueryKeys } from './admin-products-query-keys';
 export { toAdminProductsSearchParams } from './admin-products-search-params';
+export {
+  createEmptyAdminProductImage,
+  createEmptyAdminProductVariant,
+  createInitialAdminProductFormValues,
+  useAdminProductForm,
+} from './use-admin-product-form';
+export { useCreateAdminProduct } from './use-create-admin-product';
 export { useAdminProducts } from './use-admin-products';
 export {
   initialAdminProductsFilters,

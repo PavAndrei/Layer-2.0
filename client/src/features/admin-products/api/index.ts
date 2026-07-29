@@ -1,4 +1,7 @@
-export { getAdminProducts } from './admin-products-api';
+export {
+  createAdminProduct,
+  getAdminProducts,
+} from './admin-products-api';
 export type {
   AdminProductListItem,
   AdminProductsParams,
@@ -6,4 +9,8 @@ export type {
   AdminProductsStats,
   AdminProductSortOption,
   AdminProductStockFilter,
+  CreateAdminProductImagePayload,
+  CreateAdminProductPayload,
+  CreateAdminProductResponseData,
+  CreateAdminProductVariantPayload,
 } from './admin-products-api';

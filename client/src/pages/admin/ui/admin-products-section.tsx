@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 import {
   AdminProductsFiltersForm,
   AdminProductsGrid,
@@ -5,7 +7,6 @@ import {
   AdminProductsStatCards,
 } from '../../../features/admin-products';
 import {
-  Button,
   FeedbackMessage,
   Pagination,
   SectionHeader,
@@ -45,9 +46,12 @@ export const AdminProductsSection = ({
     />
   );
   const actions = (
-    <Button disabled variant="primary">
+    <Link
+      to="/admin/products/new"
+      className="inline-flex min-h-10 w-fit items-center justify-center rounded border border-accent-primary bg-accent-primary px-4 py-2 block-medium text-background-surface transition-colors hover:border-accent-hover hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-black"
+    >
       Add product
-    </Button>
+    </Link>
   );
   const stats = productsQuery.stats ? (
     <AdminProductsStatCards stats={productsQuery.stats} />

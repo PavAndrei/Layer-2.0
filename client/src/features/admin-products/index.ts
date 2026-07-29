@@ -1,4 +1,7 @@
-export { getAdminProducts } from './api';
+export {
+  createAdminProduct,
+  getAdminProducts,
+} from './api';
 export type {
   AdminProductListItem,
   AdminProductsParams,
@@ -6,6 +9,10 @@ export type {
   AdminProductsStats,
   AdminProductSortOption,
   AdminProductStockFilter,
+  CreateAdminProductImagePayload,
+  CreateAdminProductPayload,
+  CreateAdminProductResponseData,
+  CreateAdminProductVariantPayload,
 } from './api';
 export {
   ADMIN_PRODUCT_AUDIENCE_FILTER_OPTIONS,
@@ -19,8 +26,16 @@ export {
   ADMIN_PRODUCT_STOCK_FILTER_OPTIONS,
   ADMIN_PRODUCT_STOCK_FILTERS,
   adminProductsQueryKeys,
+  adminProductFormSchema,
+  createEmptyAdminProductImage,
+  createEmptyAdminProductVariant,
+  createInitialAdminProductFormValues,
+  getAdminProductFormErrors,
   initialAdminProductsFilters,
+  toCreateAdminProductPayload,
   toAdminProductsSearchParams,
+  useAdminProductForm,
+  useCreateAdminProduct,
   useAdminProducts,
   useAdminProductsFilters,
 } from './model';
@@ -31,6 +46,11 @@ export type {
   AdminProductCategoryFilterValue,
   AdminProductColorFilterOption,
   AdminProductColorFilterValue,
+  AdminProductFormErrors,
+  AdminProductFormParsedValues,
+  AdminProductFormValues,
+  AdminProductImageFormErrors,
+  AdminProductImageFormValues,
   AdminProductDiscountFilterOption,
   AdminProductDiscountFilterValue,
   AdminProductSizeFilterOption,
@@ -40,10 +60,13 @@ export type {
   AdminProductStatusFilterValue,
   AdminProductStockFilterOption,
   AdminProductStockFilterValue,
+  AdminProductVariantFormErrors,
+  AdminProductVariantFormValues,
   AdminProductsFilters,
   AdminProductsFiltersState,
 } from './model';
 export {
+  AdminProductCreateForm,
   AdminProductStatusBadge,
   AdminProductsFiltersForm,
   AdminProductsGrid,

@@ -1,5 +1,6 @@
 import type {
   ProductAudience,
+  ProductImageRole,
   ProductSize,
   ProductStatus,
 } from '../../../entities/product';
@@ -75,6 +76,38 @@ export type AdminProductsResponseData = {
   stats: AdminProductsStats;
 };
 
+export type CreateAdminProductVariantPayload = {
+  sku: string;
+  size: ProductSize;
+  color: string;
+  quantity: number;
+  image?: string;
+};
+
+export type CreateAdminProductImagePayload = {
+  src: string;
+  alt: string;
+  role: ProductImageRole;
+  color?: string;
+};
+
+export type CreateAdminProductPayload = {
+  audience: ProductAudience[];
+  categories: string[];
+  defaultPrice: number;
+  description: string;
+  discountPrice?: number;
+  hasDiscount?: boolean;
+  images: CreateAdminProductImagePayload[];
+  status?: ProductStatus;
+  title: string;
+  variants: CreateAdminProductVariantPayload[];
+};
+
+export type CreateAdminProductResponseData = {
+  product: AdminProductListItem;
+};
+
 export const getAdminProducts = async (
   params: AdminProductsParams = {},
   signal?: AbortSignal,
@@ -84,5 +117,18 @@ export const getAdminProducts = async (
     params,
     signal,
     errorMessage: 'Failed to load admin products',
+  });
+};
+
+export const createAdminProduct = async (
+  payload: CreateAdminProductPayload,
+): Promise<ApiResponse<CreateAdminProductResponseData>> => {
+  return apiClient.post<
+    CreateAdminProductResponseData,
+    CreateAdminProductPayload
+  >({
+    path: '/admin/products',
+    body: payload,
+    errorMessage: 'Failed to create admin product',
   });
 };

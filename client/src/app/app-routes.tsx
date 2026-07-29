@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router';
 
 import { AdminRoute } from '../features/admin';
 import { AdminPage } from '../pages/admin';
+import { AdminProductCreatePage } from '../pages/admin-product-create';
 import { AdminOrderPage } from '../pages/admin-orders';
 import { AdminUserPage } from '../pages/admin-users';
 import {
@@ -95,6 +96,16 @@ export const AppRoutes = () => {
           <ProtectedRoute>
             <AdminRoute>
               <AdminPage />
+            </AdminRoute>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/products/new"
+        element={
+          <ProtectedRoute>
+            <AdminRoute>
+              <AdminProductCreatePage />
             </AdminRoute>
           </ProtectedRoute>
         }
