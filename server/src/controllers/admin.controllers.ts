@@ -19,7 +19,10 @@ import {
   updateAdminUserData,
 } from '../services/admin-users.service';
 import { getAdminDashboardData } from '../services/admin-dashboard.service';
-import { getAdminProductsData } from '../services/admin-products.service';
+import {
+  createAdminProductData,
+  getAdminProductsData,
+} from '../services/admin-products.service';
 import {
   updateAdminGeneralSettingsData,
   updateAdminOrderSettingsData,
@@ -37,6 +40,7 @@ import type {
   AdminStoreSettingsResponse,
   AdminUserResponse,
   AdminUsersResponse,
+  CreateAdminProductResponse,
   DeleteAdminReviewResponse,
   UpdateAdminReviewResponse,
 } from '../types/api';
@@ -45,6 +49,7 @@ import type {
 } from '../validators/admin-dashboard.validators';
 import type {
   AdminProductsQuery,
+  CreateAdminProductBody,
 } from '../validators/admin-products.validators';
 import { userToDto } from '../utils/user-to-dto';
 import type {
@@ -202,6 +207,27 @@ export const getAdminProducts = async (
   res.status(200).json({
     success: true,
     message: 'Admin products fetched successfully',
+    data,
+  });
+};
+
+export const createAdminProduct = async (
+  req: Request,
+  res: Response<CreateAdminProductResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const body = req.validated?.body as CreateAdminProductBody;
+  const data = await createAdminProductData({
+    adminUserId: req.user.userId,
+    productData: body,
+  });
+
+  res.status(201).json({
+    success: true,
+    message: 'Admin product created successfully',
     data,
   });
 };

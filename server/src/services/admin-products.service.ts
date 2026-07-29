@@ -1,9 +1,18 @@
 import { QueryFilter } from 'mongoose';
 
+import { ApiError } from '../exceptions/api-error';
 import { Product, ProductData } from '../models/products.model';
-import type { AdminProductsResponse } from '../types/api';
+import type {
+  AdminProductsResponse,
+  CreateAdminProductResponse,
+} from '../types/api';
 import { adminProductToListItemDto } from '../utils/admin-product-to-dto';
-import type { AdminProductsQuery } from '../validators/admin-products.validators';
+import { createProductSlug } from '../utils/create-product-slug';
+import { createAuditLog } from './audit-logs.service';
+import type {
+  AdminProductsQuery,
+  CreateAdminProductBody,
+} from '../validators/admin-products.validators';
 
 const LOW_STOCK_THRESHOLD = 5;
 
@@ -33,6 +42,57 @@ type ProductStatsAggregateResult = {
 
 const escapeRegExp = (value: string) => {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
+const getUniqueProductSlug = async (title: string) => {
+  const baseSlug = createProductSlug(title);
+
+  if (!baseSlug) {
+    throw ApiError.BadRequest('Product title cannot create a valid slug');
+  }
+
+  let slug = baseSlug;
+  let suffix = 2;
+
+  while (await Product.exists({ slug })) {
+    slug = `${baseSlug}-${suffix}`;
+    suffix += 1;
+  }
+
+  return slug;
+};
+
+const getProductCoverImage = (images: CreateAdminProductBody['images']) => {
+  return (
+    images.find((image) => image.role === 'main') ??
+    images.find((image) => image.role === 'front') ??
+    images[0]
+  );
+};
+
+const getDiscountFields = ({
+  defaultPrice,
+  discountPrice,
+  hasDiscount,
+}: Pick<
+  CreateAdminProductBody,
+  'defaultPrice' | 'discountPrice' | 'hasDiscount'
+>) => {
+  if (!hasDiscount || discountPrice === undefined) {
+    return {
+      discountPercent: 0,
+      discountPrice: defaultPrice,
+      hasDiscount: false,
+    };
+  }
+
+  return {
+    discountPercent: Math.round(
+      ((defaultPrice - discountPrice) / defaultPrice) * 100,
+    ),
+    discountPrice,
+    hasDiscount: true,
+  };
 };
 
 const getSafePagination = (query: AdminProductsQuery) => {
@@ -317,5 +377,51 @@ export const getAdminProductsData = async (
     },
     products: products.map(adminProductToListItemDto),
     stats,
+  };
+};
+
+export const createAdminProductData = async ({
+  adminUserId,
+  productData,
+}: {
+  adminUserId: string;
+  productData: CreateAdminProductBody;
+}): Promise<CreateAdminProductResponse['data']> => {
+  const slug = await getUniqueProductSlug(productData.title);
+  const coverImage = getProductCoverImage(productData.images);
+  const discountFields = getDiscountFields(productData);
+  const product = await Product.create({
+    audience: productData.audience,
+    categories: productData.categories,
+    defaultPrice: productData.defaultPrice,
+    description: productData.description,
+    discountPercent: discountFields.discountPercent,
+    discountPrice: discountFields.discountPrice,
+    hasDiscount: discountFields.hasDiscount,
+    images: productData.images,
+    img: coverImage.src,
+    isNewProduct: false,
+    rating: 0,
+    slug,
+    status: productData.status ?? 'draft',
+    title: productData.title,
+    variants: productData.variants,
+  });
+
+  await createAuditLog({
+    action: 'product.created',
+    actorId: adminUserId,
+    entityId: product._id,
+    entityType: 'product',
+    metadata: {
+      slug: product.slug,
+      status: product.status,
+      title: product.title,
+      variantsCount: product.variants.length,
+    },
+  });
+
+  return {
+    product: adminProductToListItemDto(product),
   };
 };

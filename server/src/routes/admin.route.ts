@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import {
+  createAdminProduct,
   deleteAdminReview,
   getAdminDashboard,
   getAdminOrder,
@@ -33,7 +34,10 @@ import {
   getAdminReviewsSchema,
   updateAdminReviewSchema,
 } from '../validators/admin-reviews.validators';
-import { getAdminProductsSchema } from '../validators/admin-products.validators';
+import {
+  createAdminProductSchema,
+  getAdminProductsSchema,
+} from '../validators/admin-products.validators';
 import {
   adminOrderParamsSchema,
   getAdminOrdersSchema,
@@ -85,6 +89,11 @@ adminRoute.get(
   '/products',
   validateRequest(getAdminProductsSchema),
   catchErrors(getAdminProducts),
+);
+adminRoute.post(
+  '/products',
+  validateRequest(createAdminProductSchema),
+  catchErrors(createAdminProduct),
 );
 adminRoute.get(
   '/orders',

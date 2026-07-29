@@ -1,5 +1,6 @@
 export const AUDIT_LOG_ENTITY_TYPES = [
   'order',
+  'product',
   'review',
   'settings',
   'user',
@@ -11,6 +12,7 @@ export const AUDIT_LOG_ACTIONS = [
   'order.admin_note_changed',
   'order.status_changed',
   'order.tracking_number_changed',
+  'product.created',
   'review.approved',
   'review.deleted',
   'review.hidden',

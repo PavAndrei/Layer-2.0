@@ -310,6 +310,10 @@ export type AdminProductsResponse = ApiSuccess<{
   stats: AdminProductsStatsDto;
 }>;
 
+export type CreateAdminProductResponse = ApiSuccess<{
+  product: AdminProductListItemDto;
+}>;
+
 export type AdminOrderResponse = ApiSuccess<{
   order: AdminOrderDto;
 }>;
