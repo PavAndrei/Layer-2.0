@@ -8,6 +8,10 @@ export {
   type AdminOrdersSectionState,
 } from './use-admin-orders-section';
 export {
+  useAdminProductsSection,
+  type AdminProductsSectionState,
+} from './use-admin-products-section';
+export {
   useAdminReviewsSection,
   type AdminReviewsSectionState,
 } from './use-admin-reviews-section';

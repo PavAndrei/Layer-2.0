@@ -12,6 +12,7 @@ import { useAdminPage } from './model';
 import {
   AdminDashboardSection,
   AdminOrdersSection,
+  AdminProductsSection,
   AdminReviewsSection,
   AdminSettingsSection,
   AdminUsersSection,
@@ -31,6 +32,7 @@ export const AdminPage = () => {
     activeSection,
     adminDashboardSection,
     adminOrdersSection,
+    adminProductsSection,
     adminReviewsSection,
     adminSettingsSection,
     adminUsersSection,
@@ -54,6 +56,8 @@ export const AdminPage = () => {
     <SectionedPageLayout header={adminHeader} sidebar={adminSidebar}>
       {activeSection === 'orders' ? (
         <AdminOrdersSection {...adminOrdersSection} />
+      ) : activeSection === 'products' ? (
+        <AdminProductsSection {...adminProductsSection} />
       ) : activeSection === 'dashboard' ? (
         <AdminDashboardSection {...adminDashboardSection} />
       ) : activeSection === 'reviews' ? (

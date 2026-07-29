@@ -5,8 +5,11 @@ export type {
   ProductCollectionBaseFilters,
   ProductCollectionId,
 } from './product-collection-types';
+export { PRODUCT_AUDIENCES } from './product-audience-types';
 export { PRODUCT_IMAGE_ROLES } from './product-image-types';
 export type { ProductImage, ProductImageRole } from './product-image-types';
 export type { Product } from './product-types';
+export { PRODUCT_STATUSES } from './product-status-types';
+export type { ProductStatus } from './product-status-types';
 export { PRODUCT_SIZES } from './product-variant-types';
 export type { ProductSize, ProductVariant } from './product-variant-types';

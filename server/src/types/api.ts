@@ -1,6 +1,7 @@
 import type { ProductSize, ProductVariant } from './product-variant';
 import type { ProductAudience } from './product-audience';
 import type { ProductImage } from './product-image';
+import type { ProductStatus } from './product-status';
 import type { AdminDashboardPeriod } from './admin-dashboard';
 import type { StoreShippingRegion } from './store-settings';
 import type {
@@ -70,6 +71,38 @@ export type ReviewProductDto = {
   img: string;
   slug: string;
   title: string;
+};
+
+export type AdminProductListItemDto = {
+  _id: string;
+  audience: ProductAudience[];
+  categories: string[];
+  colorsCount: number;
+  defaultPrice: number;
+  discountPrice: number;
+  hasDiscount: boolean;
+  img: string;
+  rating: number;
+  sizesCount: number;
+  slug: string;
+  status: ProductStatus;
+  title: string;
+  totalStock: number;
+  updatedAt: string;
+  variantsCount: number;
+};
+
+export type AdminProductsStatsDto = {
+  active: number;
+  archived: number;
+  discounted: number;
+  draft: number;
+  inStock: number;
+  lowStock: number;
+  outOfStock: number;
+  total: number;
+  totalStock: number;
+  totalVariants: number;
 };
 
 export type UserReviewDto = ReviewDto & {
@@ -269,6 +302,12 @@ export type PaginationData = {
 export type AdminOrdersResponse = ApiSuccess<{
   orders: AdminOrderListItemDto[];
   pagination: PaginationData;
+}>;
+
+export type AdminProductsResponse = ApiSuccess<{
+  pagination: PaginationData;
+  products: AdminProductListItemDto[];
+  stats: AdminProductsStatsDto;
 }>;
 
 export type AdminOrderResponse = ApiSuccess<{

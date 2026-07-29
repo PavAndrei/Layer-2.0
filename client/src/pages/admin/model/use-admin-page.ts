@@ -4,6 +4,7 @@ import { useScrollToTopOnChange } from '../../../shared/hooks';
 import { useAdminPageState } from '../../../features/admin';
 import { useAdminDashboardSection } from './use-admin-dashboard-section';
 import { useAdminOrdersSection } from './use-admin-orders-section';
+import { useAdminProductsSection } from './use-admin-products-section';
 import { useAdminReviewsSection } from './use-admin-reviews-section';
 import { useAdminSettingsSection } from './use-admin-settings-section';
 import { useAdminUsersSection } from './use-admin-users-section';
@@ -12,6 +13,7 @@ export const useAdminPage = () => {
   const { activeSection } = useAdminPageState();
   const adminDashboardSection = useAdminDashboardSection({ activeSection });
   const adminOrdersSection = useAdminOrdersSection({ activeSection });
+  const adminProductsSection = useAdminProductsSection({ activeSection });
   const adminReviewsSection = useAdminReviewsSection({ activeSection });
   const adminSettingsSection = useAdminSettingsSection({ activeSection });
   const adminUsersSection = useAdminUsersSection({ activeSection });
@@ -51,6 +53,35 @@ export const useAdminPage = () => {
         search,
         userId,
         verifiedPurchase,
+      ].join(':');
+    }
+
+    if (activeSection === 'products') {
+      const {
+        audience,
+        category,
+        color,
+        discount,
+        page,
+        search,
+        size,
+        sort,
+        status,
+        stock,
+      } = adminProductsSection.filters.debouncedFilters;
+
+      return [
+        activeSection,
+        audience,
+        category,
+        color,
+        discount,
+        page,
+        search,
+        size,
+        sort,
+        status,
+        stock,
       ].join(':');
     }
 
@@ -96,6 +127,7 @@ export const useAdminPage = () => {
     activeSection,
     adminDashboardSection.periodState.period,
     adminOrdersSection.filters.debouncedFilters,
+    adminProductsSection.filters.debouncedFilters,
     adminReviewsSection.filters.debouncedFilters,
     adminSettingsSection.activeSettingsSection,
     adminUsersSection.filters.debouncedFilters,
@@ -110,6 +142,7 @@ export const useAdminPage = () => {
     activeSection,
     adminDashboardSection,
     adminOrdersSection,
+    adminProductsSection,
     adminReviewsSection,
     adminSettingsSection,
     adminUsersSection,

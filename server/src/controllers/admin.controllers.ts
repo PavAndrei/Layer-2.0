@@ -19,6 +19,7 @@ import {
   updateAdminUserData,
 } from '../services/admin-users.service';
 import { getAdminDashboardData } from '../services/admin-dashboard.service';
+import { getAdminProductsData } from '../services/admin-products.service';
 import {
   updateAdminGeneralSettingsData,
   updateAdminOrderSettingsData,
@@ -32,6 +33,7 @@ import type {
   AdminMeResponse,
   AdminOrderResponse,
   AdminOrdersResponse,
+  AdminProductsResponse,
   AdminStoreSettingsResponse,
   AdminUserResponse,
   AdminUsersResponse,
@@ -41,6 +43,9 @@ import type {
 import type {
   AdminDashboardQuery,
 } from '../validators/admin-dashboard.validators';
+import type {
+  AdminProductsQuery,
+} from '../validators/admin-products.validators';
 import { userToDto } from '../utils/user-to-dto';
 import type {
   AdminReviewParams,
@@ -182,6 +187,21 @@ export const getAdminOrders = async (
   res.status(200).json({
     success: true,
     message: 'Admin orders fetched successfully',
+    data,
+  });
+};
+
+export const getAdminProducts = async (
+  req: Request,
+  res: Response<AdminProductsResponse>,
+) => {
+  const data = await getAdminProductsData(
+    req.validated?.query as AdminProductsQuery,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin products fetched successfully',
     data,
   });
 };

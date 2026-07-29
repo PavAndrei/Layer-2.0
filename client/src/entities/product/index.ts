@@ -6,7 +6,9 @@ export {
 } from './constants';
 export { formatProductPrice } from './lib';
 export {
+  PRODUCT_AUDIENCES,
   PRODUCT_IMAGE_ROLES,
+  PRODUCT_STATUSES,
   PRODUCT_SIZES,
   type CategoryOption,
   type ProductAudience,
@@ -16,6 +18,7 @@ export {
   type ProductCollectionId,
   type ProductImage,
   type ProductImageRole,
+  type ProductStatus,
   type ProductSize,
   type ProductVariant,
 } from './model';

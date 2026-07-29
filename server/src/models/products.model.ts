@@ -11,6 +11,10 @@ import {
   PRODUCT_IMAGE_ROLES,
   type ProductImage,
 } from '../types/product-image';
+import {
+  PRODUCT_STATUSES,
+  type ProductStatus,
+} from '../types/product-status';
 
 type ProductVariantValue = Omit<ProductVariant, '_id'>;
 type ProductImageValue = ProductImage;
@@ -168,6 +172,14 @@ const productSchema = new Schema(
           message: 'Product audiences must be unique',
         },
       ],
+    },
+
+    status: {
+      type: String,
+      enum: PRODUCT_STATUSES,
+      required: true,
+      default: 'active' satisfies ProductStatus,
+      index: true,
     },
 
     variants: {

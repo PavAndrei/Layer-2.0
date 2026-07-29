@@ -25,23 +25,33 @@ const buildProductsFilter = ({
   searchString,
   sizes,
 }: ProductsQuery): QueryFilter<ProductData> => {
-  const filter: QueryFilter<ProductData> = {};
+  const filter: QueryFilter<ProductData> = {
+    $or: [
+      { status: 'active' },
+      { status: { $exists: false } },
+    ],
+  };
 
   if (searchString) {
     const escapedSearchString = escapeRegExp(searchString);
 
-    filter.$or = [
+    filter.$and = [
+      ...(filter.$and ?? []),
       {
-        title: {
-          $regex: escapedSearchString,
-          $options: 'i',
-        },
-      },
-      {
-        description: {
-          $regex: escapedSearchString,
-          $options: 'i',
-        },
+        $or: [
+          {
+            title: {
+              $regex: escapedSearchString,
+              $options: 'i',
+            },
+          },
+          {
+            description: {
+              $regex: escapedSearchString,
+              $options: 'i',
+            },
+          },
+        ],
       },
     ];
   }
@@ -175,8 +185,20 @@ export const getProductByIdentifierData = async (
   identifier: string,
 ): Promise<ProductResponse['data']> => {
   const product = isObjectIdOrHexString(identifier)
-    ? await Product.findById(identifier)
-    : await Product.findOne({ slug: identifier });
+    ? await Product.findOne({
+      _id: identifier,
+      $or: [
+        { status: 'active' },
+        { status: { $exists: false } },
+      ],
+    })
+    : await Product.findOne({
+      slug: identifier,
+      $or: [
+        { status: 'active' },
+        { status: { $exists: false } },
+      ],
+    });
 
   if (!product) {
     throw ApiError.NotFound('Product not found');
@@ -184,6 +206,10 @@ export const getProductByIdentifierData = async (
 
   const relatedProducts = await Product.find({
     _id: { $ne: product._id },
+    $or: [
+      { status: 'active' },
+      { status: { $exists: false } },
+    ],
     categories: {
       $in: product.categories,
     },

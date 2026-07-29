@@ -6,6 +6,7 @@ import {
   getAdminOrder,
   getAdminMe,
   getAdminOrders,
+  getAdminProducts,
   getAdminStoreSettings,
   getAdminReview,
   getAdminReviews,
@@ -32,6 +33,7 @@ import {
   getAdminReviewsSchema,
   updateAdminReviewSchema,
 } from '../validators/admin-reviews.validators';
+import { getAdminProductsSchema } from '../validators/admin-products.validators';
 import {
   adminOrderParamsSchema,
   getAdminOrdersSchema,
@@ -78,6 +80,11 @@ adminRoute.patch(
   '/settings/orders',
   validateRequest(updateAdminOrderSettingsSchema),
   catchErrors(updateAdminOrderSettings),
+);
+adminRoute.get(
+  '/products',
+  validateRequest(getAdminProductsSchema),
+  catchErrors(getAdminProducts),
 );
 adminRoute.get(
   '/orders',
