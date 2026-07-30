@@ -336,6 +336,14 @@ export type UpdateAdminProductStatusResponse = ApiSuccess<{
   product: AdminProductDto;
 }>;
 
+export type DeleteAdminProductResponse = ApiSuccess<{
+  deletedFavoritesCount: number;
+  deletedReviewsCount: number;
+  productId: string;
+  slug: string;
+  title: string;
+}>;
+
 export type AdminOrderResponse = ApiSuccess<{
   order: AdminOrderDto;
 }>;

@@ -140,6 +140,14 @@ export type UpdateAdminProductResponseData = {
 
 export type UpdateAdminProductStatusResponseData = AdminProductResponseData;
 
+export type DeleteAdminProductResponseData = {
+  deletedFavoritesCount: number;
+  deletedReviewsCount: number;
+  productId: string;
+  slug: string;
+  title: string;
+};
+
 export const getAdminProducts = async (
   params: AdminProductsParams = {},
   signal?: AbortSignal,
@@ -207,5 +215,14 @@ export const updateAdminProductStatus = async ({
     path: `/admin/products/${encodeURIComponent(productId)}/status`,
     body: payload,
     errorMessage: 'Failed to update admin product status',
+  });
+};
+
+export const deleteAdminProduct = async (
+  productId: string,
+): Promise<ApiResponse<DeleteAdminProductResponseData>> => {
+  return apiClient.delete<DeleteAdminProductResponseData>({
+    path: `/admin/products/${encodeURIComponent(productId)}`,
+    errorMessage: 'Failed to delete admin product',
   });
 };

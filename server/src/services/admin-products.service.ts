@@ -1,11 +1,14 @@
 import { QueryFilter } from 'mongoose';
 
 import { ApiError } from '../exceptions/api-error';
+import { Favorite } from '../models/favorites.model';
 import { Product, ProductData } from '../models/products.model';
+import { Review } from '../models/reviews.model';
 import type {
   AdminProductResponse,
   AdminProductsResponse,
   CreateAdminProductResponse,
+  DeleteAdminProductResponse,
   UpdateAdminProductResponse,
   UpdateAdminProductStatusResponse,
 } from '../types/api';
@@ -545,5 +548,56 @@ export const updateAdminProductStatusData = async ({
 
   return {
     product: adminProductToDto(product),
+  };
+};
+
+export const deleteAdminProductData = async ({
+  adminUserId,
+  productId,
+}: {
+  adminUserId: string;
+  productId: string;
+}): Promise<DeleteAdminProductResponse['data']> => {
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    throw ApiError.NotFound('Product not found');
+  }
+
+  if ((product.status ?? 'active') !== 'archived') {
+    throw ApiError.Conflict('Archive product before deleting it');
+  }
+
+  const deletedProduct = {
+    _id: product._id,
+    slug: product.slug,
+    title: product.title,
+  };
+  const [favoritesDeleteResult, reviewsDeleteResult] = await Promise.all([
+    Favorite.deleteMany({ productId: product._id }),
+    Review.deleteMany({ productId: product._id }),
+  ]);
+
+  await product.deleteOne();
+
+  await createAuditLog({
+    action: 'product.deleted',
+    actorId: adminUserId,
+    entityId: deletedProduct._id,
+    entityType: 'product',
+    metadata: {
+      deletedFavoritesCount: favoritesDeleteResult.deletedCount,
+      deletedReviewsCount: reviewsDeleteResult.deletedCount,
+      slug: deletedProduct.slug,
+      title: deletedProduct.title,
+    },
+  });
+
+  return {
+    deletedFavoritesCount: favoritesDeleteResult.deletedCount,
+    deletedReviewsCount: reviewsDeleteResult.deletedCount,
+    productId: deletedProduct._id.toString(),
+    slug: deletedProduct.slug,
+    title: deletedProduct.title,
   };
 };

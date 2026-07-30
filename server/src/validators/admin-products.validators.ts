@@ -311,6 +311,10 @@ export const updateAdminProductStatusSchema = z.object({
   body: updateAdminProductStatusBodySchema,
 });
 
+export const deleteAdminProductSchema = z.object({
+  params: adminProductParamsSchema.shape.params,
+});
+
 export type AdminProductsQuery = z.infer<typeof adminProductsQuerySchema>;
 export type AdminProductStockFilter =
   (typeof ADMIN_PRODUCT_STOCK_FILTERS)[number];

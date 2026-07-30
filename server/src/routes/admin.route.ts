@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import {
   createAdminProduct,
+  deleteAdminProduct,
   deleteAdminReview,
   getAdminDashboard,
   getAdminOrder,
@@ -40,6 +41,7 @@ import {
 import {
   adminProductParamsSchema,
   createAdminProductSchema,
+  deleteAdminProductSchema,
   getAdminProductsSchema,
   updateAdminProductSchema,
   updateAdminProductStatusSchema,
@@ -115,6 +117,11 @@ adminRoute.patch(
   '/products/:productId',
   validateRequest(updateAdminProductSchema),
   catchErrors(updateAdminProduct),
+);
+adminRoute.delete(
+  '/products/:productId',
+  validateRequest(deleteAdminProductSchema),
+  catchErrors(deleteAdminProduct),
 );
 adminRoute.get(
   '/orders',

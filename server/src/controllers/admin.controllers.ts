@@ -21,6 +21,7 @@ import {
 import { getAdminDashboardData } from '../services/admin-dashboard.service';
 import {
   createAdminProductData,
+  deleteAdminProductData,
   getAdminProductData,
   getAdminProductsData,
   updateAdminProductData,
@@ -45,6 +46,7 @@ import type {
   AdminUserResponse,
   AdminUsersResponse,
   CreateAdminProductResponse,
+  DeleteAdminProductResponse,
   DeleteAdminReviewResponse,
   UpdateAdminProductResponse,
   UpdateAdminProductStatusResponse,
@@ -297,6 +299,27 @@ export const updateAdminProductStatus = async (
   res.status(200).json({
     success: true,
     message: 'Admin product status updated successfully',
+    data,
+  });
+};
+
+export const deleteAdminProduct = async (
+  req: Request,
+  res: Response<DeleteAdminProductResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { productId } = req.validated?.params as AdminProductParams;
+  const data = await deleteAdminProductData({
+    adminUserId: req.user.userId,
+    productId,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin product deleted successfully',
     data,
   });
 };

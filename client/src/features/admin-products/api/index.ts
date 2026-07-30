@@ -1,5 +1,6 @@
 export {
   createAdminProduct,
+  deleteAdminProduct,
   getAdminProduct,
   getAdminProducts,
   updateAdminProduct,
@@ -20,6 +21,7 @@ export type {
   CreateAdminProductPayload,
   CreateAdminProductResponseData,
   CreateAdminProductVariantPayload,
+  DeleteAdminProductResponseData,
   UpdateAdminProductPayload,
   UpdateAdminProductResponseData,
   UpdateAdminProductStatusPayload,

@@ -6,7 +6,10 @@ import { formatProductPrice } from '../../../entities/product';
 import type { ProductStatus } from '../../../entities/product';
 import { formatDisplayDate } from '../../../shared/lib';
 import { Button, ConfirmDialog } from '../../../shared/ui';
-import { useUpdateAdminProductStatus } from '../model';
+import {
+  useDeleteAdminProduct,
+  useUpdateAdminProductStatus,
+} from '../model';
 import { AdminProductStatusBadge } from './admin-product-status-badge';
 
 type AdminProductsGridProps = {
@@ -101,17 +104,36 @@ const getStatusMutationError = (
   return null;
 };
 
+const getDeleteMutationError = (
+  mutation: ReturnType<typeof useDeleteAdminProduct>,
+) => {
+  if (mutation.data && !mutation.data.success) {
+    return mutation.data.message;
+  }
+
+  if (mutation.error instanceof Error) {
+    return mutation.error.message;
+  }
+
+  return null;
+};
+
 export const AdminProductsGrid = ({
   products,
 }: AdminProductsGridProps) => {
   const updateStatusMutation = useUpdateAdminProductStatus();
+  const deleteProductMutation = useDeleteAdminProduct();
   const [selectedProduct, setSelectedProduct] =
+    useState<AdminProductListItem | null>(null);
+  const [selectedProductForDelete, setSelectedProductForDelete] =
     useState<AdminProductListItem | null>(null);
   const statusAction = selectedProduct
     ? getProductStatusAction(selectedProduct)
     : null;
   const mutationError = getStatusMutationError(updateStatusMutation);
+  const deleteMutationError = getDeleteMutationError(deleteProductMutation);
   const isActionPending = updateStatusMutation.isPending;
+  const isDeletePending = deleteProductMutation.isPending;
   const dialogDescription = useMemo(() => {
     if (!statusAction) return undefined;
 
@@ -121,6 +143,20 @@ export const AdminProductsGrid = ({
   }, [
     mutationError,
     statusAction,
+  ]);
+  const deleteDialogDescription = useMemo(() => {
+    if (!selectedProductForDelete) return undefined;
+
+    const description =
+      `${selectedProductForDelete.title} will be permanently deleted. ` +
+      'Product reviews and favorites will be removed. Existing orders will keep their item snapshots.';
+
+    return deleteMutationError
+      ? `${description} ${deleteMutationError}`
+      : description;
+  }, [
+    deleteMutationError,
+    selectedProductForDelete,
   ]);
 
   const closeStatusDialog = () => {
@@ -150,6 +186,25 @@ export const AdminProductsGrid = ({
     );
   };
 
+  const closeDeleteDialog = () => {
+    if (isDeletePending) return;
+
+    deleteProductMutation.reset();
+    setSelectedProductForDelete(null);
+  };
+
+  const confirmDeleteAction = () => {
+    if (!selectedProductForDelete || isDeletePending) return;
+
+    deleteProductMutation.mutate(selectedProductForDelete._id, {
+      onSuccess: (response) => {
+        if (!response.success) return;
+
+        setSelectedProductForDelete(null);
+      },
+    });
+  };
+
   return (
     <>
       <div className="overflow-x-auto rounded border border-border-soft bg-background-surface">
@@ -169,6 +224,9 @@ export const AdminProductsGrid = ({
             const productAction = getProductStatusAction(product);
             const isCurrentProductPending =
               isActionPending && selectedProduct?._id === product._id;
+            const isCurrentProductDeleting =
+              isDeletePending &&
+              selectedProductForDelete?._id === product._id;
 
             return (
               <article
@@ -247,7 +305,7 @@ export const AdminProductsGrid = ({
                     Edit
                   </Link>
                   <Button
-                    disabled={isActionPending}
+                    disabled={isActionPending || isDeletePending}
                     size="sm"
                     variant={
                       product.status === 'archived' ? 'secondary' : 'danger'
@@ -261,6 +319,19 @@ export const AdminProductsGrid = ({
                       ? productAction.confirmingLabel
                       : productAction.triggerLabel}
                   </Button>
+                  {product.status === 'archived' && (
+                    <Button
+                      disabled={isActionPending || isDeletePending}
+                      size="sm"
+                      variant="danger"
+                      onClick={() => {
+                        deleteProductMutation.reset();
+                        setSelectedProductForDelete(product);
+                      }}
+                    >
+                      {isCurrentProductDeleting ? 'Deleting...' : 'Delete'}
+                    </Button>
+                  )}
                 </div>
               </article>
             );
@@ -280,6 +351,17 @@ export const AdminProductsGrid = ({
         }
         onCancel={closeStatusDialog}
         onConfirm={confirmStatusAction}
+      />
+      <ConfirmDialog
+        confirmLabel="Delete product"
+        confirmingLabel="Deleting..."
+        description={deleteDialogDescription}
+        isConfirming={isDeletePending}
+        isOpen={Boolean(selectedProductForDelete)}
+        title="Delete product permanently?"
+        tone="danger"
+        onCancel={closeDeleteDialog}
+        onConfirm={confirmDeleteAction}
       />
     </>
   );

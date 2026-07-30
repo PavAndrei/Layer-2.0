@@ -56,6 +56,7 @@ export {
 } from './use-admin-product-form';
 export { useAdminProduct } from './use-admin-product';
 export { useCreateAdminProduct } from './use-create-admin-product';
+export { useDeleteAdminProduct } from './use-delete-admin-product';
 export { useUpdateAdminProduct } from './use-update-admin-product';
 export { useUpdateAdminProductStatus } from './use-update-admin-product-status';
 export { useAdminProducts } from './use-admin-products';
