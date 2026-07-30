@@ -92,6 +92,16 @@ export type AdminProductListItemDto = {
   variantsCount: number;
 };
 
+export type AdminProductDto = AdminProductListItemDto & {
+  createdAt: string;
+  description: string;
+  discountPercent: number;
+  images: ProductImage[];
+  isNewProduct: boolean;
+  totalQuantity: number;
+  variants: ProductVariant[];
+};
+
 export type AdminProductsStatsDto = {
   active: number;
   archived: number;
@@ -312,6 +322,18 @@ export type AdminProductsResponse = ApiSuccess<{
 
 export type CreateAdminProductResponse = ApiSuccess<{
   product: AdminProductListItemDto;
+}>;
+
+export type AdminProductResponse = ApiSuccess<{
+  product: AdminProductDto;
+}>;
+
+export type UpdateAdminProductResponse = ApiSuccess<{
+  product: AdminProductDto;
+}>;
+
+export type UpdateAdminProductStatusResponse = ApiSuccess<{
+  product: AdminProductDto;
 }>;
 
 export type AdminOrderResponse = ApiSuccess<{

@@ -328,8 +328,8 @@ export const useAdminProductForm = () => {
     [updateField],
   );
 
-  const resetForm = useCallback(() => {
-    setValues(createInitialAdminProductFormValues());
+  const resetForm = useCallback((nextValues?: AdminProductFormValues) => {
+    setValues(nextValues ?? createInitialAdminProductFormValues());
     setFieldErrors({});
   }, []);
 

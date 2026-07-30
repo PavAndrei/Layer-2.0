@@ -13,6 +13,8 @@ export const AUDIT_LOG_ACTIONS = [
   'order.status_changed',
   'order.tracking_number_changed',
   'product.created',
+  'product.status_changed',
+  'product.updated',
   'review.approved',
   'review.deleted',
   'review.hidden',

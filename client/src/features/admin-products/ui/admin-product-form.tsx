@@ -26,10 +26,15 @@ import type {
   AdminProductVariantFormValues,
 } from '../model';
 
-type AdminProductCreateFormProps = {
+type AdminProductFormProps = {
   error: string | null;
+  errorTitle?: string;
   fieldErrors: AdminProductFormErrors;
   isSubmitting: boolean;
+  resetLabel?: string;
+  submitLabel?: string;
+  submittingLabel?: string;
+  successMessage?: string | null;
   values: AdminProductFormValues;
   onAddImage: () => void;
   onAddVariant: () => void;
@@ -137,8 +142,9 @@ const FieldsetHeader = ({
   </div>
 );
 
-export const AdminProductCreateForm = ({
+export const AdminProductForm = ({
   error,
+  errorTitle = 'Product could not be created',
   fieldErrors,
   isSubmitting,
   onAddImage,
@@ -152,14 +158,24 @@ export const AdminProductCreateForm = ({
   onValueChange,
   onVariantRemove,
   onVariantUpdate,
+  resetLabel = 'Reset',
+  submitLabel = 'Create product',
+  submittingLabel = 'Creating...',
+  successMessage = null,
   values,
-}: AdminProductCreateFormProps) => (
+}: AdminProductFormProps) => (
   <form className="flex flex-col gap-6" noValidate onSubmit={onSubmit}>
     {error && (
       <FeedbackMessage
         tone="danger"
-        title="Product could not be created"
+        title={errorTitle}
         description={error}
+      />
+    )}
+    {successMessage && (
+      <FeedbackMessage
+        title="Product saved"
+        description={successMessage}
       />
     )}
 
@@ -471,7 +487,7 @@ export const AdminProductCreateForm = ({
       </div>
     </section>
 
-    <div className="sticky bottom-0 z-10 -mx-2.5 border-t border-border-soft bg-background-primary/95 px-2.5 py-3 backdrop-blur">
+    <div className="border-t border-border-soft bg-background-primary py-3">
       <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
         <Button
           className="w-full sm:w-fit"
@@ -479,7 +495,7 @@ export const AdminProductCreateForm = ({
           variant="secondary"
           onClick={onReset}
         >
-          Reset
+          {resetLabel}
         </Button>
         <Button
           className="w-full sm:w-fit"
@@ -487,7 +503,7 @@ export const AdminProductCreateForm = ({
           type="submit"
           variant="primary"
         >
-          {isSubmitting ? 'Creating...' : 'Create product'}
+          {isSubmitting ? submittingLabel : submitLabel}
         </Button>
       </div>
     </div>

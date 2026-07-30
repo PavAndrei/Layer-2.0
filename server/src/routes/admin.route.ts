@@ -7,6 +7,7 @@ import {
   getAdminOrder,
   getAdminMe,
   getAdminOrders,
+  getAdminProduct,
   getAdminProducts,
   getAdminStoreSettings,
   getAdminReview,
@@ -18,6 +19,8 @@ import {
   updateAdminOrderSettings,
   updateAdminShippingSettings,
   updateAdminOrder,
+  updateAdminProduct,
+  updateAdminProductStatus,
   updateAdminUser,
   updateAdminReview,
 } from '../controllers/admin.controllers';
@@ -35,8 +38,11 @@ import {
   updateAdminReviewSchema,
 } from '../validators/admin-reviews.validators';
 import {
+  adminProductParamsSchema,
   createAdminProductSchema,
   getAdminProductsSchema,
+  updateAdminProductSchema,
+  updateAdminProductStatusSchema,
 } from '../validators/admin-products.validators';
 import {
   adminOrderParamsSchema,
@@ -94,6 +100,21 @@ adminRoute.post(
   '/products',
   validateRequest(createAdminProductSchema),
   catchErrors(createAdminProduct),
+);
+adminRoute.patch(
+  '/products/:productId/status',
+  validateRequest(updateAdminProductStatusSchema),
+  catchErrors(updateAdminProductStatus),
+);
+adminRoute.get(
+  '/products/:productId',
+  validateRequest(adminProductParamsSchema),
+  catchErrors(getAdminProduct),
+);
+adminRoute.patch(
+  '/products/:productId',
+  validateRequest(updateAdminProductSchema),
+  catchErrors(updateAdminProduct),
 );
 adminRoute.get(
   '/orders',

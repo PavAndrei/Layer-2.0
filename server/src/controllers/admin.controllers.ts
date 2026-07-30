@@ -21,7 +21,10 @@ import {
 import { getAdminDashboardData } from '../services/admin-dashboard.service';
 import {
   createAdminProductData,
+  getAdminProductData,
   getAdminProductsData,
+  updateAdminProductData,
+  updateAdminProductStatusData,
 } from '../services/admin-products.service';
 import {
   updateAdminGeneralSettingsData,
@@ -31,6 +34,7 @@ import {
 import { getStoreSettingsData } from '../services/store-settings.service';
 import type {
   AdminDashboardResponse,
+  AdminProductResponse,
   AdminReviewResponse,
   AdminReviewsResponse,
   AdminMeResponse,
@@ -42,14 +46,19 @@ import type {
   AdminUsersResponse,
   CreateAdminProductResponse,
   DeleteAdminReviewResponse,
+  UpdateAdminProductResponse,
+  UpdateAdminProductStatusResponse,
   UpdateAdminReviewResponse,
 } from '../types/api';
 import type {
   AdminDashboardQuery,
 } from '../validators/admin-dashboard.validators';
 import type {
+  AdminProductParams,
   AdminProductsQuery,
   CreateAdminProductBody,
+  UpdateAdminProductBody,
+  UpdateAdminProductStatusBody,
 } from '../validators/admin-products.validators';
 import { userToDto } from '../utils/user-to-dto';
 import type {
@@ -228,6 +237,66 @@ export const createAdminProduct = async (
   res.status(201).json({
     success: true,
     message: 'Admin product created successfully',
+    data,
+  });
+};
+
+export const getAdminProduct = async (
+  req: Request,
+  res: Response<AdminProductResponse>,
+) => {
+  const { productId } = req.validated?.params as AdminProductParams;
+  const data = await getAdminProductData(productId);
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin product fetched successfully',
+    data,
+  });
+};
+
+export const updateAdminProduct = async (
+  req: Request,
+  res: Response<UpdateAdminProductResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { productId } = req.validated?.params as AdminProductParams;
+  const body = req.validated?.body as UpdateAdminProductBody;
+  const data = await updateAdminProductData({
+    adminUserId: req.user.userId,
+    productId,
+    update: body,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin product updated successfully',
+    data,
+  });
+};
+
+export const updateAdminProductStatus = async (
+  req: Request,
+  res: Response<UpdateAdminProductStatusResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { productId } = req.validated?.params as AdminProductParams;
+  const body = req.validated?.body as UpdateAdminProductStatusBody;
+  const data = await updateAdminProductStatusData({
+    adminUserId: req.user.userId,
+    productId,
+    update: body,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin product status updated successfully',
     data,
   });
 };

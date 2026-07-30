@@ -1,9 +1,16 @@
 export {
   createAdminProduct,
+  getAdminProduct,
   getAdminProducts,
+  updateAdminProduct,
+  updateAdminProductStatus,
 } from './admin-products-api';
 export type {
+  AdminProduct,
+  AdminProductImage,
   AdminProductListItem,
+  AdminProductResponseData,
+  AdminProductVariant,
   AdminProductsParams,
   AdminProductsResponseData,
   AdminProductsStats,
@@ -13,4 +20,8 @@ export type {
   CreateAdminProductPayload,
   CreateAdminProductResponseData,
   CreateAdminProductVariantPayload,
+  UpdateAdminProductPayload,
+  UpdateAdminProductResponseData,
+  UpdateAdminProductStatusPayload,
+  UpdateAdminProductStatusResponseData,
 } from './admin-products-api';

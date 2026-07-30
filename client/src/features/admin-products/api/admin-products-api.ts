@@ -104,9 +104,41 @@ export type CreateAdminProductPayload = {
   variants: CreateAdminProductVariantPayload[];
 };
 
+export type UpdateAdminProductPayload = CreateAdminProductPayload;
+
+export type UpdateAdminProductStatusPayload = {
+  status: ProductStatus;
+};
+
+export type AdminProductVariant = CreateAdminProductVariantPayload & {
+  _id: string;
+};
+
+export type AdminProductImage = CreateAdminProductImagePayload;
+
+export type AdminProduct = AdminProductListItem & {
+  createdAt: string;
+  description: string;
+  discountPercent: number;
+  images: AdminProductImage[];
+  isNewProduct: boolean;
+  totalQuantity: number;
+  variants: AdminProductVariant[];
+};
+
 export type CreateAdminProductResponseData = {
   product: AdminProductListItem;
 };
+
+export type AdminProductResponseData = {
+  product: AdminProduct;
+};
+
+export type UpdateAdminProductResponseData = {
+  product: AdminProduct;
+};
+
+export type UpdateAdminProductStatusResponseData = AdminProductResponseData;
 
 export const getAdminProducts = async (
   params: AdminProductsParams = {},
@@ -120,6 +152,17 @@ export const getAdminProducts = async (
   });
 };
 
+export const getAdminProduct = async (
+  productId: string,
+  signal?: AbortSignal,
+): Promise<ApiResponse<AdminProductResponseData>> => {
+  return apiClient.get<AdminProductResponseData>({
+    path: `/admin/products/${encodeURIComponent(productId)}`,
+    signal,
+    errorMessage: 'Failed to load admin product',
+  });
+};
+
 export const createAdminProduct = async (
   payload: CreateAdminProductPayload,
 ): Promise<ApiResponse<CreateAdminProductResponseData>> => {
@@ -130,5 +173,39 @@ export const createAdminProduct = async (
     path: '/admin/products',
     body: payload,
     errorMessage: 'Failed to create admin product',
+  });
+};
+
+export const updateAdminProduct = async ({
+  payload,
+  productId,
+}: {
+  payload: UpdateAdminProductPayload;
+  productId: string;
+}): Promise<ApiResponse<UpdateAdminProductResponseData>> => {
+  return apiClient.patch<
+    UpdateAdminProductResponseData,
+    UpdateAdminProductPayload
+  >({
+    path: `/admin/products/${encodeURIComponent(productId)}`,
+    body: payload,
+    errorMessage: 'Failed to update admin product',
+  });
+};
+
+export const updateAdminProductStatus = async ({
+  payload,
+  productId,
+}: {
+  payload: UpdateAdminProductStatusPayload;
+  productId: string;
+}): Promise<ApiResponse<UpdateAdminProductStatusResponseData>> => {
+  return apiClient.patch<
+    UpdateAdminProductStatusResponseData,
+    UpdateAdminProductStatusPayload
+  >({
+    path: `/admin/products/${encodeURIComponent(productId)}/status`,
+    body: payload,
+    errorMessage: 'Failed to update admin product status',
   });
 };

@@ -1,3 +1,4 @@
+import { isObjectIdOrHexString } from 'mongoose';
 import { z } from 'zod';
 
 import { PRODUCT_AUDIENCES } from '../types/product-audience';
@@ -195,6 +196,16 @@ export const getAdminProductsSchema = z.object({
   query: adminProductsQuerySchema,
 });
 
+export const adminProductParamsSchema = z.object({
+  params: z
+    .object({
+      productId: z
+        .string()
+        .refine(isObjectIdOrHexString, 'Invalid product id'),
+    })
+    .strict(),
+});
+
 export const createAdminProductBodySchema = z
   .object({
     title: titleField,
@@ -282,9 +293,36 @@ export const createAdminProductSchema = z.object({
   body: createAdminProductBodySchema,
 });
 
+export const updateAdminProductBodySchema = createAdminProductBodySchema;
+
+export const updateAdminProductSchema = z.object({
+  params: adminProductParamsSchema.shape.params,
+  body: updateAdminProductBodySchema,
+});
+
+export const updateAdminProductStatusBodySchema = z
+  .object({
+    status: z.enum(PRODUCT_STATUSES),
+  })
+  .strict();
+
+export const updateAdminProductStatusSchema = z.object({
+  params: adminProductParamsSchema.shape.params,
+  body: updateAdminProductStatusBodySchema,
+});
+
 export type AdminProductsQuery = z.infer<typeof adminProductsQuerySchema>;
 export type AdminProductStockFilter =
   (typeof ADMIN_PRODUCT_STOCK_FILTERS)[number];
+export type AdminProductParams = z.infer<
+  typeof adminProductParamsSchema
+>['params'];
 export type CreateAdminProductBody = z.infer<
   typeof createAdminProductBodySchema
+>;
+export type UpdateAdminProductBody = z.infer<
+  typeof updateAdminProductBodySchema
+>;
+export type UpdateAdminProductStatusBody = z.infer<
+  typeof updateAdminProductStatusBodySchema
 >;

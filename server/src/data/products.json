@@ -7,13 +7,8 @@
     "discountPrice": 110,
     "discountPercent": 15,
     "rating": 3.4,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -157,13 +152,8 @@
     "discountPrice": 134,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -350,14 +340,8 @@
     "discountPrice": 59,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "t-shirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["t-shirts", "basics", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -508,13 +492,8 @@
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": [
-      "t-shirts",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["t-shirts", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -665,14 +644,8 @@
     "discountPrice": 55,
     "discountPercent": 35,
     "rating": 4.5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "basics"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -823,15 +796,8 @@
     "discountPrice": 69,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "streetwear"
-    ],
-    "audience": [
-      "men",
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "streetwear"],
+    "audience": ["men", "women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -982,14 +948,8 @@
     "discountPrice": 104,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "sweatshirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["sweatshirts", "basics", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1176,13 +1136,8 @@
     "discountPrice": 115,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": [
-      "sweatshirts",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["sweatshirts", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -1326,14 +1281,8 @@
     "discountPrice": 143,
     "discountPercent": 30,
     "rating": 3.9,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1520,14 +1469,8 @@
     "discountPrice": 123,
     "discountPercent": 35,
     "rating": 4.6,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -1671,14 +1614,8 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -1865,14 +1802,8 @@
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -2059,14 +1990,8 @@
     "discountPrice": 119,
     "discountPercent": 25,
     "rating": 5,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -2253,14 +2178,8 @@
     "discountPrice": 154,
     "discountPercent": 0,
     "rating": 4,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2411,14 +2330,8 @@
     "discountPrice": 155,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2569,14 +2482,8 @@
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -2727,14 +2634,8 @@
     "discountPrice": 96,
     "discountPercent": 20,
     "rating": 4.4,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -2885,14 +2786,8 @@
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -2994,14 +2889,8 @@
     "discountPrice": 42,
     "discountPercent": 30,
     "rating": 4.1,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -3103,14 +2992,8 @@
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "accessories",
-      "beanies",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3212,14 +3095,8 @@
     "discountPrice": 21,
     "discountPercent": 15,
     "rating": 3.8,
-    "categories": [
-      "accessories",
-      "beanies",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -3321,13 +3198,8 @@
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": [
-      "accessories",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3429,13 +3301,8 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": [
-      "accessories",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -3537,14 +3404,8 @@
     "discountPrice": 140,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "outerwear",
-      "streetwear",
-      "unisex"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["outerwear", "streetwear", "unisex"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -3731,13 +3592,8 @@
     "discountPrice": 71,
     "discountPercent": 35,
     "rating": 4.9,
-    "categories": [
-      "sweatshirts",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -3881,13 +3737,8 @@
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4074,13 +3925,8 @@
     "discountPrice": 134,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4267,14 +4113,8 @@
     "discountPrice": 52,
     "discountPercent": 25,
     "rating": 3.6,
-    "categories": [
-      "t-shirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "basics", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4425,13 +4265,8 @@
     "discountPrice": 42,
     "discountPercent": 30,
     "rating": 4.3,
-    "categories": [
-      "t-shirts",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["t-shirts", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -4582,14 +4417,8 @@
     "discountPrice": 85,
     "discountPercent": 0,
     "rating": 5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "basics"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -4740,14 +4569,8 @@
     "discountPrice": 79,
     "discountPercent": 0,
     "rating": 4,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -4898,14 +4721,8 @@
     "discountPrice": 94,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": [
-      "sweatshirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5049,13 +4866,8 @@
     "discountPrice": 86,
     "discountPercent": 25,
     "rating": 3.7,
-    "categories": [
-      "sweatshirts",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -5242,14 +5054,8 @@
     "discountPrice": 214,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -5436,14 +5242,8 @@
     "discountPrice": 179,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -5630,14 +5430,8 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -5824,14 +5618,8 @@
     "discountPrice": 147,
     "discountPercent": 20,
     "rating": 4.8,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -6018,14 +5806,8 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6212,14 +5994,8 @@
     "discountPrice": 154,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6370,14 +6146,8 @@
     "discountPrice": 165,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6528,14 +6298,8 @@
     "discountPrice": 93,
     "discountPercent": 15,
     "rating": 4.2,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -6686,14 +6450,8 @@
     "discountPrice": 120,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6844,14 +6602,8 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -6953,14 +6705,8 @@
     "discountPrice": 50,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -7019,14 +6765,8 @@
     "discountPrice": 25,
     "discountPercent": 35,
     "rating": 3.6,
-    "categories": [
-      "accessories",
-      "beanies",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -7085,14 +6825,8 @@
     "discountPrice": 30,
     "discountPercent": 15,
     "rating": 4.3,
-    "categories": [
-      "accessories",
-      "beanies",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -7194,13 +6928,8 @@
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 5,
-    "categories": [
-      "accessories",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -7302,13 +7031,8 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 4,
-    "categories": [
-      "accessories",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -7410,14 +7134,8 @@
     "discountPrice": 105,
     "discountPercent": 30,
     "rating": 4.7,
-    "categories": [
-      "outerwear",
-      "streetwear",
-      "unisex"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["outerwear", "streetwear", "unisex"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -7604,13 +7322,8 @@
     "discountPrice": 99,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": [
-      "sweatshirts",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -7797,13 +7510,8 @@
     "discountPrice": 119,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -7990,13 +7698,8 @@
     "discountPrice": 144,
     "discountPercent": 0,
     "rating": 3.4,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -8183,14 +7886,8 @@
     "discountPrice": 44,
     "discountPercent": 25,
     "rating": 4.1,
-    "categories": [
-      "t-shirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "basics", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -8341,13 +8038,8 @@
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "t-shirts",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["t-shirts", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -8498,14 +8190,8 @@
     "discountPrice": 62,
     "discountPercent": 35,
     "rating": 3.8,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "basics"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -8656,14 +8342,8 @@
     "discountPrice": 69,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -8814,14 +8494,8 @@
     "discountPrice": 75,
     "discountPercent": 20,
     "rating": 3.5,
-    "categories": [
-      "sweatshirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -9008,13 +8682,8 @@
     "discountPrice": 125,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "sweatshirts",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -9201,14 +8870,8 @@
     "discountPrice": 204,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -9352,14 +9015,8 @@
     "discountPrice": 179,
     "discountPercent": 0,
     "rating": 3.9,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -9546,14 +9203,8 @@
     "discountPrice": 135,
     "discountPercent": 15,
     "rating": 4.6,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -9740,14 +9391,8 @@
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -9934,14 +9579,8 @@
     "discountPrice": 149,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -10085,14 +9724,8 @@
     "discountPrice": 115,
     "discountPercent": 30,
     "rating": 5,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -10243,14 +9876,8 @@
     "discountPrice": 101,
     "discountPercent": 35,
     "rating": 4,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -10401,14 +10028,8 @@
     "discountPrice": 109,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -10559,14 +10180,8 @@
     "discountPrice": 130,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -10717,14 +10332,8 @@
     "discountPrice": 39,
     "discountPercent": 0,
     "rating": 4.4,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -10826,14 +10435,8 @@
     "discountPrice": 35,
     "discountPercent": 30,
     "rating": 3.4,
-    "categories": [
-      "accessories",
-      "headwear",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "headwear", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -10935,14 +10538,8 @@
     "discountPrice": 49,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": [
-      "accessories",
-      "beanies",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -11044,14 +10641,8 @@
     "discountPrice": 25,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "accessories",
-      "beanies",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "beanies", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -11153,13 +10744,8 @@
     "discountPrice": 60,
     "discountPercent": 0,
     "rating": 3.8,
-    "categories": [
-      "accessories",
-      "streetwear"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "streetwear"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -11261,13 +10847,8 @@
     "discountPrice": 44,
     "discountPercent": 25,
     "rating": 4.5,
-    "categories": [
-      "accessories",
-      "basics"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["accessories", "basics"],
+    "audience": ["unisex"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -11369,14 +10950,8 @@
     "discountPrice": 140,
     "discountPercent": 0,
     "rating": 3.5,
-    "categories": [
-      "outerwear",
-      "streetwear",
-      "unisex"
-    ],
-    "audience": [
-      "unisex"
-    ],
+    "categories": ["outerwear", "streetwear", "unisex"],
+    "audience": ["unisex"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -11563,13 +11138,8 @@
     "discountPrice": 99,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "sweatshirts",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -11756,13 +11326,8 @@
     "discountPrice": 129,
     "discountPercent": 0,
     "rating": 4.9,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -11949,13 +11514,8 @@
     "discountPrice": 107,
     "discountPercent": 20,
     "rating": 3.9,
-    "categories": [
-      "hoodies",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["hoodies", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -12142,14 +11702,8 @@
     "discountPrice": 59,
     "discountPercent": 0,
     "rating": 4.6,
-    "categories": [
-      "t-shirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "basics", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": true,
     "variants": [
@@ -12300,13 +11854,8 @@
     "discountPrice": 70,
     "discountPercent": 0,
     "rating": 3.6,
-    "categories": [
-      "t-shirts",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -12457,14 +12006,8 @@
     "discountPrice": 85,
     "discountPercent": 0,
     "rating": 4.3,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "basics"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -12615,14 +12158,8 @@
     "discountPrice": 59,
     "discountPercent": 15,
     "rating": 5,
-    "categories": [
-      "t-shirts",
-      "longsleeve",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["t-shirts", "longsleeve", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -12773,14 +12310,8 @@
     "discountPrice": 83,
     "discountPercent": 20,
     "rating": 4,
-    "categories": [
-      "sweatshirts",
-      "basics",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -12967,13 +12498,8 @@
     "discountPrice": 115,
     "discountPercent": 0,
     "rating": 4.7,
-    "categories": [
-      "sweatshirts",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -13160,14 +12686,8 @@
     "discountPrice": 204,
     "discountPercent": 0,
     "rating": 3.7,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -13354,14 +12874,8 @@
     "discountPrice": 123,
     "discountPercent": 35,
     "rating": 4.4,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": false,
     "variants": [
@@ -13441,14 +12955,8 @@
     "discountPrice": 174,
     "discountPercent": 0,
     "rating": 4.1,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -13592,14 +13100,8 @@
     "discountPrice": 159,
     "discountPercent": 0,
     "rating": 4.8,
-    "categories": [
-      "jackets",
-      "outerwear",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["jackets", "outerwear", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -13679,14 +13181,8 @@
     "discountPrice": 108,
     "discountPercent": 30,
     "rating": 3.8,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -13837,14 +13333,8 @@
     "discountPrice": 155,
     "discountPercent": 0,
     "rating": 4.5,
-    "categories": [
-      "pants",
-      "cargo",
-      "streetwear"
-    ],
-    "audience": [
-      "men"
-    ],
+    "categories": ["pants", "cargo", "streetwear"],
+    "audience": ["men"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -13931,14 +13421,8 @@
     "discountPrice": 101,
     "discountPercent": 15,
     "rating": 3.5,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -14089,14 +13573,8 @@
     "discountPrice": 120,
     "discountPercent": 0,
     "rating": 4.2,
-    "categories": [
-      "pants",
-      "track",
-      "streetwear"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["pants", "track", "streetwear"],
+    "audience": ["women"],
     "hasDiscount": false,
     "isNewProduct": false,
     "variants": [
@@ -14247,13 +13725,8 @@
     "discountPrice": 71,
     "discountPercent": 35,
     "rating": 4.7,
-    "categories": [
-      "sweatshirts",
-      "basics"
-    ],
-    "audience": [
-      "women"
-    ],
+    "categories": ["sweatshirts", "basics"],
+    "audience": ["women"],
     "hasDiscount": true,
     "isNewProduct": true,
     "variants": [
@@ -14413,7 +13886,7 @@
         "color": "heather-grey"
       },
       {
-        "src": "https://ik.imagekit.io/b3yhg2lkg/structured-everyday-crewneck-100-heather-grey-back.webp",
+        "src": "https://ik.imagekit.io/b3yhg2lkg/ ",
         "alt": "Structured Everyday Crewneck in heather grey back view",
         "role": "back",
         "color": "heather-grey"

@@ -1,4 +1,4 @@
-import { AdminProductCreateForm } from '../../features/admin-products';
+import { AdminProductForm } from '../../features/admin-products';
 import { SectionedPageHeader } from '../../shared/ui';
 import { useAdminProductCreatePage } from './model';
 
@@ -20,7 +20,7 @@ export const AdminProductCreatePage = () => {
         description="Create a catalog item with pricing, variants, stock, and ImageKit media URLs."
       />
 
-      <AdminProductCreateForm
+      <AdminProductForm
         error={pageState.error}
         fieldErrors={pageState.fieldErrors}
         isSubmitting={pageState.isSubmitting}

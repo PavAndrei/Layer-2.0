@@ -1,9 +1,16 @@
 export {
   createAdminProduct,
+  getAdminProduct,
   getAdminProducts,
+  updateAdminProduct,
+  updateAdminProductStatus,
 } from './api';
 export type {
+  AdminProduct,
+  AdminProductImage,
   AdminProductListItem,
+  AdminProductResponseData,
+  AdminProductVariant,
   AdminProductsParams,
   AdminProductsResponseData,
   AdminProductsStats,
@@ -13,6 +20,10 @@ export type {
   CreateAdminProductPayload,
   CreateAdminProductResponseData,
   CreateAdminProductVariantPayload,
+  UpdateAdminProductPayload,
+  UpdateAdminProductResponseData,
+  UpdateAdminProductStatusPayload,
+  UpdateAdminProductStatusResponseData,
 } from './api';
 export {
   ADMIN_PRODUCT_AUDIENCE_FILTER_OPTIONS,
@@ -32,10 +43,14 @@ export {
   createInitialAdminProductFormValues,
   getAdminProductFormErrors,
   initialAdminProductsFilters,
+  toAdminProductFormValues,
   toCreateAdminProductPayload,
   toAdminProductsSearchParams,
+  useAdminProduct,
   useAdminProductForm,
   useCreateAdminProduct,
+  useUpdateAdminProduct,
+  useUpdateAdminProductStatus,
   useAdminProducts,
   useAdminProductsFilters,
 } from './model';
@@ -66,7 +81,7 @@ export type {
   AdminProductsFiltersState,
 } from './model';
 export {
-  AdminProductCreateForm,
+  AdminProductForm,
   AdminProductStatusBadge,
   AdminProductsFiltersForm,
   AdminProductsGrid,

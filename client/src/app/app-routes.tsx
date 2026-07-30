@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router';
 import { AdminRoute } from '../features/admin';
 import { AdminPage } from '../pages/admin';
 import { AdminProductCreatePage } from '../pages/admin-product-create';
+import { AdminProductEditPage } from '../pages/admin-product-edit';
 import { AdminOrderPage } from '../pages/admin-orders';
 import { AdminUserPage } from '../pages/admin-users';
 import {
@@ -106,6 +107,16 @@ export const AppRoutes = () => {
           <ProtectedRoute>
             <AdminRoute>
               <AdminProductCreatePage />
+            </AdminRoute>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/products/:productId/edit"
+        element={
+          <ProtectedRoute>
+            <AdminRoute>
+              <AdminProductEditPage />
             </AdminRoute>
           </ProtectedRoute>
         }

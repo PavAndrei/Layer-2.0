@@ -3,15 +3,23 @@ import { QueryFilter } from 'mongoose';
 import { ApiError } from '../exceptions/api-error';
 import { Product, ProductData } from '../models/products.model';
 import type {
+  AdminProductResponse,
   AdminProductsResponse,
   CreateAdminProductResponse,
+  UpdateAdminProductResponse,
+  UpdateAdminProductStatusResponse,
 } from '../types/api';
-import { adminProductToListItemDto } from '../utils/admin-product-to-dto';
+import {
+  adminProductToDto,
+  adminProductToListItemDto,
+} from '../utils/admin-product-to-dto';
 import { createProductSlug } from '../utils/create-product-slug';
 import { createAuditLog } from './audit-logs.service';
 import type {
   AdminProductsQuery,
   CreateAdminProductBody,
+  UpdateAdminProductBody,
+  UpdateAdminProductStatusBody,
 } from '../validators/admin-products.validators';
 
 const LOW_STOCK_THRESHOLD = 5;
@@ -423,5 +431,119 @@ export const createAdminProductData = async ({
 
   return {
     product: adminProductToListItemDto(product),
+  };
+};
+
+export const getAdminProductData = async (
+  productId: string,
+): Promise<AdminProductResponse['data']> => {
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    throw ApiError.NotFound('Product not found');
+  }
+
+  return {
+    product: adminProductToDto(product),
+  };
+};
+
+export const updateAdminProductData = async ({
+  adminUserId,
+  productId,
+  update,
+}: {
+  adminUserId: string;
+  productId: string;
+  update: UpdateAdminProductBody;
+}): Promise<UpdateAdminProductResponse['data']> => {
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    throw ApiError.NotFound('Product not found');
+  }
+
+  const previousStatus = product.status ?? 'active';
+  const coverImage = getProductCoverImage(update.images);
+  const discountFields = getDiscountFields(update);
+
+  product.set({
+    audience: update.audience,
+    categories: update.categories,
+    defaultPrice: update.defaultPrice,
+    description: update.description,
+    discountPercent: discountFields.discountPercent,
+    discountPrice: discountFields.discountPrice,
+    hasDiscount: discountFields.hasDiscount,
+    images: update.images,
+    img: coverImage.src,
+    status: update.status ?? product.status ?? 'draft',
+    title: update.title,
+    variants: update.variants,
+  });
+
+  await product.save();
+
+  await createAuditLog({
+    action: 'product.updated',
+    actorId: adminUserId,
+    entityId: product._id,
+    entityType: 'product',
+    metadata: {
+      previousStatus,
+      slug: product.slug,
+      status: product.status,
+      title: product.title,
+      variantsCount: product.variants.length,
+    },
+  });
+
+  return {
+    product: adminProductToDto(product),
+  };
+};
+
+export const updateAdminProductStatusData = async ({
+  adminUserId,
+  productId,
+  update,
+}: {
+  adminUserId: string;
+  productId: string;
+  update: UpdateAdminProductStatusBody;
+}): Promise<UpdateAdminProductStatusResponse['data']> => {
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    throw ApiError.NotFound('Product not found');
+  }
+
+  const previousStatus = product.status ?? 'active';
+
+  if (previousStatus === update.status) {
+    return {
+      product: adminProductToDto(product),
+    };
+  }
+
+  product.status = update.status;
+
+  await product.save();
+
+  await createAuditLog({
+    action: 'product.status_changed',
+    actorId: adminUserId,
+    entityId: product._id,
+    entityType: 'product',
+    metadata: {
+      previousStatus,
+      slug: product.slug,
+      status: product.status,
+      title: product.title,
+    },
+  });
+
+  return {
+    product: adminProductToDto(product),
   };
 };

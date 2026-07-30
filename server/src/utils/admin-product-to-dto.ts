@@ -1,15 +1,18 @@
 import type { ProductDocument } from '../models/products.model';
-import type { AdminProductListItemDto } from '../types/api';
+import type { AdminProductDto, AdminProductListItemDto } from '../types/api';
 
 const getUniqueValuesCount = (values: string[]) => new Set(values).size;
+
+const getProductTotalStock = (product: ProductDocument) =>
+  product.variants.reduce(
+    (total, variant) => total + variant.quantity,
+    0,
+  );
 
 export const adminProductToListItemDto = (
   product: ProductDocument,
 ): AdminProductListItemDto => {
-  const totalStock = product.variants.reduce(
-    (total, variant) => total + variant.quantity,
-    0,
-  );
+  const totalStock = getProductTotalStock(product);
 
   return {
     _id: product._id.toString(),
@@ -32,5 +35,29 @@ export const adminProductToListItemDto = (
     totalStock,
     updatedAt: product.updatedAt.toISOString(),
     variantsCount: product.variants.length,
+  };
+};
+
+export const adminProductToDto = (
+  product: ProductDocument,
+): AdminProductDto => {
+  const totalStock = getProductTotalStock(product);
+
+  return {
+    ...adminProductToListItemDto(product),
+    createdAt: product.createdAt.toISOString(),
+    description: product.description,
+    discountPercent: product.discountPercent,
+    images: product.images,
+    isNewProduct: product.isNewProduct,
+    totalQuantity: totalStock,
+    variants: product.variants.map((variant) => ({
+      _id: variant._id.toString(),
+      color: variant.color,
+      image: variant.image,
+      quantity: variant.quantity,
+      size: variant.size,
+      sku: variant.sku,
+    })),
   };
 };
