@@ -1,7 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 
-import type { AdminProductListItem } from '../api';
+import type {
+  AdminProductListItem,
+  DeleteAdminProductResponseData,
+} from '../api';
 import { formatProductPrice } from '../../../entities/product';
 import type { ProductStatus } from '../../../entities/product';
 import { formatDisplayDate } from '../../../shared/lib';
@@ -13,6 +16,7 @@ import {
 import { AdminProductStatusBadge } from './admin-product-status-badge';
 
 type AdminProductsGridProps = {
+  onProductDeleted?: (data: DeleteAdminProductResponseData) => void;
   products: AdminProductListItem[];
 };
 
@@ -119,10 +123,13 @@ const getDeleteMutationError = (
 };
 
 export const AdminProductsGrid = ({
+  onProductDeleted,
   products,
 }: AdminProductsGridProps) => {
   const updateStatusMutation = useUpdateAdminProductStatus();
-  const deleteProductMutation = useDeleteAdminProduct();
+  const deleteProductMutation = useDeleteAdminProduct({
+    onDeleted: onProductDeleted,
+  });
   const [selectedProduct, setSelectedProduct] =
     useState<AdminProductListItem | null>(null);
   const [selectedProductForDelete, setSelectedProductForDelete] =

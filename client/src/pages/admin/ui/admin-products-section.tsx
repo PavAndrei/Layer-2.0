@@ -33,6 +33,7 @@ const AdminProductsGridSkeleton = () => (
 export const AdminProductsSection = ({
   filters,
   onPageChange,
+  onProductDeleted,
   productsQuery,
 }: AdminProductsSectionState) => {
   const isWaitingForInitialProducts =
@@ -102,7 +103,12 @@ export const AdminProductsSection = ({
       />
     );
   } else {
-    content = <AdminProductsGrid products={productsQuery.products} />;
+    content = (
+      <AdminProductsGrid
+        products={productsQuery.products}
+        onProductDeleted={onProductDeleted}
+      />
+    );
   }
 
   const pagination =

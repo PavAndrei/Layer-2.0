@@ -1,10 +1,18 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 
+import { adminDashboardQueryKeys } from '../../../features/admin-dashboard';
 import {
+  type DeleteAdminProductResponseData,
   useAdminProducts,
   useAdminProductsFilters,
 } from '../../../features/admin-products';
+import { adminReviewsQueryKeys } from '../../../features/admin-reviews';
+import { favoritesQueryKeys } from '../../../features/favorites';
+import { productsListQueryKeys } from '../../../features/products-list';
+import { singleProductQueryKeys } from '../../../features/single-product';
 import type { AdminSection } from '../../../features/admin';
+import { reviewQueryKeys } from '../../../entities/review';
 
 const ADMIN_PRODUCTS_PAGE_LIMIT = 12;
 
@@ -24,6 +32,7 @@ const toDiscountParam = (
 export const useAdminProductsSection = ({
   activeSection,
 }: UseAdminProductsSectionParams) => {
+  const queryClient = useQueryClient();
   const filters = useAdminProductsFilters();
   const {
     debouncedFilters,
@@ -54,6 +63,35 @@ export const useAdminProductsSection = ({
     enabled: activeSection === 'products' && !isDebouncing,
     params,
   });
+  const handleProductDeleted = useCallback(
+    ({ productId, slug }: DeleteAdminProductResponseData) => {
+      queryClient.removeQueries({
+        queryKey: singleProductQueryKeys.detail(productId),
+      });
+      queryClient.removeQueries({
+        queryKey: singleProductQueryKeys.detail(slug),
+      });
+      queryClient.invalidateQueries({
+        queryKey: adminDashboardQueryKeys.all,
+      });
+      queryClient.invalidateQueries({
+        queryKey: adminReviewsQueryKeys.all,
+      });
+      queryClient.invalidateQueries({
+        queryKey: favoritesQueryKeys.all,
+      });
+      queryClient.invalidateQueries({
+        queryKey: productsListQueryKeys.all,
+      });
+      queryClient.invalidateQueries({
+        queryKey: singleProductQueryKeys.all,
+      });
+      queryClient.invalidateQueries({
+        queryKey: reviewQueryKeys.userScoped(),
+      });
+    },
+    [queryClient],
+  );
 
   useEffect(() => {
     if (activeSection !== 'products') return;
@@ -78,6 +116,7 @@ export const useAdminProductsSection = ({
   return {
     filters,
     onPageChange: handlePageChange,
+    onProductDeleted: handleProductDeleted,
     productsQuery,
   };
 };

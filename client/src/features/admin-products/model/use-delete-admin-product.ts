@@ -1,9 +1,16 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { deleteAdminProduct } from '../api';
+import type { DeleteAdminProductResponseData } from '../api';
 import { syncDeletedAdminProductQueries } from './admin-product-cache';
 
-export const useDeleteAdminProduct = () => {
+type UseDeleteAdminProductOptions = {
+  onDeleted?: (data: DeleteAdminProductResponseData) => void;
+};
+
+export const useDeleteAdminProduct = (
+  options: UseDeleteAdminProductOptions = {},
+) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -12,6 +19,7 @@ export const useDeleteAdminProduct = () => {
       if (!response.success) return;
 
       syncDeletedAdminProductQueries(queryClient, response);
+      options.onDeleted?.(response.data);
     },
   });
 };
