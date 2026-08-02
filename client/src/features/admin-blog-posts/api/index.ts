@@ -15,9 +15,6 @@ export type {
   AdminBlogPostsParams,
   AdminBlogPostsResponseData,
   AdminBlogPostsStats,
-  BlogPostContentJson,
-  BlogPostCoverImage,
-  BlogPostStatus,
   CreateAdminBlogPostPayload,
   CreateAdminBlogPostResponseData,
   DeleteAdminBlogPostResponseData,
@@ -26,3 +23,8 @@ export type {
   UpdateAdminBlogPostStatusPayload,
   UpdateAdminBlogPostStatusResponseData,
 } from './admin-blog-posts-api';
+export type {
+  BlogPostContentJson,
+  BlogPostCoverImage,
+  BlogPostStatus,
+} from '../../../entities/blog';

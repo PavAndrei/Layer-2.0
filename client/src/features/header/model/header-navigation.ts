@@ -10,6 +10,7 @@ export const HEADER_NAVIGATION_ITEMS: HeaderNavigationItem[] = [
   { label: 'Sales', path: '/sales' },
   { label: 'New', path: '/new' },
   { label: 'Catalog', path: '/catalog' },
+  { label: 'Blog', path: '/blog' },
 ];
 
 export const isHeaderNavigationItemActive = (

@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 
 import adminRoutes from './routes/admin.route';
 import authRoutes from './routes/auth.route';
+import blogPostsRoutes from './routes/blog-posts.route';
 import cartRoutes from './routes/cart.route';
 import checkoutRoutes from './routes/checkout.route';
 import favoritesRoutes from './routes/favorites.route';
@@ -45,6 +46,7 @@ app.get('/', (_, res) => {
 });
 
 app.use('/products', productsRoutes);
+app.use('/blog-posts', blogPostsRoutes);
 app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
 app.use('/cart', cartRoutes);

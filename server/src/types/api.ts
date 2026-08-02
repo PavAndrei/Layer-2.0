@@ -298,6 +298,20 @@ export type AdminBlogPostDto = AdminBlogPostListItemDto & {
   createdAt: string;
 };
 
+export type BlogPostListItemDto = {
+  _id: string;
+  coverImage?: BlogPostCoverImage;
+  excerpt: string;
+  publishedAt: string | null;
+  slug: string;
+  title: string;
+  updatedAt: string;
+};
+
+export type BlogPostDto = BlogPostListItemDto & {
+  contentHtml: string;
+};
+
 export type AdminBlogPostsStatsDto = {
   archived: number;
   draft: number;
@@ -459,6 +473,15 @@ export type ProductsResponse = ApiSuccess<{
 export type ProductResponse = ApiSuccess<{
   product: ProductDto;
   relatedProducts: ProductDto[];
+}>;
+
+export type BlogPostsResponse = ApiSuccess<{
+  blogPosts: BlogPostListItemDto[];
+  pagination: PaginationData;
+}>;
+
+export type BlogPostResponse = ApiSuccess<{
+  blogPost: BlogPostDto;
 }>;
 
 export type ProductReviewsResponse = ApiSuccess<{

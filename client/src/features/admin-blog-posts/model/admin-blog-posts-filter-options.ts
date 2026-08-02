@@ -1,13 +1,7 @@
-import type {
-  AdminBlogPostSortOption,
-  BlogPostStatus,
-} from '../api';
+import type { AdminBlogPostSortOption } from '../api';
+import type { BlogPostStatus } from '../../../entities/blog';
 
-export const BLOG_POST_STATUSES: readonly BlogPostStatus[] = [
-  'draft',
-  'published',
-  'archived',
-];
+export { BLOG_POST_STATUSES } from '../../../entities/blog';
 
 export const ADMIN_BLOG_POST_SORT_OPTIONS: readonly AdminBlogPostSortOption[] = [
   'default',

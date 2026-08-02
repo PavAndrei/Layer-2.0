@@ -15,6 +15,10 @@ import {
   ResetPasswordPage,
   VerifyEmailPage,
 } from '../pages/auth';
+import {
+  BlogPage,
+  BlogPostPage,
+} from '../pages/blog';
 import { GuestRoute, ProtectedRoute } from '../features/auth';
 import { CartPage } from '../pages/cart';
 import { CheckoutPage } from '../pages/checkout';
@@ -42,6 +46,8 @@ export const AppRoutes = () => {
       <Route path="/sales" element={<SalesPage />} />
       <Route path="/new" element={<NewPage />} />
       <Route path="/catalog" element={<CatalogPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:slug" element={<BlogPostPage />} />
       <Route path="/verify-email" element={<VerifyEmailPage />} />
       <Route
         path="/login"

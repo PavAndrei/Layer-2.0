@@ -4,8 +4,11 @@ import type {
   PaginationData,
   UploadedMediaAsset,
 } from '../../../shared/api';
-
-export type BlogPostStatus = 'draft' | 'published' | 'archived';
+import type {
+  BlogPostContentJson,
+  BlogPostCoverImage,
+  BlogPostStatus,
+} from '../../../entities/blog';
 
 export type AdminBlogPostSortOption =
   | 'default'
@@ -23,15 +26,6 @@ export type AdminBlogPostsParams = {
   sort?: AdminBlogPostSortOption;
   status?: BlogPostStatus;
 };
-
-export type BlogPostCoverImage = {
-  alt: string;
-  fileId?: string;
-  filePath?: string;
-  src: string;
-};
-
-export type BlogPostContentJson = Record<string, unknown>;
 
 export type AdminBlogPostListItem = {
   _id: string;
