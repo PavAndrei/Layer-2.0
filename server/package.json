@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
+    "media:cleanup": "tsx src/scripts/cleanup-pending-media-assets.ts",
     "migrate:product-variants": "tsx src/scripts/remove-legacy-product-fields.ts",
     "migrate:product-slugs": "tsx src/scripts/backfill-product-slugs.ts",
     "seed:database": "tsx src/scripts/seed-database.ts",

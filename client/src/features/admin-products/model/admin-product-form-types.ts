@@ -18,6 +18,8 @@ export type AdminProductImageFormValues = {
   id: string;
   alt: string;
   color: string;
+  fileId: string;
+  filePath: string;
   role: ProductImageRole;
   src: string;
 };

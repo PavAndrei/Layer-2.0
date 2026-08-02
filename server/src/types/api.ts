@@ -14,7 +14,11 @@ import type {
 } from './order';
 import type { ReviewStatus } from './review';
 import type { UserAuthProvider, UserRole, UserStatus } from './user';
-import type { ImageKitUploadAuth, ImageKitUploadTarget } from './media';
+import type {
+  ImageKitUploadAuth,
+  ImageKitUploadTarget,
+  UploadedMediaAsset,
+} from './media';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -186,6 +190,8 @@ export type AdminOrderDto = OrderDto & {
 export type UserDto = {
   _id: string;
   authProviders: UserAuthProvider[];
+  avatarFileId?: string;
+  avatarFilePath?: string;
   avatarUrl?: string;
   email: string;
   name: string;
@@ -527,4 +533,12 @@ export type ImageKitUploadAuthResponse = ApiSuccess<{
   auth: ImageKitUploadAuth;
   upload: ImageKitUploadTarget;
   urlEndpoint: string;
+}>;
+
+export type CreateMediaAssetResponse = ApiSuccess<{
+  asset: UploadedMediaAsset;
+}>;
+
+export type DeleteImageKitFileResponse = ApiSuccess<{
+  fileId: string;
 }>;

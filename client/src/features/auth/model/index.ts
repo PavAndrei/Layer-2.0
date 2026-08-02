@@ -9,6 +9,12 @@ export {
 } from './google-identity-service';
 export { useAuthBootstrap } from './use-auth-bootstrap';
 export {
+  setAuthBootstrapUserQueryData,
+  setAuthenticatedAuthBootstrapQueryData,
+  setGuestAuthBootstrapQueryData,
+} from './auth-query-cache';
+export { useAuthStore } from './auth-store';
+export {
   useAuthStatus,
   useAuthUser,
   useIsAuthenticated,

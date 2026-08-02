@@ -42,6 +42,28 @@ const urlField = (fieldName: string) =>
     .url(`${fieldName} must be a valid URL`)
     .max(500, `${fieldName} is too long`);
 
+const optionalImageKitFileIdField = z
+  .string()
+  .trim()
+  .transform((value) => (value ? value : undefined))
+  .refine(
+    (value) => value === undefined || value.length <= 200,
+    'ImageKit file id is too long',
+  )
+  .refine(
+    (value) => value === undefined || /^[A-Za-z0-9_-]+$/.test(value),
+    'Invalid ImageKit file id',
+  );
+
+const optionalImageKitFilePathField = z
+  .string()
+  .trim()
+  .transform((value) => (value ? value : undefined))
+  .refine(
+    (value) => value === undefined || value.length <= 500,
+    'ImageKit file path is too long',
+  );
+
 const optionalUrlField = (fieldName: string) =>
   z
     .string()
@@ -138,6 +160,8 @@ const imageSchema = z
         (value) => value === undefined || SLUG_PATTERN.test(value),
         'Invalid image color',
       ),
+    fileId: optionalImageKitFileIdField,
+    filePath: optionalImageKitFilePathField,
     role: z.enum(PRODUCT_IMAGE_ROLES),
     src: urlField('Image URL'),
   })
@@ -242,6 +266,8 @@ export const toCreateAdminProductPayload = (
   images: values.images.map((image) => ({
     alt: image.alt,
     color: image.color || undefined,
+    fileId: image.fileId,
+    filePath: image.filePath,
     role: image.role,
     src: image.src,
   })),

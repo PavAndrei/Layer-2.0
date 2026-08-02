@@ -4,8 +4,11 @@ import type { AxiosProgressEvent } from 'axios';
 import { apiClient } from '../api-client';
 import type { ApiResponse } from '../api-types';
 import type {
+  DeleteImageFromImageKitResponseData,
   ImageKitUploadAuthData,
   MediaUploadPurpose,
+  RegisterMediaAssetPayload,
+  RegisterMediaAssetResponseData,
   UploadedMediaAsset,
   UploadImageToImageKitOptions,
 } from './media-types';
@@ -62,6 +65,21 @@ const normalizeUploadResponse = (
   url: response.url,
   width: response.width,
 });
+
+export const registerMediaAsset = (
+  payload: RegisterMediaAssetPayload,
+  signal?: AbortSignal,
+): Promise<ApiResponse<RegisterMediaAssetResponseData>> => {
+  return apiClient.post<
+    RegisterMediaAssetResponseData,
+    RegisterMediaAssetPayload
+  >({
+    path: '/media/assets',
+    body: payload,
+    signal,
+    errorMessage: 'Failed to register uploaded image',
+  });
+};
 
 export const uploadImageToImageKit = async ({
   file,
@@ -120,11 +138,24 @@ export const uploadImageToImageKit = async ({
       };
     }
 
+    const uploadedAsset = normalizeUploadResponse(response.data);
+    const registerResponse = await registerMediaAsset(
+      {
+        ...uploadedAsset,
+        purpose,
+      },
+      signal,
+    );
+
+    if (!registerResponse.success) {
+      return registerResponse;
+    }
+
     return {
       success: true,
       message: 'Image uploaded successfully',
       data: {
-        asset: normalizeUploadResponse(response.data),
+        asset: registerResponse.data.asset,
       },
     };
   } catch (error) {
@@ -140,4 +171,15 @@ export const uploadImageToImageKit = async ({
       message: error instanceof Error ? error.message : 'Failed to upload image',
     };
   }
+};
+
+export const deleteImageFromImageKit = (
+  fileId: string,
+  signal?: AbortSignal,
+): Promise<ApiResponse<DeleteImageFromImageKitResponseData>> => {
+  return apiClient.delete<DeleteImageFromImageKitResponseData>({
+    path: `/media/imagekit-files/${encodeURIComponent(fileId)}`,
+    signal,
+    errorMessage: 'Failed to delete image',
+  });
 };

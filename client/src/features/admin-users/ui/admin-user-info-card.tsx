@@ -25,6 +25,12 @@ const getUserInitials = (user: AdminUser) => {
   return `${first.charAt(0)}${second.charAt(0)}`.toUpperCase() || 'U';
 };
 
+const getAvatarPreviewStyle = (url: string) => ({
+  backgroundImage: `url("${url}")`,
+  borderRadius: '9999px',
+  clipPath: 'circle(50% at 50% 50%)',
+});
+
 const AdminUserInfoField = ({ children, label }: AdminUserInfoFieldProps) => (
   <div className="flex min-w-0 flex-col gap-1">
     <span className="block-small text-typography-secondary">{label}</span>
@@ -37,12 +43,12 @@ export const AdminUserInfoCard = ({ user }: AdminUserInfoCardProps) => (
     <h2 className="block-title text-typography-heading">Info</h2>
 
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-      <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded border border-border-soft bg-background-secondary block-title text-typography-heading">
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border-soft bg-background-secondary block-title text-typography-heading">
         {user.avatarUrl ? (
-          <img
-            src={user.avatarUrl}
-            alt=""
-            className="h-full w-full object-cover"
+          <div
+            aria-hidden="true"
+            className="h-full w-full bg-cover bg-center bg-no-repeat"
+            style={getAvatarPreviewStyle(user.avatarUrl)}
           />
         ) : (
           getUserInitials(user)

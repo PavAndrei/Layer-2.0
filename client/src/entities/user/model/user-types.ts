@@ -12,6 +12,8 @@ export type UserStatus = (typeof USER_STATUSES)[number];
 export type User = {
   _id: string;
   authProviders: UserAuthProvider[];
+  avatarFileId?: string;
+  avatarFilePath?: string;
   avatarUrl?: string;
   email: string;
   name: string;

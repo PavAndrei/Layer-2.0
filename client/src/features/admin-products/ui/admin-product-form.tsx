@@ -1,5 +1,6 @@
 import type { FormEvent } from 'react';
 
+import type { UploadedMediaAsset } from '../../../shared/api';
 import {
   CATEGORIES_COLLECTION,
   PRODUCT_AUDIENCES,
@@ -25,6 +26,7 @@ import type {
   AdminProductImageFormValues,
   AdminProductVariantFormValues,
 } from '../model';
+import { ProductImageUploadField } from './product-image-upload-field';
 
 type AdminProductFormProps = {
   error: string | null;
@@ -90,6 +92,35 @@ const getOption = <Value extends string>(
   options: readonly SelectFilterOption<Value>[],
   value: Value,
 ) => options.find((option) => option.value === value) ?? options[0];
+
+const getImageNameFromUrl = (url: string) => {
+  try {
+    const { pathname } = new URL(url);
+    const pathParts = pathname.split('/').filter(Boolean);
+    const fileName = pathParts[pathParts.length - 1];
+
+    return fileName ? decodeURIComponent(fileName) : url;
+  } catch {
+    return url;
+  }
+};
+
+const getProductImageAsset = (
+  image: AdminProductImageFormValues,
+): UploadedMediaAsset | null => {
+  const url = image.src.trim();
+
+  if (!url) return null;
+
+  return {
+    fileId: image.fileId,
+    filePath: image.filePath || url,
+    fileType: 'image',
+    name: getImageNameFromUrl(image.filePath || url),
+    size: 0,
+    url,
+  };
+};
 
 const TextAreaField = ({
   error,
@@ -323,7 +354,11 @@ export const AdminProductForm = ({
           title="Variants"
           description="Add size, color, SKU, stock, and an optional image for each purchasable option."
         />
-        <Button size="sm" variant="secondary" onClick={onAddVariant}>
+        <Button
+          size="sm"
+          variant="secondary"
+          onClick={() => onAddVariant()}
+        >
           Add variant
         </Button>
       </div>
@@ -416,7 +451,11 @@ export const AdminProductForm = ({
           title="Images"
           description="Add ImageKit URLs, alt text, image role, and optional color association."
         />
-        <Button size="sm" variant="secondary" onClick={onAddImage}>
+        <Button
+          size="sm"
+          variant="secondary"
+          onClick={() => onAddImage()}
+        >
           Add image
         </Button>
       </div>
@@ -426,22 +465,44 @@ export const AdminProductForm = ({
       <div className="flex flex-col gap-3">
         {values.images.map((image, index) => {
           const errors = fieldErrors.imageItems?.[image.id] ?? {};
+          const imageAsset = getProductImageAsset(image);
+          const handleUploadChange = (
+            asset: UploadedMediaAsset | null,
+          ) => {
+            onImageUpdate(image.id, 'src', asset?.url ?? '');
+            onImageUpdate(image.id, 'fileId', asset?.fileId ?? '');
+            onImageUpdate(image.id, 'filePath', asset?.filePath ?? '');
+
+            if (asset && !image.alt.trim()) {
+              onImageUpdate(image.id, 'alt', asset.name);
+            }
+          };
 
           return (
             <article
               key={image.id}
               className="grid gap-4 rounded border border-border-soft bg-background-primary p-3 lg:grid-cols-[minmax(14rem,1.4fr)_minmax(10rem,1fr)_9rem_minmax(8rem,0.8fr)_auto]"
             >
-              <TextInput
-                id={`admin-product-image-src-${image.id}`}
-                label={`Image URL ${index + 1}`}
-                placeholder="https://ik.imagekit.io/b3yhg2lkg/product-black-front.webp"
-                error={errors.src}
-                value={image.src}
-                onChange={(value) =>
-                  onImageUpdate(image.id, 'src', value)
-                }
-              />
+              <div className="flex flex-col gap-3">
+                <ProductImageUploadField
+                  label={`Image ${index + 1}`}
+                  previewAlt={image.alt || undefined}
+                  value={imageAsset}
+                  onChange={handleUploadChange}
+                />
+                <TextInput
+                  id={`admin-product-image-src-${image.id}`}
+                  label="Image URL"
+                  placeholder="https://ik.imagekit.io/b3yhg2lkg/product-black-front.webp"
+                  error={errors.src}
+                  value={image.src}
+                  onChange={(value) => {
+                    onImageUpdate(image.id, 'src', value);
+                    onImageUpdate(image.id, 'fileId', '');
+                    onImageUpdate(image.id, 'filePath', '');
+                  }}
+                />
+              </div>
               <TextInput
                 id={`admin-product-image-alt-${image.id}`}
                 label="Alt text"

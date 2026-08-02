@@ -9,6 +9,7 @@ export { EyeIcon } from './eye-icon';
 export { EyeOffIcon } from './eye-off-icon';
 export { FeedbackMessage } from './feedback-message';
 export { FileUploadField } from './file-upload-field';
+export { ImageUploadField } from './image-upload-field';
 export { MobileFullscreenDrawer } from './mobile-fullscreen-drawer';
 export { MultiSelectFilter } from './multi-select-filter';
 export { Pagination } from './pagination';
@@ -22,5 +23,9 @@ export { StarIcon, STAR_PATH } from './star-icon';
 export { StarRating } from './star-rating';
 export { TextInput } from './text-input';
 export type { BreadcrumbItem } from './breadcrumbs';
+export type {
+  ImageUploadFieldProps,
+  ImageUploadPreviewVariant,
+} from './image-upload-field';
 export type { SelectFilterOption } from './multi-select-filter';
 export type { SideNavigationItem } from './side-navigation';

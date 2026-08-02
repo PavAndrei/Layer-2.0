@@ -18,6 +18,11 @@ import {
 } from '../utils/admin-product-to-dto';
 import { createProductSlug } from '../utils/create-product-slug';
 import { createAuditLog } from './audit-logs.service';
+import {
+  attachMediaAssets,
+  deleteImageKitFile,
+  markMediaAssetsDeleted,
+} from './media.service';
 import type {
   AdminProductsQuery,
   CreateAdminProductBody,
@@ -104,6 +109,39 @@ const getDiscountFields = ({
     discountPrice,
     hasDiscount: true,
   };
+};
+
+const getImageKitFileIds = (
+  images: Array<{ fileId?: string }> = [],
+) => [
+  ...new Set(
+    images
+      .map((image) => image.fileId)
+      .filter((fileId): fileId is string => Boolean(fileId)),
+  ),
+];
+
+const deleteImageKitFilesSafely = async (
+  fileIds: string[],
+  context: string,
+) => {
+  const uniqueFileIds = [...new Set(fileIds)];
+
+  if (uniqueFileIds.length === 0) return;
+
+  const results = await Promise.allSettled(
+    uniqueFileIds.map((fileId) => deleteImageKitFile(fileId)),
+  );
+
+  results.forEach((result, index) => {
+    if (result.status === 'fulfilled') return;
+
+    console.error('Failed to delete ImageKit file', {
+      context,
+      error: result.reason,
+      fileId: uniqueFileIds[index],
+    });
+  });
 };
 
 const getSafePagination = (query: AdminProductsQuery) => {
@@ -418,6 +456,7 @@ export const createAdminProductData = async ({
     title: productData.title,
     variants: productData.variants,
   });
+  const attachedImageFileIds = getImageKitFileIds(product.images);
 
   await createAuditLog({
     action: 'product.created',
@@ -425,11 +464,19 @@ export const createAdminProductData = async ({
     entityId: product._id,
     entityType: 'product',
     metadata: {
+      attachedMediaFileIds: attachedImageFileIds,
       slug: product.slug,
       status: product.status,
       title: product.title,
       variantsCount: product.variants.length,
     },
+  });
+
+  await attachMediaAssets({
+    fileIds: attachedImageFileIds,
+    ownerId: product._id,
+    ownerType: 'product',
+    purpose: 'product-image',
   });
 
   return {
@@ -467,6 +514,14 @@ export const updateAdminProductData = async ({
   }
 
   const previousStatus = product.status ?? 'active';
+  const previousImageFileIds = getImageKitFileIds(product.images);
+  const nextImageFileIds = getImageKitFileIds(update.images);
+  const attachedImageFileIds = nextImageFileIds.filter(
+    (fileId) => !previousImageFileIds.includes(fileId),
+  );
+  const removedImageFileIds = previousImageFileIds.filter(
+    (fileId) => !nextImageFileIds.includes(fileId),
+  );
   const coverImage = getProductCoverImage(update.images);
   const discountFields = getDiscountFields(update);
 
@@ -486,6 +541,19 @@ export const updateAdminProductData = async ({
   });
 
   await product.save();
+  await deleteImageKitFilesSafely(
+    removedImageFileIds,
+    'admin-product-update',
+  );
+  await Promise.all([
+    attachMediaAssets({
+      fileIds: nextImageFileIds,
+      ownerId: product._id,
+      ownerType: 'product',
+      purpose: 'product-image',
+    }),
+    markMediaAssetsDeleted(removedImageFileIds),
+  ]);
 
   await createAuditLog({
     action: 'product.updated',
@@ -493,7 +561,9 @@ export const updateAdminProductData = async ({
     entityId: product._id,
     entityType: 'product',
     metadata: {
+      attachedMediaFileIds: attachedImageFileIds,
       previousStatus,
+      removedMediaFileIds: removedImageFileIds,
       slug: product.slug,
       status: product.status,
       title: product.title,
@@ -570,6 +640,7 @@ export const deleteAdminProductData = async ({
 
   const deletedProduct = {
     _id: product._id,
+    imageFileIds: getImageKitFileIds(product.images),
     slug: product.slug,
     title: product.title,
   };
@@ -579,6 +650,11 @@ export const deleteAdminProductData = async ({
   ]);
 
   await product.deleteOne();
+  await deleteImageKitFilesSafely(
+    deletedProduct.imageFileIds,
+    'admin-product-delete',
+  );
+  await markMediaAssetsDeleted(deletedProduct.imageFileIds);
 
   await createAuditLog({
     action: 'product.deleted',
@@ -587,6 +663,7 @@ export const deleteAdminProductData = async ({
     entityType: 'product',
     metadata: {
       deletedFavoritesCount: favoritesDeleteResult.deletedCount,
+      deletedMediaFileIds: deletedProduct.imageFileIds,
       deletedReviewsCount: reviewsDeleteResult.deletedCount,
       slug: deletedProduct.slug,
       title: deletedProduct.title,

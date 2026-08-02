@@ -20,6 +20,11 @@ import {
   sendPasswordResetEmail,
 } from './email.service';
 import {
+  attachMediaAssets,
+  deleteImageKitFile,
+  markMediaAssetsDeleted,
+} from './media.service';
+import {
   verifyGoogleAuthorizationCode,
   type GoogleAccountProfile,
 } from './google-auth.service';
@@ -37,6 +42,7 @@ import type {
   PasswordResetConfirmBody,
   PasswordResetRequestBody,
   RegisterBody,
+  UpdateCurrentUserProfileBody,
 } from '../validators/auth.validators';
 
 export type AuthContext = {
@@ -184,6 +190,29 @@ const ensureAuthProvider = (
   user.authProviders.push(provider);
 };
 
+const syncGoogleAvatarUrl = (
+  user: UserDocument,
+  avatarUrl?: string,
+) => {
+  if (!avatarUrl || user.avatarFileId) return;
+
+  user.avatarUrl = avatarUrl;
+};
+
+const deleteAvatarFileSafely = async (fileId?: string) => {
+  if (!fileId) return;
+
+  try {
+    await deleteImageKitFile(fileId);
+    await markMediaAssetsDeleted([fileId]);
+  } catch (error) {
+    console.error('Failed to delete user avatar ImageKit file', {
+      error,
+      fileId,
+    });
+  }
+};
+
 const findOrCreateGoogleUser = async ({
   avatarUrl,
   email,
@@ -194,7 +223,7 @@ const findOrCreateGoogleUser = async ({
   const existingGoogleUser = await User.findOne({ googleId });
 
   if (existingGoogleUser) {
-    existingGoogleUser.avatarUrl = avatarUrl;
+    syncGoogleAvatarUrl(existingGoogleUser, avatarUrl);
     existingGoogleUser.isEmailVerified =
       existingGoogleUser.isEmailVerified || emailVerified;
     ensureAuthProvider(existingGoogleUser, 'google');
@@ -214,7 +243,7 @@ const findOrCreateGoogleUser = async ({
     }
 
     existingEmailUser.googleId = googleId;
-    existingEmailUser.avatarUrl = avatarUrl;
+    syncGoogleAvatarUrl(existingEmailUser, avatarUrl);
     existingEmailUser.isEmailVerified =
       existingEmailUser.isEmailVerified || emailVerified;
     ensureAuthProvider(existingEmailUser, 'google');
@@ -364,6 +393,65 @@ export const getCurrentUser = async (userId: string): Promise<UserDto> => {
 
   if (user.isBlocked) {
     throw ApiError.Forbidden('User account is blocked');
+  }
+
+  return userToDto(user);
+};
+
+export const updateCurrentUserProfile = async (
+  userId: string,
+  body: UpdateCurrentUserProfileBody,
+): Promise<UserDto> => {
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw ApiError.Unauthorized('User not found');
+  }
+
+  if (user.isBlocked) {
+    throw ApiError.Forbidden('User account is blocked');
+  }
+
+  const previousAvatarFileId = user.avatarFileId;
+  let nextAvatarFileId = previousAvatarFileId;
+
+  if (body.name !== undefined) {
+    user.name = body.name;
+  }
+
+  if ('avatar' in body) {
+    if (body.avatar === null) {
+      user.avatarUrl = undefined;
+      user.avatarFileId = undefined;
+      user.avatarFilePath = undefined;
+      nextAvatarFileId = undefined;
+    } else if (body.avatar) {
+      const matchedAssetsCount = await attachMediaAssets({
+        fileIds: [body.avatar.fileId],
+        ownerId: user._id,
+        ownerType: 'user',
+        purpose: 'user-avatar',
+        uploadedBy: user._id,
+      });
+
+      if (!matchedAssetsCount) {
+        throw ApiError.BadRequest('Uploaded avatar was not found');
+      }
+
+      user.avatarUrl = body.avatar.url;
+      user.avatarFileId = body.avatar.fileId;
+      user.avatarFilePath = body.avatar.filePath;
+      nextAvatarFileId = body.avatar.fileId;
+    }
+  }
+
+  await user.save();
+
+  if (
+    previousAvatarFileId &&
+    previousAvatarFileId !== nextAvatarFileId
+  ) {
+    await deleteAvatarFileSafely(previousAvatarFileId);
   }
 
   return userToDto(user);

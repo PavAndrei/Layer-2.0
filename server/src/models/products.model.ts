@@ -82,6 +82,16 @@ const productImageSchema = new Schema<ProductImageValue>(
       trim: true,
       lowercase: true,
     },
+
+    fileId: {
+      type: String,
+      trim: true,
+    },
+
+    filePath: {
+      type: String,
+      trim: true,
+    },
   },
   {
     _id: false,

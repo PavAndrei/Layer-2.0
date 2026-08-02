@@ -90,4 +90,6 @@ export {
   AdminProductsGrid,
   AdminProductsLayout,
   AdminProductsStatCards,
+  ProductImageUploadField,
 } from './ui';
+export type { ProductImageUploadFieldProps } from './ui';

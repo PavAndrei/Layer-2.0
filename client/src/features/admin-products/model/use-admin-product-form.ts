@@ -69,6 +69,8 @@ export const createEmptyAdminProductImage =
     id: createFormItemId(),
     alt: '',
     color: '',
+    fileId: '',
+    filePath: '',
     role: 'main',
     src: '',
   });

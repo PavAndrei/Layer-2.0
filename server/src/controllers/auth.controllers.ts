@@ -12,6 +12,7 @@ import {
   registerUser,
   requestEmailVerification as requestEmailVerificationData,
   requestPasswordReset as requestPasswordResetData,
+  updateCurrentUserProfile,
   type AuthResult,
 } from '../services/auth.service';
 import {
@@ -34,6 +35,7 @@ import type {
   PasswordResetConfirmBody,
   PasswordResetRequestBody,
   RegisterBody,
+  UpdateCurrentUserProfileBody,
 } from '../validators/auth.validators';
 
 const getRefreshTokenFromCookies = (req: Request): string | null => {
@@ -189,6 +191,28 @@ export const getCurrentUser = async (
   res.status(200).json({
     success: true,
     message: 'Current user fetched successfully',
+    data: {
+      user,
+    },
+  });
+};
+
+export const updateCurrentUser = async (
+  req: Request,
+  res: Response<CurrentUserResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const user = await updateCurrentUserProfile(
+    req.user.userId,
+    req.body as UpdateCurrentUserProfileBody,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Current user updated successfully',
     data: {
       user,
     },

@@ -1,8 +1,12 @@
 export {
   LOGIN_BENEFITS,
   REGISTER_BENEFITS,
+  setAuthBootstrapUserQueryData,
+  setAuthenticatedAuthBootstrapQueryData,
+  setGuestAuthBootstrapQueryData,
   useAuthBootstrap,
   useAuthStatus,
+  useAuthStore,
   useAuthUser,
   useConfirmEmailVerification,
   useConfirmPasswordReset,

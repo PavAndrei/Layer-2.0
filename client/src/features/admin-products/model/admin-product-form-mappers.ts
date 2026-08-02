@@ -18,6 +18,8 @@ export const toAdminProductFormValues = (
     id: `image-${index}`,
     alt: image.alt,
     color: image.color ?? '',
+    fileId: image.fileId ?? '',
+    filePath: image.filePath ?? '',
     role: image.role,
     src: image.src,
   })),

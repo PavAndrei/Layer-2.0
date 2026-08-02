@@ -12,3 +12,4 @@ export {
 export type { ProfileSection } from './profile-sections';
 export { useProfilePageState } from './use-profile-page-state';
 export { useProfile } from './use-profile';
+export { useUpdateProfile } from './use-update-profile';

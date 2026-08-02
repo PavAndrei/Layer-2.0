@@ -13,6 +13,8 @@ const getUserAuthProviders = (user: UserDocument): UserAuthProvider[] => {
 export const userToDto = (user: UserDocument): UserDto => ({
   _id: user._id.toString(),
   authProviders: getUserAuthProviders(user),
+  avatarFileId: user.avatarFileId ?? undefined,
+  avatarFilePath: user.avatarFilePath ?? undefined,
   avatarUrl: user.avatarUrl ?? undefined,
   email: user.email,
   name: user.name,

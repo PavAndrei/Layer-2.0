@@ -62,6 +62,18 @@ const userSchema = new Schema(
       maxlength: 2048,
     },
 
+    avatarFileId: {
+      type: String,
+      trim: true,
+      maxlength: 200,
+    },
+
+    avatarFilePath: {
+      type: String,
+      trim: true,
+      maxlength: 500,
+    },
+
     isEmailVerified: {
       type: Boolean,
       default: false,

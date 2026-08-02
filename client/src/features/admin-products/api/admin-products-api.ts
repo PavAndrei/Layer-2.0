@@ -89,6 +89,8 @@ export type CreateAdminProductImagePayload = {
   alt: string;
   role: ProductImageRole;
   color?: string;
+  fileId?: string;
+  filePath?: string;
 };
 
 export type CreateAdminProductPayload = {

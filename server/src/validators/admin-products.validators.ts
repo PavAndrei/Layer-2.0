@@ -112,6 +112,21 @@ const imageUrl = z
   .url('Image URL must be valid')
   .max(500, 'Image URL is too long');
 
+const optionalImageKitFileId = z
+  .string()
+  .trim()
+  .min(1, 'ImageKit file id is required')
+  .max(200, 'ImageKit file id is too long')
+  .regex(/^[A-Za-z0-9_-]+$/, 'Invalid ImageKit file id')
+  .optional();
+
+const optionalImageKitFilePath = z
+  .string()
+  .trim()
+  .min(1, 'ImageKit file path is required')
+  .max(500, 'ImageKit file path is too long')
+  .optional();
+
 const titleField = z
   .string()
   .trim()
@@ -168,6 +183,8 @@ const createAdminProductImageSchema = z
       .trim()
       .min(3, 'Image alt text is too short')
       .max(180, 'Image alt text is too long'),
+    fileId: optionalImageKitFileId,
+    filePath: optionalImageKitFilePath,
     role: z.enum(PRODUCT_IMAGE_ROLES),
     color: colorValue.optional(),
   })

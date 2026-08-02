@@ -15,4 +15,6 @@ export type ProductImage = {
   alt: string;
   role: ProductImageRole;
   color?: string;
+  fileId?: string;
+  filePath?: string;
 };

@@ -1,4 +1,7 @@
-export { useProfile } from './model';
+export {
+  useProfile,
+  useUpdateProfile,
+} from './model';
 export {
   PROFILE_NAV_ITEMS,
   PROFILE_ORDERS_PAGE_LIMIT,
@@ -6,4 +9,9 @@ export {
   useProfilePageState,
 } from './model';
 export type { ProfileSection } from './model';
-export { ProfileDetails, ProfileEmailVerification } from './ui';
+export {
+  ProfileAvatarUploadField,
+  ProfileDetails,
+  ProfileEmailVerification,
+} from './ui';
+export type { ProfileAvatarUploadFieldProps } from './ui';

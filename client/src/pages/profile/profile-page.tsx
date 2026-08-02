@@ -31,6 +31,7 @@ export const ProfilePage = () => {
     ordersSection,
     profileQuery,
     reviewsSection,
+    updateProfileMutation,
   } = useProfilePage();
   const profileSidebar = (
     <SideNavigation
@@ -73,7 +74,10 @@ export const ProfilePage = () => {
   return (
     <SectionedPageLayout header={profileHeader} sidebar={profileSidebar}>
       {activeSection === 'profile' && (
-        <ProfileDetailsSection user={profileQuery.data.data.user} />
+        <ProfileDetailsSection
+          updateProfileMutation={updateProfileMutation}
+          user={profileQuery.data.data.user}
+        />
       )}
 
       {activeSection === 'orders' && (

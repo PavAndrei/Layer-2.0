@@ -1,4 +1,7 @@
-export type MediaUploadPurpose = 'product-image' | 'user-avatar';
+export type MediaUploadPurpose =
+  | 'product-image'
+  | 'user-avatar'
+  | 'blog-image';
 
 export type ImageKitUploadAuth = {
   expire: number;
@@ -27,6 +30,18 @@ export type UploadedMediaAsset = {
   thumbnailUrl?: string;
   url: string;
   width?: number;
+};
+
+export type DeleteImageFromImageKitResponseData = {
+  fileId: string;
+};
+
+export type RegisterMediaAssetPayload = UploadedMediaAsset & {
+  purpose: MediaUploadPurpose;
+};
+
+export type RegisterMediaAssetResponseData = {
+  asset: UploadedMediaAsset;
 };
 
 export type UploadImageToImageKitOptions = {

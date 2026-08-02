@@ -12,6 +12,7 @@ import {
   register,
   requestEmailVerification,
   requestPasswordReset,
+  updateCurrentUser,
 } from '../controllers/auth.controllers';
 import { authMiddleware } from '../middlewares/auth.middleware';
 import { rateLimit } from '../middlewares/rate-limit.middleware';
@@ -23,6 +24,7 @@ import {
   passwordResetConfirmSchema,
   passwordResetRequestSchema,
   registerSchema,
+  updateCurrentUserProfileSchema,
 } from '../validators/auth.validators';
 import { catchErrors } from '../utils/catch-errors';
 
@@ -80,5 +82,11 @@ authRoute.post(
   catchErrors(confirmPasswordReset),
 );
 authRoute.get('/me', authMiddleware, catchErrors(getCurrentUser));
+authRoute.patch(
+  '/me',
+  authMiddleware,
+  validateRequest(updateCurrentUserProfileSchema),
+  catchErrors(updateCurrentUser),
+);
 
 export default authRoute;
