@@ -254,7 +254,7 @@ export const ProductsListLayoutFilters = ({
 
       {visible.clearButton && (
         <Button size="sm" variant="secondary" onClick={resetFilters}>
-          Clear Filters
+          Clear filters
         </Button>
       )}
     </form>

@@ -10,6 +10,7 @@ import {
 } from '../../features/admin';
 import { useAdminPage } from './model';
 import {
+  AdminBlogPostsSection,
   AdminDashboardSection,
   AdminOrdersSection,
   AdminProductsSection,
@@ -30,6 +31,7 @@ const ADMIN_PAGE_DESCRIPTION =
 export const AdminPage = () => {
   const {
     activeSection,
+    adminBlogPostsSection,
     adminDashboardSection,
     adminOrdersSection,
     adminProductsSection,
@@ -62,6 +64,8 @@ export const AdminPage = () => {
         <AdminDashboardSection {...adminDashboardSection} />
       ) : activeSection === 'reviews' ? (
         <AdminReviewsSection {...adminReviewsSection} />
+      ) : activeSection === 'articles' ? (
+        <AdminBlogPostsSection {...adminBlogPostsSection} />
       ) : activeSection === 'settings' ? (
         <AdminSettingsSection {...adminSettingsSection} />
       ) : activeSection === 'users' ? (

@@ -1,9 +1,13 @@
 import { Router } from 'express';
 
 import {
+  createAdminBlogPost,
   createAdminProduct,
+  deleteAdminBlogPost,
   deleteAdminProduct,
   deleteAdminReview,
+  getAdminBlogPost,
+  getAdminBlogPosts,
   getAdminDashboard,
   getAdminOrder,
   getAdminMe,
@@ -17,6 +21,8 @@ import {
   getAdminUsers,
   revokeAdminUserSessions,
   updateAdminGeneralSettings,
+  updateAdminBlogPost,
+  updateAdminBlogPostStatus,
   updateAdminOrderSettings,
   updateAdminShippingSettings,
   updateAdminOrder,
@@ -32,6 +38,14 @@ import {
 } from '../middlewares/auth.middleware';
 import { validateRequest } from '../middlewares/validate-request';
 import { catchErrors } from '../utils/catch-errors';
+import {
+  adminBlogPostParamsSchema,
+  createAdminBlogPostSchema,
+  deleteAdminBlogPostSchema,
+  getAdminBlogPostsSchema,
+  updateAdminBlogPostSchema,
+  updateAdminBlogPostStatusSchema,
+} from '../validators/admin-blog-posts.validators';
 import {
   adminReviewParamsSchema,
   deleteAdminReviewSchema,
@@ -122,6 +136,36 @@ adminRoute.delete(
   '/products/:productId',
   validateRequest(deleteAdminProductSchema),
   catchErrors(deleteAdminProduct),
+);
+adminRoute.get(
+  '/blog-posts',
+  validateRequest(getAdminBlogPostsSchema),
+  catchErrors(getAdminBlogPosts),
+);
+adminRoute.post(
+  '/blog-posts',
+  validateRequest(createAdminBlogPostSchema),
+  catchErrors(createAdminBlogPost),
+);
+adminRoute.patch(
+  '/blog-posts/:blogPostId/status',
+  validateRequest(updateAdminBlogPostStatusSchema),
+  catchErrors(updateAdminBlogPostStatus),
+);
+adminRoute.get(
+  '/blog-posts/:blogPostId',
+  validateRequest(adminBlogPostParamsSchema),
+  catchErrors(getAdminBlogPost),
+);
+adminRoute.patch(
+  '/blog-posts/:blogPostId',
+  validateRequest(updateAdminBlogPostSchema),
+  catchErrors(updateAdminBlogPost),
+);
+adminRoute.delete(
+  '/blog-posts/:blogPostId',
+  validateRequest(deleteAdminBlogPostSchema),
+  catchErrors(deleteAdminBlogPost),
 );
 adminRoute.get(
   '/orders',

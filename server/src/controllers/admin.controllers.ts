@@ -20,6 +20,14 @@ import {
 } from '../services/admin-users.service';
 import { getAdminDashboardData } from '../services/admin-dashboard.service';
 import {
+  createAdminBlogPostData,
+  deleteAdminBlogPostData,
+  getAdminBlogPostData,
+  getAdminBlogPostsData,
+  updateAdminBlogPostData,
+  updateAdminBlogPostStatusData,
+} from '../services/admin-blog-posts.service';
+import {
   createAdminProductData,
   deleteAdminProductData,
   getAdminProductData,
@@ -34,6 +42,8 @@ import {
 } from '../services/admin-settings.service';
 import { getStoreSettingsData } from '../services/store-settings.service';
 import type {
+  AdminBlogPostResponse,
+  AdminBlogPostsResponse,
   AdminDashboardResponse,
   AdminProductResponse,
   AdminReviewResponse,
@@ -45,13 +55,24 @@ import type {
   AdminStoreSettingsResponse,
   AdminUserResponse,
   AdminUsersResponse,
+  CreateAdminBlogPostResponse,
   CreateAdminProductResponse,
+  DeleteAdminBlogPostResponse,
   DeleteAdminProductResponse,
+  UpdateAdminBlogPostResponse,
+  UpdateAdminBlogPostStatusResponse,
   DeleteAdminReviewResponse,
   UpdateAdminProductResponse,
   UpdateAdminProductStatusResponse,
   UpdateAdminReviewResponse,
 } from '../types/api';
+import type {
+  AdminBlogPostParams,
+  AdminBlogPostsQuery,
+  CreateAdminBlogPostBody,
+  UpdateAdminBlogPostBody,
+  UpdateAdminBlogPostStatusBody,
+} from '../validators/admin-blog-posts.validators';
 import type {
   AdminDashboardQuery,
 } from '../validators/admin-dashboard.validators';
@@ -320,6 +341,123 @@ export const deleteAdminProduct = async (
   res.status(200).json({
     success: true,
     message: 'Admin product deleted successfully',
+    data,
+  });
+};
+
+export const getAdminBlogPosts = async (
+  req: Request,
+  res: Response<AdminBlogPostsResponse>,
+) => {
+  const data = await getAdminBlogPostsData(
+    req.validated?.query as AdminBlogPostsQuery,
+  );
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin blog posts fetched successfully',
+    data,
+  });
+};
+
+export const createAdminBlogPost = async (
+  req: Request,
+  res: Response<CreateAdminBlogPostResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const body = req.validated?.body as CreateAdminBlogPostBody;
+  const data = await createAdminBlogPostData({
+    adminUserId: req.user.userId,
+    blogPostData: body,
+  });
+
+  res.status(201).json({
+    success: true,
+    message: 'Admin blog post created successfully',
+    data,
+  });
+};
+
+export const getAdminBlogPost = async (
+  req: Request,
+  res: Response<AdminBlogPostResponse>,
+) => {
+  const { blogPostId } = req.validated?.params as AdminBlogPostParams;
+  const data = await getAdminBlogPostData(blogPostId);
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin blog post fetched successfully',
+    data,
+  });
+};
+
+export const updateAdminBlogPost = async (
+  req: Request,
+  res: Response<UpdateAdminBlogPostResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { blogPostId } = req.validated?.params as AdminBlogPostParams;
+  const body = req.validated?.body as UpdateAdminBlogPostBody;
+  const data = await updateAdminBlogPostData({
+    adminUserId: req.user.userId,
+    blogPostId,
+    update: body,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin blog post updated successfully',
+    data,
+  });
+};
+
+export const updateAdminBlogPostStatus = async (
+  req: Request,
+  res: Response<UpdateAdminBlogPostStatusResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { blogPostId } = req.validated?.params as AdminBlogPostParams;
+  const body = req.validated?.body as UpdateAdminBlogPostStatusBody;
+  const data = await updateAdminBlogPostStatusData({
+    adminUserId: req.user.userId,
+    blogPostId,
+    update: body,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin blog post status updated successfully',
+    data,
+  });
+};
+
+export const deleteAdminBlogPost = async (
+  req: Request,
+  res: Response<DeleteAdminBlogPostResponse>,
+) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  const { blogPostId } = req.validated?.params as AdminBlogPostParams;
+  const data = await deleteAdminBlogPostData({
+    adminUserId: req.user.userId,
+    blogPostId,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Admin blog post deleted successfully',
     data,
   });
 };

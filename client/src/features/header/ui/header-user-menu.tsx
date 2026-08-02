@@ -63,6 +63,17 @@ export const HeaderUserMenu = ({
             Profile
           </Link>
 
+          {user.role === 'admin' && (
+            <Link
+              to="/admin"
+              role="menuitem"
+              className="block w-full border-b border-border-strong px-4 py-3 text-left block-medium text-typography-heading transition-colors hover:bg-background-secondary hover:text-accent-hover"
+              onClick={closeUserMenu}
+            >
+              Admin panel
+            </Link>
+          )}
+
           <button
             type="button"
             role="menuitem"

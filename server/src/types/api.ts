@@ -19,6 +19,11 @@ import type {
   ImageKitUploadTarget,
   UploadedMediaAsset,
 } from './media';
+import type {
+  BlogPostContentJson,
+  BlogPostCoverImage,
+  BlogPostStatus,
+} from './blog-post';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -275,6 +280,31 @@ export type AdminDashboardDto = {
   summary: AdminDashboardSummaryDto;
 };
 
+export type AdminBlogPostListItemDto = {
+  _id: string;
+  authorId: string;
+  coverImage?: BlogPostCoverImage;
+  excerpt: string;
+  publishedAt: string | null;
+  slug: string;
+  status: BlogPostStatus;
+  title: string;
+  updatedAt: string;
+};
+
+export type AdminBlogPostDto = AdminBlogPostListItemDto & {
+  contentHtml: string;
+  contentJson: BlogPostContentJson;
+  createdAt: string;
+};
+
+export type AdminBlogPostsStatsDto = {
+  archived: number;
+  draft: number;
+  published: number;
+  total: number;
+};
+
 export type StoreGeneralSettingsDto = {
   address?: string;
   storeName: string;
@@ -370,6 +400,34 @@ export type AdminUserResponse = ApiSuccess<{
 
 export type AdminDashboardResponse = ApiSuccess<{
   dashboard: AdminDashboardDto;
+}>;
+
+export type AdminBlogPostsResponse = ApiSuccess<{
+  blogPosts: AdminBlogPostListItemDto[];
+  pagination: PaginationData;
+  stats: AdminBlogPostsStatsDto;
+}>;
+
+export type CreateAdminBlogPostResponse = ApiSuccess<{
+  blogPost: AdminBlogPostListItemDto;
+}>;
+
+export type AdminBlogPostResponse = ApiSuccess<{
+  blogPost: AdminBlogPostDto;
+}>;
+
+export type UpdateAdminBlogPostResponse = ApiSuccess<{
+  blogPost: AdminBlogPostDto;
+}>;
+
+export type UpdateAdminBlogPostStatusResponse = ApiSuccess<{
+  blogPost: AdminBlogPostDto;
+}>;
+
+export type DeleteAdminBlogPostResponse = ApiSuccess<{
+  blogPostId: string;
+  slug: string;
+  title: string;
 }>;
 
 export type AdminStoreSettingsResponse = ApiSuccess<{

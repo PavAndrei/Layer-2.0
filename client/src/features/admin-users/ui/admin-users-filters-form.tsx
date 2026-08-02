@@ -130,7 +130,7 @@ export const AdminUsersFiltersForm = ({
         variant="secondary"
         onClick={onReset}
       >
-        Clear Filters
+        Clear filters
       </Button>
     </form>
   );

@@ -72,7 +72,7 @@ export const AdminReviewsFiltersForm = ({
           variant="secondary"
           onClick={onReset}
         >
-          Clear Filters
+          Clear filters
         </Button>
       </div>
     </form>

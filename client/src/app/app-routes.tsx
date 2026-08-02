@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router';
 
 import { AdminRoute } from '../features/admin';
+import { AdminBlogPostCreatePage } from '../pages/admin-blog-post-create';
+import { AdminBlogPostEditPage } from '../pages/admin-blog-post-edit';
 import { AdminPage } from '../pages/admin';
 import { AdminProductCreatePage } from '../pages/admin-product-create';
 import { AdminProductEditPage } from '../pages/admin-product-edit';
@@ -97,6 +99,26 @@ export const AppRoutes = () => {
           <ProtectedRoute>
             <AdminRoute>
               <AdminPage />
+            </AdminRoute>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/blog-posts/new"
+        element={
+          <ProtectedRoute>
+            <AdminRoute>
+              <AdminBlogPostCreatePage />
+            </AdminRoute>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/blog-posts/:blogPostId/edit"
+        element={
+          <ProtectedRoute>
+            <AdminRoute>
+              <AdminBlogPostEditPage />
             </AdminRoute>
           </ProtectedRoute>
         }

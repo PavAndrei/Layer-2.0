@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 
 import { useScrollToTopOnChange } from '../../../shared/hooks';
 import { useAdminPageState } from '../../../features/admin';
+import { useAdminBlogPostsSection } from './use-admin-blog-posts-section';
 import { useAdminDashboardSection } from './use-admin-dashboard-section';
 import { useAdminOrdersSection } from './use-admin-orders-section';
 import { useAdminProductsSection } from './use-admin-products-section';
@@ -11,6 +12,7 @@ import { useAdminUsersSection } from './use-admin-users-section';
 
 export const useAdminPage = () => {
   const { activeSection } = useAdminPageState();
+  const adminBlogPostsSection = useAdminBlogPostsSection({ activeSection });
   const adminDashboardSection = useAdminDashboardSection({ activeSection });
   const adminOrdersSection = useAdminOrdersSection({ activeSection });
   const adminProductsSection = useAdminProductsSection({ activeSection });
@@ -85,6 +87,23 @@ export const useAdminPage = () => {
       ].join(':');
     }
 
+    if (activeSection === 'articles') {
+      const {
+        page,
+        search,
+        sort,
+        status,
+      } = adminBlogPostsSection.filters.debouncedFilters;
+
+      return [
+        activeSection,
+        page,
+        search,
+        sort,
+        status,
+      ].join(':');
+    }
+
     if (activeSection === 'users') {
       const {
         isEmailVerified,
@@ -125,6 +144,7 @@ export const useAdminPage = () => {
     return activeSection;
   }, [
     activeSection,
+    adminBlogPostsSection.filters.debouncedFilters,
     adminDashboardSection.periodState.period,
     adminOrdersSection.filters.debouncedFilters,
     adminProductsSection.filters.debouncedFilters,
@@ -140,6 +160,7 @@ export const useAdminPage = () => {
 
   return {
     activeSection,
+    adminBlogPostsSection,
     adminDashboardSection,
     adminOrdersSection,
     adminProductsSection,

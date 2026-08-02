@@ -7,4 +7,5 @@ export type HeaderAuthStatus =
 export type HeaderUser = {
   email: string;
   name: string;
+  role: 'admin' | 'customer';
 };

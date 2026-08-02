@@ -1,5 +1,9 @@
 export { useAdminPage } from './use-admin-page';
 export {
+  useAdminBlogPostsSection,
+  type AdminBlogPostsSectionState,
+} from './use-admin-blog-posts-section';
+export {
   useAdminDashboardSection,
   type AdminDashboardSectionState,
 } from './use-admin-dashboard-section';

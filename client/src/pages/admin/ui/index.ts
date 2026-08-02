@@ -1,3 +1,4 @@
+export { AdminBlogPostsSection } from './admin-blog-posts-section';
 export { AdminDashboardSection } from './admin-dashboard-section';
 export { AdminOrdersSection } from './admin-orders-section';
 export { AdminProductsSection } from './admin-products-section';

@@ -1,4 +1,5 @@
 export const AUDIT_LOG_ENTITY_TYPES = [
+  'blog-post',
   'order',
   'product',
   'review',
@@ -9,6 +10,10 @@ export const AUDIT_LOG_ENTITY_TYPES = [
 export type AuditLogEntityType = (typeof AUDIT_LOG_ENTITY_TYPES)[number];
 
 export const AUDIT_LOG_ACTIONS = [
+  'blog-post.created',
+  'blog-post.deleted',
+  'blog-post.status_changed',
+  'blog-post.updated',
   'order.admin_note_changed',
   'order.status_changed',
   'order.tracking_number_changed',
