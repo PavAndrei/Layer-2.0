@@ -187,11 +187,16 @@ const getAdminBlogPostsFilter = (
       { title: searchExpression },
       { slug: searchExpression },
       { excerpt: searchExpression },
+      { tags: searchExpression },
     ];
   }
 
   if (query.status) {
     filter.status = query.status;
+  }
+
+  if (query.tag) {
+    filter.tags = query.tag;
   }
 
   return filter;
@@ -383,6 +388,7 @@ export const createAdminBlogPostData = async ({
     relatedProductIds: blogPostData.relatedProductIds,
     slug,
     status,
+    tags: blogPostData.tags,
     title: blogPostData.title,
   });
   const attachedMediaFileIds = getCoverImageFileIds(blogPost.coverImage);
@@ -406,6 +412,7 @@ export const createAdminBlogPostData = async ({
         productId.toString(),
       ),
       status: blogPost.status,
+      tags: blogPost.tags,
       title: blogPost.title,
     },
   });
@@ -461,6 +468,7 @@ export const updateAdminBlogPostData = async ({
   const nextStatus = update.status ?? previousStatus;
   const relatedProductIds =
     update.relatedProductIds ?? blogPost.relatedProductIds ?? [];
+  const tags = update.tags ?? blogPost.tags ?? [];
   const publishedAt = getNextPublishedAt({
     nextStatus,
     previousPublishedAt: blogPost.publishedAt,
@@ -488,6 +496,7 @@ export const updateAdminBlogPostData = async ({
     relatedProductIds,
     slug,
     status: nextStatus,
+    tags,
     title: update.title,
   });
 
@@ -520,6 +529,7 @@ export const updateAdminBlogPostData = async ({
       ),
       slug: blogPost.slug,
       status: blogPost.status,
+      tags: blogPost.tags,
       title: blogPost.title,
     },
   });

@@ -13,8 +13,11 @@ import { useBlogPage } from './model';
 export const BlogPage = () => {
   const {
     blogPostsQuery,
+    clearTag,
     filters,
+    tagsQuery,
     updateSearch,
+    updateTag,
   } = useBlogPage();
   const total = blogPostsQuery.pagination?.total ?? 0;
 
@@ -37,9 +40,13 @@ export const BlogPage = () => {
       }
       filters={
         <BlogPostsFiltersForm
+          activeTag={filters.tag}
+          availableTags={tagsQuery.tags}
           search={filters.search}
+          onClearTag={clearTag}
           onSearchChange={updateSearch}
           onReset={filters.resetFilters}
+          onTagChange={updateTag}
         />
       }
     >

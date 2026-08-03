@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
+const TAG_PATTERN = /^[a-z0-9-]+$/;
 
 const positiveIntegerParam = (
   name: string,
@@ -42,6 +43,20 @@ export const blogPostsQuerySchema = z
       .refine(
         (value) => value === undefined || value.length <= 100,
         'Search is too long',
+      ),
+    tag: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .optional()
+      .transform((value) => value || undefined)
+      .refine(
+        (value) => value === undefined || TAG_PATTERN.test(value),
+        'Invalid tag',
+      )
+      .refine(
+        (value) => value === undefined || value.length <= 40,
+        'Tag is too long',
       ),
   })
   .strict();

@@ -21,6 +21,7 @@ type BlogPostSeed = {
   relatedProductSlugs?: string[];
   slug: string;
   status: BlogPostStatus;
+  tags?: string[];
   title: string;
 };
 
@@ -209,6 +210,7 @@ const getBlogPostSeedUpdate = (
         : undefined,
       relatedProductIds,
       status: blogPost.status,
+      tags: blogPost.tags ?? [],
       title: blogPost.title,
       ...(blogPost.coverImage ? { coverImage: blogPost.coverImage } : {}),
     },

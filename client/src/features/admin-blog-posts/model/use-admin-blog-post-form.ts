@@ -43,6 +43,7 @@ export const createInitialAdminBlogPostFormValues =
     relatedProductIds: [],
     slug: '',
     status: 'draft',
+    tags: [],
     title: '',
   });
 

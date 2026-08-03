@@ -288,8 +288,10 @@ export type AdminBlogPostListItemDto = {
   publishedAt: string | null;
   slug: string;
   status: BlogPostStatus;
+  tags: string[];
   title: string;
   updatedAt: string;
+  viewsCount: number;
 };
 
 export type AdminBlogPostDto = AdminBlogPostListItemDto & {
@@ -305,8 +307,10 @@ export type BlogPostListItemDto = {
   excerpt: string;
   publishedAt: string | null;
   slug: string;
+  tags: string[];
   title: string;
   updatedAt: string;
+  viewsCount: number;
 };
 
 export type BlogPostDto = BlogPostListItemDto & {
@@ -484,6 +488,11 @@ export type BlogPostsResponse = ApiSuccess<{
 
 export type BlogPostResponse = ApiSuccess<{
   blogPost: BlogPostDto;
+}>;
+
+export type TrackBlogPostViewResponse = ApiSuccess<{
+  counted: boolean;
+  viewsCount: number;
 }>;
 
 export type ProductReviewsResponse = ApiSuccess<{

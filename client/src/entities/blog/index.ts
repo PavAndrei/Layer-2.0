@@ -6,8 +6,10 @@ export {
   type BlogPostListItem,
   type BlogPostStatus,
 } from './model';
+export { formatBlogPostTag } from './lib';
 export {
   BlogPostCard,
   BlogPostContent,
   BlogPostCover,
+  BlogPostTags,
 } from './ui';

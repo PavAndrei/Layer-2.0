@@ -15,6 +15,10 @@ export const toBlogPostsSearchParams = (
     searchParams.set('search', params.search);
   }
 
+  if (params.tag) {
+    searchParams.set('tag', params.tag);
+  }
+
   searchParams.set('limit', String(limit));
 
   return searchParams;

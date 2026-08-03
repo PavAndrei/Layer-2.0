@@ -12,6 +12,7 @@ export type BlogPostsParams = {
   limit?: number;
   page?: number;
   search?: string;
+  tag?: string;
 };
 
 export type BlogPostsResponseData = {
@@ -21,6 +22,11 @@ export type BlogPostsResponseData = {
 
 export type BlogPostResponseData = {
   blogPost: BlogPost;
+};
+
+export type TrackBlogPostViewResponseData = {
+  counted: boolean;
+  viewsCount: number;
 };
 
 export const getBlogPosts = async (
@@ -43,5 +49,16 @@ export const getBlogPostBySlug = async (
     path: `/blog-posts/${encodeURIComponent(slug)}`,
     signal,
     errorMessage: 'Failed to load blog post',
+  });
+};
+
+export const trackBlogPostView = async (
+  slug: string,
+  signal?: AbortSignal,
+): Promise<ApiResponse<TrackBlogPostViewResponseData>> => {
+  return apiClient.post<TrackBlogPostViewResponseData>({
+    path: `/blog-posts/${encodeURIComponent(slug)}/view`,
+    signal,
+    errorMessage: 'Failed to track blog post view',
   });
 };

@@ -101,10 +101,27 @@ const blogPostSchema = new Schema(
       index: true,
     },
 
+    tags: {
+      type: [
+        {
+          type: String,
+          trim: true,
+          lowercase: true,
+        },
+      ],
+      default: [],
+    },
+
     title: {
       type: String,
       required: true,
       trim: true,
+    },
+
+    viewsCount: {
+      type: Number,
+      default: 0,
+      min: 0,
     },
   },
   {
@@ -115,6 +132,7 @@ const blogPostSchema = new Schema(
 blogPostSchema.index({ status: 1, updatedAt: -1 });
 blogPostSchema.index({ status: 1, publishedAt: -1 });
 blogPostSchema.index({ relatedProductIds: 1 });
+blogPostSchema.index({ status: 1, tags: 1, publishedAt: -1 });
 
 export type BlogPostData = Omit<
   InferSchemaType<typeof blogPostSchema>,

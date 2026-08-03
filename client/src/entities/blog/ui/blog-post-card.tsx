@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { formatDisplayDate } from '../../../shared/lib';
 import type { BlogPostListItem } from '../model';
 import { BlogPostCover } from './blog-post-cover';
+import { BlogPostTags } from './blog-post-tags';
 
 type BlogPostCardProps = {
   blogPost: BlogPostListItem;
@@ -59,6 +60,7 @@ export const BlogPostCard = ({
         <p className="block-medium text-typography-secondary">
           {blogPost.excerpt}
         </p>
+        <BlogPostTags tags={blogPost.tags} />
       </div>
     </article>
   );

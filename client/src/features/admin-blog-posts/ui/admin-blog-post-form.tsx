@@ -84,6 +84,26 @@ const getCoverAsset = (
   };
 };
 
+const normalizeTag = (value: string) => {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+};
+
+const tagsToInputValue = (tags: string[]) => tags.join(', ');
+
+const inputValueToTags = (value: string) => {
+  const tags = value
+    .split(',')
+    .map(normalizeTag)
+    .filter(Boolean);
+
+  return [...new Set(tags)];
+};
+
 const TextAreaField = ({
   error,
   id,
@@ -118,6 +138,41 @@ const TextAreaField = ({
       <p id={`${id}-error`} className="block-small text-red-600">
         {error}
       </p>
+    )}
+  </div>
+);
+
+const TagsField = ({
+  error,
+  id,
+  value,
+  onChange,
+}: {
+  error?: string;
+  id: string;
+  value: string[];
+  onChange: (tags: string[]) => void;
+}) => (
+  <div className="flex flex-col gap-3">
+    <TextInput
+      error={error}
+      id={id}
+      label="Tags"
+      placeholder="wardrobe, styling, shopping-guide"
+      value={tagsToInputValue(value)}
+      onChange={(inputValue) => onChange(inputValueToTags(inputValue))}
+    />
+    {value.length > 0 && (
+      <div className="flex flex-wrap gap-2">
+        {value.map((tag) => (
+          <span
+            key={tag}
+            className="rounded border border-border-soft bg-background-secondary px-2 py-1 block-small text-typography-secondary"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
     )}
   </div>
 );
@@ -206,6 +261,12 @@ export const AdminBlogPostForm = ({
         placeholder="Short summary for article cards"
         value={values.excerpt}
         onChange={(value) => onValueChange('excerpt', value)}
+      />
+      <TagsField
+        error={fieldErrors.tags}
+        id="admin-blog-post-tags"
+        value={values.tags}
+        onChange={(tags) => onValueChange('tags', tags)}
       />
     </section>
 

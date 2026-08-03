@@ -11,8 +11,10 @@ export const adminBlogPostToListItemDto = (
   publishedAt: blogPost.publishedAt?.toISOString() ?? null,
   slug: blogPost.slug,
   status: blogPost.status,
+  tags: blogPost.tags ?? [],
   title: blogPost.title,
   updatedAt: blogPost.updatedAt.toISOString(),
+  viewsCount: blogPost.viewsCount ?? 0,
 });
 
 export const adminBlogPostToDto = (

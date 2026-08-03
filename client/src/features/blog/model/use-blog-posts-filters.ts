@@ -14,6 +14,7 @@ import type {
 
 const BLOG_POSTS_FILTERS_URL_SCHEMA = {
   search: stringParam({ name: 'search' }),
+  tag: stringParam({ name: 'tag' }),
   page: numberParam({
     name: 'page',
     defaultValue: 1,

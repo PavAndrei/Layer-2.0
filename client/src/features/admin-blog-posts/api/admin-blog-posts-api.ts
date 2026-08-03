@@ -55,8 +55,10 @@ export type AdminBlogPostListItem = {
   publishedAt: string | null;
   slug: string;
   status: BlogPostStatus;
+  tags: string[];
   title: string;
   updatedAt: string;
+  viewsCount: number;
 };
 
 export type AdminBlogPost = AdminBlogPostListItem & {
@@ -96,6 +98,7 @@ export type CreateAdminBlogPostPayload = {
   relatedProductIds?: string[];
   slug?: string;
   status?: BlogPostStatus;
+  tags?: string[];
   title: string;
 };
 

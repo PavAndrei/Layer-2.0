@@ -23,8 +23,10 @@ export type BlogPostListItem = {
   excerpt: string;
   publishedAt: string | null;
   slug: string;
+  tags: string[];
   title: string;
   updatedAt: string;
+  viewsCount: number;
 };
 
 export type BlogPost = BlogPostListItem & {

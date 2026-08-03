@@ -1,6 +1,7 @@
 export {
   getBlogPostBySlug,
   getBlogPosts,
+  trackBlogPostView,
 } from './api';
 export type {
   BlogPost,
@@ -9,6 +10,7 @@ export type {
   BlogPostResponseData,
   BlogPostsParams,
   BlogPostsResponseData,
+  TrackBlogPostViewResponseData,
 } from './api';
 export {
   BLOG_POSTS_LIMIT,
@@ -17,8 +19,10 @@ export {
   initialBlogPostsFilters,
   toBlogPostsSearchParams,
   useBlogPost,
+  useBlogPostTags,
   useBlogPosts,
   useBlogPostsFilters,
+  useTrackBlogPostView,
 } from './model';
 export type {
   BlogPostsFilters,

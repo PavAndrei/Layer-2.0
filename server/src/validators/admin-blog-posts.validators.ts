@@ -13,6 +13,7 @@ export const ADMIN_BLOG_POST_SORT_VALUES = [
 ] as const;
 
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
+const TAG_PATTERN = /^[a-z0-9-]+$/;
 
 const positiveIntegerParam = (
   name: string,
@@ -131,12 +132,39 @@ const relatedProductIdsField = z
     'Related products must be unique',
   );
 
+const tagsField = z
+  .array(
+    z
+      .string()
+      .trim()
+      .toLowerCase()
+      .min(1, 'Tag is required')
+      .max(40, 'Tag is too long')
+      .regex(TAG_PATTERN, 'Invalid tag'),
+  )
+  .max(8, 'Too many tags')
+  .refine((tags) => new Set(tags).size === tags.length, 'Tags must be unique');
+
 export const adminBlogPostsQuerySchema = z
   .object({
     page: positiveIntegerParam('page', 1),
     limit: positiveIntegerParam('limit', 12, 50),
     search: optionalSearchParam(),
     status: z.enum(BLOG_POST_STATUSES).optional(),
+    tag: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .optional()
+      .transform((value) => value || undefined)
+      .refine(
+        (value) => value === undefined || TAG_PATTERN.test(value),
+        'Invalid tag',
+      )
+      .refine(
+        (value) => value === undefined || value.length <= 40,
+        'Tag is too long',
+      ),
     sort: z
       .union([z.enum(ADMIN_BLOG_POST_SORT_VALUES), z.literal('default')])
       .optional()
@@ -167,6 +195,7 @@ export const createAdminBlogPostBodySchema = z
     relatedProductIds: relatedProductIdsField.optional().default([]),
     slug: optionalSlugField,
     status: z.enum(BLOG_POST_STATUSES).optional().default('draft'),
+    tags: tagsField.optional().default([]),
     title: titleField,
   })
   .strict();
@@ -184,6 +213,7 @@ export const updateAdminBlogPostBodySchema = z
     relatedProductIds: relatedProductIdsField.optional(),
     slug: optionalSlugField,
     status: z.enum(BLOG_POST_STATUSES).optional(),
+    tags: tagsField.optional(),
     title: titleField,
   })
   .strict();

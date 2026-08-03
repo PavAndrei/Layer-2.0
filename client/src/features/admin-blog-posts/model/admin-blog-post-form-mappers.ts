@@ -23,5 +23,6 @@ export const toAdminBlogPostFormValues = (
   relatedProductIds: blogPost.relatedProductIds,
   slug: blogPost.slug,
   status: blogPost.status,
+  tags: blogPost.tags,
   title: blogPost.title,
 });

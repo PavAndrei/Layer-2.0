@@ -18,6 +18,7 @@ export type AdminBlogPostFormValues = {
   relatedProductIds: string[];
   slug: string;
   status: BlogPostStatus;
+  tags: string[];
   title: string;
 };
 

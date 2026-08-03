@@ -126,6 +126,11 @@
       "essential-cargo-pants",
       "canvas-logo-cap",
       "city-unisex-fleece-vest"
+    ],
+    "tags": [
+      "wardrobe",
+      "capsule",
+      "styling"
     ]
   },
   {
@@ -231,6 +236,11 @@
       "heavyweight-zip-hoodie",
       "studio-oversized-hoodie",
       "ribbed-oversized-hoodie"
+    ],
+    "tags": [
+      "fit",
+      "hoodies",
+      "styling"
     ]
   },
   {
@@ -328,6 +338,11 @@
       "tonal-heavyweight-box-tee",
       "canvas-heavyweight-box-tee",
       "structured-everyday-crewneck"
+    ],
+    "tags": [
+      "fabric",
+      "basics",
+      "shopping-guide"
     ]
   },
   {
@@ -425,6 +440,11 @@
       "essential-graphic-t-shirt",
       "soft-graphic-t-shirt",
       "tonal-quarter-zip-sweatshirt"
+    ],
+    "tags": [
+      "color",
+      "wardrobe",
+      "styling"
     ]
   },
   {
@@ -528,6 +548,11 @@
       "archive-utility-jacket",
       "soft-cargo-pants",
       "washed-crossbody-utility-bag"
+    ],
+    "tags": [
+      "shopping-guide",
+      "fit",
+      "fabric"
     ]
   },
   {
@@ -631,6 +656,11 @@
       "utility-logo-cap",
       "archive-cargo-pants",
       "seasonal-coach-jacket"
+    ],
+    "tags": [
+      "sale",
+      "shopping-guide",
+      "wardrobe"
     ]
   },
   {
@@ -721,6 +751,11 @@
       "minimal-canvas-tote-bag",
       "utility-canvas-overshirt",
       "structured-everyday-crewneck"
+    ],
+    "tags": [
+      "care",
+      "fabric",
+      "outerwear"
     ]
   },
   {
@@ -815,6 +850,11 @@
       "utility-canvas-tote-bag",
       "soft-five-panel-cap",
       "city-unisex-fleece-vest"
+    ],
+    "tags": [
+      "travel",
+      "wardrobe",
+      "accessories"
     ]
   },
   {
@@ -909,6 +949,11 @@
       "essential-unisex-fleece-vest",
       "canvas-logo-cap",
       "soft-five-panel-cap"
+    ],
+    "tags": [
+      "unisex",
+      "fit",
+      "shopping-guide"
     ]
   },
   {
@@ -993,6 +1038,11 @@
       "washed-crossbody-utility-bag",
       "utility-canvas-tote-bag",
       "minimal-canvas-tote-bag"
+    ],
+    "tags": [
+      "accessories",
+      "styling",
+      "wardrobe"
     ]
   },
   {
@@ -1087,6 +1137,11 @@
       "cargo-bomber-jacket",
       "minimal-canvas-overshirt",
       "core-nylon-windbreaker"
+    ],
+    "tags": [
+      "outerwear",
+      "seasonal",
+      "fabric"
     ]
   },
   {
@@ -1181,6 +1236,11 @@
       "nylon-wide-leg-sweatpants",
       "city-cargo-pants",
       "heavyweight-wide-leg-sweatpants"
+    ],
+    "tags": [
+      "pants",
+      "fit",
+      "styling"
     ]
   },
   {
@@ -1271,6 +1331,11 @@
       "archive-utility-jacket",
       "soft-cargo-pants",
       "utility-logo-cap"
+    ],
+    "tags": [
+      "styling",
+      "shopping-guide",
+      "wardrobe"
     ]
   },
   {
@@ -1363,6 +1428,11 @@
       "studio-nylon-windbreaker",
       "relaxed-ribbed-longsleeve",
       "core-ribbed-beanie"
+    ],
+    "tags": [
+      "seasonal",
+      "outerwear",
+      "wardrobe"
     ]
   },
   {
@@ -1450,6 +1520,11 @@
       "archive-five-panel-cap",
       "archive-cargo-pants",
       "archive-unisex-fleece-vest"
+    ],
+    "tags": [
+      "archive",
+      "shopping-guide",
+      "wardrobe"
     ]
   }
 ]

@@ -108,6 +108,19 @@ const relatedProductIdsSchema = z
     'Related products must be unique',
   );
 
+const tagsSchema = z
+  .array(
+    z
+      .string()
+      .trim()
+      .toLowerCase()
+      .min(1, 'Tag is required')
+      .max(40, 'Tag is too long')
+      .regex(/^[a-z0-9-]+$/, 'Invalid tag'),
+  )
+  .max(8, 'Too many tags')
+  .refine((tags) => new Set(tags).size === tags.length, 'Tags must be unique');
+
 export const adminBlogPostFormSchema = z
   .object({
     contentHtml: z.string().max(120000, 'Content is too long'),
@@ -117,6 +130,7 @@ export const adminBlogPostFormSchema = z
     relatedProductIds: relatedProductIdsSchema,
     slug: optionalSlugField,
     status: z.enum(['draft', 'published', 'archived']),
+    tags: tagsSchema,
     title: z
       .string()
       .trim()
@@ -157,6 +171,7 @@ export const toCreateAdminBlogPostPayload = (
   relatedProductIds: values.relatedProductIds,
   slug: values.slug,
   status: values.status,
+  tags: values.tags,
   title: values.title,
 });
 
@@ -186,6 +201,7 @@ export const getAdminBlogPostFormErrors = (
       fieldName === 'relatedProductIds' ||
       fieldName === 'slug' ||
       fieldName === 'status' ||
+      fieldName === 'tags' ||
       fieldName === 'title'
     ) {
       return {

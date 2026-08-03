@@ -1,9 +1,16 @@
 import { QueryFilter } from 'mongoose';
+import { createHash } from 'node:crypto';
 
+import { VIEW_TRACKING_SECRET } from '../constants/env';
 import { ApiError } from '../exceptions/api-error';
+import { BlogPostView } from '../models/blog-post-views.model';
 import { BlogPost, type BlogPostData } from '../models/blog-posts.model';
 import { Product } from '../models/products.model';
-import type { BlogPostResponse, BlogPostsResponse } from '../types/api';
+import type {
+  BlogPostResponse,
+  BlogPostsResponse,
+  TrackBlogPostViewResponse,
+} from '../types/api';
 import { getReviewCountsByProductIds } from '../utils/get-review-counts';
 import {
   blogPostToDto,
@@ -14,6 +21,27 @@ import type { BlogPostsQuery } from '../validators/blog-posts.validators';
 
 const escapeRegExp = (value: string) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const isDuplicateKeyError = (error: unknown) => {
+  return (
+    error &&
+    typeof error === 'object' &&
+    'code' in error &&
+    error.code === 11000
+  );
+};
+
+const getVisitorHash = ({
+  ip,
+  userAgent,
+}: {
+  ip: string;
+  userAgent: string;
+}) => {
+  return createHash('sha256')
+    .update(`${ip}:${userAgent}:${VIEW_TRACKING_SECRET}`)
+    .digest('hex');
+};
 
 const getBlogPostsFilter = (
   query: BlogPostsQuery,
@@ -32,6 +60,10 @@ const getBlogPostsFilter = (
       { title: searchExpression },
       { excerpt: searchExpression },
     ];
+  }
+
+  if (query.tag) {
+    filter.tags = query.tag;
   }
 
   return filter;
@@ -127,5 +159,63 @@ export const getBlogPostBySlugData = async (
 
   return {
     blogPost: blogPostToDto(blogPost, relatedProducts),
+  };
+};
+
+export const trackBlogPostViewData = async ({
+  ip,
+  slug,
+  userAgent,
+}: {
+  ip: string;
+  slug: string;
+  userAgent: string;
+}): Promise<TrackBlogPostViewResponse['data']> => {
+  const blogPost = await BlogPost.findOne({
+    slug,
+    status: 'published',
+  }).select('_id viewsCount');
+
+  if (!blogPost) {
+    throw ApiError.NotFound('Blog post not found');
+  }
+
+  try {
+    await BlogPostView.create({
+      blogPostId: blogPost._id,
+      visitorHash: getVisitorHash({
+        ip,
+        userAgent,
+      }),
+    });
+  } catch (error) {
+    if (isDuplicateKeyError(error)) {
+      return {
+        counted: false,
+        viewsCount: blogPost.viewsCount ?? 0,
+      };
+    }
+
+    throw error;
+  }
+
+  const updatedBlogPost = await BlogPost.findByIdAndUpdate(
+    blogPost._id,
+    {
+      $inc: {
+        viewsCount: 1,
+      },
+    },
+    {
+      returnDocument: 'after',
+      projection: {
+        viewsCount: 1,
+      },
+    },
+  );
+
+  return {
+    counted: true,
+    viewsCount: updatedBlogPost?.viewsCount ?? (blogPost.viewsCount ?? 0) + 1,
   };
 };

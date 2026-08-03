@@ -6,6 +6,7 @@ import {
 import {
   BlogPostContent,
   BlogPostCover,
+  BlogPostTags,
 } from '../../entities/blog';
 import { ProductRecommendationsSection } from '../../entities/product';
 import {
@@ -65,20 +66,24 @@ export const BlogPostPage = () => {
           />
 
           <div className="flex w-full max-w-3xl flex-col gap-3">
-            {blogPost.publishedAt && (
-              <time
-                dateTime={blogPost.publishedAt}
-                className="block-small text-typography-muted"
-              >
-                {formatDisplayDate(blogPost.publishedAt)}
-              </time>
-            )}
+            <div className="flex flex-wrap items-center gap-2 block-small text-typography-muted">
+              {blogPost.publishedAt && (
+                <time dateTime={blogPost.publishedAt}>
+                  {formatDisplayDate(blogPost.publishedAt)}
+                </time>
+              )}
+              {blogPost.publishedAt && <span aria-hidden="true">/</span>}
+              <span>
+                {blogPost.viewsCount} views
+              </span>
+            </div>
             <h1 className="heading text-typography-heading">
               {blogPost.title}
             </h1>
             <p className="description text-typography-secondary">
               {blogPost.excerpt}
             </p>
+            <BlogPostTags tags={blogPost.tags} />
           </div>
         </div>
       }

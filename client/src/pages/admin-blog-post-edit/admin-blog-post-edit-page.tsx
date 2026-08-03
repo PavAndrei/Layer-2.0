@@ -46,6 +46,17 @@ export const AdminBlogPostEditPage = () => {
         }
       />
 
+      {blogPost && (
+        <div className="grid gap-3 sm:grid-cols-3">
+          <div className="rounded border border-border-soft bg-background-surface p-4">
+            <p className="block-small text-typography-muted">Views</p>
+            <p className="mt-1 text-2xl font-semibold text-typography-heading">
+              {blogPost.viewsCount}
+            </p>
+          </div>
+        </div>
+      )}
+
       {pageState.isLoading && <AdminBlogPostEditPageSkeleton />}
 
       {!pageState.isLoading && !blogPost && (
