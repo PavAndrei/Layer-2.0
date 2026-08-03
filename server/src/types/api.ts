@@ -291,6 +291,7 @@ export type AdminBlogPostListItemDto = {
   tags: string[];
   title: string;
   updatedAt: string;
+  likesCount: number;
   viewsCount: number;
 };
 
@@ -310,11 +311,13 @@ export type BlogPostListItemDto = {
   tags: string[];
   title: string;
   updatedAt: string;
+  likesCount: number;
   viewsCount: number;
 };
 
 export type BlogPostDto = BlogPostListItemDto & {
   contentHtml: string;
+  isLikedByViewer: boolean;
   relatedProducts: ProductDto[];
 };
 
@@ -493,6 +496,11 @@ export type BlogPostResponse = ApiSuccess<{
 export type TrackBlogPostViewResponse = ApiSuccess<{
   counted: boolean;
   viewsCount: number;
+}>;
+
+export type SetBlogPostLikeResponse = ApiSuccess<{
+  liked: boolean;
+  likesCount: number;
 }>;
 
 export type ProductReviewsResponse = ApiSuccess<{

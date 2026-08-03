@@ -16,14 +16,17 @@ export const blogPostToListItemDto = (
   tags: blogPost.tags ?? [],
   title: blogPost.title,
   updatedAt: blogPost.updatedAt.toISOString(),
+  likesCount: blogPost.likesCount ?? 0,
   viewsCount: blogPost.viewsCount ?? 0,
 });
 
 export const blogPostToDto = (
   blogPost: BlogPostDocument,
   relatedProducts: ProductDto[] = [],
+  isLikedByViewer = false,
 ): BlogPostDto => ({
   ...blogPostToListItemDto(blogPost),
   contentHtml: blogPost.contentHtml,
+  isLikedByViewer,
   relatedProducts,
 });

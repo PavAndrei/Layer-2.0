@@ -26,10 +26,12 @@ export type BlogPostListItem = {
   tags: string[];
   title: string;
   updatedAt: string;
+  likesCount: number;
   viewsCount: number;
 };
 
 export type BlogPost = BlogPostListItem & {
   contentHtml: string;
+  isLikedByViewer: boolean;
   relatedProducts: Product[];
 };

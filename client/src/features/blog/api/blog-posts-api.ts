@@ -29,6 +29,16 @@ export type TrackBlogPostViewResponseData = {
   viewsCount: number;
 };
 
+export type SetBlogPostLikePayload = {
+  liked: boolean;
+  slug: string;
+};
+
+export type SetBlogPostLikeResponseData = {
+  liked: boolean;
+  likesCount: number;
+};
+
 export const getBlogPosts = async (
   params: BlogPostsParams = {},
   signal?: AbortSignal,
@@ -60,5 +70,19 @@ export const trackBlogPostView = async (
     path: `/blog-posts/${encodeURIComponent(slug)}/view`,
     signal,
     errorMessage: 'Failed to track blog post view',
+  });
+};
+
+export const setBlogPostLike = async (
+  { liked, slug }: SetBlogPostLikePayload,
+  signal?: AbortSignal,
+): Promise<ApiResponse<SetBlogPostLikeResponseData>> => {
+  return apiClient.patch<SetBlogPostLikeResponseData, { liked: boolean }>({
+    path: `/blog-posts/${encodeURIComponent(slug)}/like`,
+    body: {
+      liked,
+    },
+    signal,
+    errorMessage: 'Failed to update blog post like',
   });
 };

@@ -78,5 +78,17 @@ export const blogPostParamsSchema = z.object({
     .strict(),
 });
 
+const setBlogPostLikeBodySchema = z
+  .object({
+    liked: z.boolean(),
+  })
+  .strict();
+
+export const setBlogPostLikeSchema = z.object({
+  params: blogPostParamsSchema.shape.params,
+  body: setBlogPostLikeBodySchema,
+});
+
 export type BlogPostsQuery = z.infer<typeof blogPostsQuerySchema>;
 export type BlogPostParams = z.infer<typeof blogPostParamsSchema>['params'];
+export type SetBlogPostLikeBody = z.infer<typeof setBlogPostLikeBodySchema>;

@@ -9,6 +9,7 @@ export {
   blogPostsQueryKeys,
 } from './blog-posts-query-keys';
 export { toBlogPostsSearchParams } from './blog-posts-search-params';
+export { useToggleBlogPostLike } from './use-toggle-blog-post-like';
 export { useBlogPost } from './use-blog-post';
 export { useBlogPostTags } from './use-blog-post-tags';
 export { useBlogPosts } from './use-blog-posts';

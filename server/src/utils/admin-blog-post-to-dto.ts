@@ -14,6 +14,7 @@ export const adminBlogPostToListItemDto = (
   tags: blogPost.tags ?? [],
   title: blogPost.title,
   updatedAt: blogPost.updatedAt.toISOString(),
+  likesCount: blogPost.likesCount ?? 0,
   viewsCount: blogPost.viewsCount ?? 0,
 });
 

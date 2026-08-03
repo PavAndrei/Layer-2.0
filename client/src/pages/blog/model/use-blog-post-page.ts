@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 
 import {
   useBlogPost,
+  useToggleBlogPostLike,
   useTrackBlogPostView,
 } from '../../../features/blog';
 
@@ -10,6 +11,7 @@ export const useBlogPostPage = () => {
   const navigate = useNavigate();
   const { slug } = useParams<{ slug: string }>();
   const blogPostQuery = useBlogPost(slug);
+  const likeAction = useToggleBlogPostLike();
   const viewTracking = useTrackBlogPostView(
     slug,
     Boolean(blogPostQuery.blogPost),
@@ -22,6 +24,7 @@ export const useBlogPostPage = () => {
   return {
     backToBlog,
     blogPostQuery,
+    likeAction,
     slug,
     viewTracking,
   };

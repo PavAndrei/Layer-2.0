@@ -64,6 +64,12 @@ const blogPostSchema = new Schema(
       type: blogPostCoverImageSchema,
     },
 
+    likesCount: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+
     excerpt: {
       type: String,
       default: '',

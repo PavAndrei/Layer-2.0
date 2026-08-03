@@ -1,5 +1,6 @@
 import { formatDisplayDate } from '../../shared/lib';
 import {
+  BlogPostLikeButton,
   BlogPostDetailSkeleton,
   BlogPostLayout,
 } from '../../features/blog';
@@ -20,6 +21,7 @@ export const BlogPostPage = () => {
   const {
     backToBlog,
     blogPostQuery,
+    likeAction,
     slug,
   } = useBlogPostPage();
   const { blogPost, error, isLoading } = blogPostQuery;
@@ -66,16 +68,25 @@ export const BlogPostPage = () => {
           />
 
           <div className="flex w-full max-w-3xl flex-col gap-3">
-            <div className="flex flex-wrap items-center gap-2 block-small text-typography-muted">
-              {blogPost.publishedAt && (
-                <time dateTime={blogPost.publishedAt}>
-                  {formatDisplayDate(blogPost.publishedAt)}
-                </time>
-              )}
-              {blogPost.publishedAt && <span aria-hidden="true">/</span>}
-              <span>
-                {blogPost.viewsCount} views
-              </span>
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2 block-small text-typography-muted">
+                {blogPost.publishedAt && (
+                  <time dateTime={blogPost.publishedAt}>
+                    {formatDisplayDate(blogPost.publishedAt)}
+                  </time>
+                )}
+                {blogPost.publishedAt && <span aria-hidden="true">/</span>}
+                <span>
+                  {blogPost.viewsCount} views
+                </span>
+              </div>
+              <BlogPostLikeButton
+                error={likeAction.error}
+                isLiked={blogPost.isLikedByViewer}
+                isPending={likeAction.pendingSlug === blogPost.slug}
+                likesCount={blogPost.likesCount}
+                onToggle={() => likeAction.toggleBlogPostLike(blogPost)}
+              />
             </div>
             <h1 className="heading text-typography-heading">
               {blogPost.title}

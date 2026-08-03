@@ -3,16 +3,19 @@ import { Request, Response } from 'express';
 import {
   getBlogPostBySlugData,
   getBlogPostsData,
+  setBlogPostLikeData,
   trackBlogPostViewData,
 } from '../services/blog-posts.service';
 import type {
   BlogPostResponse,
   BlogPostsResponse,
+  SetBlogPostLikeResponse,
   TrackBlogPostViewResponse,
 } from '../types/api';
 import type {
   BlogPostParams,
   BlogPostsQuery,
+  SetBlogPostLikeBody,
 } from '../validators/blog-posts.validators';
 
 export const getBlogPosts = async (
@@ -35,10 +38,35 @@ export const getBlogPostBySlug = async (
   res: Response<BlogPostResponse>,
 ) => {
   const { slug } = req.validated?.params as BlogPostParams;
-  const data = await getBlogPostBySlugData(slug);
+  const data = await getBlogPostBySlugData(slug, {
+    ip: getRequestIp(req),
+    userAgent: req.get('user-agent') ?? 'unknown',
+  });
 
   res.status(200).json({
     message: 'Blog post fetched successfully',
+    success: true,
+    data,
+  });
+};
+
+export const setBlogPostLike = async (
+  req: Request,
+  res: Response<SetBlogPostLikeResponse>,
+) => {
+  const { slug } = req.validated?.params as BlogPostParams;
+  const { liked } = req.body as SetBlogPostLikeBody;
+  const data = await setBlogPostLikeData({
+    ip: getRequestIp(req),
+    liked,
+    slug,
+    userAgent: req.get('user-agent') ?? 'unknown',
+  });
+
+  res.status(200).json({
+    message: data.liked
+      ? 'Blog post liked successfully'
+      : 'Blog post like removed successfully',
     success: true,
     data,
   });

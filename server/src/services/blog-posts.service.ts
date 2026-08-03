@@ -1,14 +1,14 @@
-import { QueryFilter } from 'mongoose';
-import { createHash } from 'node:crypto';
+import { QueryFilter, Types } from 'mongoose';
 
-import { VIEW_TRACKING_SECRET } from '../constants/env';
 import { ApiError } from '../exceptions/api-error';
+import { BlogPostLike } from '../models/blog-post-likes.model';
 import { BlogPostView } from '../models/blog-post-views.model';
 import { BlogPost, type BlogPostData } from '../models/blog-posts.model';
 import { Product } from '../models/products.model';
 import type {
   BlogPostResponse,
   BlogPostsResponse,
+  SetBlogPostLikeResponse,
   TrackBlogPostViewResponse,
 } from '../types/api';
 import { getReviewCountsByProductIds } from '../utils/get-review-counts';
@@ -16,31 +16,17 @@ import {
   blogPostToDto,
   blogPostToListItemDto,
 } from '../utils/blog-post-to-dto';
+import { isDuplicateKeyError } from '../utils/mongoose-errors';
 import { productToDto } from '../utils/product-to-dto';
+import { getVisitorHash } from '../utils/visitor-hash';
 import type { BlogPostsQuery } from '../validators/blog-posts.validators';
 
 const escapeRegExp = (value: string) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-const isDuplicateKeyError = (error: unknown) => {
-  return (
-    error &&
-    typeof error === 'object' &&
-    'code' in error &&
-    error.code === 11000
-  );
-};
-
-const getVisitorHash = ({
-  ip,
-  userAgent,
-}: {
+type ViewerContext = {
   ip: string;
   userAgent: string;
-}) => {
-  return createHash('sha256')
-    .update(`${ip}:${userAgent}:${VIEW_TRACKING_SECRET}`)
-    .digest('hex');
 };
 
 const getBlogPostsFilter = (
@@ -115,6 +101,12 @@ const getRelatedProductsForBlogPost = async (
   }
 };
 
+const getBlogPostLikesCount = async (blogPostId: Types.ObjectId) => {
+  const blogPost = await BlogPost.findById(blogPostId).select('likesCount');
+
+  return blogPost?.likesCount ?? 0;
+};
+
 export const getBlogPostsData = async (
   query: BlogPostsQuery,
 ): Promise<BlogPostsResponse['data']> => {
@@ -143,6 +135,7 @@ export const getBlogPostsData = async (
 
 export const getBlogPostBySlugData = async (
   slug: string,
+  viewerContext?: ViewerContext,
 ): Promise<BlogPostResponse['data']> => {
   const blogPost = await BlogPost.findOne({
     slug,
@@ -156,9 +149,17 @@ export const getBlogPostBySlugData = async (
   const relatedProducts = await getRelatedProductsForBlogPost(
     blogPost.relatedProductIds,
   );
+  const isLikedByViewer = viewerContext
+    ? Boolean(
+        await BlogPostLike.exists({
+          blogPostId: blogPost._id,
+          visitorHash: getVisitorHash(viewerContext),
+        }),
+      )
+    : false;
 
   return {
-    blogPost: blogPostToDto(blogPost, relatedProducts),
+    blogPost: blogPostToDto(blogPost, relatedProducts, isLikedByViewer),
   };
 };
 
@@ -217,5 +218,105 @@ export const trackBlogPostViewData = async ({
   return {
     counted: true,
     viewsCount: updatedBlogPost?.viewsCount ?? (blogPost.viewsCount ?? 0) + 1,
+  };
+};
+
+export const setBlogPostLikeData = async ({
+  ip,
+  liked,
+  slug,
+  userAgent,
+}: ViewerContext & {
+  liked: boolean;
+  slug: string;
+}): Promise<SetBlogPostLikeResponse['data']> => {
+  const blogPost = await BlogPost.findOne({
+    slug,
+    status: 'published',
+  }).select('_id likesCount');
+
+  if (!blogPost) {
+    throw ApiError.NotFound('Blog post not found');
+  }
+
+  const visitorHash = getVisitorHash({
+    ip,
+    userAgent,
+  });
+
+  if (liked) {
+    try {
+      await BlogPostLike.create({
+        blogPostId: blogPost._id,
+        visitorHash,
+      });
+    } catch (error) {
+      if (isDuplicateKeyError(error)) {
+        return {
+          liked: true,
+          likesCount: await getBlogPostLikesCount(blogPost._id),
+        };
+      }
+
+      throw error;
+    }
+
+    const updatedBlogPost = await BlogPost.findByIdAndUpdate(
+      blogPost._id,
+      {
+        $inc: {
+          likesCount: 1,
+        },
+      },
+      {
+        returnDocument: 'after',
+        projection: {
+          likesCount: 1,
+        },
+      },
+    );
+
+    return {
+      liked: true,
+      likesCount:
+        updatedBlogPost?.likesCount ?? (blogPost.likesCount ?? 0) + 1,
+    };
+  }
+
+  const deletedLike = await BlogPostLike.findOneAndDelete({
+    blogPostId: blogPost._id,
+    visitorHash,
+  });
+
+  if (!deletedLike) {
+    return {
+      liked: false,
+      likesCount: await getBlogPostLikesCount(blogPost._id),
+    };
+  }
+
+  const updatedBlogPost = await BlogPost.findOneAndUpdate(
+    {
+      _id: blogPost._id,
+      likesCount: {
+        $gt: 0,
+      },
+    },
+    {
+      $inc: {
+        likesCount: -1,
+      },
+    },
+    {
+      returnDocument: 'after',
+      projection: {
+        likesCount: 1,
+      },
+    },
+  );
+
+  return {
+    liked: false,
+    likesCount: updatedBlogPost?.likesCount ?? 0,
   };
 };

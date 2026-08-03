@@ -6,4 +6,5 @@ export { BlogPostsGrid } from './blog-posts-grid';
 export { BlogPostsLayoutContent } from './blog-posts-layout-content';
 export { BlogPostsSkeleton } from './blog-posts-skeleton';
 export { BlogImageUploadField } from './blog-image-upload-field';
+export { BlogPostLikeButton } from './blog-post-like-button';
 export type { BlogImageUploadFieldProps } from './blog-image-upload-field';
