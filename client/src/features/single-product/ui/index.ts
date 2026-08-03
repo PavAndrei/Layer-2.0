@@ -4,7 +4,6 @@ export { ProductPurchasePanel } from './product-purchase-panel';
 export { ProductReviewForm } from './product-review-form';
 export { ProductReviewsAccordion } from './product-reviews-accordion';
 export { ProductVariantSelector } from './product-variant-selector';
-export { RelatedProductsSlider } from './related-products-slider';
 export { SingleProductError } from './single-product-error';
 export { SingleProductLayout } from './single-product-layout';
 export { SingleProductLayoutFooter } from './single-product-layout-footer';

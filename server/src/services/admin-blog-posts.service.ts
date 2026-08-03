@@ -2,6 +2,7 @@ import { QueryFilter } from 'mongoose';
 
 import { ApiError } from '../exceptions/api-error';
 import { BlogPost, type BlogPostData } from '../models/blog-posts.model';
+import { Product } from '../models/products.model';
 import type {
   AdminBlogPostResponse,
   AdminBlogPostsResponse,
@@ -335,6 +336,20 @@ export const getAdminBlogPostsData = async (
   };
 };
 
+const ensureRelatedProductsExist = async (productIds: string[]) => {
+  if (productIds.length === 0) return;
+
+  const existingProductsCount = await Product.countDocuments({
+    _id: {
+      $in: productIds,
+    },
+  });
+
+  if (existingProductsCount !== productIds.length) {
+    throw ApiError.BadRequest('One or more related products were not found');
+  }
+};
+
 export const createAdminBlogPostData = async ({
   adminUserId,
   blogPostData,
@@ -347,6 +362,8 @@ export const createAdminBlogPostData = async ({
     blogPostData.slug,
   );
   const status = blogPostData.status ?? 'draft';
+
+  await ensureRelatedProductsExist(blogPostData.relatedProductIds);
 
   if (status === 'published') {
     ensureBlogPostCanBePublished({
@@ -363,6 +380,7 @@ export const createAdminBlogPostData = async ({
     coverImage: blogPostData.coverImage ?? undefined,
     excerpt: blogPostData.excerpt,
     publishedAt: status === 'published' ? new Date() : undefined,
+    relatedProductIds: blogPostData.relatedProductIds,
     slug,
     status,
     title: blogPostData.title,
@@ -384,6 +402,9 @@ export const createAdminBlogPostData = async ({
     metadata: {
       attachedMediaFileIds,
       slug: blogPost.slug,
+      relatedProductIds: (blogPost.relatedProductIds ?? []).map((productId) =>
+        productId.toString(),
+      ),
       status: blogPost.status,
       title: blogPost.title,
     },
@@ -438,11 +459,17 @@ export const updateAdminBlogPostData = async ({
     title: update.title,
   });
   const nextStatus = update.status ?? previousStatus;
+  const relatedProductIds =
+    update.relatedProductIds ?? blogPost.relatedProductIds ?? [];
   const publishedAt = getNextPublishedAt({
     nextStatus,
     previousPublishedAt: blogPost.publishedAt,
     previousStatus,
   });
+
+  await ensureRelatedProductsExist(
+    relatedProductIds.map((productId) => productId.toString()),
+  );
 
   if (nextStatus === 'published') {
     ensureBlogPostCanBePublished({
@@ -458,6 +485,7 @@ export const updateAdminBlogPostData = async ({
     coverImage: update.coverImage ?? undefined,
     excerpt: update.excerpt,
     publishedAt,
+    relatedProductIds,
     slug,
     status: nextStatus,
     title: update.title,
@@ -487,6 +515,9 @@ export const updateAdminBlogPostData = async ({
       attachedMediaFileIds,
       previousStatus,
       removedMediaFileIds,
+      relatedProductIds: (blogPost.relatedProductIds ?? []).map((productId) =>
+        productId.toString(),
+      ),
       slug: blogPost.slug,
       status: blogPost.status,
       title: blogPost.title,

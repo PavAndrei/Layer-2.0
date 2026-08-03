@@ -40,6 +40,7 @@ export const createInitialAdminBlogPostFormValues =
     contentJson: createEmptyBlogPostContentJson(),
     coverImage: null,
     excerpt: '',
+    relatedProductIds: [],
     slug: '',
     status: 'draft',
     title: '',

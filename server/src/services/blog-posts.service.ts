@@ -2,11 +2,14 @@ import { QueryFilter } from 'mongoose';
 
 import { ApiError } from '../exceptions/api-error';
 import { BlogPost, type BlogPostData } from '../models/blog-posts.model';
+import { Product } from '../models/products.model';
 import type { BlogPostResponse, BlogPostsResponse } from '../types/api';
+import { getReviewCountsByProductIds } from '../utils/get-review-counts';
 import {
   blogPostToDto,
   blogPostToListItemDto,
 } from '../utils/blog-post-to-dto';
+import { productToDto } from '../utils/product-to-dto';
 import type { BlogPostsQuery } from '../validators/blog-posts.validators';
 
 const escapeRegExp = (value: string) =>
@@ -32,6 +35,52 @@ const getBlogPostsFilter = (
   }
 
   return filter;
+};
+
+const getRelatedProductsForBlogPost = async (
+  relatedProductIds: BlogPostData['relatedProductIds'],
+) => {
+  try {
+    const orderedProductIds = (relatedProductIds ?? []).map((productId) =>
+      productId.toString(),
+    );
+
+    if (orderedProductIds.length === 0) {
+      return [];
+    }
+
+    const products = await Product.find({
+      _id: {
+        $in: orderedProductIds,
+      },
+      $or: [
+        { status: 'active' },
+        { status: { $exists: false } },
+      ],
+    });
+    const productById = new Map(
+      products.map((product) => [product._id.toString(), product]),
+    );
+    const orderedProducts = orderedProductIds
+      .map((productId) => productById.get(productId))
+      .filter((product) => product !== undefined);
+    const reviewCounts = await getReviewCountsByProductIds(
+      orderedProducts.map((product) => product._id),
+    );
+
+    return orderedProducts.map((product) =>
+      productToDto(product, {
+        reviewsCount: reviewCounts.get(product._id.toString()),
+      }),
+    );
+  } catch (error) {
+    console.error('Failed to load blog post related products', {
+      error,
+      relatedProductIds,
+    });
+
+    return [];
+  }
 };
 
 export const getBlogPostsData = async (
@@ -72,7 +121,11 @@ export const getBlogPostBySlugData = async (
     throw ApiError.NotFound('Blog post not found');
   }
 
+  const relatedProducts = await getRelatedProductsForBlogPost(
+    blogPost.relatedProductIds,
+  );
+
   return {
-    blogPost: blogPostToDto(blogPost),
+    blogPost: blogPostToDto(blogPost, relatedProducts),
   };
 };

@@ -28,4 +28,5 @@ export {
   ProductCardSkeleton,
   ProductGrid,
   ProductPrice,
+  ProductRecommendationsSection,
 } from './ui';

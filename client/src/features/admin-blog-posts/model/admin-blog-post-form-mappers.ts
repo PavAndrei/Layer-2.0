@@ -20,6 +20,7 @@ export const toAdminBlogPostFormValues = (
       }
     : null,
   excerpt: blogPost.excerpt,
+  relatedProductIds: blogPost.relatedProductIds,
   slug: blogPost.slug,
   status: blogPost.status,
   title: blogPost.title,

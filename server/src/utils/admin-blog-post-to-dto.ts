@@ -22,4 +22,7 @@ export const adminBlogPostToDto = (
   contentHtml: blogPost.contentHtml,
   contentJson: blogPost.contentJson,
   createdAt: blogPost.createdAt.toISOString(),
+  relatedProductIds: (blogPost.relatedProductIds ?? []).map((productId) =>
+    productId.toString(),
+  ),
 });

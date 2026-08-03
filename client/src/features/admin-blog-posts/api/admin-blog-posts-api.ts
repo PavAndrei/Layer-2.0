@@ -9,6 +9,7 @@ import type {
   BlogPostCoverImage,
   BlogPostStatus,
 } from '../../../entities/blog';
+import type { ProductStatus } from '../../../entities/product';
 
 export type AdminBlogPostSortOption =
   | 'default'
@@ -27,6 +28,25 @@ export type AdminBlogPostsParams = {
   status?: BlogPostStatus;
 };
 
+export type AdminBlogRelatedProductsParams = {
+  limit?: number;
+  page?: number;
+  search?: string;
+  status?: ProductStatus;
+};
+
+export type AdminBlogRelatedProductOption = {
+  _id: string;
+  defaultPrice: number;
+  discountPrice: number;
+  hasDiscount: boolean;
+  img: string;
+  slug: string;
+  status: ProductStatus;
+  title: string;
+  totalStock: number;
+};
+
 export type AdminBlogPostListItem = {
   _id: string;
   authorId: string;
@@ -43,6 +63,7 @@ export type AdminBlogPost = AdminBlogPostListItem & {
   contentHtml: string;
   contentJson: BlogPostContentJson;
   createdAt: string;
+  relatedProductIds: string[];
 };
 
 export type AdminBlogPostsStats = {
@@ -58,11 +79,21 @@ export type AdminBlogPostsResponseData = {
   stats: AdminBlogPostsStats;
 };
 
+export type AdminBlogRelatedProductsResponseData = {
+  pagination: PaginationData;
+  products: AdminBlogRelatedProductOption[];
+};
+
+export type AdminBlogRelatedProductResponseData = {
+  product: AdminBlogRelatedProductOption;
+};
+
 export type CreateAdminBlogPostPayload = {
   contentHtml?: string;
   contentJson?: BlogPostContentJson;
   coverImage?: BlogPostCoverImage | null;
   excerpt?: string;
+  relatedProductIds?: string[];
   slug?: string;
   status?: BlogPostStatus;
   title: string;
@@ -116,6 +147,29 @@ export const getAdminBlogPosts = async (
     params,
     signal,
     errorMessage: 'Failed to load admin blog posts',
+  });
+};
+
+export const getAdminBlogRelatedProducts = async (
+  params: AdminBlogRelatedProductsParams = {},
+  signal?: AbortSignal,
+): Promise<ApiResponse<AdminBlogRelatedProductsResponseData>> => {
+  return apiClient.get<AdminBlogRelatedProductsResponseData>({
+    path: '/admin/products',
+    params,
+    signal,
+    errorMessage: 'Failed to load related product options',
+  });
+};
+
+export const getAdminBlogRelatedProduct = async (
+  productId: string,
+  signal?: AbortSignal,
+): Promise<ApiResponse<AdminBlogRelatedProductResponseData>> => {
+  return apiClient.get<AdminBlogRelatedProductResponseData>({
+    path: `/admin/products/${encodeURIComponent(productId)}`,
+    signal,
+    errorMessage: 'Failed to load related product',
   });
 };
 

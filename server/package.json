@@ -7,6 +7,8 @@
     "build": "tsc",
     "seed:blog-posts": "tsx src/scripts/seed-blog-posts.ts",
     "media:cleanup": "tsx src/scripts/cleanup-pending-media-assets.ts",
+    "fix:product-image-paths": "tsx src/scripts/fix-product-image-paths.ts",
+    "fix:product-image-paths:dry-run": "tsx src/scripts/fix-product-image-paths.ts --dry-run",
     "migrate:product-variants": "tsx src/scripts/remove-legacy-product-fields.ts",
     "migrate:product-slugs": "tsx src/scripts/backfill-product-slugs.ts",
     "seed:database": "tsx src/scripts/seed-database.ts",

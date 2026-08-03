@@ -1,5 +1,9 @@
 import type { BlogPostDocument } from '../models/blog-posts.model';
-import type { BlogPostDto, BlogPostListItemDto } from '../types/api';
+import type {
+  BlogPostDto,
+  BlogPostListItemDto,
+  ProductDto,
+} from '../types/api';
 
 export const blogPostToListItemDto = (
   blogPost: BlogPostDocument,
@@ -15,7 +19,9 @@ export const blogPostToListItemDto = (
 
 export const blogPostToDto = (
   blogPost: BlogPostDocument,
+  relatedProducts: ProductDto[] = [],
 ): BlogPostDto => ({
   ...blogPostToListItemDto(blogPost),
   contentHtml: blogPost.contentHtml,
+  relatedProducts,
 });

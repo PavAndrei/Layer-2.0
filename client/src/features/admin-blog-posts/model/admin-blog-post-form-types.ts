@@ -15,6 +15,7 @@ export type AdminBlogPostFormValues = {
   contentJson: BlogPostContentJson;
   coverImage: AdminBlogPostCoverImageFormValues | null;
   excerpt: string;
+  relatedProductIds: string[];
   slug: string;
   status: BlogPostStatus;
   title: string;

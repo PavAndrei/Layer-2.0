@@ -4,24 +4,27 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { ProductCard, type Product } from '../../../entities/product';
+import type { Product } from '../model';
+import { ProductCard } from './product-card';
 
-type RelatedProductsSliderProps = {
+type ProductRecommendationsSectionProps = {
   productLinkState?: LinkProps['state'];
   products: Product[];
+  title: string;
 };
 
-export const RelatedProductsSlider = ({
+export const ProductRecommendationsSection = ({
   productLinkState,
   products,
-}: RelatedProductsSliderProps) => {
+  title,
+}: ProductRecommendationsSectionProps) => {
   if (products.length === 0) {
     return null;
   }
 
   return (
     <section className="flex flex-col gap-3">
-      <h2 className="text-2xl font-semibold">Related Products</h2>
+      <h2 className="text-2xl font-semibold">{title}</h2>
       <Swiper
         modules={[A11y, Navigation]}
         navigation

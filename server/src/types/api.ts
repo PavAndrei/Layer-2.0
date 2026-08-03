@@ -296,6 +296,7 @@ export type AdminBlogPostDto = AdminBlogPostListItemDto & {
   contentHtml: string;
   contentJson: BlogPostContentJson;
   createdAt: string;
+  relatedProductIds: string[];
 };
 
 export type BlogPostListItemDto = {
@@ -310,6 +311,7 @@ export type BlogPostListItemDto = {
 
 export type BlogPostDto = BlogPostListItemDto & {
   contentHtml: string;
+  relatedProducts: ProductDto[];
 };
 
 export type AdminBlogPostsStatsDto = {

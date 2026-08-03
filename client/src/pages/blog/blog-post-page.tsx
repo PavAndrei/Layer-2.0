@@ -7,6 +7,7 @@ import {
   BlogPostContent,
   BlogPostCover,
 } from '../../entities/blog';
+import { ProductRecommendationsSection } from '../../entities/product';
 import {
   Breadcrumbs,
   Button,
@@ -89,6 +90,12 @@ export const BlogPostPage = () => {
         />
       }
       main={<BlogPostContent contentHtml={blogPost.contentHtml} />}
+      footer={
+        <ProductRecommendationsSection
+          title="Shop the story"
+          products={blogPost.relatedProducts ?? []}
+        />
+      }
     />
   );
 };

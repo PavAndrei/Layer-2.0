@@ -17,7 +17,7 @@ export const BlogPostLayout = ({
     <main className="container mx-auto flex flex-col gap-6 px-2.5">
       {header}
       {cover}
-      <div className="flex w-full max-w-3xl flex-col gap-6">
+      <div className="flex w-full flex-col gap-6">
         {main}
         {footer}
       </div>

@@ -1,4 +1,5 @@
 import { FavoriteProductButton } from '../../features/favorites';
+import { ProductRecommendationsSection } from '../../entities/product';
 import { ConfirmDialog } from '../../shared/ui';
 import {
   ProductGallery,
@@ -6,7 +7,6 @@ import {
   ProductPurchasePanel,
   ProductReviewsAccordion,
   ProductVariantSelector,
-  RelatedProductsSlider,
   SingleProductError,
   SingleProductLayout,
   SingleProductLayoutFooter,
@@ -149,7 +149,8 @@ export const SingleProductPage = () => {
         }
         footer={
           <SingleProductLayoutFooter>
-            <RelatedProductsSlider
+            <ProductRecommendationsSection
+              title="Related Products"
               products={relatedProducts}
               productLinkState={productLinkState}
             />

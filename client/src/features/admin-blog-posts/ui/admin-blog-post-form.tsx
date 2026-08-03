@@ -19,6 +19,7 @@ import type {
 } from '../model';
 import { AdminBlogPostCoverUploadField } from './admin-blog-post-cover-upload-field';
 import { AdminBlogPostEditor } from './admin-blog-post-editor';
+import { AdminBlogPostRelatedProductsField } from './admin-blog-post-related-products-field';
 
 type AdminBlogPostFormProps = {
   error: string | null;
@@ -244,6 +245,21 @@ export const AdminBlogPostForm = ({
           }
         />
       )}
+    </section>
+
+    <section className="flex flex-col gap-4 rounded border border-border-soft bg-background-surface p-4">
+      <FieldsetHeader
+        title="Related products"
+        description="Choose storefront products that should appear with this article."
+      />
+      <AdminBlogPostRelatedProductsField
+        disabled={isSubmitting}
+        error={fieldErrors.relatedProductIds}
+        value={values.relatedProductIds}
+        onChange={(productIds) =>
+          onValueChange('relatedProductIds', productIds)
+        }
+      />
     </section>
 
     <section className="flex flex-col gap-4 rounded border border-border-soft bg-background-surface p-4">

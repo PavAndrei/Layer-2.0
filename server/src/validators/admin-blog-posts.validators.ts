@@ -121,6 +121,16 @@ const coverImageSchema = z
   })
   .strict();
 
+const relatedProductIdsField = z
+  .array(
+    z.string().refine(isObjectIdOrHexString, 'Invalid related product id'),
+  )
+  .max(8, 'Too many related products')
+  .refine(
+    (productIds) => new Set(productIds).size === productIds.length,
+    'Related products must be unique',
+  );
+
 export const adminBlogPostsQuerySchema = z
   .object({
     page: positiveIntegerParam('page', 1),
@@ -154,6 +164,7 @@ export const createAdminBlogPostBodySchema = z
     contentJson: contentJsonField,
     coverImage: coverImageSchema.nullable().optional(),
     excerpt: excerptField,
+    relatedProductIds: relatedProductIdsField.optional().default([]),
     slug: optionalSlugField,
     status: z.enum(BLOG_POST_STATUSES).optional().default('draft'),
     title: titleField,
@@ -170,6 +181,7 @@ export const updateAdminBlogPostBodySchema = z
     contentJson: contentJsonField,
     coverImage: coverImageSchema.nullable().optional(),
     excerpt: excerptField,
+    relatedProductIds: relatedProductIdsField.optional(),
     slug: optionalSlugField,
     status: z.enum(BLOG_POST_STATUSES).optional(),
     title: titleField,

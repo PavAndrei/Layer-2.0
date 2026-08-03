@@ -1,3 +1,5 @@
+import type { Product } from '../../product';
+
 export const BLOG_POST_STATUSES = [
   'draft',
   'published',
@@ -27,4 +29,5 @@ export type BlogPostListItem = {
 
 export type BlogPost = BlogPostListItem & {
   contentHtml: string;
+  relatedProducts: Product[];
 };

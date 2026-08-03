@@ -1,6 +1,8 @@
 export {
   createAdminBlogPost,
   deleteAdminBlogPost,
+  getAdminBlogRelatedProduct,
+  getAdminBlogRelatedProducts,
   getAdminBlogPost,
   getAdminBlogPosts,
   getBlogCoverAsset,
@@ -10,6 +12,10 @@ export {
 export type {
   AdminBlogPost,
   AdminBlogPostResponseData,
+  AdminBlogRelatedProductOption,
+  AdminBlogRelatedProductResponseData,
+  AdminBlogRelatedProductsParams,
+  AdminBlogRelatedProductsResponseData,
   AdminBlogPostListItem,
   AdminBlogPostSortOption,
   AdminBlogPostsParams,

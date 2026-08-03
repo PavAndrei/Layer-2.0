@@ -8,6 +8,7 @@ export {
   toAdminBlogPostFormValues,
 } from './admin-blog-post-form-mappers';
 export { useAdminBlogPost } from './use-admin-blog-post';
+export { useAdminBlogRelatedProducts } from './use-admin-blog-related-products';
 export { useAdminBlogPostForm } from './use-admin-blog-post-form';
 export { useAdminBlogPosts } from './use-admin-blog-posts';
 export { useAdminBlogPostsFilters } from './use-admin-blog-posts-filters';

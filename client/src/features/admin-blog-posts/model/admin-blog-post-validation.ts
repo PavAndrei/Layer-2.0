@@ -100,12 +100,21 @@ const coverImageSchema = z
   })
   .strict();
 
+const relatedProductIdsSchema = z
+  .array(z.string().trim().min(1, 'Related product id is required'))
+  .max(8, 'Too many related products')
+  .refine(
+    (productIds) => new Set(productIds).size === productIds.length,
+    'Related products must be unique',
+  );
+
 export const adminBlogPostFormSchema = z
   .object({
     contentHtml: z.string().max(120000, 'Content is too long'),
     contentJson: z.record(z.string(), z.unknown()),
     coverImage: coverImageSchema.nullable(),
     excerpt: z.string().trim().max(360, 'Excerpt is too long'),
+    relatedProductIds: relatedProductIdsSchema,
     slug: optionalSlugField,
     status: z.enum(['draft', 'published', 'archived']),
     title: z
@@ -145,6 +154,7 @@ export const toCreateAdminBlogPostPayload = (
       }
     : null,
   excerpt: values.excerpt,
+  relatedProductIds: values.relatedProductIds,
   slug: values.slug,
   status: values.status,
   title: values.title,
@@ -173,6 +183,7 @@ export const getAdminBlogPostFormErrors = (
       fieldName === 'contentHtml' ||
       fieldName === 'contentJson' ||
       fieldName === 'excerpt' ||
+      fieldName === 'relatedProductIds' ||
       fieldName === 'slug' ||
       fieldName === 'status' ||
       fieldName === 'title'

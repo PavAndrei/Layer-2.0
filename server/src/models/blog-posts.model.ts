@@ -74,6 +74,16 @@ const blogPostSchema = new Schema(
       type: Date,
     },
 
+    relatedProductIds: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+        },
+      ],
+      default: [],
+    },
+
     slug: {
       type: String,
       required: true,
@@ -104,6 +114,7 @@ const blogPostSchema = new Schema(
 
 blogPostSchema.index({ status: 1, updatedAt: -1 });
 blogPostSchema.index({ status: 1, publishedAt: -1 });
+blogPostSchema.index({ relatedProductIds: 1 });
 
 export type BlogPostData = Omit<
   InferSchemaType<typeof blogPostSchema>,

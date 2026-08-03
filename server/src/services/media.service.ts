@@ -137,7 +137,7 @@ const getUploadTarget = ({
       ensureUploadPurposeAccess({ purpose, userRole });
 
       return {
-        folder: '/layer/blog',
+        folder: '/layer/blog/covers',
         tags: ['blog'],
         useUniqueFileName: true,
       };

@@ -13,7 +13,7 @@ export const BlogPostDetailSkeleton = () => {
         <Skeleton className="h-6 w-full max-w-160" />
       </div>
       <Skeleton className="aspect-[16/7] w-full max-h-110" />
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-4">
+      <div className="flex w-full flex-col gap-4">
         <Skeleton className="h-5 w-full" />
         <Skeleton className="h-5 w-11/12" />
         <Skeleton className="h-5 w-full" />

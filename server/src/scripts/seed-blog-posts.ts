@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 
 import { MONGO_URI } from '../constants/env';
 import { BlogPost } from '../models/blog-posts.model';
+import { Product } from '../models/products.model';
 import { User } from '../models/users.model';
 import type {
   BlogPostContentJson,
@@ -17,6 +18,7 @@ type BlogPostSeed = {
   coverImage?: BlogPostCoverImage | null;
   excerpt: string;
   publishedAt?: string | null;
+  relatedProductSlugs?: string[];
   slug: string;
   status: BlogPostStatus;
   title: string;
@@ -192,6 +194,7 @@ const blogPostSeedToContent = (blogPost: BlogPostSeed) => ({
 const getBlogPostSeedUpdate = (
   blogPost: BlogPostSeed,
   authorId: mongoose.Types.ObjectId,
+  relatedProductIds: mongoose.Types.ObjectId[],
 ) => {
   const { contentHtml, contentJson } = blogPostSeedToContent(blogPost);
 
@@ -204,6 +207,7 @@ const getBlogPostSeedUpdate = (
       publishedAt: blogPost.publishedAt
         ? new Date(blogPost.publishedAt)
         : undefined,
+      relatedProductIds,
       status: blogPost.status,
       title: blogPost.title,
       ...(blogPost.coverImage ? { coverImage: blogPost.coverImage } : {}),
@@ -221,6 +225,45 @@ const getBlogPostSeedUpdate = (
   };
 };
 
+const getRelatedProductSlugs = (blogPostsSeed: BlogPostSeed[]) => {
+  return [
+    ...new Set(
+      blogPostsSeed.flatMap((blogPost) => blogPost.relatedProductSlugs ?? []),
+    ),
+  ];
+};
+
+const getRelatedProductIdsBySlug = async (blogPostsSeed: BlogPostSeed[]) => {
+  const relatedProductSlugs = getRelatedProductSlugs(blogPostsSeed);
+
+  if (relatedProductSlugs.length === 0) {
+    return new Map<string, mongoose.Types.ObjectId>();
+  }
+
+  const products = await Product.find({
+    slug: {
+      $in: relatedProductSlugs,
+    },
+  }).select('_id slug');
+  const productIdBySlug = new Map(
+    products.map((product) => [
+      product.slug,
+      product._id,
+    ]),
+  );
+  const missingProductSlugs = relatedProductSlugs.filter(
+    (slug) => !productIdBySlug.has(slug),
+  );
+
+  if (missingProductSlugs.length > 0) {
+    throw new Error(
+      `Cannot seed blog posts: related products were not found: ${missingProductSlugs.join(', ')}.`,
+    );
+  }
+
+  return productIdBySlug;
+};
+
 const seedBlogPosts = async () => {
   await mongoose.connect(MONGO_URI);
 
@@ -233,16 +276,28 @@ const seedBlogPosts = async () => {
     throw new Error('Cannot seed blog posts: no admin user found.');
   }
 
+  const relatedProductIdsBySlug =
+    await getRelatedProductIdsBySlug(blogPostsSeed);
   const result = await BlogPost.bulkWrite(
-    blogPostsSeed.map((blogPost) => ({
-      updateOne: {
-        filter: {
-          slug: blogPost.slug,
+    blogPostsSeed.map((blogPost) => {
+      const relatedProductIds = (blogPost.relatedProductSlugs ?? []).map(
+        (slug) => relatedProductIdsBySlug.get(slug)!,
+      );
+
+      return {
+        updateOne: {
+          filter: {
+            slug: blogPost.slug,
+          },
+          update: getBlogPostSeedUpdate(
+            blogPost,
+            adminUser._id,
+            relatedProductIds,
+          ),
+          upsert: true,
         },
-        update: getBlogPostSeedUpdate(blogPost, adminUser._id),
-        upsert: true,
-      },
-    })),
+      };
+    }),
   );
 
   console.log(

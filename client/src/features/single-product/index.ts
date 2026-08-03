@@ -15,7 +15,6 @@ export {
   ProductPurchasePanel,
   ProductReviewsAccordion,
   ProductVariantSelector,
-  RelatedProductsSlider,
   SingleProductError,
   SingleProductLayout,
   SingleProductLayoutFooter,
