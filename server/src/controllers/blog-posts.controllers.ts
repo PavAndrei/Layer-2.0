@@ -1,5 +1,12 @@
 import { Request, Response } from 'express';
 
+import { ApiError } from '../exceptions/api-error';
+import {
+  createBlogPostCommentData,
+  deleteBlogPostCommentData,
+  getBlogPostCommentsData,
+  updateBlogPostCommentData,
+} from '../services/blog-post-comments.service';
 import {
   getBlogPostBySlugData,
   getBlogPostsData,
@@ -8,14 +15,22 @@ import {
 } from '../services/blog-posts.service';
 import type {
   BlogPostResponse,
+  BlogPostCommentsResponse,
   BlogPostsResponse,
+  CreateBlogPostCommentResponse,
+  DeleteBlogPostCommentResponse,
   SetBlogPostLikeResponse,
   TrackBlogPostViewResponse,
+  UpdateBlogPostCommentResponse,
 } from '../types/api';
 import type {
+  BlogPostCommentParams,
+  BlogPostCommentsQuery,
   BlogPostParams,
   BlogPostsQuery,
+  CreateBlogPostCommentBody,
   SetBlogPostLikeBody,
+  UpdateBlogPostCommentBody,
 } from '../validators/blog-posts.validators';
 
 export const getBlogPosts = async (
@@ -50,6 +65,14 @@ export const getBlogPostBySlug = async (
   });
 };
 
+const getAuthenticatedUser = (req: Request) => {
+  if (!req.user) {
+    throw ApiError.Unauthorized();
+  }
+
+  return req.user;
+};
+
 export const setBlogPostLike = async (
   req: Request,
   res: Response<SetBlogPostLikeResponse>,
@@ -67,6 +90,89 @@ export const setBlogPostLike = async (
     message: data.liked
       ? 'Blog post liked successfully'
       : 'Blog post like removed successfully',
+    success: true,
+    data,
+  });
+};
+
+export const getBlogPostComments = async (
+  req: Request,
+  res: Response<BlogPostCommentsResponse>,
+) => {
+  const { slug } = req.validated?.params as BlogPostParams;
+  const data = await getBlogPostCommentsData(
+    slug,
+    req.validated?.query as BlogPostCommentsQuery,
+  );
+
+  res.status(200).json({
+    message: 'Blog post comments fetched successfully',
+    success: true,
+    data,
+  });
+};
+
+export const createBlogPostComment = async (
+  req: Request,
+  res: Response<CreateBlogPostCommentResponse>,
+) => {
+  const { slug } = req.validated?.params as BlogPostParams;
+  const user = getAuthenticatedUser(req);
+  const data = await createBlogPostCommentData(
+    slug,
+    user.userId,
+    req.validated?.body as CreateBlogPostCommentBody,
+  );
+
+  res.status(201).json({
+    message: 'Blog post comment created successfully',
+    success: true,
+    data,
+  });
+};
+
+export const updateBlogPostComment = async (
+  req: Request,
+  res: Response<UpdateBlogPostCommentResponse>,
+) => {
+  const { commentId, slug } =
+    req.validated?.params as BlogPostCommentParams;
+  const user = getAuthenticatedUser(req);
+  const data = await updateBlogPostCommentData(
+    slug,
+    {
+      role: user.role,
+      userId: user.userId,
+    },
+    commentId,
+    req.validated?.body as UpdateBlogPostCommentBody,
+  );
+
+  res.status(200).json({
+    message: 'Blog post comment updated successfully',
+    success: true,
+    data,
+  });
+};
+
+export const deleteBlogPostComment = async (
+  req: Request,
+  res: Response<DeleteBlogPostCommentResponse>,
+) => {
+  const { commentId, slug } =
+    req.validated?.params as BlogPostCommentParams;
+  const user = getAuthenticatedUser(req);
+  const data = await deleteBlogPostCommentData(
+    slug,
+    {
+      role: user.role,
+      userId: user.userId,
+    },
+    commentId,
+  );
+
+  res.status(200).json({
+    message: 'Blog post comment deleted successfully',
     success: true,
     data,
   });

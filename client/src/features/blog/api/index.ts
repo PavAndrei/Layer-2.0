@@ -1,19 +1,36 @@
 export {
+  createBlogPostComment,
+  deleteBlogPostComment,
   getBlogPostBySlug,
+  getBlogPostComments,
   getBlogPosts,
   setBlogPostLike,
   trackBlogPostView,
+  updateBlogPostComment,
 } from './blog-posts-api';
 export type {
+  BlogPostCommentsParams,
+  BlogPostCommentsResponseData,
   BlogPostResponseData,
   BlogPostsParams,
   BlogPostsResponseData,
+  CreateBlogPostCommentPayload,
+  CreateBlogPostCommentParams,
+  CreateBlogPostCommentResponseData,
+  DeleteBlogPostCommentParams,
+  DeleteBlogPostCommentResponseData,
   SetBlogPostLikePayload,
   SetBlogPostLikeResponseData,
   TrackBlogPostViewResponseData,
+  UpdateBlogPostCommentPayload,
+  UpdateBlogPostCommentParams,
+  UpdateBlogPostCommentResponseData,
 } from './blog-posts-api';
 export type {
   BlogPost,
+  BlogPostComment,
+  BlogPostCommentAuthor,
+  BlogPostCommentStatus,
   BlogPostCoverImage,
   BlogPostListItem,
 } from '../../../entities/blog';

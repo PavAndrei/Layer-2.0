@@ -44,6 +44,18 @@ const sortOptions: readonly SelectFilterOption<AdminBlogPostSortOption>[] = [
     value: 'default',
   },
   {
+    label: 'Most viewed',
+    value: 'most-viewed',
+  },
+  {
+    label: 'Most liked',
+    value: 'most-liked',
+  },
+  {
+    label: 'Most commented',
+    value: 'most-commented',
+  },
+  {
     label: 'Updated newest',
     value: 'updated-desc',
   },

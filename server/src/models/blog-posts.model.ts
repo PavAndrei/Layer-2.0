@@ -60,6 +60,12 @@ const blogPostSchema = new Schema(
       default: {},
     },
 
+    commentsCount: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+
     coverImage: {
       type: blogPostCoverImageSchema,
     },

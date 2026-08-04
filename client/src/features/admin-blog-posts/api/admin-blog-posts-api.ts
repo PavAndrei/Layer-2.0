@@ -13,6 +13,9 @@ import type { ProductStatus } from '../../../entities/product';
 
 export type AdminBlogPostSortOption =
   | 'default'
+  | 'most-commented'
+  | 'most-liked'
+  | 'most-viewed'
   | 'published-asc'
   | 'published-desc'
   | 'title-asc'
@@ -50,6 +53,7 @@ export type AdminBlogRelatedProductOption = {
 export type AdminBlogPostListItem = {
   _id: string;
   authorId: string;
+  commentsCount: number;
   coverImage?: BlogPostCoverImage;
   excerpt: string;
   publishedAt: string | null;
@@ -58,6 +62,7 @@ export type AdminBlogPostListItem = {
   tags: string[];
   title: string;
   updatedAt: string;
+  likesCount: number;
   viewsCount: number;
 };
 

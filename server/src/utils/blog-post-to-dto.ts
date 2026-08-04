@@ -9,6 +9,7 @@ export const blogPostToListItemDto = (
   blogPost: BlogPostDocument,
 ): BlogPostListItemDto => ({
   _id: blogPost._id.toString(),
+  commentsCount: blogPost.commentsCount ?? 0,
   coverImage: blogPost.coverImage,
   excerpt: blogPost.excerpt,
   publishedAt: blogPost.publishedAt?.toISOString() ?? null,

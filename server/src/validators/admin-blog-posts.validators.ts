@@ -4,6 +4,9 @@ import { z } from 'zod';
 import { BLOG_POST_STATUSES } from '../types/blog-post';
 
 export const ADMIN_BLOG_POST_SORT_VALUES = [
+  'most-commented',
+  'most-liked',
+  'most-viewed',
   'published-asc',
   'published-desc',
   'title-asc',

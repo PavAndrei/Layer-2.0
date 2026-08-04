@@ -6,6 +6,7 @@ export const adminBlogPostToListItemDto = (
 ): AdminBlogPostListItemDto => ({
   _id: blogPost._id.toString(),
   authorId: blogPost.authorId.toString(),
+  commentsCount: blogPost.commentsCount ?? 0,
   coverImage: blogPost.coverImage,
   excerpt: blogPost.excerpt,
   publishedAt: blogPost.publishedAt?.toISOString() ?? null,

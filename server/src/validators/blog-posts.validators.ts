@@ -1,3 +1,4 @@
+import { isObjectIdOrHexString } from 'mongoose';
 import { z } from 'zod';
 
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
@@ -89,6 +90,73 @@ export const setBlogPostLikeSchema = z.object({
   body: setBlogPostLikeBodySchema,
 });
 
+const blogPostCommentIdSchema = z
+  .string()
+  .refine(isObjectIdOrHexString, 'Invalid comment id');
+
+export const blogPostCommentsQuerySchema = z
+  .object({
+    page: positiveIntegerParam('page', 1),
+    limit: positiveIntegerParam('limit', 10, 50),
+  })
+  .strict();
+
+export const blogPostCommentParamsSchema = z.object({
+  params: blogPostParamsSchema.shape.params
+    .extend({
+      commentId: blogPostCommentIdSchema,
+    })
+    .strict(),
+});
+
+export const getBlogPostCommentsSchema = z.object({
+  params: blogPostParamsSchema.shape.params,
+  query: blogPostCommentsQuerySchema,
+});
+
+export const createBlogPostCommentSchema = z.object({
+  params: blogPostParamsSchema.shape.params,
+  body: z
+    .object({
+      parentCommentId: blogPostCommentIdSchema.nullable().optional(),
+      text: z
+        .string()
+        .trim()
+        .min(1, 'Comment text is required')
+        .max(2000, 'Comment text is too long'),
+    })
+    .strict(),
+});
+
+export const updateBlogPostCommentSchema = z.object({
+  params: blogPostCommentParamsSchema.shape.params,
+  body: z
+    .object({
+      text: z
+        .string()
+        .trim()
+        .min(1, 'Comment text is required')
+        .max(2000, 'Comment text is too long'),
+    })
+    .strict(),
+});
+
+export const deleteBlogPostCommentSchema = z.object({
+  params: blogPostCommentParamsSchema.shape.params,
+});
+
 export type BlogPostsQuery = z.infer<typeof blogPostsQuerySchema>;
 export type BlogPostParams = z.infer<typeof blogPostParamsSchema>['params'];
 export type SetBlogPostLikeBody = z.infer<typeof setBlogPostLikeBodySchema>;
+export type BlogPostCommentsQuery = z.infer<
+  typeof blogPostCommentsQuerySchema
+>;
+export type BlogPostCommentParams = z.infer<
+  typeof blogPostCommentParamsSchema
+>['params'];
+export type CreateBlogPostCommentBody = z.infer<
+  typeof createBlogPostCommentSchema
+>['body'];
+export type UpdateBlogPostCommentBody = z.infer<
+  typeof updateBlogPostCommentSchema
+>['body'];

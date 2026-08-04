@@ -54,6 +54,18 @@ export const AdminBlogPostEditPage = () => {
               {blogPost.viewsCount}
             </p>
           </div>
+          <div className="rounded border border-border-soft bg-background-surface p-4">
+            <p className="block-small text-typography-muted">Likes</p>
+            <p className="mt-1 text-2xl font-semibold text-typography-heading">
+              {blogPost.likesCount}
+            </p>
+          </div>
+          <div className="rounded border border-border-soft bg-background-surface p-4">
+            <p className="block-small text-typography-muted">Comments</p>
+            <p className="mt-1 text-2xl font-semibold text-typography-heading">
+              {blogPost.commentsCount}
+            </p>
+          </div>
         </div>
       )}
 

@@ -206,11 +206,11 @@ export const AdminBlogPostsGrid = ({
 
       <div className="overflow-x-auto rounded border border-border-soft bg-background-surface">
         <div className="min-w-[68rem]">
-          <div className="grid grid-cols-[minmax(18rem,1.7fr)_7rem_minmax(14rem,1fr)_6rem_8rem_8rem_12rem] gap-3 border-b border-border-soft bg-background-secondary px-4 py-3 block-small text-typography-muted">
+          <div className="grid grid-cols-[minmax(18rem,1.7fr)_7rem_minmax(14rem,1fr)_9rem_8rem_8rem_12rem] gap-3 border-b border-border-soft bg-background-secondary px-4 py-3 block-small text-typography-muted">
             <span>Article</span>
             <span>Status</span>
             <span>Excerpt</span>
-            <span>Views</span>
+            <span>Activity</span>
             <span>Published</span>
             <span>Updated</span>
             <span>Actions</span>
@@ -227,7 +227,7 @@ export const AdminBlogPostsGrid = ({
             return (
               <article
                 key={blogPost._id}
-                className="grid grid-cols-[minmax(18rem,1.7fr)_7rem_minmax(14rem,1fr)_6rem_8rem_8rem_12rem] gap-3 border-b border-border-soft px-4 py-3 last:border-b-0"
+                className="grid grid-cols-[minmax(18rem,1.7fr)_7rem_minmax(14rem,1fr)_9rem_8rem_8rem_12rem] gap-3 border-b border-border-soft px-4 py-3 last:border-b-0"
               >
                 <div className="flex min-w-0 items-center gap-3">
                   {blogPost.coverImage ? (
@@ -260,8 +260,10 @@ export const AdminBlogPostsGrid = ({
                   {blogPost.excerpt || 'No excerpt'}
                 </p>
 
-                <div className="flex items-center block-small text-typography-secondary">
-                  {blogPost.viewsCount}
+                <div className="flex flex-col justify-center gap-1 block-small text-typography-secondary">
+                  <span>{blogPost.viewsCount} views</span>
+                  <span>{blogPost.likesCount} likes</span>
+                  <span>{blogPost.commentsCount} comments</span>
                 </div>
 
                 <time

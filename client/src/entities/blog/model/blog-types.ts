@@ -17,8 +17,37 @@ export type BlogPostCoverImage = {
 
 export type BlogPostContentJson = Record<string, unknown>;
 
+export const BLOG_POST_COMMENT_STATUSES = [
+  'published',
+  'deleted',
+] as const;
+
+export type BlogPostCommentStatus =
+  (typeof BLOG_POST_COMMENT_STATUSES)[number];
+
+export type BlogPostCommentAuthor = {
+  _id: string;
+  avatarUrl?: string;
+  name: string;
+};
+
+export type BlogPostComment = {
+  _id: string;
+  author: BlogPostCommentAuthor;
+  blogPostId: string;
+  createdAt: string;
+  deletedAt: string | null;
+  editedAt: string | null;
+  parentCommentId: string | null;
+  replies: BlogPostComment[];
+  status: BlogPostCommentStatus;
+  text: string;
+  updatedAt: string;
+};
+
 export type BlogPostListItem = {
   _id: string;
+  commentsCount: number;
   coverImage?: BlogPostCoverImage;
   excerpt: string;
   publishedAt: string | null;

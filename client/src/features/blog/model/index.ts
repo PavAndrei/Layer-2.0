@@ -8,8 +8,13 @@ export {
   BLOG_POSTS_STALE_TIME_MS,
   blogPostsQueryKeys,
 } from './blog-posts-query-keys';
+export { toBlogPostCommentsSearchParams } from './blog-post-comments-search-params';
 export { toBlogPostsSearchParams } from './blog-posts-search-params';
+export { useBlogPostComments } from './use-blog-post-comments';
+export { useCreateBlogPostComment } from './use-create-blog-post-comment';
+export { useDeleteBlogPostComment } from './use-delete-blog-post-comment';
 export { useToggleBlogPostLike } from './use-toggle-blog-post-like';
+export { useUpdateBlogPostComment } from './use-update-blog-post-comment';
 export { useBlogPost } from './use-blog-post';
 export { useBlogPostTags } from './use-blog-post-tags';
 export { useBlogPosts } from './use-blog-posts';

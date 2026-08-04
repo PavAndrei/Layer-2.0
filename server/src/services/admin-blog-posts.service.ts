@@ -206,6 +206,27 @@ const getAdminBlogPostsSort = (
   sort: AdminBlogPostsQuery['sort'],
 ): Record<string, 1 | -1> => {
   switch (sort) {
+    case 'most-commented':
+      return {
+        commentsCount: -1,
+        updatedAt: -1,
+        _id: -1,
+      };
+
+    case 'most-liked':
+      return {
+        likesCount: -1,
+        updatedAt: -1,
+        _id: -1,
+      };
+
+    case 'most-viewed':
+      return {
+        viewsCount: -1,
+        updatedAt: -1,
+        _id: -1,
+      };
+
     case 'published-asc':
       return {
         publishedAt: 1,

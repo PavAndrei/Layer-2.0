@@ -24,6 +24,7 @@ import type {
   BlogPostCoverImage,
   BlogPostStatus,
 } from './blog-post';
+import type { BlogPostCommentStatus } from './blog-post-comment';
 
 export type ApiSuccess<T> = {
   success: true;
@@ -283,6 +284,7 @@ export type AdminDashboardDto = {
 export type AdminBlogPostListItemDto = {
   _id: string;
   authorId: string;
+  commentsCount: number;
   coverImage?: BlogPostCoverImage;
   excerpt: string;
   publishedAt: string | null;
@@ -304,6 +306,7 @@ export type AdminBlogPostDto = AdminBlogPostListItemDto & {
 
 export type BlogPostListItemDto = {
   _id: string;
+  commentsCount: number;
   coverImage?: BlogPostCoverImage;
   excerpt: string;
   publishedAt: string | null;
@@ -319,6 +322,26 @@ export type BlogPostDto = BlogPostListItemDto & {
   contentHtml: string;
   isLikedByViewer: boolean;
   relatedProducts: ProductDto[];
+};
+
+export type BlogPostCommentAuthorDto = {
+  _id: string;
+  avatarUrl?: string;
+  name: string;
+};
+
+export type BlogPostCommentDto = {
+  _id: string;
+  author: BlogPostCommentAuthorDto;
+  blogPostId: string;
+  createdAt: string;
+  deletedAt: string | null;
+  editedAt: string | null;
+  parentCommentId: string | null;
+  replies: BlogPostCommentDto[];
+  status: BlogPostCommentStatus;
+  text: string;
+  updatedAt: string;
 };
 
 export type AdminBlogPostsStatsDto = {
@@ -501,6 +524,24 @@ export type TrackBlogPostViewResponse = ApiSuccess<{
 export type SetBlogPostLikeResponse = ApiSuccess<{
   liked: boolean;
   likesCount: number;
+}>;
+
+export type BlogPostCommentsResponse = ApiSuccess<{
+  comments: BlogPostCommentDto[];
+  pagination: PaginationData;
+}>;
+
+export type CreateBlogPostCommentResponse = ApiSuccess<{
+  comment: BlogPostCommentDto;
+}>;
+
+export type UpdateBlogPostCommentResponse = ApiSuccess<{
+  comment: BlogPostCommentDto;
+}>;
+
+export type DeleteBlogPostCommentResponse = ApiSuccess<{
+  comment: BlogPostCommentDto;
+  commentId: string;
 }>;
 
 export type ProductReviewsResponse = ApiSuccess<{

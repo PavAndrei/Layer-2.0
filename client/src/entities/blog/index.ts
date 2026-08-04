@@ -1,6 +1,10 @@
 export {
+  BLOG_POST_COMMENT_STATUSES,
   BLOG_POST_STATUSES,
   type BlogPost,
+  type BlogPostComment,
+  type BlogPostCommentAuthor,
+  type BlogPostCommentStatus,
   type BlogPostContentJson,
   type BlogPostCoverImage,
   type BlogPostListItem,

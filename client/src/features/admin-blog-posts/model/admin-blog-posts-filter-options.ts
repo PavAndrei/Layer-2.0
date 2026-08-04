@@ -5,6 +5,9 @@ export { BLOG_POST_STATUSES } from '../../../entities/blog';
 
 export const ADMIN_BLOG_POST_SORT_OPTIONS: readonly AdminBlogPostSortOption[] = [
   'default',
+  'most-viewed',
+  'most-liked',
+  'most-commented',
   'updated-desc',
   'updated-asc',
   'published-desc',
